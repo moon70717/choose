@@ -32,7 +32,6 @@ public class Exam {
 	        while ((jsonData = br.readLine()) != null) {
 	            sb.append(jsonData);
 	        }
-	        System.out.println("sb= "+sb.toString());
 	        returnText = sb.toString();
 	 
 	    } catch (IOException e) {
@@ -44,7 +43,6 @@ public class Exam {
 	            e.printStackTrace();
 	        }
 	    }
-	    System.out.println("?");
 	    System.out.println(returnText);
 	}
 }
