@@ -18,7 +18,7 @@ public class Exam {
 	    String returnText = "";
 	 
 	    try {
-	        url = new URL("http://api.visitkorea.or.kr/openapi/service/rest/KorService/locationBasedList?serviceKey=peWkmeOBUcoT4b1Oqd7%2FotBYLzAO%2BWBymO82ftCMolY%2Bs9AI1ppnNVO4U9a%2Blhohtj1X38Iy4ENC1ReL1aHKWg%3D%3D&numOfRoews=10&pageNo=1&startPage=1&MobileOS=ETC&MobileApp=AppTest&arrange=A&contenTypeId=15&mapX=127.028900&mapY=37.496243&radius=500&listYN=Y");
+	        url = new URL("http://api.visitkorea.or.kr/openapi/service/rest/KorService/locationBasedList?serviceKey=peWkmeOBUcoT4b1Oqd7%2FotBYLzAO%2BWBymO82ftCMolY%2Bs9AI1ppnNVO4U9a%2Blhohtj1X38Iy4ENC1ReL1aHKWg%3D%3D&numOfRoews=10&pageNo=1&startPage=1&MobileOS=ETC&MobileApp=AppTest&arrange=A&contentTypeId=15&mapX=127.028900&mapY=37.496243&radius=500&listYN=Y");
 	 
 	        conn = (HttpURLConnection) url.openConnection();
 	        conn.setRequestProperty("Accept", "application/json");
