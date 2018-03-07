@@ -8,7 +8,7 @@ import java.net.URL;
 
 public class ApiSend {
 	
-	static String u= "http://api.visitkorea.or.kr/openapi/service/rest/KorService/locationBasedList?serviceKey=peWkmeOBUcoT4b1Oqd7%2FotBYLzAO%2BWBymO82ftCMolY%2Bs9AI1ppnNVO4U9a%2Blhohtj1X38Iy4ENC1ReL1aHKWg%3D%3D&numOfRoews=10&pageNo=1&startPage=1&MobileOS=ETC&MobileApp=AppTest&arrange=A&contenttypeId=15&mapX=127.028900&mapY=37.496243&radius=500&listYN=Y";
+	static String u= "http://api.visitkorea.or.kr/openapi/service/rest/KorService/locationBasedList?serviceKey=peWkmeOBUcoT4b1Oqd7%2FotBYLzAO%2BWBymO82ftCMolY%2Bs9AI1ppnNVO4U9a%2Blhohtj1X38Iy4ENC1ReL1aHKWg%3D%3D&numOfRoews=5&pageNo=1&startPage=1&MobileOS=ETC&MobileApp=AppTest&arrange=A&contenttypeId=15&mapX=127.028900&mapY=37.496243&radius=500&listYN=Y";
 	public String send() {
 		URL url = null;
 	    HttpURLConnection conn = null;

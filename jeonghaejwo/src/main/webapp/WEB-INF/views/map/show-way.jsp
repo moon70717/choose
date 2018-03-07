@@ -75,15 +75,16 @@
 				location : nowP,
 				stopover : true
 			});
-			for(var v=0;v<waypts.length;v++){ 
-				calculateAndDisplayRoute(directionsService, directionsDisplay,v,1);
-			}
+			calculateAndDisplayRoute(directionsService, directionsDisplay,waypts,1);
 		});
 	}
-	function calculateAndDisplayRoute(directionsService, directionsDisplay, startP,onsoff) {
+	function calculateAndDisplayRoute(directionsService, directionsDisplay, waypts,onsoff,idx) {
+		if(!idx){
+			idx = 0;
+		}
 		directionsService.route({  
-			origin : waypts[startP].location, 
-			destination : waypts[startP+1].location,
+			origin : waypts[idx].location, 
+			destination : waypts[idx+1].location,
 			optimizeWaypoints : true,
 			travelMode : 'TRANSIT'  
 		}, function(response, status) {
@@ -101,14 +102,16 @@
 						ways += route.legs[i].start_address + ' to ';
 						ways += route.legs[i].end_address + '<br>';
 						ways += route.legs[i].distance.text + '<br>';
-						ways += '<button id="button'+startP+'">길 보기</button><br>';
+						ways += '<button id="button'+routeSegment+'">길 보기</button><br>';
 						summaryPanel.innerHTML+=ways;
-						document.getElementById('button'+startP).addEventListener('click',function(){
+						var btnid='button'+routeSegment;
+						document.getElementById(btnid).addEventListener("click", function(){
 							alert("3");
 						});
 					}
 				}
-				
+				if(waypts.length==idx) return;
+				calculateAndDisplayRoute(directionsService, directionsDisplay,waypts,1,idx+1);
 			} else {
 				window.alert('Directions request failed due to ' + status);
 			}
