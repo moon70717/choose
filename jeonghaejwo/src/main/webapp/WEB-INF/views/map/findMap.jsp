@@ -59,7 +59,7 @@ html, body {
 	<div id="right-panel">
 		<div>
 			<b>Start:</b> <select id="start">
-				<option value="37.496083, 127.029120">Halifax, NS</option>
+				<option value="서울특별시 강남구 테헤란로">Halifax, NS</option>
 				<option value="Boston, MA">Boston, MA</option>
 				<option value="New York, NY">New York, NY</option>
 				<option value="Miami, FL">Miami, FL</option>
@@ -74,7 +74,7 @@ html, body {
 				<option value="calgary, ab">Calgary</option>
 				<option value="spokane, wa">Spokane</option>
 			</select> <br> <b>End:</b> <select id="end">
-				<option value="37.504680, 127.026028">Vancouver, BC</option>
+				<option value="서울특별시 강남구 강남대로 352">Vancouver, BC</option>
 				<option value="Seattle, WA">Seattle, WA</option>
 				<option value="San Francisco, CA">San Francisco, CA</option>
 				<option value="Los Angeles, CA">Los Angeles, CA</option>
@@ -117,7 +117,9 @@ html, body {
 				destination : document.getElementById('end').value,
 				waypoints : waypts,
 				optimizeWaypoints : true,
-				travelMode : 'TRANSIT'
+				travelMode : 'DRIVING'
+				//TRANSIT
+				//DRIVING
 			}, function(response, status) {
 				if (status === 'OK') {
 					directionsDisplay.setDirections(response);
