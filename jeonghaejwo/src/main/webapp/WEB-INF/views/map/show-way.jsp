@@ -78,10 +78,13 @@
 			calculateAndDisplayRoute(directionsService, directionsDisplay,waypts,1);
 		});
 	}
+	
+	//경로를 구하는 부분
 	function calculateAndDisplayRoute(directionsService, directionsDisplay, waypts,onsoff,idx) {
 		if(!idx){
 			idx = 0;
 		}
+		if(idx==11)return;
 		directionsService.route({  
 			origin : waypts[idx].location, 
 			destination : waypts[idx+1].location,
@@ -96,6 +99,7 @@
 				// For each route, display summary information.
 				if(onsoff==1){
 					ways='';
+					//이동거리를 적어줌
 					for (var i = 0; i < route.legs.length; i++) {
 						routeSegment++;
 						ways += '<b>Route Segment: ' + routeSegment + '</b><br>';
@@ -104,10 +108,15 @@
 						ways += route.legs[i].distance.text + '<br>';
 						ways += '<button id="button'+routeSegment+'">길 보기</button><br>';
 						summaryPanel.innerHTML+=ways;
-						var btnid='button'+routeSegment;
+						var btnid='#button'+routeSegment;
+						/* alert(btnid);
 						document.getElementById(btnid).addEventListener("click", function(){
-							alert("3");
-						});
+							alert("3");  
+						}); */
+						console.log(btnid);
+						$("#button"+routeSegment).bind('click',function(){
+							alert(3);
+						})
 					}
 				}
 				if(waypts.length==idx) return;

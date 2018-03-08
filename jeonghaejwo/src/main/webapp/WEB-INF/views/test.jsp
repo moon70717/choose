@@ -7,12 +7,14 @@
 <title>Insert title here</title>
 </head>
 <body>
-<div id="hi1">이것은 div인거같다</div>
-</body>  
 <script>
-var v='hi'+1;
-document.getElementById(v).addEventListener('click',function(){
-	alert("hi!");
+$.ajax({
+	url : "/api/test",
+	type : "get",
+	data :"gg",
+	success : function(res) {
+		alert("end");
+	}
 });
 </script>
 </html>

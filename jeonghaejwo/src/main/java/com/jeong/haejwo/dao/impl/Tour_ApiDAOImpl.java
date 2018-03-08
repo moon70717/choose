@@ -1,4 +1,4 @@
-package com.jeong.haejwo.dao;
+package com.jeong.haejwo.dao.impl;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -6,17 +6,22 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-public class ApiSend {
-	
-	static String u= "http://api.visitkorea.or.kr/openapi/service/rest/KorService/locationBasedList?serviceKey=peWkmeOBUcoT4b1Oqd7%2FotBYLzAO%2BWBymO82ftCMolY%2Bs9AI1ppnNVO4U9a%2Blhohtj1X38Iy4ENC1ReL1aHKWg%3D%3D&MobileOS=ETC&MobileApp=AppTest&arrange=A&mapX=126.981611&mapY=37.568477&radius=500&listYN=Y";
-	public String send() {
+import org.springframework.stereotype.Component;
+
+import com.jeong.haejwo.dao.Tour_ApiDAO;
+
+@Component
+public class Tour_ApiDAOImpl implements Tour_ApiDAO {
+
+	@Override
+	public String requestAPI(String u) {
 		URL url = null;
 	    HttpURLConnection conn = null;
 	    String jsonData = "";
 	    BufferedReader br = null;
 	    StringBuffer sb = null;
 	    String returnText = "";
-	 
+	    
 	    try {
 	        url = new URL(u);
 	 
@@ -45,4 +50,5 @@ public class ApiSend {
 	    }
 	    return returnText;
 	}
+
 }
