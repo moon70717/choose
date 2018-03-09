@@ -24,6 +24,14 @@
 		</init-param>
 		<load-on-startup>1</load-on-startup>
 	</servlet>
+	
+	<jsp-config>
+		<jsp-property-group>
+			<url-pattern>*.jsp</url-pattern>
+			<include-prelude>/WEB-INF/views/common/common.jspf</include-prelude>
+			<trim-directive-whitespaces>true</trim-directive-whitespaces>
+		</jsp-property-group>
+	</jsp-config>
 		
 	<servlet-mapping>
 		<servlet-name>appServlet</servlet-name>
