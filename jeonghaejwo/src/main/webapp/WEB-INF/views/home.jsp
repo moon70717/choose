@@ -11,7 +11,7 @@
 <style>
 h1{
 text-align:center;
-color:white;
+color:white; 
 }
 .default_container{
 margin: auto;
