@@ -24,7 +24,6 @@ public class Tour_ApiDAOImpl implements Tour_ApiDAO {
 	    
 	    try {
 	        url = new URL(u);
-	 
 	        conn = (HttpURLConnection) url.openConnection();
 	        conn.setRequestProperty("Accept", "application/json");
 	        conn.setRequestMethod("GET");

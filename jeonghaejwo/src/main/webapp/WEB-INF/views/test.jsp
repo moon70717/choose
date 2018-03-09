@@ -7,14 +7,23 @@
 <title>Insert title here</title>
 </head>
 <body>
+<form>
+<input type="text" value="text"/>
+<input type="submit" onclick="aj()"/>
+</form>
 <script>
-$.ajax({
-	url : "/api/test",
-	type : "get",
-	data :"gg",
-	success : function(res) {
-		alert("end");
-	}
-});
+function aj(){
+	var param = {
+            uiId: '35'
+        };
+	$.ajax({
+		url : "/api/test",
+		type : "post",
+		data :param,
+		success : function(res) {
+			alert("end");
+		}
+	});	
+}
 </script>
 </html>
