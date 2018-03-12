@@ -94,32 +94,25 @@
 			if (status === 'OK') {
 				directionsDisplay.setDirections(response);
 				var route = response.routes[0];
-				var summaryPanel = document.getElementById('directions-panel');
-				//summaryPanel.innerHTML = '';
-				// For each route, display summary information.
 				if(onsoff==1){
-					ways='';
-					//이동거리를 적어줌
 					for (var i = 0; i < route.legs.length; i++) {
 						routeSegment++;
-						ways += '<b>Route Segment: ' + routeSegment + '</b><br>';
+						ways = '<b>Route Segment: ' + routeSegment + '</b><br>';
 						ways += route.legs[i].start_address + ' to ';
 						ways += route.legs[i].end_address + '<br>';
 						ways += route.legs[i].distance.text + '<br>';
-						ways += '<button id="button'+routeSegment+'">길 보기</button><br>';
-						summaryPanel.innerHTML+=ways;
-						var btnid='#button'+routeSegment;
-						/* alert(btnid);
-						document.getElementById(btnid).addEventListener("click", function(){
-							alert("3");  
-						}); */
-						console.log(btnid);
-						$("#button"+routeSegment).bind('click',function(){
-							alert(3);
-						})
+						ways += '<button id="button'+routeSegment+'" value="'+routeSegment+'">길 보기</button><br>';
+						$(ways).appendTo('#directions-panel');
+						$("#button"+routeSegment).click(function(){
+							calculateAndDisplayRoute(directionsService, directionsDisplay,waypts,0,this.value-1);
+						});
 					}
+				}else{
+					return;
 				}
-				if(waypts.length==idx) return;
+				if(waypts.length==idx){
+					calculateAndDisplayRoute(directionsService, directionsDisplay,waypts,0,0);
+				}
 				calculateAndDisplayRoute(directionsService, directionsDisplay,waypts,1,idx+1);
 			} else {
 				window.alert('Directions request failed due to ' + status);

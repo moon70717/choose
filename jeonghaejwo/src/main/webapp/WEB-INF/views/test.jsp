@@ -28,11 +28,11 @@
 	//alert(boundget);
 
 	function aj() {
-		$('<button id="'+v+'" value="'+v+'">Button' + v + '</button>').appendTo('body').click(al.bind(3));
+		var obj = $('<button id="btn'+v+'" value="'+v+'">Button' + v + '</button>').appendTo('body')
+		$("#btn"+v).click(function(){
+			alert(this.value);
+		});
 		v++;
-	}
-	function al(a) {
-		console.log(a);
 	}
 </script>
 
