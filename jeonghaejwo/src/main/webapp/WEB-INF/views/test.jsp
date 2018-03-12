@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -7,23 +7,42 @@
 <title>Insert title here</title>
 </head>
 <body>
-<form>
-<input type="text" value="text"/>
-<input type="submit" onclick="aj()"/>
-</form>
+	<button onclick="aj()">123</button>
+
+</body>
 <script>
-function aj(){
-	var param = {
-            uiId: '35'
-        };
-	$.ajax({
-		url : "/api/test",
-		type : "post",
-		data :param,
-		success : function(res) {
-			alert("end");
+	var v = 1;
+
+	var module = {
+		v : 821,
+		getV : function() {
+			return v;
 		}
-	});	
-}
+	}
+	
+	var geM=module.getV;
+	alert(geM);
+	
+	
+	var boundget=geM.bind(module);
+	alert(boundget);
+
+	function aj() {
+		var module = {
+			v : v,
+			getV : function() {
+				return v;
+			}
+		}
+
+		$('<button id="'+v+'" value="'+v+'">Button' + v + '</button>').appendTo('body').click(al.bind(3));
+		v++;
+	}
+	function al(a) {
+		console.log(a.currentTarget.attributes.value);
+		console.log(document.getElementById("1"))
+	}
 </script>
+
+
 </html>
