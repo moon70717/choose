@@ -40,11 +40,12 @@ position:relative;
 filter:opacity(30%); 
 }
 .btn_container{
-
+    text-align: center;
 position:relative;
 top: 100%;
 }
-.fa {
+
+.btn {
   padding: 15px;
   font-size: 30%;
   width: 50%;
@@ -53,11 +54,11 @@ top: 100%;
   margin: 2px 2px;
 }
 
-.fa:hover {
+.btn:hover {
     opacity: 0.8;
 }
 
-.fa-facebook {
+.btn_facebook {
 	background: #3b5998;
 	border-color:#172d5e;
 	color: white;
@@ -81,6 +82,13 @@ top: 100%;
 .btn_container>div{
 	text-align: center;
 }
+
+.btn>div{
+	color: yellow;
+}
+div>span{
+color: yellow;
+}
 /* Change styles for span and cancel button on extra small screens */
 @media screen and (max-width: 300px) {
 
@@ -99,25 +107,26 @@ top: 100%;
     <div class="btn_container">
     <button class="btn"> 
 	<div id="btn_facebook">        
-    	<img  src="${root}/resources/imgs/login/facebook.ico" width="30" height="30"/></div>
+    	<img src="${root}/resources/imgs/login/facebook.ico" width="40" height="40"/></div>
     	<span> Login with FaceBook</span>
       </button>
+      <p>
       <button class="btn"> 
       <div id="btn_twitter">
-                      
-    	<img  src="${root}/resources/imgs/login/twitter.ico" width="30" height="30"/></div>
+    	<img src="${root}/resources/imgs/login/twitter.ico" width="40" height="40"/></div>
     	<span> Login with Twitter</span>
       </button>
+       <p>  
       <button class="btn">
       <div id="btn_google">
-                       
-    	<img  src="${root}/resources/imgs/login/google.ico" width="30" height="30"/></div>
+                  
+    	<img src="${root}/resources/imgs/login/google.ico" width="40" height="40"/></div>
     	<span>Login with Google</span>
       </button>
+       <p>  
       <button class="btn">  
-      <div id="btn_github">
-                     
-    	<img  src="${root}/resources/imgs/login/git.ico" width="30" height="30"/></div>
+      <div id="btn_github">   
+    	<img src="${root}/resources/imgs/login/git.ico" width="40" height="40"/></div>
     	<span>Login with GitHub</span>
       </button>
 
