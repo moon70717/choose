@@ -23,19 +23,25 @@ public class Tour_ApiDAOImpl implements Tour_ApiDAO {
 	    String returnText = "";
 	    
 	    try {
+	    	//받은 주소를 url로 변환
 	        url = new URL(u);
+	        
+	        //커넥션 맺고 설정하고 연결
 	        conn = (HttpURLConnection) url.openConnection();
 	        conn.setRequestProperty("Accept", "application/json");
 	        conn.setRequestMethod("GET");
 	        conn.connect();
-	 
+	        
+	        //버퍼리더로 받은거변환
 	        br = new BufferedReader(new InputStreamReader(conn.getInputStream(), "UTF-8"));
 	 
 	        sb = new StringBuffer();
 	 
+	        //스트링버퍼에 변환한거 넣음
 	        while ((jsonData = br.readLine()) != null) {
 	            sb.append(jsonData);
 	        }
+	        //리턴텍스트에 스트링 버퍼에있는 값들 넣어줌
 	        returnText = sb.toString();
 	 
 	    } catch (IOException e) {
