@@ -21,26 +21,18 @@
 	}
 	
 	var geM=module.getV;
-	alert(geM);
+	//alert(geM);
 	
 	
 	var boundget=geM.bind(module);
-	alert(boundget);
+	//alert(boundget);
 
 	function aj() {
-		var module = {
-			v : v,
-			getV : function() {
-				return v;
-			}
-		}
-
 		$('<button id="'+v+'" value="'+v+'">Button' + v + '</button>').appendTo('body').click(al.bind(3));
 		v++;
 	}
 	function al(a) {
-		console.log(a.currentTarget.attributes.value);
-		console.log(document.getElementById("1"))
+		console.log(a);
 	}
 </script>
 
