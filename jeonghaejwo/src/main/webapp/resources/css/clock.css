@@ -1,0 +1,76 @@
+@charset "UTF-8";
+
+.wrapper {
+	color: white;
+    position: fixed;
+    top: 73px;
+    left: -8px;
+}
+
+.center {
+	width: 320px;
+	position: absolute;
+	text-align: center;
+}
+
+.clock {
+	top: 400px;
+    left: -32px;
+    font-size: 70px;
+}
+.sec{
+	top: 422px;
+    left: 54px;
+    font-size: 52px;
+}
+.month {
+	top: 475px;
+	font-size: 31px;
+	font-family: 'letters';
+	font-weight: 200;
+	text-transform: uppercase;
+}
+
+.date {
+	position: absolute;
+	width: 160px;
+	text-align: right;
+	font-size: 52px;
+	    top: 505px;
+    left: 25px;
+}
+
+.year {
+	position: absolute;
+	width: 160px;
+	text-align: left;
+	    left: 186px;
+    font-size: 30px;
+    top: 500px;
+}
+
+.day {
+	position: absolute;
+    width: 160px;
+    text-align: left;
+        left: 188px;
+    font-size: 28px;
+    top: 573px;
+    font-family: 'letters';
+    letter-spacing: 0;
+    text-transform: uppercase;
+}
+
+#dates {
+	position: absolute;
+}
+
+@font-face {
+	font-family: 'letters';
+	src: url(http://junesiphone.com/WebFonts/Building_Typeface.ttf);
+}
+
+@font-face {
+	font-family: 'numbers';
+	src: url(http://junesiphone.com/WebFonts/Dense-Regular.otf);
+}

@@ -33,11 +33,13 @@ margin-top:10%;
 .img_container{
 width:50%;
  margin: auto;
+ 
 }
 .img_container>img{
 width:100%; 
 position:relative;
 filter:opacity(30%); 
+
 }
 .btn_container{
 
