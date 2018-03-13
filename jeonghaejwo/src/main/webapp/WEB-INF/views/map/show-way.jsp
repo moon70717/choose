@@ -96,7 +96,9 @@
 		if(!idx){
 			idx = 0;
 		}
-		if(idx==waypts.length-1&&onsoff==1)return;  
+		if(idx==waypts.length-1&&onsoff==1){
+			calculateAndDisplayRoute(0,0);
+		}  
 		directionsService.route({
 			origin : waypts[idx].location, 
 			destination : waypts[idx+1].location,
