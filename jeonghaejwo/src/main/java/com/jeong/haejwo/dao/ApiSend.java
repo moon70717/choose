@@ -1,4 +1,4 @@
-package com.jeong.haejwo;
+package com.jeong.haejwo.dao;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -6,14 +6,10 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-import com.google.gson.Gson;
-
-public class Exam {
-
-	Gson gson=new Gson();
+public class ApiSend {
 	
-	static String u= "http://api.visitkorea.or.kr/openapi/service/rest/KorService/locationBasedList?serviceKey=peWkmeOBUcoT4b1Oqd7%2FotBYLzAO%2BWBymO82ftCMolY%2Bs9AI1ppnNVO4U9a%2Blhohtj1X38Iy4ENC1ReL1aHKWg%3D%3D&numOfRoews=10&pageNo=1&startPage=1&MobileOS=ETC&MobileApp=AppTest&arrange=A&contenttypeId=15&mapX=127.028900&mapY=37.496243&radius=500&listYN=Y";
-	public static void main(String[] args) {
+	static String u= "http://api.visitkorea.or.kr/openapi/service/rest/KorService/locationBasedList?serviceKey=peWkmeOBUcoT4b1Oqd7%2FotBYLzAO%2BWBymO82ftCMolY%2Bs9AI1ppnNVO4U9a%2Blhohtj1X38Iy4ENC1ReL1aHKWg%3D%3D&MobileOS=ETC&MobileApp=AppTest&arrange=A&mapX=126.981611&mapY=37.568477&radius=500&listYN=Y";
+	public String send() {
 		URL url = null;
 	    HttpURLConnection conn = null;
 	    String jsonData = "";
@@ -47,6 +43,6 @@ public class Exam {
 	            e.printStackTrace();
 	        }
 	    }
-	    System.out.println(returnText);
+	    return returnText;
 	}
 }
