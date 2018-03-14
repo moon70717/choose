@@ -30,16 +30,21 @@ public class UserInfoController {
 	
 	@RequestMapping(value="/login", method=RequestMethod.POST)
 											//받아온 값을 변수에 넣는거 @RequestParam
-	public @ResponseBody Map<String, Object> login(@RequestParam Map<String, Object> ui, HttpSession hs){
-																//UserInfoVO ui
+	public @ResponseBody Map<String, Object> login(@RequestParam Map<String, Object> data, HttpSession hs){
+														         //UserInfoVO ui
 		Map<String, Object> map = new HashMap<String, Object>();
-		System.out.println(ui);
+		UserInfoVO ui=new UserInfoVO();//생성자 만들어서  setUserId,setUserPwd를 사용해서 data변수에 들어가있는 아이디랑 비번을 넣는다
+		ui.setUserId((String) data.get("userId"));
+		ui.setUserPwd((String) data.get("userPwd"));
+		//값을 ui에 넣는 방법
 		
-//		if(uis.login(map, ui)) {
-//			hs.setAttribute("user", map.get("user"));
-//		}
+		if(uis.login(map, ui)) {
+			hs.setAttribute("user", map.get("user"));
+		}
 		return map;
 	}
+	
+	
 //	@RequestMapping(value="/join", method=RequestMethod.POST)
 //	public @ResponseBody Map<String, Object> join(@RequestBody UserInfoVO ui){
 //		Map<String, Object> map = new HashMap<String, Object>();

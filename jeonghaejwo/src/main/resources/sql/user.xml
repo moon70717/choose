@@ -8,12 +8,14 @@
 		userNo,userName,userId,userPwd
 		from user
 		where 1=1
-		<if test="userId!=null">
+		and userId = #{userId}
+		and userPwd = #{userPwd}
+	<!-- 	<if test="userId!=null">
 			and userId = #{userId}
 		</if>
 		<if test="userPwd!=null">
 			and userPwd = #{userPwd}
-		</if>
+		</if> -->
 	</select>
 <!-- <insert id="insertUserInfo" parameterType="ui">
 		insert into user_info(uiName, uiID, uiPwd, uiEmail, admin)
