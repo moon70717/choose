@@ -5,11 +5,11 @@
 <mapper namespace="user">
 	<select id="selectUserInfo" parameterType="ui" resultType="ui">
 		select
-		userNo,userName,userId,userPwd
+		userNo,userName,ImageURL,Email
 		from user
 		where 1=1
-		and userId = #{userId}
-		and userPwd = #{userPwd}
+		and userNo = #{userNo}
+	
 	<!-- 	<if test="userId!=null">
 			and userId = #{userId}
 		</if>

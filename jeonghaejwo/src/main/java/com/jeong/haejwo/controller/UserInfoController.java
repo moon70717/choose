@@ -34,10 +34,8 @@ public class UserInfoController {
 														         //UserInfoVO ui
 		Map<String, Object> map = new HashMap<String, Object>();
 		UserInfoVO ui=new UserInfoVO();//생성자 만들어서  setUserId,setUserPwd를 사용해서 data변수에 들어가있는 아이디랑 비번을 넣는다
-		ui.setUserId((String) data.get("userId"));
-		ui.setUserPwd((String) data.get("userPwd"));
+		ui.setUserNo((String) data.get("userNo"));
 		//값을 ui에 넣는 방법
-		
 		if(uis.login(map, ui)) {
 			hs.setAttribute("user", map.get("user"));
 		}
@@ -60,11 +58,11 @@ public class UserInfoController {
 //		return map;
 //	}
 
-	@RequestMapping(value="/check/{uiId}", method=RequestMethod.GET)
+	@RequestMapping(value="/check/{userNo}", method=RequestMethod.GET)
 	public @ResponseBody Map<String, Object> join2(@PathVariable String uiId){
 		Map<String, Object> map = new HashMap<String, Object>();
 		log.info("insertUI=>{}",uiId);
-		map.put("msg", "아이디 중복 임마~");
+		map.put("msg", "아이디 중복");
 		map.put("biz", false);
 		if(uis.checkUserId(uiId)==0) {
 			map.put("msg", "없는 아이디");
@@ -73,3 +71,4 @@ public class UserInfoController {
 		return map;
 	}
 }
+

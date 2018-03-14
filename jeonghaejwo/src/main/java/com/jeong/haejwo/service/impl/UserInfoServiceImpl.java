@@ -31,21 +31,13 @@ public class UserInfoServiceImpl implements UserInfoService {
 		return false;
 	}
 
-	public int checkUserId(String userId) {
+	public int checkUserId(String userNo) {
 		UserInfoVO ui = new UserInfoVO();
-		ui.setUserId(userId);
+		ui.setUserNo(userNo);
 		if(uidao.selectUserInfo(ui)!=null){
 			return 1;
 		}
 		return 0;
 	}
 	
-//	@Override
-//	public int join(UserInfoVO ui) {
-//		if(checkUserId(ui.getUserId())==1) {
-//			return 2;
-//		}
-//		return uidao.insertUserInfo(ui);
-//	}
-
 }
