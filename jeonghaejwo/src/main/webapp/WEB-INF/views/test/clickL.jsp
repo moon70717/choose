@@ -46,7 +46,7 @@
 							map : map
 						});
 
-						new google.maps.InfoWindow({
+						new google.maps.InfoWindow({ 
 							content : address + "<br>(Lat, Lng) = " + latlng
 						//content: address
 						}).open(map, marker);
