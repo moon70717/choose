@@ -1,4 +1,4 @@
-package com.jeong.haejwo;
+package com.jeong.haejwo.dao.impl;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -6,36 +6,42 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-import com.google.gson.Gson;
+import org.springframework.stereotype.Component;
 
-public class Exam {
+import com.jeong.haejwo.dao.Tour_ApiDAO;
 
-	Gson gson=new Gson();
-	
-	static String u= "http://api.visitkorea.or.kr/openapi/service/rest/KorService/locationBasedList?serviceKey=peWkmeOBUcoT4b1Oqd7%2FotBYLzAO%2BWBymO82ftCMolY%2Bs9AI1ppnNVO4U9a%2Blhohtj1X38Iy4ENC1ReL1aHKWg%3D%3D&numOfRoews=10&pageNo=1&startPage=1&MobileOS=ETC&MobileApp=AppTest&arrange=A&contenttypeId=15&mapX=127.028900&mapY=37.496243&radius=500&listYN=Y";
-	public static void main(String[] args) {
+@Component
+public class Tour_ApiDAOImpl implements Tour_ApiDAO {
+
+	@Override
+	public String requestAPI(String u) {
 		URL url = null;
 	    HttpURLConnection conn = null;
 	    String jsonData = "";
 	    BufferedReader br = null;
 	    StringBuffer sb = null;
 	    String returnText = "";
-	 
+	    
 	    try {
+	    	//받은 주소를 url로 변환
 	        url = new URL(u);
-	 
+	        
+	        //커넥션 맺고 설정하고 연결
 	        conn = (HttpURLConnection) url.openConnection();
 	        conn.setRequestProperty("Accept", "application/json");
 	        conn.setRequestMethod("GET");
 	        conn.connect();
-	 
+	        
+	        //버퍼리더로 받은거변환
 	        br = new BufferedReader(new InputStreamReader(conn.getInputStream(), "UTF-8"));
 	 
 	        sb = new StringBuffer();
 	 
+	        //스트링버퍼에 변환한거 넣음
 	        while ((jsonData = br.readLine()) != null) {
 	            sb.append(jsonData);
 	        }
+	        //리턴텍스트에 스트링 버퍼에있는 값들 넣어줌
 	        returnText = sb.toString();
 	 
 	    } catch (IOException e) {
@@ -47,6 +53,7 @@ public class Exam {
 	            e.printStackTrace();
 	        }
 	    }
-	    System.out.println(returnText);
+	    return returnText;
 	}
+
 }
