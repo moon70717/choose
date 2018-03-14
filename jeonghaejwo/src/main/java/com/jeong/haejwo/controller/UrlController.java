@@ -8,8 +8,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-
-
 @Controller
 public class UrlController {
 	
@@ -18,6 +16,7 @@ public class UrlController {
 	private String getUrl(String url, String rootPath) {
 		return url.replace(rootPath + "/path", "");
 	}
+	
 	@RequestMapping("/path/**")
 	public ModelAndView goJsp(HttpServletRequest req, ModelAndView mav) {
 		String url = req.getRequestURI();

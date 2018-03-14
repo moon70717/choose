@@ -17,8 +17,9 @@
 			and userPwd = #{userPwd}
 		</if> -->
 	</select>
+	
 <!-- <insert id="insertUserInfo" parameterType="ui">
-		insert into user_info(uiName, uiID, uiPwd, uiEmail, admin)
-		values(#{uiName}, #{uiID}, #{uiPwd}, #{uiEmail}, #{admin})
+		insert into user(userNo, userName, ImageURL, Email)
+		values(#{userNo}, #{userName}, #{ImageURL}, #{Email})
 	</insert> -->	
 </mapper>  
