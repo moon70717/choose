@@ -1,5 +1,4 @@
 //로딩
-
 var spinner;
 	var lodingST = false;
 	var opts = {
@@ -24,21 +23,18 @@ var spinner;
 		shadow : '#424242', // Box-shadow for the lines
 		position : 'absolute' // Element positioning 
 	};
-	
-$(function() {
-	spinner = new Spinner(opts).spin().el;
-	$('body').append(spinner);
-	$('spinner').css('display', 'none');
-});
 
-$(window).load(function() {
-    $('spinner').hide();
- });
-
-
-// 로딩화면
+// 페이지 이동할 때 로딩화면 나옴
 window.onbeforeunload = function(e){
+	$(function() {
+		spinner = new Spinner(opts).spin().el;
+		$('body').append(spinner);
+	});
     if(e != null && e != undefined){
-        jQuery(spinner).css('display','');
+        $('spinner').css('display','');
+        $(window).load(function() {
+            $('spinner').css('display', 'none');
+         });
     }
 };
+

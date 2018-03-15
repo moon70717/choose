@@ -173,8 +173,10 @@
 	width: 45%;
 	margin-top: 2%;
 }
+
 /* 위치설정 부분 */
 .md-input {
+	
 	color: black;
 	position: relative;
 	margin-bottom: 30px;
@@ -222,13 +224,15 @@
 	opacity: 0.5;
 }
 
-.md-input .md-form-control:focus ~ label, .md-input .md-form-control:valid ~ label {
-	top: -15px;
-	font-size: 14px;
-	color: #183D5D;
+.md-input .md-form-control:focus ~ label,
+.md-input .md-form-control:valid ~ label {
+	top: -18px;
+	font-size: 16px;
+	color: #c0c0c0;
 }
 
-.md-input .bar:before, .md-input .bar:after {
+.md-input .bar:before,
+.md-input .bar:after {
 	content: '';
 	height: 2px;
 	width: 0;

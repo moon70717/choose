@@ -4,7 +4,7 @@
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:set var="root" value="${pageContext.request.contextPath}"/>
-<c:set var="ver" value="?version=1.11.33"/>
+<c:set var="ver" value="?version=1.11.45"/>
 <c:set var="rPath" value="${root}/resources"/>
 <c:set var="pPath" value="${root}/path"/>
 
@@ -24,7 +24,11 @@
 <script src="${root}/resources/js/bootstrap.js"></script>
 <script src="${root}/resources/js/bootstrap-table.js" charset="utf-8"></script>
 <script src="${root}/resources/js/menu.js${ver}" charset="utf-8"></script>
+<!-- 로딩 spin.js -->
+<script src="${root}/resources/js/spin.js" charset="utf-8"></script>
+<!-- 공통 js -->
 <script src="${root}/resources/js/common.js${ver}" charset="utf-8"></script>
+
 
 
 <!-- 상단 -->
@@ -36,7 +40,7 @@
 	<span onclick="nav()">&#9776;</span>
   	<a href="${root}/path/home">HOME</a>
   	<a href="${root}/path/user/login">LOGIN</a>
-  	<a href="${root}/path/nowdo/nowdo">TEST</a>
+  	<a href="${root}/path/haejwo/haejwo">TEST</a>
   	<a href="${root}/path/map/show-way">MAP</a>
   	<a href="#">RANK</a>
   	<a href="#">BOARD</a>
