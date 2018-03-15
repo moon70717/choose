@@ -137,7 +137,6 @@
 	</div>
 </body>
 <script>
-var result;
 
 /* 시간 설정 */
 var count = 0;
@@ -171,7 +170,7 @@ function getTimes(){
 	
 }
 //현위치와 목적지 xy좌표 구하는 공통 함수
-function getXYaddress(place){
+function getXYaddress(place, x, y){
 	var geocoder = new google.maps.Geocoder();
 	geocoder.geocode({
 		address : place,  
@@ -179,22 +178,21 @@ function getXYaddress(place){
 	},function(results, status){
 		if(status == google.maps.GeocoderStatus.OK){
 			var bounds = new google.maps.LatLngBounds();
-			/* for(var r of results) {
+			for(var r of results) {
 				if(r.geometry) {
-					result = r.geometry.location;
-				}
-			} */
-			result=results[0].geometry.location;
+					x = r.geometry.location.lat();
+					y = r.geometry.location.lng();
+				} 
+			} 
 		}
 	});
-	return result;
 }
 
 function sendVariable(loInput, desInput){
-	var coordinateL = getXYaddress(loInput);
-	console.log(coordinateL);
-	var coordinateD = getXYaddress(desInput);
+	getXYaddress(loInput, mapX, mapY);
+	getXYaddress(desInput, dMapX, dMapY);
 	getTimes();
+	alert(mapX);
 	
 }
 
@@ -307,19 +305,19 @@ function sendVariable(loInput, desInput){
 	//입력 주소를 검색하는부분(버튼)
 	function getLatLng(place){
 		var geocoder = new google.maps.Geocoder();
-		
 		geocoder.geocode({
 			address : place,  
 			region : 'ko'
 		},function(results, status){
 			if(status == google.maps.GeocoderStatus.OK){
 				var bounds = new google.maps.LatLngBounds();
-				for ( var r of results) {
+				for (var r of results) {
 					console.log(r);
 					if (r.geometry) {
 						var latlng = r.geometry.location;
 						var address = r.formatted_address;
-						alert("address: "+address+"<br> 좌표:"+latlng);	
+						alert(latlng);
+						console.log(latlng);
 					}
 				}
 			}
