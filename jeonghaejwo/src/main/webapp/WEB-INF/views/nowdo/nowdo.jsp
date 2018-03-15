@@ -9,20 +9,23 @@
 
 <script src="${root}/resources/js/spin.js" charset="utf-8"></script>
 <script src="${root}/resources/js/clock.js" charset="utf-8"></script>
-<link rel="stylesheet" type="text/css" href="${root}/resources/css/clock.css${ver}"/>
-<link rel="stylesheet" type="text/css" href="${root}/resources/css/haejwo.css${ver}"/>
+<link rel="stylesheet" type="text/css"
+	href="${root}/resources/css/clock.css${ver}" />
+<link rel="stylesheet" type="text/css"
+	href="${root}/resources/css/haejwo.css${ver}" />
 <style>
-#time_div{
-margin:2%;
+#time_div {
+	margin: 2%;
 }
-.time_set{
+
+.time_set {
 	background-color: #d1d3d4;
 	color: white;
 }
-.time_set:hover{
+
+.time_set:hover {
 	color: c0c0c0;
 }
-			
 </style>
 <body>
 
@@ -32,9 +35,7 @@ margin:2%;
 		<div class='map' id='map'>지도</div>
 		<!-- 시계 -->
 		<div class="time_container">
-			<div id="clock" class="center clock">
-				
-			</div>
+			<div id="clock" class="center clock"></div>
 			<div id='sec' class='center sec'></div>
 			<div id="month" class="center month"></div>
 			<div id="dates">
@@ -47,17 +48,21 @@ margin:2%;
 		<div class='input_container'>
 			<div class='user_setting'>
 				<div class="md-input">
-					<input class="md-form-control" required="text" type="text"> <span
-						class="highlight"></span> <span class="bar"></span> <label>My
+					<input class="md-form-control" id="loInput" required="text" type="text">
+					<span class="highlight"></span> <span class="bar"></span> <label>My
 						Location</label>
-				</div>
+						
+					<!-- 테스트용 버튼 -->
+					<button onclick="getLatLng($('#loInput')[0].value)">test</button> 
+				</div>  
 				<div class="md-input">
-					<input class="md-form-control" required="text" type="text"> <span
-						class="highlight"></span> <span class="bar"></span> <label>Destination</label>
+					<input class="md-form-control" required="text" type="text">
+					<span class="highlight"></span> <span class="bar"></span> <label>Destination</label>
 				</div>
 				<!-- 목적지 선택 박스 -->
 				<div id="network-popUp" class="" style="display: block;">
-					<div class="form-item form-item-node-type form-type-select select-group">
+					<div
+						class="form-item form-item-node-type form-type-select select-group">
 						<select class="form-control form-select select_destination"
 							id="edit-node-type" name="node_type">
 							<option value="-1" selected="selected">Select element</option>
@@ -69,35 +74,37 @@ margin:2%;
 			</div>
 			<!-- 시간 -->
 			<div id="time_div">
-			<button class="time_set" onclick="minus()">
-			<span class="glyphicon glyphicon-menu-left"></span></button>
-				<input type="text" size="25" value="시간을 설정하세요" id="time_count" 
-					style="color:black;text-align:center">
+				<button class="time_set" onclick="minus()">
+					<span class="glyphicon glyphicon-menu-left"></span>
+				</button>
+				<input type="text" size="25" value="시간을 설정하세요" id="time_count"
+					style="color: black; text-align: center">
 				<button class="time_set" onclick="plus()">
-			<span class="glyphicon glyphicon-menu-right"></span></button>
+					<span class="glyphicon glyphicon-menu-right"></span>
+				</button>
 			</div>
 			<!--  -->
 			<div class="funkyradio">
 				<div class="funkyradio-info">
-					<input type="radio" name="radio" id="radio1" disabled = true value=0.4 />
-					<label for="radio1">반경 1km 내에서</label>
+					<input type="radio" name="radio" id="radio1" disabled=true
+						value=0.4 /> <label for="radio1">반경 1km 내에서</label>
 				</div>
 				<div class="funkyradio-primary">
-					<input type="radio" name="radio" id="radio2" disabled = true value=0.4 />
-					<label for="radio2">반경 3km 내에서</label>
+					<input type="radio" name="radio" id="radio2" disabled=true
+						value=0.4 /> <label for="radio2">반경 3km 내에서</label>
 				</div>
 				<div class="funkyradio-success">
-					<input type="radio" name="radio" id="radio3" disabled = true value=1.1 />
-					<label for="radio3">반경 5km 내에서</label>
+					<input type="radio" name="radio" id="radio3" disabled=true
+						value=1.1 /> <label for="radio3">반경 5km 내에서</label>
 				</div>
 				<div class="funkyradio-warning">
-					<input type="radio" name="radio" id="radio4" disabled = true value=1.4 />
-					<label for="radio4">반경 10km 내에서</label>
+					<input type="radio" name="radio" id="radio4" disabled=true
+						value=1.4 /> <label for="radio4">반경 10km 내에서</label>
 				</div>
 			</div>
 			<div class='summit_btn'>
-				<button id='test' class="btn loding_button"
-					 onclick='getTimes()'><!-- "window.location.href='${root}/path/map/show-way'" -->
+				<button id='test' class="btn loding_button" onclick='getTimes()'>
+					<!-- "window.location.href='${root}/path/map/show-way'" -->
 					<span class="ladda-label"> Save snippet </span>
 				</button>
 			</div>
@@ -140,7 +147,7 @@ function getTimes(){
 		hour=5.4;
 	}
 	disKm = Number($("input[type=radio][name=radio]:checked").val());
-	if(hour==NaN||disKm==Nan){
+	if(hour==NaN||disKm==NaN){
 		alert("시간 또는 거리를 설정하세요");
 	}
 	times=Math.floor(hour-disKm);
@@ -263,10 +270,16 @@ function minus(){
 																					}
 																		});
 		directionsDisplay.setMap(map);
-
-		document.getElementById('submit').addEventListener('click', function() {
+		
+		//맵 클릭시 이벤트적용
+		google.maps.event.addListener(map, 'click', function(mouseEvent) {
+			getAddress(mouseEvent.latLng);
+		});
+		
+		//submit버튼에 이벤트 적용
+		$("#submit").click(function() {
 			//nLat이랑 nLng이 위의getLocation을 이용해 받아온 현재위치
-			//하지만 학원에서는 않먹힘
+			//하지만 학원에서는 않먹힘 
 			var nowP=nLat+", "+nLng;
 			
 			//출발지점이랑 도착지점은 그냥 현재위치로 잡혀있음
@@ -286,6 +299,48 @@ function minus(){
 				stopover : true
 			});
 			calculateAndDisplayRoute(1);
+		});
+	}
+	
+	//클릭한곳 좌표와 주소를 가져와주는놈
+	function getAddress(latlng){
+		var geocoder = new google.maps.Geocoder();
+		geocoder.geocode({
+			latLng : latlng
+		},function(result, status){
+			if(status == google.maps.GeocoderStatus.OK){
+				if(result[0].geometry){    
+					var address = result[0].formatted_address;
+					/* var marker = new google.maps.Marker({
+						position : latlng,
+						map : map
+					}); */
+					
+					alert("address: "+address+"<br> 좌표:"+latlng);
+				}
+			}
+		})
+	}
+	
+	
+	//입력한곳 검색하는부분
+	function getLatLng(place){
+		var geocoder = new google.maps.Geocoder();
+		geocoder.geocode({
+			address : place,  
+			region : 'ko'
+		},function(results, status){
+			if(status == google.maps.GeocoderStatus.OK){
+				var bounds = new google.maps.LatLngBounds();
+				for ( var r of results) {
+					console.log(r);
+					if (r.geometry) {
+						var latlng = r.geometry.location;
+						var address = r.formatted_address;
+						alert("address: "+address+"<br> 좌표:"+latlng);	
+					}
+				}
+			}
 		});
 	}
 	
@@ -334,6 +389,7 @@ function minus(){
 
 </script>
 
-<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDFbONelL6n5CyJfPLkocOutqCZqwiFANA&callback=initMap"></script>
+<script async defer
+	src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDFbONelL6n5CyJfPLkocOutqCZqwiFANA&callback=initMap"></script>
 
 </html>
