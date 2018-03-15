@@ -16,7 +16,7 @@ color:white;
 .default_container{
 margin: auto;
 z-index: 1;
-margin-top:10%;
+margin-top:5%;
 	width: 50%;
     height: 30%; 
     background-color:rgba(191, 191, 191, 0.79);
@@ -31,7 +31,7 @@ margin-top:10%;
     
 }
 .img_container{
-width:50%;
+width:40%;
  margin: auto;
  
 }

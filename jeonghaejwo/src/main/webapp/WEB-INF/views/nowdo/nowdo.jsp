@@ -10,298 +10,28 @@
 <script src="${root}/resources/js/spin.js" charset="utf-8"></script>
 <script src="${root}/resources/js/clock.js" charset="utf-8"></script>
 <link rel="stylesheet" type="text/css" href="${root}/resources/css/clock.css${ver}"/>
+<link rel="stylesheet" type="text/css" href="${root}/resources/css/haejwo.css${ver}"/>
 <style>
-/*  */
-.nowdo_container {
-	position: absolute;
-	left: 0;
-	top: 0;
-	width: 100%;
-	height: 100%;
-	opacity: 0.5;
-	z-index: -150;
+#time_div{
+margin:2%;
 }
-
-.loding {
-	width: 100%;
-	height: 100%;
-	z-index: 9150;
+.time_set{
+	background-color: #d1d3d4;
+	color: white;
 }
-
-.header {
-	background-color: #f1f1f1;
-	padding: 20px;
-	text-align: center;
+.time_set:hover{
+	color: c0c0c0;
 }
-
-.footer {
-	background-color: #F1F1F1;
-	text-align: center;
-	padding: 10px;
-}
-
-.jhj_container {
-	width: 93%;
-	border: solid #ff3102 1px;
-}
-
-.input_container {
-	border: solid pink 1px;
-	text-align: center;
-}
-
-.map {
-	display: -webkit-flex;
-	display: flex;
-	-webkit-align-items: center;
-	align-items: center;
-	-webkit-justify-content: center;
-	justify-content: center;
-	width: 100%;
-	border: solid #FDC72F 1px;
-	    height: 320px;
-}
-
-.input_container {
-	border: solid pink 3px;
-	text-align: center;
-}
-
-.time {
-	border: solid gray 3px;
-	width: 30%;
-	min-width: 100px;
-	height: 100px;
-}
-
-.user_setting1 {
-	border: solid green 3px;
-	display: table;
-	margin: auto;
-}
-
-#network-popUp {
-	top: 45vh;
-	left: 35vw;
-	z-index: 234;
-	width: 490px;
-}
-.select_destination{
-	display: block;
-    width: 50%;
-    padding: 0.375rem 0.75rem;
-    font-size: 1rem;
-    line-height: 1.5;
-    color: #8e8e8e;
-    float: right;
-    background-color: #fff;
-    background-clip: padding-box;
-    border: 1px solid #ced4da;
-    border-radius: 0.25rem;
-    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
-}
-
-.funkyradio {
-	border: solid blue 3px;
-	clear: both;
-	content: "";
-	display: table;
-	margin: auto;
-}
-
-.funkyradio div {
-	overflow: hidden;
-	float: left;
-	margin: 3px;
-}
-
-.funkyradio label {
-	width: 100%;
-	border-radius: 5px;
-	border: px solid #D1D3D4;
-	font-weight: normal;
-}
-
-.funkyradio input[type="radio"]:empty, .funkyradio input[type="checkbox"]:empty
-	{
-	display: none;
-}
-
-.funkyradio input[type="radio"]:empty ~ label, .funkyradio input[type="checkbox"]:empty 
-	 ~ label {
-	position: relative;
-	color: #fff;
-	background-color: black;
-	width: 200px;
-	line-height: 2.5em;
-	text-indent: 3.25em;
-	margin-top: 1em;
-	cursor: pointer;
-	-webkit-user-select: none;
-	-moz-user-select: none;
-	-ms-user-select: none;
-	user-select: none;
-}
-
-.funkyradio input[type="radio"]:empty ~ label:before, .funkyradio input[type="checkbox"]:empty 
-	 ~ label:before {
-	position: absolute;
-	display: block;
-	top: 0;
-	bottom: 0;
-	left: 0;
-	content: '';
-	width: 2.5em;
-	background: #D1D3D4;
-	border-radius: 3px 0 0 3px;
-}
-
-.funkyradio input[type="radio"]:hover:not (:checked ) ~ label,
-	.funkyradio input[type="checkbox"]:hover:not (:checked ) ~ label {
-	color: #888;
-}
-
-.funkyradio input[type="radio"]:hover:not (:checked ) ~ label:before,
-	.funkyradio input[type="checkbox"]:hover:not (:checked ) ~ label:before
-	{
-	content: '\2714';
-	text-indent: .1em;
-	color: #C2C2C2;
-}
-
-.funkyradio input[type="radio"]:checked ~ label, .funkyradio input[type="checkbox"]:checked 
-	 ~ label {
-	color: #777;
-}
-
-.funkyradio input[type="radio"]:checked ~ label:before, .funkyradio input[type="checkbox"]:checked 
-	 ~ label:before {
-	content: '\2714';
-	text-indent: .1em;
-	color: #333;
-	background-color: #ccc;
-}
-
-.funkyradio input[type="radio"]:focus ~ label:before, .funkyradio input[type="checkbox"]:focus 
-	 ~ label:before {
-	box-shadow: 0 0 0 3px #999;
-}
-
-.funkyradio-primary input[type="radio"]:checked ~ label:before,
-	.funkyradio-primary input[type="checkbox"]:checked ~ label:before {
-	color: #fff;
-	background-color: #337ab7;
-}
-
-.funkyradio-success input[type="radio"]:checked ~ label:before,
-	.funkyradio-success input[type="checkbox"]:checked ~ label:before {
-	color: #fff;
-	background-color: #5cb85c;
-}
-
-.funkyradio-warning input[type="radio"]:checked ~ label:before,
-	.funkyradio-warning input[type="checkbox"]:checked ~ label:before {
-	color: #fff;
-	background-color: #f0ad4e;
-}
-
-.funkyradio-info input[type="radio"]:checked ~ label:before,
-	.funkyradio-info input[type="checkbox"]:checked ~ label:before {
-	color: #fff;
-	background-color: #5bc0de;
-}
-
-.summit_btn {
-	clear: left;
-}
-
-.md-input {
-	position: relative;
-	margin-bottom: 30px;
-}
-
-.md-input .md-form-control {
-	font-size: 16px;
-	padding: 10px 10px 10px 5px;
-	display: block;
-	border: none;
-	border-bottom: 2px solid #CACACA;
-	box-shadow: none;
-	width: 100%;
-}
-
-.md-input label {
-	color: rgba(0, 0, 0, 0.5);
-	font-size: 16px;
-	font-weight: normal;
-	position: absolute;
-	pointer-events: none;
-	left: 5px;
-	top: 10px;
-	transition: 0.2s ease all;
-	-moz-transition: 0.2s ease all;
-	-webkit-transition: 0.2s ease all;
-}
-
-.md-input .bar:before {
-	left: 50%;
-}
-
-.md-input .bar:after {
-	right: 50%;
-}
-
-.md-input .highlight {
-	position: absolute;
-	height: 60%;
-	width: 100px;
-	top: 25%;
-	left: 0;
-	pointer-events: none;
-	opacity: 0.5;
-}
-
-.md-input .md-form-control:focus ~ label, .md-input .md-form-control:valid 
-	 ~ label {
-	top: -15px;
-	font-size: 14px;
-	color: #183D5D;
-}
-
-.md-input .bar:before, .md-input .bar:after {
-	content: '';
-	height: 2px;
-	width: 0;
-	bottom: 0px;
-	position: absolute;
-	background: #03A9F4;
-	transition: 0.2s ease all;
-	-moz-transition: 0.2s ease all;
-	-webkit-transition: 0.2s ease all;
-}
-
-.md-input .md-form-control:focus ~ .bar:before, .md-input .md-form-control:focus 
-	 ~ .bar:after {
-	width: 50%;
-}
-/*로딩버튼*/
-.loding_button {
-	width: 80%;
-}
+			
 </style>
 <body>
-	<!-- 윗부분 공백 -->
 
-	<div class="header">
-		<h1>Header</h1>
-	</div>
 	<!-- 메인 컨테이너 -->
 	<div class='jhj_container'>
 		<!-- 지도 -->
-		<div class='map'>지도</div>
+		<div class='map' id='map'>지도</div>
 		<!-- 시계 -->
-
-		<div class="wrapper">
+		<div class="time_container">
 			<div id="clock" class="center clock">
 				
 			</div>
@@ -315,14 +45,14 @@
 		</div>
 		<!-- 사용자 입력란 -->
 		<div class='input_container'>
-			<div class='user_setting1'>
+			<div class='user_setting'>
 				<div class="md-input">
-					<input class="md-form-control" required="" type="text"> <span
+					<input class="md-form-control" required="text" type="text"> <span
 						class="highlight"></span> <span class="bar"></span> <label>My
 						Location</label>
 				</div>
 				<div class="md-input">
-					<input class="md-form-control" required="" type="text"> <span
+					<input class="md-form-control" required="text" type="text"> <span
 						class="highlight"></span> <span class="bar"></span> <label>Destination</label>
 				</div>
 				<!-- 목적지 선택 박스 -->
@@ -337,52 +67,108 @@
 					</div>
 				</div>
 			</div>
-			사용할 시간(목적지 도착까지 총 시간) : <br> <select>
-				<option value="one">1시간</option>
-				<option value="two">2시간</option>
-				<option value="three">3시간</option>
-				<option value="four">4시간</option>
-			</select>
+			<!-- 시간 -->
+			<div id="time_div">
+			<button class="time_set" onclick="minus()">
+			<span class="glyphicon glyphicon-menu-left"></span></button>
+				<input type="text" size="25" value="시간을 설정하세요" id="time_count" 
+					style="color:black;text-align:center">
+				<button class="time_set" onclick="plus()">
+			<span class="glyphicon glyphicon-menu-right"></span></button>
+			</div>
 			<!--  -->
 			<div class="funkyradio">
 				<div class="funkyradio-info">
-					<input type="radio" name="radio" id="radio1" /> <label
-						for="radio1">반경 1km 내에서</label>
+					<input type="radio" name="radio" id="radio1" disabled = true value=0.4 />
+					<label for="radio1">반경 1km 내에서</label>
 				</div>
 				<div class="funkyradio-primary">
-					<input type="radio" name="radio" id="radio2" /> <label
-						for="radio2">반경 3km 내에서</label>
+					<input type="radio" name="radio" id="radio2" disabled = true value=0.4 />
+					<label for="radio2">반경 3km 내에서</label>
 				</div>
 				<div class="funkyradio-success">
-					<input type="radio" name="radio" id="radio3" /> <label
-						for="radio3">반경 5km 내에서</label>
+					<input type="radio" name="radio" id="radio3" disabled = true value=1.1 />
+					<label for="radio3">반경 5km 내에서</label>
 				</div>
 				<div class="funkyradio-warning">
-					<input type="radio" name="radio" id="radio4" /> <label
-						for="radio4">반경 10km 내에서</label>
+					<input type="radio" name="radio" id="radio4" disabled = true value=1.4 />
+					<label for="radio4">반경 10km 내에서</label>
 				</div>
 			</div>
 			<div class='summit_btn'>
-				<button id='test' class="btn btn-primary loding_button"
-					onclick="loding()">
+				<button id='test' class="btn loding_button"
+					 onclick='getTimes()'><!-- "window.location.href='${root}/path/map/show-way'" -->
 					<span class="ladda-label"> Save snippet </span>
 				</button>
 			</div>
 		</div>
 	</div>
 
-
-
-
-	<div class="footer">
-		<p>Footer</p>
-	</div>
-
-
 	<div id='nowdo_container' class='nowdo_container'></div>
 	<div id='loding' class='loding'></div>
 </body>
 <script>
+/* 라디오 버튼 활성 비활성 조정 */
+function radioAble(){
+	if(count<2){
+		document.getElementById("radio1").disabled = false;
+		 document.getElementById("radio2").disabled = false;
+		document.getElementById("radio3").disabled = true;
+		 document.getElementById("radio4").disabled = true;
+	}else{
+		document.getElementById("radio3").disabled = false;
+		 document.getElementById("radio4").disabled = false;
+	}
+}
+//변수 값 
+var mapX, mapY, times, radius, code;
+/* 횟수 구하기 */
+function getTimes(){
+	var hour;
+	var disKm;
+	hour = $('#time_count')[0].value;
+	hour = Number(hour.replace(" 시간", ""));
+	if(hour==1){
+		hour=1.4;
+	}else if(hour==2){
+		hour=2.5;
+	}else if(hour==3){
+		hour=3.4;
+	}else if(hour==4){
+		hour=4.4;
+	}else if(hour==5){
+		hour=5.4;
+	}
+	disKm = Number($("input[type=radio][name=radio]:checked").val());
+	if(hour==NaN||disKm==Nan){
+		alert("시간 또는 거리를 설정하세요");
+	}
+	times=Math.floor(hour-disKm);
+	radius=disKm
+
+	
+}
+
+/* 시간 설정 */
+var count = 0;
+var countEl = document.getElementById("time_count");
+function plus(){
+	if(count<6){
+	    count++;
+	    countEl.value = count+" 시간";
+	    radioAble();
+	   
+	}
+}
+function minus(){
+  if (count > 1) {
+    count--;
+    countEl.value = count+" 시간";
+    radioAble();
+  }  
+}
+
+/*  */
 	var spinner;
 	var lodingST = false;
 	var opts = {
@@ -421,9 +207,133 @@
 			});
 		}
 	}
-	/*  */
+	
+/*  */
+/* 길찾기 부분 */
+/*  */
+ 	var nLat, nLng, waypoint;
+	var routeSegment = 0, ways;
+	var waypts = [];
+	var directionsService;
+	var directionsDisplay;
+	
+	//현재 위치를 받아오는 부분 
+	function getLocation() {
+		if (navigator.geolocation) {
+			navigator.geolocation.getCurrentPosition(showPosition);
+
+		} else {
+			alert("Geolocation is not supported by this browser.");
+		}
+	}
+	function showPosition(position) {
+		nLat = position.coords.latitude;
+		nLng = position.coords.longitude;
+	}
+	//이걸로 현재위치를 받아오는걸 호출
+	getLocation();
+
+	//api에서 경유지를 받아옴
+	//현재 되어있는 url은 테스트용 url이므로/api/tour_api 로 변경할것
+	//ajax 필요 데이터 : 현재위치, 횟수, 범위, 컨텐츠id
+	//현재위치: mapX, mapY ,횟수:times, 범위: radius , 컨텐츠id: code, 
+	
+	$.ajax({
+		url : "/map/api",
+		type : "get",
+		success : function(res) {
+			//console.log(res.json);
+			waypoint = JSON.parse(res.json);
+			waypoint = waypoint.response.body.items.item;
+			console.log(waypoint);
+		}
+	});
+
+	
+	//지도를 현재위치로 이동시키고 길찾기 서비스를 호출시킴
+	function initMap() {
+		directionsService = new google.maps.DirectionsService;
+		directionsDisplay = new google.maps.DirectionsRenderer;
+		//center부분이 현재위치인데 geoloation으로 받아온 위치로 변경해놔야됨
+		var map = new google.maps.Map(document.getElementById('map'), {
+																		zoom : 16, 
+																		center : {
+																					lat : 37.566535,
+																					lng : 126.97796919999999
+																					}
+																		});
+		directionsDisplay.setMap(map);
+
+		document.getElementById('submit').addEventListener('click', function() {
+			//nLat이랑 nLng이 위의getLocation을 이용해 받아온 현재위치
+			//하지만 학원에서는 않먹힘
+			var nowP=nLat+", "+nLng;
+			
+			//출발지점이랑 도착지점은 그냥 현재위치로 잡혀있음
+			waypts.push({
+				location : nowP,
+				stopover : true
+			});
+			
+			for(var v of waypoint){
+				waypts.push({
+					location : v.addr1,
+					stopover : true
+				});
+			}
+			waypts.push({
+				location : nowP,
+				stopover : true
+			});
+			calculateAndDisplayRoute(1);
+		});
+	}
+	
+	//경로를 구하는 부분
+	function calculateAndDisplayRoute(onsoff,idx) {
+		if(!idx){
+			idx = 0;
+		}
+		if(idx==waypts.length-1&&onsoff==1){
+			calculateAndDisplayRoute(0,0);
+		}  
+		directionsService.route({
+			origin : waypts[idx].location, 
+			destination : waypts[idx+1].location,
+			optimizeWaypoints : true,
+			travelMode : 'TRANSIT'  
+		}, function(response, status) {
+			if (status === 'OK') {
+				directionsDisplay.setDirections(response);
+				var route = response.routes[0];
+				//onsoff가 1일때만 경로를 웹에 찍어주도록
+				if(onsoff==1){
+					for (var i = 0; i < route.legs.length; i++) {
+						routeSegment++;
+						ways = '<b>Route Segment: ' + routeSegment + '</b><br>';
+						ways += route.legs[i].start_address + ' to ';
+						ways += route.legs[i].end_address + '<br>';
+						ways += route.legs[i].distance.text + '<br>';
+						ways += '<button id="button'+routeSegment+'" value="'+routeSegment+'">길 보기</button><br>';
+						$(ways).appendTo('#directions-panel');
+						$("#button"+routeSegment).click(function(){
+							calculateAndDisplayRoute(0,this.value-1);
+						});
+					}
+					calculateAndDisplayRoute(1,idx+1);
+				}
+				
+				if(waypts.length==idx)return;
+				
+			} else {
+				window.alert('Directions request failed due to ' + status);
+			}
+		});
+	}
+
 
 </script>
 
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDFbONelL6n5CyJfPLkocOutqCZqwiFANA&callback=initMap"></script>
 
 </html>

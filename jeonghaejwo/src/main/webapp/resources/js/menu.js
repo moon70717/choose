@@ -13,7 +13,7 @@ function nav(){
 function openNav() {
     document.getElementById("mySidenav").style.width = "25%";
     document.body.style.backgroundColor = "rgba(0,0,0,0.4)";
-    document.getElementById("mySidenav").style.backgroundColor = "rgba(17, 17, 17, 0.36)";
+    document.getElementById("mySidenav").style.backgroundColor = "#cacaca";
 }
 
 function closeNav() {

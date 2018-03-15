@@ -1,0 +1,55 @@
+@charset "UTF-8";
+
+body {
+	background-color: black;
+	color: white;
+	/* background-repeat: no-repeat;
+    background-size: 100%; */
+}
+
+/* 상단 헤더 */
+.header {
+	background-color: black;
+	/* padding: 10px; */
+	text-align: center;
+}
+/* 하단 풋터 */
+.footer {
+    width: 93%;
+	padding-top: 25px;
+	background-color: black;
+	text-align: center;
+	position:fixed;
+    bottom:0;
+}
+
+.logo {
+	text-align: center;
+	color: #c0c0c0;
+	font-weight: 800;
+	font-size: 30px;
+	width: 159px;
+}
+
+.address, .footer_menu {
+	list-style: none;
+}
+
+.address span, .footer_menu span {
+	color: #c0c0c0;
+	font-weight: 800;
+	border-bottom: 1px solid #c0c0c0;
+	padding-bottom: 10px;
+	margin-bottom: 20px;
+	display: block;
+	text-transform: uppercase;
+	font-size: 16px;
+	letter-spacing: 3px;
+}
+
+.address p, .footer_menu li a {
+	color: #c0c0c0;
+	letter-spacing: 2px;
+	font-size: 15px;
+	text-decoration: none;
+}
