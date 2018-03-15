@@ -15,6 +15,8 @@
 </body>
 
 <script>
+
+	
 	var nLat, nLng, waypoint;
 	var routeSegment = 0, ways;
 	var waypts = [];

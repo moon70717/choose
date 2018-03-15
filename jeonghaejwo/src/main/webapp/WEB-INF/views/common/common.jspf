@@ -24,6 +24,7 @@
 <script src="${root}/resources/js/bootstrap.js"></script>
 <script src="${root}/resources/js/bootstrap-table.js" charset="utf-8"></script>
 <script src="${root}/resources/js/menu.js${ver}" charset="utf-8"></script>
+<script src="${root}/resources/js/common.js${ver}" charset="utf-8"></script>
 
 
 <!-- 상단 -->
@@ -36,7 +37,7 @@
   	<a href="${root}/path/home">HOME</a>
   	<a href="${root}/path/user/login">LOGIN</a>
   	<a href="${root}/path/nowdo/nowdo">TEST</a>
-  	<a href="#">INSERT MYWORK</a>
+  	<a href="${root}/path/map/show-way">MAP</a>
   	<a href="#">RANK</a>
   	<a href="#">BOARD</a>
   	<a href="#">CONTACT US</a>

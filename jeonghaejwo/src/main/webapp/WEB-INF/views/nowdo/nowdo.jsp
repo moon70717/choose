@@ -333,7 +333,5 @@ function minus(){
 
 
 </script>
-
 <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDFbONelL6n5CyJfPLkocOutqCZqwiFANA&callback=initMap"></script>
-
 </html>
