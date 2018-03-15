@@ -59,12 +59,12 @@ public class UserInfoController {
 //	}
 
 	@RequestMapping(value="/check/{userNo}", method=RequestMethod.GET)
-	public @ResponseBody Map<String, Object> join2(@PathVariable String uiId){
+	public @ResponseBody Map<String, Object> join2(@PathVariable String userNo){
 		Map<String, Object> map = new HashMap<String, Object>();
-		log.info("insertUI=>{}",uiId);
+		log.info("insertUI=>{}",userNo);
 		map.put("msg", "아이디 중복");
 		map.put("biz", false);
-		if(uis.checkUserId(uiId)==0) {
+		if(uis.checkUserId(userNo)==0) {
 			map.put("msg", "없는 아이디");
 			map.put("biz", true);
 		}
