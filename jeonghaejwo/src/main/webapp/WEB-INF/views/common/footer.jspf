@@ -1,0 +1,58 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Insert title here</title>
+</head>
+<style>
+
+
+</style>
+<body>
+	<!-- 하단 -->
+	<div class='footer'>
+		<div class="footer_container">
+			<div class="row">
+				<div class="col-md-3 col-sm-6 col-xs-12">
+				<img src='${root}/resources/imgs/logo.jpg' class='logo'/>
+				</div>
+
+				<div class="col-md-3 col-sm-6 col-xs-12">
+					<ul class="footer_menu">
+						<span>Menu</span>
+						<li><a href="#">Home</a></li>
+						<li><a href="#">About</a></li>
+						<li><a href="#">Blog</a></li>
+						<li><a href="#">Gallery </a></li>
+					</ul>
+				</div>
+				<div class="col-md-3 col-sm-6 col-xs-12">
+					<ul class="footer_menu">
+						<span>Contact</span>
+						<li><a href="#">Phone</a></li>
+						<li><a href="#">Adress</a></li>
+						<li><a href="#">Email</a></li>
+					</ul>
+				</div>
+				<div class="col-md-3 col-sm-6 col-xs-12">
+					<ul class="address">
+						<span>Address</span>
+						<li>
+							<p>Lorem ipsum dolor sit amet</p>
+						</li>
+						<li>
+							<p>+90 1234 56789</p>
+						</li>
+						<li>
+							<p>info@gmail.com</p>
+						</li>
+					</ul>
+				</div>
+
+			</div>
+		</div>
+	</div>
+</body>
+</html>

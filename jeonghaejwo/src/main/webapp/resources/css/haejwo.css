@@ -1,0 +1,246 @@
+@charset "UTF-8";
+
+/* 정해줘 메인 프로그램 css */
+.nowdo_container {
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	opacity: 0.5;
+	z-index: -150;
+}
+/* 로딩 */
+.loding {
+	width: 100%;
+	height: 100%;
+	z-index: 9150;
+}
+
+.jhj_container {
+	width: 93%;
+}
+
+.input_container {
+	text-align: center;
+}
+
+.map {
+	display: -webkit-flex;
+	display: flex;
+	-webkit-align-items: center;
+	align-items: center;
+	-webkit-justify-content: center;
+	justify-content: center;
+	width: 80%;
+	margin: auto;
+	border: solid #ffd700 1px; /* 지울것  */
+	height: 320px;
+	filter: grayscale(40%);
+}
+
+.input_container {
+	text-align: center;
+}
+
+.user_setting {
+	display: table;
+	margin: auto;
+}
+
+/* 목적지 옵션박스 */
+#network-popUp {
+	top: 45vh;
+	left: 35vw;
+	z-index: 234;
+	width: 490px;
+}
+.select_destination{
+	display: block;
+    width: 50%;
+    font-size: 1.5rem;
+    line-height: 1.5;
+    color: #8e8e8e;
+    float: right;
+    background-color: #fff;
+    background-clip: padding-box;
+    border-radius: 0.25rem;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    margin-top: -20px;
+}
+/* 시간, 거리 */
+.funkyradio {
+	clear: both;
+	content: "";
+	display: table;
+	margin: auto;
+}
+
+.funkyradio div {
+	overflow: hidden;
+	float: left;
+	margin: 3px;
+}
+
+.funkyradio label {
+	width: 100%;
+	border-radius: 5px;
+	font-weight: normal;
+}
+
+.funkyradio input[type="radio"]:empty{
+	display: none;
+}
+
+.funkyradio input[type="radio"]:empty ~ label{
+	position: relative;
+	color: #c0c0c0;
+	background-color: #404040;
+	width: 200px;
+	line-height: 2.5em;
+	text-indent: 3.25em;
+	margin-top: 1em;
+	cursor: pointer;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+
+.funkyradio input[type="radio"]:empty ~ label:before{
+	position: absolute;
+	display: block;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	content: '';
+	width: 2.5em;
+	background: #D1D3D4;
+	border-radius: 3px 0 0 3px;
+}
+
+.funkyradio input[type="radio"]:hover ~ label{
+	color: #777777;
+}
+
+.funkyradio input[type="radio"]:hover ~ label:before{
+	content: '\2714';
+	text-indent: .1em;
+	color: #C2C2C2;
+}
+
+.funkyradio input[type="radio"]:checked ~ label{
+	color: white;
+}
+
+.funkyradio input[type="radio"]:checked ~ label:before{
+	content: '\2714';
+	text-indent: 0.1em;
+	color: #333;
+	background-color: #ccc;
+}
+
+/* .funkyradio input[type="radio"]:focus ~ label:before{
+	box-shadow: 0 0 0 3px #999;
+} */
+
+.funkyradio-primary input[type="radio"]:checked ~ label:before{
+	color: #fff;
+	background-color: #337ab7;
+}
+
+.funkyradio-success input[type="radio"]:checked ~ label:before{
+	color: #fff;
+	background-color: #5cb85c;
+}
+
+.funkyradio-warning input[type="radio"]:checked ~ label:before{
+	color: #fff;
+	background-color: #f0ad4e;
+}
+
+.funkyradio-info input[type="radio"]:checked ~ label:before{
+	color: #fff;
+	background-color: #5bc0de;
+}
+/* 버튼 */
+.summit_btn {
+	clear: left;
+}
+.loding_button{
+	background-color:rgba(255, 255, 255, 0.85);
+    color: #5a5a5a;
+	width: 45%;
+	margin-top: 2%;
+}
+/* 위치설정 부분 */
+.md-input {
+	color: black;
+	position: relative;
+	margin-bottom: 30px;
+}
+
+.md-input .md-form-control {
+	font-size: 16px;
+	padding: 10px 10px 10px 5px;
+	display: block;
+	border: none;
+	border-bottom: 2px solid #CACACA;
+	box-shadow: none;
+	width: 100%;
+	margin-top: 8%;
+}
+
+.md-input label {
+	color: rgba(0, 0, 0, 0.5);
+	font-size: 16px;
+	font-weight: normal;
+	position: absolute;
+	pointer-events: none;
+	left: 5px;
+	top: 10px;
+	transition: 0.2s ease all;
+	-moz-transition: 0.2s ease all;
+	-webkit-transition: 0.2s ease all;
+}
+
+.md-input .bar:before {
+	left: 50%;
+}
+
+.md-input .bar:after {
+	right: 50%;
+}
+
+.md-input .highlight {
+	position: absolute;
+	height: 60%;
+	width: 100px;
+	top: 25%;
+	left: 0;
+	pointer-events: none;
+	opacity: 0.5;
+}
+
+.md-input .md-form-control:focus ~ label, .md-input .md-form-control:valid ~ label {
+	top: -15px;
+	font-size: 14px;
+	color: #183D5D;
+}
+
+.md-input .bar:before, .md-input .bar:after {
+	content: '';
+	height: 2px;
+	width: 0;
+	bottom: 0px;
+	position: absolute;
+	background: #03A9F4;
+	transition: 0.2s ease all;
+	-moz-transition: 0.2s ease all;
+	-webkit-transition: 0.2s ease all;
+}
+
+.md-input .md-form-control:focus ~ .bar:before,
+.md-input .md-form-control:focus ~ .bar:after {
+	width: 50%;
+}
