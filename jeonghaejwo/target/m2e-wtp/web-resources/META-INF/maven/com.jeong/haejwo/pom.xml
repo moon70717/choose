@@ -231,6 +231,15 @@
 			<version>2.1.0</version>
 		</dependency>
 
+
+		<!-- websocket 테스트용 -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-websocket</artifactId>
+			<version>5.0.3.RELEASE</version>
+		</dependency>
+
+
 	</dependencies>
 	<build>
 		<plugins>

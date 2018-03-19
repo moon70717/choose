@@ -21,12 +21,19 @@ public class FileController {
 	@RequestMapping(value = "/upload")
 	public String upload(@RequestParam("uploadFile") MultipartFile file,
 			HttpServletRequest request, Model model) {
+		
+		//유저 코드를 받아오는부분
 		//, @RequestParam("uiCode") String uiCode
+		
+		//년월일시분 으로 서버 날짜를 받아옴
+		//이걸로 저장할거
 		DateFormat dateFormat = new SimpleDateFormat("yyMMddHHmm");
 		Date date = new Date();
 		//System.out.println(dateFormat.format(date));
-		//년월일시분 으로 서버 날짜를 받아옴
-		//이걸로 저장할거
+		
+		//없으면 그냥 넘어가게
+		if(file.getSize()==0)
+			return "/test";
 		try {
 			// aws 업로드시 주소변경필요
 			// 또는 관리자 페이지를 만들어서 수정 가능하도록 변경
@@ -41,6 +48,7 @@ public class FileController {
 			e.printStackTrace();
 		}
 
+		//현재는 여기로 가게 해놓긴 했는데 @ResponseBody로 변경해야됨
 		return "/test";
 	}
 
