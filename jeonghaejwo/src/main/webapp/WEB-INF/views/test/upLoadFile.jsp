@@ -6,6 +6,25 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+<script>
+	$(function() {
+		$("#uploadFile").on('change', function() {
+			readURL(this);
+		});
+	});
+
+	function readURL(input) {
+		if (input.files && input.files[0]) {
+			var reader = new FileReader();
+
+			reader.onload = function(e) {
+				$('#blah').attr('src', e.target.result);
+			}
+
+			reader.readAsDataURL(input.files[0]);
+		}
+	}
+</script>
 </head>
 <body>
 
@@ -14,6 +33,7 @@
 		method="post" action="/file/upload" enctype="multipart/form-data">
 		<!-- 요놈이 업로드됨 -->
 		<input type="file" name="uploadFile" id="uploadFile">
+		<img id="blah" src="#" alt="your image" />
 		<input type="submit" value="클릭1">
 	</f:form>
 </body>

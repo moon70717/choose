@@ -5,7 +5,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <script type="text/javascript"
-	src="${root}/resources/js/sockjs-0.3.4.js"></script>
+	src="${root}/resources/js/sockjs.js"></script>
 <title>Insert title here</title>
 </head>
 <body>
@@ -17,11 +17,11 @@
 		});
 
 		//websocket을 지정한 URL로 연결
-		var sock = new SockJS("<c:url value="/echo"/>");
+		var sock = new SockJS("/echo");
 		//websocket 서버에서 메시지를 보내면 자동으로 실행된다.
-		sock.onmessage = onMessage;
+		 sock.onmessage = onMessage;
 		//websocket 과 연결을 끊고 싶을때 실행하는 메소드
-		sock.onclose = onClose;
+		//sock.onclose = onClose;
 
 		function sendMessage() {
 
