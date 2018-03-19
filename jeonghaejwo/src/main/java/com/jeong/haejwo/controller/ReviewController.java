@@ -1,5 +1,6 @@
 package com.jeong.haejwo.controller;
 
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpSession;
@@ -31,6 +32,11 @@ public class ReviewController {
 		}
 		
 		return map;
+	}
+	
+	@RequestMapping("/list")
+	public @ResponseBody List<Map<String, Object>> getList(@RequestParam Map<String, Object> data, Map<String, Object> map, HttpSession hs){
+		return reService.getList(data);
 	}
 
 }

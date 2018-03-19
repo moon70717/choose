@@ -15,4 +15,11 @@
 			and code=#{code}
 		</where>
 	</select>
+	<select id="selectList" parameterType="map" resultType="map">
+		select * from recommendation
+		<where>
+			no between {startNo} and #[endNo}
+		</where>
+
+	</select>
 </mapper>  

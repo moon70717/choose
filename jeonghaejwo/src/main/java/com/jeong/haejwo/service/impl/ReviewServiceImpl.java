@@ -1,5 +1,6 @@
 package com.jeong.haejwo.service.impl;
 
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +18,11 @@ public class ReviewServiceImpl implements ReviewService {
 	@Override
 	public int writeReview(Map<String, Object> data) {
 		return reDAO.insertReview(data);
+	}
+
+	@Override
+	public List<Map<String, Object>> getList(Map<String, Object> data) {
+		return reDAO.selectList(data);
 	}
 
 }
