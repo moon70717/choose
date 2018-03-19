@@ -2,6 +2,9 @@ package com.jeong.haejwo.controller;
 
 import java.io.File;
 import java.io.IOException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -16,7 +19,14 @@ import org.springframework.web.multipart.MultipartFile;
 public class FileController {
 	// 파일을 받은뒤 저장하는 곳
 	@RequestMapping(value = "/upload")
-	public String upload(@RequestParam("uploadFile") MultipartFile file, HttpServletRequest request, Model model) {
+	public String upload(@RequestParam("uploadFile") MultipartFile file,
+			HttpServletRequest request, Model model) {
+		//, @RequestParam("uiCode") String uiCode
+		DateFormat dateFormat = new SimpleDateFormat("yyMMddHHmm");
+		Date date = new Date();
+		//System.out.println(dateFormat.format(date));
+		//년월일시분 으로 서버 날짜를 받아옴
+		//이걸로 저장할거
 		try {
 			// aws 업로드시 주소변경필요
 			// 또는 관리자 페이지를 만들어서 수정 가능하도록 변경

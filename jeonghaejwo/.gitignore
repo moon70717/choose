@@ -1,6 +1,4 @@
 /target/
-<<<<<<< HEAD
 .classpath
 .project
-=======
->>>>>>> refs/remotes/origin/master
+/src/main/java/com/jeong/haejwo/test/
