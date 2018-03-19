@@ -8,7 +8,7 @@
 				<img src='${root}/resources/imgs/logo.jpg' class='logo'/>
 				</div>
 
-				<div class="col-md-3 col-sm-6 col-xs-12">
+				<div class="col-md-9 col-sm-6 col-xs-12">
 					<ul class="footer_menu">
 						<span>Menu</span>
 						<li><a href="#">Home</a></li>
@@ -17,29 +17,6 @@
 						<li><a href="#">Gallery </a></li>
 					</ul>
 				</div>
-				<div class="col-md-3 col-sm-6 col-xs-12">
-					<ul class="footer_menu">
-						<span>Contact</span>
-						<li><a href="#">Phone</a></li>
-						<li><a href="#">Adress</a></li>
-						<li><a href="#">Email</a></li>
-					</ul>
-				</div>
-				<div class="col-md-3 col-sm-6 col-xs-12">
-					<ul class="address">
-						<span>Address</span>
-						<li>
-							<p>Lorem ipsum dolor sit amet</p>
-						</li>
-						<li>
-							<p>+90 1234 56789</p>
-						</li>
-						<li>
-							<p>info@gmail.com</p>
-						</li>
-					</ul>
-				</div>
-
 			</div>
 		</div>
 	</div>

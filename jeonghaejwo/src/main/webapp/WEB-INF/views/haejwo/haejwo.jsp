@@ -8,8 +8,6 @@
 </head>
 
 <script src="${root}/resources/js/haejwo.js" charset="utf-8"></script>
-<link rel="stylesheet" type="text/css"
-	href="${root}/resources/css/clock.css${ver}" />
 <link rel="stylesheet" type="text/css" href="${root}/resources/css/haejwo.css${ver}" />
 <body>
 

@@ -1,20 +1,31 @@
 @charset "UTF-8";
 
 .sidenav {
-	
 	font-family: 'hanna';
     height: 100%;
-    width: 200px;
     position: fixed;
     z-index: 1;
     top: 0;
-    right: 0;
-    width: 6%;
+    right: -155px;
+    width: 16%;
     overflow-x: hidden;
     transition: 0.5s;
     padding-top: 15%;
+    
+	display: grid;
+	grid: auto auto auto auto;
 }
 
+.sidenav>div{
+	text-align: center;
+}
+
+.menu_grid1 {
+  grid-area: 1 / 1 / span 1 / span 2;
+}
+.menu_grid2 {
+  grid-area: 1 / 2 / span 1 / span 4;
+}
 .sidenav span{
 	position: relative;
 	top: 5%;
