@@ -30,7 +30,6 @@ public class ReviewController {
 		} else if(result==0) {
 			map.put("result", "입력실패");
 		}
-		
 		return map;
 	}
 	
