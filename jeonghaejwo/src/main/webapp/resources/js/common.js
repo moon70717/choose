@@ -31,10 +31,22 @@ window.onbeforeunload = function(e){
 		$('body').append(spinner);
 	});
     if(e != null && e != undefined){
-        $('spinner').css('display','');
+        $('.spinner').css('display','');
         $(window).load(function() {
-            $('spinner').css('display', 'none');
+            $('.spinner').css('display', 'none');
          });
     }
 };
 
+function lodingSt(){
+	$(function() {
+		spinner = new Spinner(opts).spin().el;
+		$('body').append(spinner);
+		$('.spinner').css('display','block');
+	});
+	
+}
+
+function lodingEnd(){
+	$('.spinner').css('display', 'none');
+}

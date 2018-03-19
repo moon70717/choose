@@ -8,142 +8,111 @@
 </head>
 
 <script src="${root}/resources/js/haejwo.js" charset="utf-8"></script>
-<script src="${root}/resources/js/clock.js" charset="utf-8"></script>
 <link rel="stylesheet" type="text/css"
 	href="${root}/resources/css/clock.css${ver}" />
-<link rel="stylesheet" type="text/css"
-	href="${root}/resources/css/haejwo.css${ver}" />
-<style>
-#time_div {
-	margin: 2%;
-}
-.time_set {
-	background-color: #d1d3d4;
-	color: white;
-}
-.time_set:hover {
-	color: c0c0c0;
-}
-
-/*  */
- 
- 
-    .md-input button {
-        border: 0;
-        background: none;
-        /** belows styles are working good */
-        padding: 2px 5px;
-        margin-top: 2px;
-        position: relative;
-        left: -28px;
-        /* IE7-8 doesn't have border-radius, so don't indent the padding */
-        margin-bottom: 0;
-        -webkit-border-radius: 3px;
-        -moz-border-radius: 3px;
-        border-radius: 3px;
-        color:#D9230F;
-    }
- 
-    .search-query:focus + button {
-        z-index: 3;   
-    }
-</style>
+<link rel="stylesheet" type="text/css" href="${root}/resources/css/haejwo.css${ver}" />
 <body>
 
 	<!-- 메인 컨테이너 -->
 	<div class='jhj_container'>
 		<!-- 지도 -->
 		<div class='map' id='map'>지도</div>
-		<!-- 시계 -->
-		<div class="time_container">
-			<div id="clock" class="center clock"></div>
-			<div id='sec' class='center sec'></div>
-			<div id="month" class="center month"></div>
-			<div id="dates">
-				<div id="date" class="date"></div>
-				<div id="year" class="year"></div>
-				<div id="day" class="day"></div>
-			</div>
-		</div>
+		
+		
 		<!-- 사용자 입력란 -->
 		<div class='input_container'>
 		
 			<div class='user_setting'>
-				<div class="md-input">
-					<input class="md-form-control" id="loInput" required="text" type="text">
-                                    
+				<div class="location_input">
+					<input class="location_input_text" id="loInput" type="text">
 					<span class="highlight"></span> <span class="bar"></span>
+					<span><button class="loBtn" onclick="getLatLng($('#loInput')[0].value)">
+					<i class="glyphicon glyphicon-search"></i>
+					</button></span>
 					<label>My Location</label>	
-					<!-- 테스트용 버튼 -->
-					<button onclick="getLatLng($('#loInput')[0].value)">찾기</button> 
+						
 				</div>  
-				<div class="md-input">
-					<input class="md-form-control" id="desInput" required="text" type="text">
+				<div class="location_input">
+					<input class="location_input_text" id="desInput" type="text">
 					<span class="highlight"></span> <span class="bar"></span>
+					<span>
+					<button class="deBtn" onclick="getLatLng($('#desInput')[0].value)">
+					<i class="glyphicon glyphicon-search"></i>
+					</button>
+					</span>
 					<label>Destination</label>
-					<button onclick="getLatLng($('#desInput')[0].value)">찾기</button>
 				</div>
 				<!-- 목적지 선택 박스 -->
-				<div id="network-popUp" class="" style="display: block;">
-					<div
-						class="form-item form-item-node-type form-type-select select-group">
+				<div id="network-popUp" class="destination_selectBox" style="display: block;">
+					<div class="form-item form-item-node-type form-type-select select-group">
 						<select class="form-control form-select select_destination"
-							id="edit-node-type" name="node_type">
+							id="deSelectBox" name="node_type" onchange="deSelectBox()" >
 							<option value="-1" selected="selected">Select element</option>
-							<option value="1">내위치로 돌아오기</option>
-							<option value="2">Ramdom Box</option>
+							<option value="0">내위치로 돌아오기</option>
+							<option value="1">Ramdom Box</option>
 						</select>
 					</div>
 				</div>
 			</div>
 			<!-- 시간 -->
-			<div id="time_div">
+			<div id="time_div" class="time_div">
 				<button class="time_set" onclick="minus()">
 					<span class="glyphicon glyphicon-menu-left"></span>
 				</button>
 				<input type="text" size="25" value="시간을 설정하세요" id="time_count"
-					style="color: black; text-align: center">
+					style="color: black; text-align: center" class="time_count">
 				<button class="time_set" onclick="plus()">
 					<span class="glyphicon glyphicon-menu-right"></span>
 				</button>
 			</div>
-			<!--  -->
+			<!-- 반경 거리 -->
 			<div class="funkyradio">
 				<div class="funkyradio-info">
 					<input type="radio" name="radio" id="radio1" disabled=true
-						value=0.4 /> <label for="radio1">반경 1km 내에서</label>
+						value=0.4 data-value='1000' /> <label for="radio1">반경 1km 내에서</label>
 				</div>
 				<div class="funkyradio-primary">
 					<input type="radio" name="radio" id="radio2" disabled=true
-						value=0.4 /> <label for="radio2">반경 3km 내에서</label>
+						value=0.4 data-value='3000' /> <label for="radio2">반경 3km 내에서</label>
 				</div>
 				<div class="funkyradio-success">
 					<input type="radio" name="radio" id="radio3" disabled=true
-						value=1.1 /> <label for="radio3">반경 5km 내에서</label>
+						value=1.1 data-value='5000' /> <label for="radio3">반경 5km 내에서</label>
 				</div>
 				<div class="funkyradio-warning">
 					<input type="radio" name="radio" id="radio4" disabled=true
-						value=1.4 /> <label for="radio4">반경 10km 내에서</label>
+						value=1.4 data-value='10000' /> <label for="radio4">반경 10km 내에서</label>
 				</div>
 			</div>
 			<div class='summit_btn'>
 				<button id='test' class="btn loding_button" 
 				onclick="sendVariable($('#loInput')[0].value, $('#desInput')[0].value)">
 					<!-- "window.location.href='${root}/path/map/show-way'" -->
-					<span class="ladda-label"> Save snippet </span>
+					<span class="ladda-label"> Jeong Hae Jwo </span>
 				</button>
 			</div>
 		</div>
 	</div>
 </body>
 <script>
-
+/* 목적지 셀랙트 박스  */
+ function deSelectBox(){
+	 var selectBoxValue = document.getElementById("deSelectBox").value;
+	 if(selectBoxValue==0){
+		$("#desInput")[0].value = $('#loInput')[0].value;
+	 }else if(selectBoxValue==1){
+		 $("#desInput")[0].value = "랜덤으로 갑니다";
+		 
+	 }
+	 
+}
 /* 시간 설정 */
 var count = 0;
 var countEl = document.getElementById("time_count");
 
 //변수 값 
 var mapX, mapY, times, radius, code, dMapX, dMapY;
+var nLat, nLng, waypoint;
 /* 횟수 구하기 */
 function getTimes(){
 	var hour;
@@ -165,12 +134,13 @@ function getTimes(){
 	if(hour==NaN||disKm==NaN){
 		alert("시간 또는 거리를 설정하세요");
 	}
-	times=Math.floor(hour-disKm);
-	radius=disKm
+	ramdomNum = Number(document.getElementById("deSelectBox").value);
+	times=Math.floor(hour-disKm+ramdomNum);
+	radius=Number($("input[type=radio][name=radio]:checked")[0].getAttribute("data-value"));
 	
 }
 //현위치와 목적지 xy좌표 구하는 공통 함수
-function getXYaddress(place, x, y){
+function getXYaddress(place,func){
 	var geocoder = new google.maps.Geocoder();
 	geocoder.geocode({
 		address : place,  
@@ -180,21 +150,52 @@ function getXYaddress(place, x, y){
 			var bounds = new google.maps.LatLngBounds();
 			for(var r of results) {
 				if(r.geometry) {
-					x = r.geometry.location.lat();
-					y = r.geometry.location.lng();
+					var result = r.geometry.location;
+					func(result);
 				} 
 			} 
 		}
 	});
 }
+function loFunc(result){
+	mapX = result.lat();
+	mapY = result.lng();
+}
+function deFunc(result){
+	dMapX = result.lat();
+	dMapY = result.lng();
+}
 
 function sendVariable(loInput, desInput){
-	getXYaddress(loInput, mapX, mapY);
-	getXYaddress(desInput, dMapX, dMapY);
+	lodingSt();
+	getXYaddress(loInput, loFunc);
+	getXYaddress(desInput, deFunc);
 	getTimes();
-	alert(mapX);
-	
+	//setTimeout은 데이터 흐름을 queue에 넣으므로 순서를 정할 수 있다
+	setTimeout(function(){	
+		var data={
+				'mapX':mapX,
+				'mapY':mapY,
+				'times':times,
+				'radius':radius,
+				'dMapX':dMapX,
+				'dMapY':dMapY
+			}
+		$.ajax({
+			url : "/api/show-way",
+			type : "post",
+			data : data,
+			success : function(res) {
+				//console.log(res.json);
+				lodingEnd();
+				waypoint = JSON.parse(res.json);
+				waypoint = waypoint.response.body.items.item;
+				console.log(waypoint);
+			}
+		});
+	},1000);
 }
+
 
 /*  */
 /* 길찾기 부분 */
@@ -283,7 +284,7 @@ function sendVariable(loInput, desInput){
 	//클릭한곳 좌표와 주소를 가져와주는놈(맵 클릭)
 	function getAddress(latlng){
 		var geocoder = new google.maps.Geocoder();
-		alert(latlng);
+		console.log("클릭했을 때 "+latlng);
 		geocoder.geocode({
 			latLng : latlng
 		},function(result, status){
@@ -294,6 +295,8 @@ function sendVariable(loInput, desInput){
 						position : latlng,
 						map : map
 					}); */
+					var latlng = result[0].geometry.location;
+					console.log(latlng.lat()+","+latlng.lng());
 					$('#loInput')[0].value = address;
 				}
 			}
@@ -316,8 +319,7 @@ function sendVariable(loInput, desInput){
 					if (r.geometry) {
 						var latlng = r.geometry.location;
 						var address = r.formatted_address;
-						alert(latlng);
-						console.log(latlng);
+						console.log(latlng.lat()+","+latlng.lng());
 					}
 				}
 			}

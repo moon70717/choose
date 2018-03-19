@@ -1,6 +1,6 @@
 $(document).ready(function(){
-	var weekday = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-	var month = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+	var weekday = ["일요일", "월요일", "화요일", "수요일", "목요일", "금요일", "토요일"];
+	var month = ["1월", "2월", "3월", "4월", "5월", "6월", "7월", "8월", "9월", "10월", "11월", "12월"];
 
 	(function clock() {
 	    "use strict";
@@ -49,7 +49,6 @@ $(document).ready(function(){
 	        }
 	        document.getElementById('year').style.letterSpacing = offset;
 	        document.getElementById('day').style.letterSpacing = doffset;
-	        document.getElementById('dates').style.left = left;
 	    };
 
 	    currentTime = new Date();
@@ -72,7 +71,7 @@ $(document).ready(function(){
 	    document.getElementById('clock').innerHTML = currentHours + ":" + currentMinutes;
 	    document.getElementById('sec').innerHTML = ":"+currentSeconds;
 	    document.getElementById('month').innerHTML = month[mnth];
-	    document.getElementById('date').innerHTML = oday;
+	    document.getElementById('date').innerHTML = oday+"일";
 	    document.getElementById('day').innerHTML = weekday[day];
 	    document.getElementById('year').innerHTML = year;
 

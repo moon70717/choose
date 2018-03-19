@@ -34,7 +34,7 @@
 	justify-content: center;
 	width: 80%;
 	margin: auto;
-	border: solid #ffd700 1px; /* 지울것  */
+	border: solid #ffd700 3px; /* 지울것  */
 	height: 320px;
 	filter: grayscale(40%);
 }
@@ -68,7 +68,42 @@
     transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
     margin-top: -20px;
 }
-/* 시간, 거리 */
+/* 검색버튼 */
+    .md-input button {
+        border: 0;
+        background: none;
+        /** belows styles are working good */
+        padding: 2px 5px;
+        margin-top: 2px;
+        position: relative;
+        left: -28px;
+        /* IE7-8 doesn't have border-radius, so don't indent the padding */
+        margin-bottom: 0;
+        -webkit-border-radius: 3px;
+        -moz-border-radius: 3px;
+        border-radius: 3px;
+        color:#D9230F;
+    }
+ 
+    .search-query:focus + button {
+        z-index: 3;   
+    }
+/* 시간조절 */
+.time_div{
+	padding-top: 1.5%;
+}
+.time_set{
+	    font-size: 100%;
+    height: 35px;
+    background-color: #d1d3d4;
+}
+.time_set:active{
+    background-color: #0080ff;
+}
+.time_count{
+	height: 35px;
+}
+/* 거리 */
 .funkyradio {
 	clear: both;
 	content: "";
@@ -168,53 +203,68 @@
 	clear: left;
 }
 .loding_button{
-	background-color:rgba(255, 255, 255, 0.85);
-    color: #5a5a5a;
-	width: 45%;
-	margin-top: 2%;
+	background-color: rgb(0, 128, 255);
+    color: black;
+    width: 45%;
+    margin-top: 2%;
 }
+.loding_button:hover{
+	color: white;
+    text-decoration: none;
+}
+   
 
 /* 위치설정 부분 */
-.md-input {
-	
+.location_input {
 	color: black;
 	position: relative;
 	margin-bottom: 30px;
 }
-
-.md-input .md-form-control {
+.location_input .loBtn,
+.location_input .deBtn{
+	position: absolute;
+	 right: 2px;
+    bottom: 0px;
+        width: 10%;
+    height: 100%;
+    border: solid white;
+}
+button>.glyphicon glyphicon-search{
+	background-color: red;
+	
+}
+.location_input .location_input_text {
 	font-size: 16px;
 	padding: 10px 10px 10px 5px;
 	display: block;
 	border: none;
-	border-bottom: 2px solid #CACACA;
 	box-shadow: none;
 	width: 100%;
 	margin-top: 8%;
 }
 
-.md-input label {
-	color: rgba(0, 0, 0, 0.5);
+.location_input label {
+	color: #c0c0c0;
 	font-size: 16px;
 	font-weight: normal;
 	position: absolute;
 	pointer-events: none;
 	left: 5px;
-	top: 10px;
+	top: -25px;
 	transition: 0.2s ease all;
 	-moz-transition: 0.2s ease all;
 	-webkit-transition: 0.2s ease all;
 }
 
-.md-input .bar:before {
+.location_input .bar:before {
 	left: 50%;
 }
 
-.md-input .bar:after {
+.location_input .bar:after {
 	right: 50%;
 }
 
-.md-input .highlight {
+.location_input .highlight {
 	position: absolute;
 	height: 60%;
 	width: 100px;
@@ -224,27 +274,25 @@
 	opacity: 0.5;
 }
 
-.md-input .md-form-control:focus ~ label,
-.md-input .md-form-control:valid ~ label {
-	top: -18px;
+.location_input .location_input_text:focus ~ label{
 	font-size: 16px;
-	color: #c0c0c0;
+	color: white;
 }
 
-.md-input .bar:before,
-.md-input .bar:after {
+.location_input .bar:before,
+.location_input .bar:after {
 	content: '';
 	height: 2px;
 	width: 0;
 	bottom: 0px;
 	position: absolute;
-	background: #03A9F4;
+	background: #blue;
 	transition: 0.2s ease all;
 	-moz-transition: 0.2s ease all;
 	-webkit-transition: 0.2s ease all;
 }
 
-.md-input .md-form-control:focus ~ .bar:before,
-.md-input .md-form-control:focus ~ .bar:after {
+.location_input .location_input_text:focus ~ .bar:before,
+.location_input .location_input_text:focus ~ .bar:after {
 	width: 50%;
 }

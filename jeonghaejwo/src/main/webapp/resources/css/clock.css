@@ -1,76 +1,54 @@
 @charset "UTF-8";
 
 .time_container {
-	color: white;
-    position: fixed;
-    top: 73px;
-    left: -8px;
+	font-family: 'dohyeon';
+	padding-right: 6%;
+    text-align: center;
+    color: white;
 }
 
-.center {
-	width: 320px;
-	position: absolute;
-	text-align: center;
+#clock {
+	position: relative;
+    font-size: 30px;
+    display: inline-block;
+    width: 4%;
 }
 
-.clock {
-	top: 400px;
-    left: -32px;
-    font-size: 70px;
+#sec{
+	position: relative;
+    font-size: 24px;
+    display: inline-block;
+    width: 10%;
 }
-.sec{
-	top: 422px;
-    left: 54px;
-    font-size: 52px;
-}
-.month {
-	top: 475px;
-	font-size: 31px;
-	font-family: 'letters';
-	font-weight: 200;
-	text-transform: uppercase;
+
+#month {
+	position: relative;
+    font-size: 30px;
+    display: inline-block;
+    width: 10%;
 }
 
 .date {
-	position: absolute;
-	width: 160px;
-	text-align: right;
-	font-size: 52px;
-	    top: 505px;
-    left: 25px;
+	position: relative;
+    font-size: 30px;
+    display: inline-block;
+    width: 10%;
 }
 
 .year {
-	position: absolute;
-	width: 160px;
-	text-align: left;
-	    left: 186px;
+	position: relative;
     font-size: 30px;
-    top: 500px;
+    display: inline-block;
+    width: 10%;
 }
 
 .day {
-	position: absolute;
-    width: 160px;
-    text-align: left;
-        left: 188px;
-    font-size: 28px;
-    top: 573px;
-    font-family: 'letters';
-    letter-spacing: 0;
-    text-transform: uppercase;
+	position: relative;
+    font-size: 30px;
+    display: inline-block;
+    width: 10%;
 }
 
 #dates {
-	position: absolute;
-}
 
-@font-face {
-	font-family: 'letters';
-	src: url(http://junesiphone.com/WebFonts/Building_Typeface.ttf);
-}
-
-@font-face {
-	font-family: 'numbers';
-	src: url(http://junesiphone.com/WebFonts/Dense-Regular.otf);
 }

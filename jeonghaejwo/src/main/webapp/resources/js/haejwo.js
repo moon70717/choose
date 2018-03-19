@@ -11,9 +11,7 @@ function radioAble(){
 	}
 }
 
-
 /* 시간 설정 */
-
 var count = 0;
 var countEl = document.getElementById("time_count");
 function plus(){
@@ -21,7 +19,6 @@ function plus(){
 	    count++;
 	    countEl.value = count+" 시간";
 	    radioAble();
-	   
 	}
 }
 function minus(){

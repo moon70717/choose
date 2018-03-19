@@ -1,6 +1,8 @@
 @charset "UTF-8";
 
 .sidenav {
+	
+	font-family: 'hanna';
     height: 100%;
     width: 200px;
     position: fixed;
