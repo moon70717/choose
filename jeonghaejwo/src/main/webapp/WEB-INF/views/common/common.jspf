@@ -3,7 +3,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:set var="root" value="${pageContext.request.contextPath}"/>
-<c:set var="ver" value="?version=1.11.93"/>
+<c:set var="ver" value="?version=1.11.97"/>
 <c:set var="rPath" value="${root}/resources"/>
 <c:set var="pPath" value="${root}/path"/>
 

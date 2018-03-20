@@ -11,9 +11,10 @@
     overflow-x: hidden;
     transition: 0.5s;
     padding-top: 15%;
-    
 	display: grid;
-	grid: auto auto auto auto;
+	grid-template-columns: repeat(6, 1fr);
+  	grid-template-areas: 
+    	"menu1 menu2 menu2 menu2 menu2 menu2";
 }
 
 .sidenav>div{
@@ -21,14 +22,13 @@
 }
 
 .menu_grid1 {
-  grid-area: 1 / 1 / span 1 / span 2;
+  grid-area: menu1;
 }
 .menu_grid2 {
-  grid-area: 1 / 2 / span 1 / span 4;
+  grid-area: menu2;
 }
-.sidenav span{
-	position: relative;
-	top: 5%;
+.sidenav span{    
+	position: fixed;
 	font-size:30px;
 	cursor:pointer
 }

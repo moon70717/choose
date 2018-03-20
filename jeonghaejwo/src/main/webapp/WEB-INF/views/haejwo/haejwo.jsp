@@ -27,8 +27,7 @@
 					<span><button class="loBtn" onclick="getLatLng($('#loInput')[0].value)">
 					<i class="glyphicon glyphicon-search"></i>
 					</button></span>
-					<label>My Location</label>	
-						
+					<label>My Location</label>
 				</div>  
 				<div class="location_input">
 					<input class="location_input_text" id="desInput" type="text">

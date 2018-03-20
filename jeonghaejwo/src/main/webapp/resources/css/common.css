@@ -1,6 +1,8 @@
 @charset "UTF-8";
 
 body {
+	
+	font-family: 'dohyeon';
 	background-color: black;
 	color: white;
 	/* background-repeat: no-repeat;
@@ -16,7 +18,6 @@ body {
 }
 /* 하단 풋터 */
 .footer {
-	
 	font-family: 'yeonsung';
     width: 93%;
 	padding-top: 25px;
@@ -28,10 +29,7 @@ body {
 
 .logo {
 	text-align: center;
-	color: #c0c0c0;
-	font-weight: 800;
-	font-size: 30px;
-	width: 159px;
+	width: 120px;
 }
 
 .address, .footer_menu {
