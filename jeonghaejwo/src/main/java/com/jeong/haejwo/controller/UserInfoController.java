@@ -5,13 +5,11 @@ import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
-
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -38,6 +36,15 @@ public class UserInfoController {
 		//값을 ui에 넣는 방법
 		if(uis.login(map, ui)) {
 			hs.setAttribute("user", map.get("user"));
+		}
+		return map;
+	}
+	
+	@RequestMapping("/uriLogin")
+	public @ResponseBody Map<String,Object> login(@RequestParam Map<String,Object> data){
+		Map<String,Object> map=new HashMap<String,Object>();
+		if(uis.login(data)) {
+			map.put("result", true);
 		}
 		return map;
 	}

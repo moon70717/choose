@@ -18,6 +18,17 @@
 		</if> -->
 	</select>
 	
+	<select id="selectApiUser" parameterType="map" resultType="ui">
+		select *
+		from user
+		where userNo=#{userNo}
+	</select>
+	
+	<insert id="insertApiUser" parameterType="map">
+		insert into user(userNo,userName,ImageURL,Eamil)
+		values(#{userNo},#{userName},#{ImageURL},#{Eamil})
+	</insert>
+	
 <!-- <insert id="insertUserInfo" parameterType="ui">
 		insert into user(userNo, userName, ImageURL, Email)
 		values(#{userNo}, #{userName}, #{ImageURL}, #{Email})

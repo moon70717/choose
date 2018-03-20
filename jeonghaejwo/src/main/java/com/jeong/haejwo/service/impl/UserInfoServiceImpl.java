@@ -39,5 +39,14 @@ public class UserInfoServiceImpl implements UserInfoService {
 		}
 		return 0;
 	}
+
+	//api 로그인 유저용
+	@Override
+	public boolean login(Map<String, Object> data) {
+		if(uidao.selectUserInfo(data)==null) {
+			uidao.insertUserInfo(data);
+		}
+		return true;
+	}
 	
 }
