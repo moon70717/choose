@@ -42,7 +42,7 @@ color:white;
   grid-area: contents1;
 }
 .contents2{
-grid-area:contents2;
+	grid-area:contents2;
     height: 60px;
     overflow: hidden;
     display: grid;
@@ -57,7 +57,7 @@ grid-area:contents2;
 	display: inline-block;
 	position: relative;
 	grid-area: main_msg1;
-	    width: 175px;
+	width: 175px;
 }
 
 .main_msg2{
@@ -70,7 +70,7 @@ grid-area: main_msg2;
 	display: inline-block;
 	position: relative;
 	grid-area: main_msg3;
-	    width: 127px;
+	 width: 127px;
 }
 @keyframes mymove {
     0%   {top: 0px; }
