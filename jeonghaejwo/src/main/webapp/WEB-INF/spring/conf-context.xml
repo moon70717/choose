@@ -8,28 +8,31 @@
 		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.1.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd
 		http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc-3.1.xsd">
-		
+		<!-- db -->
 	<bean id="bds" class="org.apache.commons.dbcp2.BasicDataSource" destroy-method="close">
 		<property name="driverClassName" value="org.mariadb.jdbc.Driver"/>
-		<property name="url" value="jdbc:mysql://13.125.195.90:3306/dbtest"/>
+		<property name="url" value="jdbc:mysql://dbtest.cxv66nyfnyma.ap-northeast-2.rds.amazonaws.com"/>
 		                          <!--            ip주소               포트 번호    db이름-->    
 		<property name="username" value="dbtest"/>
 		<property name="password" value="dbtest123$"/>
 	</bean>
+	<!-- db -->
+	
+	<!-- SqlSessionFactory -->
 	<bean id="ssf" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="bds"/>
 		<property name="configLocation" value="classpath:/mybatis-config.xml"/>
 	</bean>
+	<!-- SqlSessionFactory  는 db에 연결하기 위한 connection을 만드는 역할 -->
+	
+	<!-- SqlSessionTemplate -->
+	<!-- <bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
+		<constructor-arg name="sqlSessionFactory" ref="ssf"></constructor-arg>
+	</bean> -->
+	<!-- SqlSessionFactory  는 SQL문을 실행하고 결과를 받아오는 역할 -->
 	
 	<bean class="org.codehaus.jackson.map.ObjectMapper"></bean>
 	
-	<!-- <bean class="com.iot.spring.dao.impl.NaverTransDAOImpl">
-	<property name="url" value="https://openapi.naver.com/v1/language/translate"></property>
-	<property name="contentType" value="application/x-www-form-urlencoded; charset=UTF-8"></property>
-	<property name="clientId" value="2c5Mf_UU9HNocDvnlshc"></property>
-	<property name="clientSecret" value="aBE4qvUU0q"></property>
-	<property name="source" value="en"></property>
-	<property name="target" value="ko"></property>
-	</bean> -->
+	
 	
 </beans>
