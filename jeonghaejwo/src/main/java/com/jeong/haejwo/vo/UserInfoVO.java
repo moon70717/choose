@@ -1,20 +1,20 @@
 package com.jeong.haejwo.vo;
 
 public class UserInfoVO {
-	private String userNo;
+	private String userId;
 	private String userName;
 	private String ImageURL;	
 	private String Email;
 	@Override
 	public String toString() {
-		return "UserInfoVO [userNo=" + userNo + ", userName=" + userName + ", ImageURL=" + ImageURL + ", Email=" + Email
+		return "UserInfoVO [userId=" + userId + ", userName=" + userName + ", ImageURL=" + ImageURL + ", Email=" + Email
 				+ "]";
 	}
-	public String getUserNo() {
-		return userNo;
+	public String getuserId() {
+		return userId;
 	}
-	public void setUserNo(String userNo) {
-		this.userNo = userNo;
+	public void setuserId(String userId) {
+		this.userId = userId;
 	}
 	public String getUserName() {
 		return userName;

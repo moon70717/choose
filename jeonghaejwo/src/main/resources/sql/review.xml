@@ -8,7 +8,7 @@
 		recommendation(userNo,code,point,comment,date,contenttypeid,placename)
 		values(#{userNo},#{code},#{point},#{comment},#{date},#{contenttypeid},#{placename});
 	</insert>
-	<select id="select" parameterMap="data" resultType="map">
+	<select id="select" parameterType="map" resultType="map">
 		select * from recommendation
 		<where>
 			userNo=#{userNo}

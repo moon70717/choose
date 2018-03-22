@@ -50,6 +50,7 @@ public class UserInfoDAOImpl implements UserInfoDAO {
 	public UserInfoVO selectUserInfo(Map<String, Object> data) {
 		SqlSession ss = ssf.openSession();
 		UserInfoVO ui = ss.selectOne("user.selectApiUser",data);
+		ss.close();
 		return ui;
 	}
 

@@ -5,10 +5,10 @@
 <mapper namespace="user">
 	<select id="selectUserInfo" parameterType="ui" resultType="ui">
 		select
-		userNo,userName,ImageURL,Email
+		userId,userName,ImageURL,Email
 		from user
 		where 1=1
-		and userNo = #{userNo}
+		and userId = #{userId}
 	
 	<!-- 	<if test="userId!=null">
 			and userId = #{userId}
@@ -21,16 +21,16 @@
 	<select id="selectApiUser" parameterType="map" resultType="ui">
 		select *
 		from user
-		where userNo=#{userNo}
+		where userId=#{userId}
 	</select>
 	
 	<insert id="insertApiUser" parameterType="map">
-		insert into user(userNo,userName,ImageURL,Eamil)
-		values(#{userNo},#{userName},#{ImageURL},#{Eamil})
+		insert into user(userId,userName,ImageURL,Email)
+		values(#{userId},#{userName},#{ImageURL},#{Eamil})
 	</insert>
 	
 <!-- <insert id="insertUserInfo" parameterType="ui">
-		insert into user(userNo, userName, ImageURL, Email)
-		values(#{userNo}, #{userName}, #{ImageURL}, #{Email})
+		insert into user(userId, userName, ImageURL, Email)
+		values(#{userId}, #{userName}, #{ImageURL}, #{Email})
 	</insert> -->	
 </mapper>  

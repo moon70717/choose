@@ -4,8 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<meta name="google-signin-client_id"
-	content="408126596281-jd85biotfj4v3ujka45l0u873n449i1q.apps.googleusercontent.com">
+<meta name="google-signin-client_id" content="408126596281-jd85biotfj4v3ujka45l0u873n449i1q.apps.googleusercontent.com">
 <title>Insert title here</title>
 </head>
 
@@ -17,11 +16,41 @@
 	<script>
 		function onSignIn(googleUser) {
 			var profile = googleUser.getBasicProfile();
-			console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
-			console.log('Name: ' + profile.getName());
-			console.log('Image URL: ' + profile.getImageUrl());
-			console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
+			
+			
+			var userId, userName, ImageURL, Email;
+			
+			userId=profile.getId();
+			userName=profile.getName();
+			ImageURL=profile.getImageUrl();
+			Email=profile.getEmail();
+			
+			console.log('ID: ' + userId); // Do not send to your backend! Use an ID token instead.
+			console.log('Name: ' + userName);
+			console.log('Image URL: ' + ImageURL);
+			console.log('Email: ' +Email); // This is null if the 'email' scope is not present.
+			
+			var data = {
+					'userId':userId,
+					'userName':userName,
+					'ImageURL':ImageURL,
+					'Email':Email
+					}
+			/* var data = [];
+			data.push('userId',userId);
+			data.push('userName',userName);
+			data.push('ImageURL',ImageURL);
+			data.push('Email',Email); */
+			$.ajax({
+				url : "/user/uriLogin",
+				type : "post",
+				data : data,
+				success : function(res){
+					alert("구글 로그인 되었다")
+				}
+			})
 		}
+		
 		 function signOut() {
 			    var auth2 = gapi.auth2.getAuthInstance();
 			    auth2.signOut().then(function () {
