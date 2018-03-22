@@ -25,7 +25,11 @@ public class Tour_ApiDAOImpl implements Tour_ApiDAO {
 	    try {
 	    	//받은 주소를 url로 변환
 	        url = new URL(u);
+<<<<<<< HEAD
 	        System.out.println(url);
+=======
+	        
+>>>>>>> refs/remotes/origin/master
 	        //커넥션 맺고 설정하고 연결
 	        conn = (HttpURLConnection) url.openConnection();
 	        conn.setRequestProperty("Accept", "application/json");

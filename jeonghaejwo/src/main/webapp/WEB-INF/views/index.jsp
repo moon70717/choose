@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<<<<<<< HEAD
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
 <head><script src='//static.codepen.io/assets/editor/live/console_runner-ce3034e6bde3912cc25f83cccb7caa2b0f976196f2f2d52303a462c826d54a73.js'></script><script src='//static.codepen.io/assets/editor/live/css_live_reload_init-890dc39bb89183d4642d58b1ae5376a0193342f9aed88ea04330dc14c8d52f55.js'></script><meta charset='UTF-8'><meta name="robots" content="noindex"><link rel="shortcut icon" type="image/x-icon" href="//static.codepen.io/assets/favicon/favicon-8ea04875e70c4b0bb41da869e81236e54394d63638a1ef12fa558a4a835f1164.ico" /><link rel="mask-icon" type="" href="//static.codepen.io/assets/favicon/logo-pin-f2d2b6d2c61838f7e76325261b7195c27224080bc099486ddd6dccb469b8e8e6.svg" color="#111" /><link rel="canonical" href="https://codepen.io/befamous/pen/pFsqb?depth=everything&order=popularity&page=22&q=template&show_forks=false" />
@@ -513,3 +514,18 @@ window.CP.exitedLoop(4);
 //# sourceURL=pen.js
 </script>
 </body></html>
+=======
+<html>
+<head>
+	<title>DataBase Administrator</title>
+</head>
+<body>
+<script>
+</script>
+<h1>
+	DataBase Administrator
+</h1>
+<a href="${pPath}/user/login"><button id="goLogin" type="button">로그인</button></a>
+</body>
+</html>
+>>>>>>> refs/remotes/origin/master

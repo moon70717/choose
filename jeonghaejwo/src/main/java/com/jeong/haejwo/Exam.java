@@ -6,9 +6,15 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
+import com.google.gson.Gson;
+
+
+
 public class Exam {
 
-	static String u= "http://openapi.seoul.go.kr:8088/464c6c704f6d6f6f38396e43794e69/json/GetParkInfo/1/5/강남";
+	Gson gson=new Gson();
+	
+	static String u= "http://api.visitkorea.or.kr/openapi/service/rest/KorService/locationBasedList?serviceKey=peWkmeOBUcoT4b1Oqd7%2FotBYLzAO%2BWBymO82ftCMolY%2Bs9AI1ppnNVO4U9a%2Blhohtj1X38Iy4ENC1ReL1aHKWg%3D%3D&numOfRoews=10&pageNo=1&startPage=1&MobileOS=ETC&MobileApp=AppTest&arrange=A&contenttypeId=15&mapX=127.028900&mapY=37.496243&radius=500&listYN=Y";
 	public static void main(String[] args) {
 		URL url = null;
 	    HttpURLConnection conn = null;
@@ -18,7 +24,7 @@ public class Exam {
 	    String returnText = "";
 	 
 	    try {
-	        url = new URL("http://api.visitkorea.or.kr/openapi/service/rest/KorService/locationBasedList?serviceKey=peWkmeOBUcoT4b1Oqd7%2FotBYLzAO%2BWBymO82ftCMolY%2Bs9AI1ppnNVO4U9a%2Blhohtj1X38Iy4ENC1ReL1aHKWg%3D%3D&numOfRoews=10&pageNo=1&startPage=1&MobileOS=ETC&MobileApp=AppTest&arrange=A&contenTypeId=15&mapX=127.028900&mapY=37.496243&radius=500&listYN=Y");
+	        url = new URL(u);
 	 
 	        conn = (HttpURLConnection) url.openConnection();
 	        conn.setRequestProperty("Accept", "application/json");
