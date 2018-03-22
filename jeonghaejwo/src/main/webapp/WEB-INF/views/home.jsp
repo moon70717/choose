@@ -68,9 +68,7 @@ grid-area:logingit;
 
 </style>
 <script>
-$(document).ready(function(){
-	$(".default_container").fadeIn("slow");
-});
+
 
 var tickr=[
 	'gogogo',
@@ -82,7 +80,7 @@ var tickr=[
 
 	$('#main_msg').t(
 	tickr.join(x='<ins>2</ins><del>*</del>')+x,
-	{speed:30,repeat:true,pause_on_click:true}
+	{speed:200,repeat:true,pause_on_click:true}
 	);
 </script>
 </head>
