@@ -1,0 +1,54 @@
+@charset "UTF-8";
+
+.time_container {
+	font-family: 'dohyeon';
+	padding-right: 6%;
+    text-align: center;
+    color: white;
+}
+
+#clock {
+	position: relative;
+    font-size: 30px;
+    display: inline-block;
+    width: 4%;
+}
+
+#sec{
+	position: relative;
+    font-size: 24px;
+    display: inline-block;
+    width: 10%;
+}
+
+#month {
+	position: relative;
+    font-size: 30px;
+    display: inline-block;
+    width: 10%;
+}
+
+.date {
+	position: relative;
+    font-size: 30px;
+    display: inline-block;
+    width: 10%;
+}
+
+.year {
+	position: relative;
+    font-size: 30px;
+    display: inline-block;
+    width: 10%;
+}
+
+.day {
+	position: relative;
+    font-size: 30px;
+    display: inline-block;
+    width: 10%;
+}
+
+#dates {
+
+}
