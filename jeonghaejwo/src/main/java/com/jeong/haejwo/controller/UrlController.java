@@ -16,7 +16,6 @@ public class UrlController {
 	private String getUrl(String url, String rootPath) {
 		return url.replace(rootPath + "/path", "");
 	}
-	
 	@RequestMapping("/path/**")
 	public ModelAndView goJsp(HttpServletRequest req, ModelAndView mav) {
 		String url = req.getRequestURI();

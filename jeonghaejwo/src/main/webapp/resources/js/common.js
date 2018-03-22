@@ -1,183 +1,67 @@
-/**
- * 
- */
 
-function pageMove(param){
-	if(param){
-		document.getElementById("urlStr").value = param;
-		$("#urlForm").submit();
-	}else{
-		alert("url을 입력해주세요.");
-	}
-}
+//로딩
+var spinner;
+	var lodingST = false;
+	var opts = {
+		lines : 13, // The number of lines to draw
+		length : 38, // The length of each line
+		width : 17, // The line thickness
+		radius : 45, // The radius of the inner circle
+		scale : 1, // Scales overall size of the spinner
+		corners : 1, // Corner roundness (0..1)
+		color : 'white', // CSS color or array of colors
+		fadeColor : 'transparent', // CSS color or array of colors
+		opacity : 0.25, // Opacity of the lines
+		rotate : 0, // The rotation offset
+		direction : 1, // 1: clockwise, -1: counterclockwise
+		speed : 1, // Rounds per second
+		trail : 60, // Afterglow percentage
+		fps : 20, // Frames per second when using setTimeout() as a fallback in IE 9
+		zIndex : 9999, // The z-index (defaults to 2000000000)
+		className : 'spinner', // The CSS class to assign to the spinner
+		top : '50%', // Top position relative to parent
+		left : '50%', // Left position relative to parent
+		shadow : '#424242', // Box-shadow for the lines
+		position : 'absolute' // Element positioning 
+	};
 
-function urlSubmit(f){
-	return true;
-}
+// 페이지 이동할 때 로딩화면 나옴
+window.onbeforeunload = function(e){
+	var blindHeight = $(document).height();  
+	var blindWidth = $(window).width();
+	$(function() {
+		spinner = new Spinner(opts).spin().el;
+		$('body').append(spinner);
+		$('.common_blind').css({'width':blindWidth,'height':blindHeight});  
 
-var AjaxUtilDx = function (url, dxObj, type, dataType){
-	if(!url){
-		alert("url정보가 없습니다.");
-		return null;
-	}
-	this.url = url;
-	var initData = {};
-	
-	if(dxObj && dxObj instanceof window.dhtmlXForm){
-		var value = dxObj.getFormData();
-		this.param = JSON.stringify(value);
-	}else if(dxObj && dxObj instanceof dhtmlXGridObject ){
-		var rowId = dxObj.getSelectedRowId();
-		var colCnt = dxObj.getColumnCount();
-		for(var i=0;i<colCnt;i++){
-			var name = dxObj.getColumnId(i);
-			var value = dxObj.cells(rowId, i).getValue();
-			initData[name] = value;
-		}
-		this.param = JSON.stringify(initData);
-	}
-	
-	this.type = type?type:"POST";
-	this.dataType = dataType?dataType:"json";
-	this.callbackSuccess = function(json){
-    	var url = json.url;
-    	var data = json.data;
-    	var msg = json.msg;
-    	if(msg){
-    		alert(msg);
-    	}
-    	if(url){
-        	pageMove(url);
-    	}
-	}
-	
-	this.setCallbackSuccess = function(callback){
-		this.callbackSuccess = callback;
-	}
-	
-	this.send = function(callback){
-		if(callback){
-			this.callbackSuccess = callback;
-		}
-		$.ajax({ 
-	        type     : this.type
-	    ,   url      : this.url
-	    ,   dataType : this.dataType 
-	    ,   beforeSend: function(xhr) {
-	        xhr.setRequestHeader("Accept", "application/json");
-	        xhr.setRequestHeader("Content-Type", "application/json");
-	    }
-	    ,   data     : this.param
-	    ,   success : this.callbackSuccess
-	    ,   error : function(xhr, status, e) {
-		    	alert("에러 : "+e);
-		},
-		done : function(e) {
-		}
-		});
-	}
-}
-var AjaxUtil = function (url, params, type, dataType){
-	if(!url){
-		alert("url정보가 없습니다.");
-		return null;
-	}
-	this.url = url;
-	
-	var initData = {}	
-	this.param = JSON.stringify(initData);
-	if(params){
-		var paramArr = params.split(",");
+        //애니메이션 효과
+        $('.common_blind').fadeIn(1000);
+	});
+    if(e != null && e != undefined){
+        $('.spinner').css('display','');
+        $(window).load(function() {
+            $('.spinner').css('display', 'none');
+            $('.common_blind').hide();  
+         });
+    }
+};
 
-		var data = {};
-		for(var i=0,max=paramArr.length;i<max;i++){
-			var objType =  paramArr[i].split("_")[0];
-			var objName = paramArr[i].split("_")[1];
-			
-			if(objType=="it"){
-				data[objName] = $("input[name=" + objName +"]").val();
-			}else if(objType=="s"){
-				data[objName] = $("select[name=" + objName +"]").val();
-			}else if(objType=="t"){
-				data[objName] = $("textarea[name=" + objName +"]").val();
-			}
-		}
-		this.param = JSON.stringify(data);
-		alert(this.param);
-	}
-	this.type = type?type:"POST";
-	this.dataType = dataType?dataType:"json";
-	this.callbackSuccess = function(json){
-    	var url = json.url;
-    	var data = json.data;
-    	var msg = json.msg;
-    	if(msg){
-    		alert(msg);
-    	}
-    	if(url){
-        	pageMove(url);
-    	}
-	}
+function lodingSt(){
+	var blindHeight = $(document).height();  
+	var blindWidth = $(window).width();
+	$(function() {
+		spinner = new Spinner(opts).spin().el;
+		$('body').append(spinner);
+		
+		$('.common_blind').css({'width':blindWidth,'height':blindHeight});  
+        //애니메이션 효과
+        $('.common_blind').fadeIn(1000);  
+		$('.spinner').css('display','block');
+	});
 	
-	this.setCallbackSuccess = function(callback){
-		this.callbackSuccess = callback;
-	}
-	
-	this.send = function(callback){
-		if(callback){
-			this.callbackSuccess = callback;			
-		}
-		$.ajax({ 
-	        type     : this.type
-	    ,   url      : this.url
-	    ,   dataType : this.dataType 
-	    ,   beforeSend: function(xhr) {
-	        xhr.setRequestHeader("Accept", "application/json");
-	        xhr.setRequestHeader("Content-Type", "application/json");
-	    }
-	    ,   data     : encodeURIComponent(this.param)
-	    ,   success : this.callbackSuccess
-	    ,   error : function(xhr, status, e) {
-		    	alert("에러 : "+e);
-		},
-		done : function(e) {
-		}
-		});
-	}
 }
 
-
-function mdel(mid){
-	if(confirm("삭제하시겠습니까?")){
-		$("#mode").val("del");
-		$("#userid").val(mid);
-		var au = new AjaxUtil("/user/userlistaction","it_mode,it_userid");
-		au.setCallbackSuccess(returnDel);
-		au.send();
-	}
-}
-function returnDel(list){
-	var url = list.url;
-	var data = list.data;
-	var msg = list.msg;
-	alert(msg);
-	pageMove(url);
-}
-function sess_chg(ids, vals){
-	if(confirm("권한을 설정하시겠습니까?")){
-		$("#userid").val(ids);
-		$("#role").val(vals);
-		var au = new AjaxUtil("/exam/user/sessionRegi","userid,role");
-		au.setCallbackSuccess(returnSession);
-		au.send();
-	}
-}
-function returnSession(result){
-	var url = result.url;
-	alert("설정되었습니다.");
-	pageMove(url);
-}
-
-function alert(res){
-	dhtmlx.alert(res);
+function lodingEnd(){
+	$('.spinner').css('display', 'none');
+	 $('.common_blind').hide();  
 }

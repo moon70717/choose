@@ -6,6 +6,68 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 </head>
+<<<<<<< HEAD
+<link rel="stylesheet" type="text/css" href="${root}/resources/css/haejwo.css${ver}"/>
+<body>
+	<div id="map" class="map"></div>
+	<div id="right-panel"></div>
+	<input type="submit" id="submit">
+	<div id="directions-panel"></div>
+</body>
+
+<script>
+
+	var nLat, nLng, waypoint;
+	var routeSegment = 0, ways;
+	var waypts = [];
+	var directionsService;
+	var directionsDisplay;
+	
+	//현재 위치를 받아오는 부분 
+	function getLocation() {
+		if (navigator.geolocation) {
+			navigator.geolocation.getCurrentPosition(showPosition);
+
+		} else {
+			alert("Geolocation is not supported by this browser.");
+		}
+	}
+	function showPosition(position) {
+		nLat = position.coords.latitude;
+		nLng = position.coords.longitude;
+	}
+	//이걸로 현재위치를 받아오는걸 호출
+	getLocation();
+
+	//api에서 경유지를 받아옴
+	//현재 되어있는 url은 테스트용 url이므로/api/tour_api 로 변경할것
+	//ajax 필요 데이터 : 현재위치, 횟수, 범위, 컨텐츠id
+	//현재위치: mapX, mapY ,횟수:times, 범위: radius , 컨텐츠id: code, 
+	
+	$.ajax({
+		url : "/map/api",
+		type : "get",
+		success : function(res) {
+			//console.log(res.json);
+			waypoint = JSON.parse(res.json);
+			waypoint = waypoint.response.body.items.item;
+			console.log(waypoint);
+		}
+	});
+
+	//지도를 현재위치로 이동시키고 길찾기 서비스를 호출시킴
+	function initMap() {
+		directionsService = new google.maps.DirectionsService;
+		directionsDisplay = new google.maps.DirectionsRenderer;
+		//center부분이 현재위치인데 geoloation으로 받아온 위치로 변경해놔야됨
+		var map = new google.maps.Map(document.getElementById('map'), {
+																		zoom : 16, 
+																		center : {
+																					lat : 37.566535,
+																					lng : 126.97796919999999
+																					}
+																		});
+=======
 <body>
 	<div id="map" style="width: 500px; height: 500px"></div>
 	<div id="right-panel"></div>
@@ -64,6 +126,7 @@
 				lng : 126.97796919999999
 			}
 		});
+>>>>>>> refs/remotes/origin/master
 		directionsDisplay.setMap(map);
 
 		document.getElementById('submit').addEventListener('click', function() {
