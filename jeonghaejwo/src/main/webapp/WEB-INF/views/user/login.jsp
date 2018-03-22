@@ -3,16 +3,6 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<<<<<<< HEAD
-<head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-
-
-
-
-</body>
-</html>
-=======
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>로그인</title>
 </head>
@@ -80,4 +70,3 @@
 	<div id="winVP"></div>
 </body>
 </html>
->>>>>>> refs/remotes/origin/master
