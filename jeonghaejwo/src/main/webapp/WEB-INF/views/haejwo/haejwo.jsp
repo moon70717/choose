@@ -9,6 +9,9 @@
 
 <script src="${root}/resources/js/haejwo.js" charset="utf-8"></script>
 <link rel="stylesheet" type="text/css" href="${root}/resources/css/haejwo.css${ver}" />
+<script>
+
+</script>
 <body>
 
 	<!-- 메인 컨테이너 -->
@@ -19,12 +22,11 @@
 		
 		<!-- 사용자 입력란 -->
 		<div class='input_container'>
-		
 			<div class='user_setting'>
 				<div class="location_input">
 					<input class="location_input_text" id="loInput" type="text">
 					<span class="highlight"></span> <span class="bar"></span>
-					<span><button class="loBtn" onclick="getLatLng($('#loInput')[0].value)">
+					<span><button class="loBtn" onclick="getLatLng($('#loInput')[0].value, $('#loInput')[0].id)">
 					<i class="glyphicon glyphicon-search"></i>
 					</button></span>
 					<label>My Location</label>
@@ -33,7 +35,7 @@
 					<input class="location_input_text" id="desInput" type="text">
 					<span class="highlight"></span> <span class="bar"></span>
 					<span>
-					<button class="deBtn" onclick="getLatLng($('#desInput')[0].value)">
+					<button class="deBtn" onclick="getLatLng($('#desInput')[0].value, $('#desInput')[0].id)">
 					<i class="glyphicon glyphicon-search"></i>
 					</button>
 					</span>
@@ -92,6 +94,14 @@
 	</div>
 </body>
 <script>
+
+$(function(){
+	  $('#loInput').keypress(function(key){
+		  if (key.keyCode == 13) {
+		  getLatLng($('#loInput')[0].value, $('#loInput')[0].id);
+		  }
+	  });
+	});
 /* 목적지 셀랙트 박스  */
  function deSelectBox(){
 	 var selectBoxValue = document.getElementById("deSelectBox").value;
@@ -303,7 +313,7 @@ function sendVariable(loInput, desInput){
 
 	
 	//입력 주소를 검색하는부분(버튼)
-	function getLatLng(place){
+	function getLatLng(place, id){
 		var geocoder = new google.maps.Geocoder();
 		geocoder.geocode({
 			address : place,  
@@ -317,6 +327,7 @@ function sendVariable(loInput, desInput){
 						var latlng = r.geometry.location;
 						var address = r.formatted_address;
 						console.log(latlng.lat()+","+latlng.lng());
+						$( "#"+id)[0].value = address;
 					}
 				}
 			}

@@ -45,44 +45,8 @@ color:white;
 	grid-area:contents2;
     height: 60px;
     overflow: hidden;
-    display: grid;
-	grid-template-columns: repeat(3, 1fr);
-  	grid-template-areas: 
-    	"main_msg1 main_msg2 main_msg3";
-    padding: 0px;
 }
 
-.main_msg1{
-	animation: mymove 8s infinite;
-	display: inline-block;
-	position: relative;
-	grid-area: main_msg1;
-	width: 175px;
-}
-
-.main_msg2{
-display: inline-block;
-grid-area: main_msg2;
-    width: 68px;
-}
-.main_msg3{
-	animation: mymove 10s infinite;
-	display: inline-block;
-	position: relative;
-	grid-area: main_msg3;
-	 width: 127px;
-}
-@keyframes mymove {
-    0%   {top: 0px; }
-    12%  {top: -50px; }
-    24%  {top: -100px; }
-    36%  {top: -150px; }
-    48%  {top: -200px; }
-    60%  {top: -150px; }
-    72%  {top: -100px; }
-    84%  {top: -50px; }
-    96%  {top: 0px; }
-}
 .contents3{
 grid-area:contents3;
 }
@@ -103,15 +67,35 @@ grid-area:logingit;
 }
 
 </style>
+<script>
+$(document).ready(function(){
+	$(".default_container").fadeIn("slow");
+});
+
+var tickr=[
+	'gogogo',
+	'살까 말까 할 때는 <del>사지마라</del>사라',
+	'말할까 말까 할 때는 말해라',
+	'줄까 말까 할 때는 주지마라',
+	'먹을까 말까 할 때는 <del>먹지마라</del>먹어라'
+	];
+
+	$('#main_msg').t(
+	tickr.join(x='<ins>2</ins><del>*</del>')+x,
+	{speed:30,repeat:true,pause_on_click:true}
+	);
+</script>
 </head>
 <body> 
 <div class='login_containers'>
-	<div class='contents1'>뭐넣을깡? <br> 날씨?</div>
+	<div class='contents1'>
+	<div class='wrapTri'>
+		<div class='section'>
+		<div class='downTri'></div></div>
+	</div>
+	</div>
 	<div class='contents2'> 
-	<div><span class='main_msg1'>갈까 말까,<br>살까 말까,<br>말할까 말까,<br>줄까 말까,<br>먹을까 말까,</span></div>
-	<div><span class='main_msg2'>할 때는</span></div>
-	<div><span class='main_msg3'>가라<br>사라<br>말해라<br>줘라<br>먹어라<br>먹지마라<br>주지마라<br>말하지마라<br>사지마라<br>가지마라</span></div>
-	
+	<div><pre class='main_msg'></pre></div>
 	
 	
 	</div>
@@ -122,9 +106,5 @@ grid-area:logingit;
 	<div class='logingit'>깃 로그인</div>
 </div>
 </body>
-<script>
-$(document).ready(function(){
-	$(".default_container").fadeIn("slow");
-});   
-</script>
+
 </html>

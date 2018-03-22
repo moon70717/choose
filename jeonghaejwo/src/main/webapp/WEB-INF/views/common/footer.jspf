@@ -2,21 +2,15 @@
     pageEncoding="UTF-8"%>
 <!-- 하단 -->
 	<div class='footer'>
-		<div class="footer_container">
-			<div class="row">
-				<div class="col-md-3 col-sm-6 col-xs-12">
-				<img src='${root}/resources/imgs/logo.jpg' class='logo'/>
-				</div>
-
-				<div class="col-md-9 col-sm-6 col-xs-12">
-					<ul class="footer_menu">
-						<span>Menu</span>
-						<li><a href="#">Home</a></li>
-						<li><a href="#">About</a></li>
-						<li><a href="#">Blog</a></li>
-						<li><a href="#">Gallery </a></li>
-					</ul>
-				</div>
-			</div>
-		</div>
+				<div class='f_logo'><img src='${rPath}/imgs/cat.png' /></div>
+				<div class='f_face'>1</div>
+				<div class='f_goo'>2</div>
+				<div class='f_twt'>3</div>
+				<div class='f_git'>4</div>
+				<div class='f_ins'>5</div>
+				<div class='f_hr'><hr></div>
+				<div class='f_text1'>7</div>
+				<div class='f_text2'>8</div>
+				<div class='f_text3'>9</div>
+			
 	</div>
