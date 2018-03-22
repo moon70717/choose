@@ -1,12 +1,21 @@
 @charset "UTF-8";
 
 body {
+	font-family: 'dohyeon';
 	background-color: black;
 	color: white;
 	/* background-repeat: no-repeat;
     background-size: 100%; */
 }
-
+/* 블라인드 */
+.common_blind{
+	position:absolute;  
+	left:0;
+	top:0;
+	z-index:9000;  
+	background-color:rgba(0, 0, 0, 0.69);  
+	display:none;
+}
 /* 상단 헤더 */
 .header {
 	background-color: black;
@@ -16,46 +25,86 @@ body {
 }
 /* 하단 풋터 */
 .footer {
-	
 	font-family: 'yeonsung';
     width: 93%;
 	padding-top: 25px;
 	background-color: black;
 	text-align: center;
-	/* position:fixed;
-    bottom:0; */
+	display: grid;
+	grid-template-columns: repeat(9, 1fr);
+  	grid-template-areas: 
+    	". logo . face goo twt git ins ."
+    	". hr hr hr hr hr hr hr ."
+    	". . text1 text1 text2 text2 text3 text3 .";
 }
 
-.logo {
-	text-align: center;
-	color: #c0c0c0;
-	font-weight: 800;
-	font-size: 30px;
-	width: 159px;
+.f_logo {
+  	grid-area: logo;
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+.f_logo>img{
+	width: 120px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    margin: auto;
+}
+.f_face{
+  grid-area: face;
+}
+.f_goo{
+  grid-area: goo;
+  }
+.f_twt{
+  grid-area: twt;
+  }
+.f_git{
+  grid-area: git;
+  }
+.f_ins{
+  grid-area: ins;
+  }
+.f_hr{
+  grid-area: hr;
+  }
+.f_text1{
+  grid-area: text1;
+  }
+.f_text2{
+  grid-area: text2;
+  }
+.f_text3{
+  grid-area: text3;
+  }
+
+/* 삼각형 */
+.wrapTri {
+    width: 100%;
+    height: 100%;
+    margin: 0 auto;
+}
+.wrapTri .section {
+    height: 69px;
+    padding: 100px 0;
+    background: #000;
+   display: block;
 }
 
-.address, .footer_menu {
-	list-style: none;
+.downTri {
+   position: relative;
+   margin: 0 auto;
+   cursor: pointer;
+   width: 0;
+   height: 0;
+   border-right: 17px solid transparent;  
+   border-left: 17px solid transparent; 
+   border-top: 25px solid #fff;
 }
-
-.address span, .footer_menu span {
-	color: #c0c0c0;
-	font-weight: 800;
-	border-bottom: 1px solid #c0c0c0;
-	padding-bottom: 10px;
-	margin-bottom: 20px;
-	display: block;
-	text-transform: uppercase;
-	font-size: 16px;
-	letter-spacing: 3px;
-}
-
-.address p, .footer_menu li a {
-	color: #c0c0c0;
-	letter-spacing: 2px;
-	font-size: 15px;
-	text-decoration: none;
-}
+ 
 /* 폰트 모음 */
 
 @font-face {

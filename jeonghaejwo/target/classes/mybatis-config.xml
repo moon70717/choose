@@ -8,4 +8,9 @@
 		<setting name="defaultExecutorType" value="REUSE" />
 	</settings>
 
+	<mappers>
+		<mapper resource="sql/user.xml"/>
+		<mapper resource="sql/review.xml"/>
+		<!--<mapper resource="sql/connection_info.xml"/>-->
+	</mappers>
 </configuration>  

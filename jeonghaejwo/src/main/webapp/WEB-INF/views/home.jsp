@@ -13,123 +13,98 @@ h1{
 text-align:center;
 color:white; 
 }
-.default_container{
-margin: auto;
-z-index: 1;
-margin-top:5%;
-	width: 50%;
-    height: 30%; 
-    background-color:rgba(191, 191, 191, 0.79);
-    border-radius: 15%;
-}
 
-.login_container {
-    margin: auto;
-    z-index: 1;
-    overflow: auto; /* Enable scroll if needed */
-    padding: 1px;
-    
+.login_containers{
+	display: grid;
+	grid-template-columns: repeat(12, 1fr);
+  	grid-template-areas: 
+    	". contents1 contents1 . . . . . . contents3 contents3 ."
+    	". contents1 contents1 . contents2 contents2 contents2 contents2 . contents3 contents3 ."
+    	". . . . . . . . . . . ."
+    	". . . . . logintxt logintxt . . . . ."
+    	". . . . . loginface loginface . . . . ."
+    	". . . . . logingoo logingoo . . . . ."
+    	". . . . . logingit logingit . . . . ."
+    	". . . . . . . . . . . .";
+    grid-gap: 15px;
+    padding: 0px;
+    width: 92%;
 }
-.img_container{
-width:40%;
- margin: auto;
- 
-}
-.img_container>img{
-width:100%; 
-position:relative;
-filter:opacity(30%); 
-
-}
-.btn_container{
-
-position:relative;
-top: 100%;
-}
-.fa {
-  padding: 15px;
-  font-size: 30%;
-  width: 50%;
+.login_containers > div {
+  /* background-color: rgba(255, 255, 255, 0.8); */
   text-align: center;
-  text-decoration: none;
-  margin: 2px 2px;
+  padding: 20px 0;
+  font-size: 30px;
 }
 
-.fa:hover {
-    opacity: 0.8;
+
+.contents1{
+  grid-area: contents1;
+}
+.contents2{
+	grid-area:contents2;
+    height: 60px;
+    overflow: hidden;
 }
 
-.fa-facebook {
-	background: #3b5998;
-	border-color:#172d5e;
-	color: white;
+.contents3{
+grid-area:contents3;
+}
+.logintxt{
+grid-area:logintxt;
+}
+.loginface{
+grid-area:loginface;
+}
+.loginface{
+grid-area:loginface;
+}
+.logingoo{
+grid-area:logingoo;
+}
+.logingit{
+grid-area:logingit;
 }
 
-.fa-twitter {
-	background: #00aced;
-	border-color:#043d52;
-	color: white;
-}
-.fa-google{
-  	background: #c32f10;
-	border-color:#6b1301;
-  	color: white;
-}
-.fa-github{
-	background: #666666;
-	border-color:#333333;
-	color: white;
-}
-.btn_container>div{
-	text-align: center;
-}
-/* Change styles for span and cancel button on extra small screens */
-@media screen and (max-width: 300px) {
-
-}
 </style>
-</head>
-<body>
-<h1>WELCOME Jeung Hae Jwo</h1>
-<div class="default_container">
-<div class="login_container">
-<h1>Login or Sign Up</h1>
-<div class="img_container">
-	<img src="../resources/imgs/login/tree.png">
-</div>
- 	<!-- 버튼 -->
-    <div class="btn_container">
-    <button class="btn"> 
-	<div id="btn_facebook">        
-    	<img  src="${root}/resources/imgs/login/facebook.ico" width="30" height="30"/></div>
-    	<span> Login with FaceBook</span>
-      </button>
-      <button class="btn"> 
-      <div id="btn_twitter">
-                      
-    	<img  src="${root}/resources/imgs/login/twitter.ico" width="30" height="30"/></div>
-    	<span> Login with Twitter</span>
-      </button>
-      <button class="btn">
-      <div id="btn_google">
-                       
-    	<img  src="${root}/resources/imgs/login/google.ico" width="30" height="30"/></div>
-    	<span>Login with Google</span>
-      </button>
-      <button class="btn">  
-      <div id="btn_github">
-                     
-    	<img  src="${root}/resources/imgs/login/git.ico" width="30" height="30"/></div>
-    	<span>Login with GitHub</span>
-      </button>
-
-</div>
-</div>
-</div>
-
 <script>
 $(document).ready(function(){
 	$(".default_container").fadeIn("slow");
-});   
+});
+
+var tickr=[
+	'gogogo',
+	'살까 말까 할 때는 <del>사지마라</del>사라',
+	'말할까 말까 할 때는 말해라',
+	'줄까 말까 할 때는 주지마라',
+	'먹을까 말까 할 때는 <del>먹지마라</del>먹어라'
+	];
+
+	$('#main_msg').t(
+	tickr.join(x='<ins>2</ins><del>*</del>')+x,
+	{speed:30,repeat:true,pause_on_click:true}
+	);
 </script>
+</head>
+<body> 
+<div class='login_containers'>
+	<div class='contents1'>
+	<div class='wrapTri'>
+		<div class='section'>
+		<div class='downTri'></div></div>
+	</div>
+	</div>
+	<div class='contents2'> 
+	<div><pre class='main_msg'></pre></div>
+	
+	
+	</div>
+	<div class='contents3'>뭐넣지? <br>달력?</div>
+	<div class='logintxt'>로그인을 하자</div>
+	<div class='loginface'>페이스북로그인</div>
+	<div class='logingoo'>구글로그인</div>
+	<div class='logingit'>깃 로그인</div>
+</div>
+</body>
+
 </html>

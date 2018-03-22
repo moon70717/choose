@@ -1,3 +1,6 @@
+
+	
+
 //로딩
 var spinner;
 	var lodingST = false;
@@ -8,7 +11,7 @@ var spinner;
 		radius : 45, // The radius of the inner circle
 		scale : 1, // Scales overall size of the spinner
 		corners : 1, // Corner roundness (0..1)
-		color : 'red', // CSS color or array of colors
+		color : 'white', // CSS color or array of colors
 		fadeColor : 'transparent', // CSS color or array of colors
 		opacity : 0.25, // Opacity of the lines
 		rotate : 0, // The rotation offset
@@ -16,7 +19,7 @@ var spinner;
 		speed : 1, // Rounds per second
 		trail : 60, // Afterglow percentage
 		fps : 20, // Frames per second when using setTimeout() as a fallback in IE 9
-		zIndex : 209, // The z-index (defaults to 2000000000)
+		zIndex : 9999, // The z-index (defaults to 2000000000)
 		className : 'spinner', // The CSS class to assign to the spinner
 		top : '50%', // Top position relative to parent
 		left : '50%', // Left position relative to parent
@@ -26,22 +29,35 @@ var spinner;
 
 // 페이지 이동할 때 로딩화면 나옴
 window.onbeforeunload = function(e){
+	var blindHeight = $(document).height();  
+	var blindWidth = $(window).width();
 	$(function() {
 		spinner = new Spinner(opts).spin().el;
 		$('body').append(spinner);
+		$('.common_blind').css({'width':blindWidth,'height':blindHeight});  
+
+        //애니메이션 효과
+        $('.common_blind').fadeIn(1000);
 	});
     if(e != null && e != undefined){
         $('.spinner').css('display','');
         $(window).load(function() {
             $('.spinner').css('display', 'none');
+            $('.common_blind').hide();  
          });
     }
 };
 
 function lodingSt(){
+	var blindHeight = $(document).height();  
+	var blindWidth = $(window).width();
 	$(function() {
 		spinner = new Spinner(opts).spin().el;
 		$('body').append(spinner);
+		
+		$('.common_blind').css({'width':blindWidth,'height':blindHeight});  
+        //애니메이션 효과
+        $('.common_blind').fadeIn(1000);  
 		$('.spinner').css('display','block');
 	});
 	
@@ -49,4 +65,5 @@ function lodingSt(){
 
 function lodingEnd(){
 	$('.spinner').css('display', 'none');
+	 $('.common_blind').hide();  
 }
