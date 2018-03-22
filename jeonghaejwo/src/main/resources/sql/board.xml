@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<!--   private int boardNo;
+	   private String userNo;
+	   private String boardTitle;
+	   private String boardContent;
+	   private String regist;
+	   private int hit;   -->
+  
+<mapper namespace="board">
+	<select id="selectBoard" parameterType="bo" resultType="bo">
+		select boardNo, userNo, boardTitle, boardContent, regist, hit
+		form board
+		where boardNo=#{boardNo}
+	</select>
+	
+	<select id="selectBoardOrder" parameterType="bo" resultType="bo">
+		select boardNo, userNo, boardTitle, boardContent, regist,hit
+		form board
+		order by regist desc
+	</select>
+	
+	<select id="selectBoardHit" parameterType="bo" resultType="bo">
+		select hit form board where boardNo=#{boardNo}
+	</select>
+		
+	<insert id="insertBoard" parameterType="bo">
+		insert into board
+		values(#{userNo},#{boardTitle},#{boardContent},default,default)
+	</insert>
+	
+	<update id="updateBoard" parameterType="bo">
+	update board
+	set boardTitle=#{boardTitle}, boardContent=#{boardContent}
+	where boardNo=#{boardNo}
+	</update>
+	
+	<update id="updateBoardHit" parameterType="bo">
+	update board
+	set hit=#{hit}
+	where boardNo=#{boardNo}
+	</update>
+	
+	<delete id="deleteBoard" parameterType="bo">
+	delete from board
+	set hit=#{hit}
+	where boardNo=#{boardNo}
+	</delete>
+	
+
+</mapper>  
