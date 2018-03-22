@@ -2,7 +2,14 @@
     pageEncoding="UTF-8"%>
 <!-- 하단 -->
 	<div class='footer'>
-				<div class='f_logo'><img src='${rPath}/imgs/cat.png' /></div>
+				<div class='f_logo'>
+					<div id='cat_msg_div'>
+						<img src='${rPath}/imgs/bubble.png' />
+						<div id="cat_say">건들면 죽인다!</div>
+					</div>
+					
+					<div id='cat_div'><img src='${rPath}/imgs/cat.png' /></div>
+				</div>
 				<div class='f_face'>1</div>
 				<div class='f_goo'>2</div>
 				<div class='f_twt'>3</div>
@@ -12,5 +19,12 @@
 				<div class='f_text1'>7</div>
 				<div class='f_text2'>8</div>
 				<div class='f_text3'>9</div>
-			
 	</div>
+	
+<script>
+$('#cat_div').stop().click(function(){
+	$('#cat_msg_div').fadeIn(2000, function(){
+		$('#cat_msg_div').fadeOut();
+	});
+	});
+</script>

@@ -43,10 +43,33 @@ color:white;
 }
 .contents2{
 	grid-area:contents2;
-    height: 60px;
-    overflow: hidden;
 }
-
+#main_msg{
+	font-family: 'hanna';
+    font-size: 30px;
+    color: white;
+    border: solid 3px white;
+    background-color: black;
+}
+.msg_container{
+    position: relative;
+}
+.msg_container>.msg_img1{
+	height: 25px;
+	width: 25px;
+	position: absolute;
+    top: -15px;
+    z-index: 200;
+    left: 0;
+}
+.msg_container>.msg_img2{
+	height: 25px;
+	width: 25px;
+	position: absolute;
+    bottom: -15px;
+    z-index: 200;
+    right: 0;
+}
 .contents3{
 grid-area:contents3;
 }
@@ -68,20 +91,22 @@ grid-area:logingit;
 
 </style>
 <script>
+$(document).ready(function(){
+	var tickr=[
+		'Jeong Hae Jwo<ins>2</ins> .com',
+		'갈까 말까 할 때는<ins>1</ins> 가라',
+		'살까 말까 할 때는 <ins>1</ins><del>사지마라</del>사라',
+		'말할까 말까 할 때는<ins>1</ins> 말하지마라',
+		'줄까 말까 할 때는 줘라',
+		'먹을까 말까 할 때는 <ins>1</ins><del>먹지마라</del>먹어라'
+		];
 
+		$('#main_msg').t(
+		tickr.join(x='<ins>2</ins><del>*</del>')+x,
+		{speed:200,repeat:true,pause_on_click:true}
+		);
+})
 
-var tickr=[
-	'gogogo',
-	'살까 말까 할 때는 <del>사지마라</del>사라',
-	'말할까 말까 할 때는 말해라',
-	'줄까 말까 할 때는 주지마라',
-	'먹을까 말까 할 때는 <del>먹지마라</del>먹어라'
-	];
-
-	$('#main_msg').t(
-	tickr.join(x='<ins>2</ins><del>*</del>')+x,
-	{speed:200,repeat:true,pause_on_click:true}
-	);
 </script>
 </head>
 <body> 
@@ -92,8 +117,13 @@ var tickr=[
 		<div class='downTri'></div></div>
 	</div>
 	</div>
-	<div class='contents2'> 
-	<div><pre class='main_msg'></pre></div>
+	<div class='contents2'>
+	 
+	<div class=msg_container>
+	<img class="msg_img1" src="${rPath}/imgs/left_quot.png" /> 
+	<img class="msg_img2" src="${rPath}/imgs/right_quot.png" />
+	<pre id='main_msg'></pre>
+	</div>
 	
 	
 	</div>

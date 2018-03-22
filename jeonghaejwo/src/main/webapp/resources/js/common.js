@@ -58,7 +58,6 @@ function lodingSt(){
         $('.common_blind').fadeIn(1000);  
 		$('.spinner').css('display','block');
 	});
-	
 }
 
 function lodingEnd(){

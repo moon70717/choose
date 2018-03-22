@@ -44,7 +44,7 @@ body {
     height: 100%;
     position: relative;
 }
-.f_logo>img{
+#cat_div>img{
 	width: 120px;
     position: absolute;
     top: 0;
@@ -52,6 +52,27 @@ body {
     bottom: 0;
     right: 0;
     margin: auto;
+}
+#cat_msg_div{
+	position: relative;
+    display: none;
+}
+#cat_msg_div>img{
+	width: 120px;
+    position: absolute;
+    top: -135px;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    margin: auto;
+    color: black;
+}
+#cat_say{
+	position: absolute;
+	font-size: 20px;
+	color: red;
+	top: -90px;
+	left: 9px;
 }
 .f_face{
   grid-area: face;
