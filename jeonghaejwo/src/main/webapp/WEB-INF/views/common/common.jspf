@@ -1,12 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<<<<<<< HEAD
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+
 <c:set var="root" value="${pageContext.request.contextPath}"/>
-<c:set var="ver" value="?version=1.12.34"/>
+<c:set var="ver" value="?version=1.0.0"/>
 <c:set var="rPath" value="${root}/resources"/>
 <c:set var="pPath" value="${root}/path"/>
+<c:set var="dPath" value="${rPath}/dx"/>
 
 <link rel="stylesheet" type="text/css" href="${root}/resources/css/bootstrap.min.css${ver}"/>
 <link rel="stylesheet" type="text/css" href="${root}/resources/css/bootstrap.css${ver}"/>
@@ -70,14 +74,7 @@
 
 
 =======
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
-<c:set var="root" value="${pageContext.request.contextPath}"/>
-<c:set var="ver" value="?version=1.0.0"/>
-<c:set var="rPath" value="${root}/resources"/>
-<c:set var="pPath" value="${root}/path"/>
-<c:set var="dPath" value="${rPath}/dx"/>
 
 <link rel="stylesheet" type="text/css" href="${dPath}/fonts/font_roboto/roboto.css${ver}"/>
 <link rel="stylesheet" type="text/css" href="${dPath}/dhtmlx.css${ver}"/>
