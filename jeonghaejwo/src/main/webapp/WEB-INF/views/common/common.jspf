@@ -36,6 +36,8 @@
 <script src="${root}/resources/js/clock.js${ver}" charset="utf-8"></script>
 <!-- 시계 -->
 <script src="${root}/resources/js/t.js${ver}" charset="utf-8"></script>
+<!-- 로그인 로그아웃부분만 빼서. -->
+<script src="${root}/resources/js/loginApi.js${ver}" charset="utf-8"></script>
 
 <!-- 공통 바디 -->
 <div class='common_blind'></div>
