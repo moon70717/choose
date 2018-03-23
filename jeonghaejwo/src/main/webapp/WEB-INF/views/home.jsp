@@ -191,7 +191,7 @@ span.buttonText {
 	function attachSignin(element) {
 		console.log(element.id);
 		auth2.attachClickHandler(element, {});
-	}
+	}  
 	function signOut() {
 		var auth2 = gapi.auth2.getAuthInstance();
 		auth2.signOut().then(function() {
