@@ -23,13 +23,7 @@
 
   function attachSignin(element) {
     console.log(element.id);
-    auth2.attachClickHandler(element, {},
-        function(googleUser) {
-          document.getElementById('name').innerText = "Signed in: " +
-              googleUser.getBasicProfile().getName();
-        }, function(error) {
-          alert(JSON.stringify(error, undefined, 2));
-        });
+    auth2.attachClickHandler(element, {});
   }
   </script>
   <style type="text/css">
@@ -74,13 +68,11 @@
   <!-- In the callback, you would hide the gSignInWrapper element on a
   successful sign in -->
   <div id="gSignInWrapper">
-    <span class="label">Sign in with:</span>
     <div id="customBtn" class="customGPlusSignIn">
       <span class="icon"></span>
       <span class="buttonText">Google</span>
     </div>
   </div>
-  <div id="name"></div>
   <script>startApp();</script>
 </body>
 </html>

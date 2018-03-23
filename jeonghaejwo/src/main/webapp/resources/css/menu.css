@@ -6,8 +6,8 @@
     position: fixed;
     z-index: 1;
     top: 0;
-    right:-250px;
-    width: 350px;
+    right:-200px;
+    width: 300px;
 	display: grid;
 	grid-template-columns: repeat(6, 1fr);
   	grid-template-areas: 
@@ -20,6 +20,7 @@
 
 .menu_grid1 {
   grid-area: menu1;
+  width: 50px;
 }
 .menu_grid2 {
   grid-area: menu2;
@@ -79,8 +80,8 @@
   -webkit-transform: rotate(-135deg);
           transform: rotate(-135deg);
   background: none;
-  border-bottom: 4px solid white;
-  border-right: 4px solid white;
+  border-bottom: 4px solid black;
+  border-right: 4px solid black;
   left: 15px;
   top: 10px;
   border-radius: 0px;
@@ -92,8 +93,8 @@
   -webkit-transform: rotate(405deg);
           transform: rotate(405deg);
   background: none;
-  border-bottom: 4px solid white;
-  border-right: 4px solid white;
+  border-bottom: 4px solid black;
+  border-right: 4px solid black;
   left: 14px;
   top: -14px;
   border-radius: 0px;
@@ -104,8 +105,8 @@
   -webkit-transform: rotate(495deg);
           transform: rotate(495deg);
   background: none;
-  border-bottom: 4px solid white;
-  border-right: 4px solid white;
+  border-bottom: 4px solid black;
+  border-right: 4px solid black;
   left: 28px;
   top: 0px;
   border-radius: 0px;
@@ -116,8 +117,8 @@
   -webkit-transform: rotate(-405deg);
           transform: rotate(-405deg);
   background: none;
-  border-bottom: 4px solid white;
-  border-right: 4px solid white;
+  border-bottom: 4px solid black;
+  border-right: 4px solid black;
   left: 0px;
   top: 0px;
   border-radius: 0px;
@@ -129,8 +130,8 @@
   -webkit-transform: rotate(-450deg);
           transform: rotate(-450deg);
   background: none;
-  border-bottom: 5px solid white;
-  border-right: 5px solid white;
+  border-bottom: 5px solid black;
+  border-right: 5px solid black;
   left: 0px;
   top: 20px;
   border-radius: 0px;

@@ -15,19 +15,19 @@ function menuFuc(){
 	    if(navStatus==false){
 	    	navStatus=true;
 	    	$('.menu_grid2').stop().animate({
-	            width: "250px"
+	            width: "200px"
 	        },600);
 	    	$('#mySidenav').stop().animate({
 	            right: "0"
 	        },600);
-	    	$("#mySidenav").css('background-color', "#cacaca");
+	    	$("#mySidenav").css('background-color', "white");
 	    }else{
 	    	navStatus=false;
 	    	$('.menu_grid2').stop().animate({
 	            width: "0"
 	        },600);
 	    	$('#mySidenav').stop().animate({
-	            right: "-250px"
+	            right: "-200px"
 	        },600);
 	    	$("#mySidenav").css('background-color', "");
 	    }
