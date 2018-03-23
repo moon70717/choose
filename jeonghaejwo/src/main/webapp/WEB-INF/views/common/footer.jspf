@@ -16,7 +16,15 @@
 				<div class='f_git'>4</div>
 				<div class='f_ins'>5</div>
 				<div class='f_hr'><hr></div>
-				<div class='f_text1'>7</div>
+				<div class='f_text1'>
+				<div class='loginface'>
+					<div class="fb-login-button" data-max-rows="1" data-size="large" 
+					data-button-type="continue_with" data-show-faces="false" data-auto-logout-link="true" 
+					data-use-continue-as="false" onlogin="checkLoginState();"></div>
+			<!-- <div id="fb-root"></div>
+			<div id="status"></div> -->
+		</div>
+				</div>
 				<div class='f_text2'>8</div>
 				<div class='f_text3'>9</div>
 	</div>

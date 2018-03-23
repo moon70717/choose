@@ -192,7 +192,13 @@ span.buttonText {
 		console.log(element.id);
 		auth2.attachClickHandler(element, {});
 	}
-
+	function signOut() {
+		var auth2 = gapi.auth2.getAuthInstance();
+		auth2.signOut().then(function() {
+			auth2.disconnect();
+			console.log('User signed out.');
+		});
+	}
 	/* ,
 	function(googleUser) {
 	  document.getElementById('name').innerText = "Signed in: " +
@@ -209,7 +215,7 @@ span.buttonText {
 			return;
 		js = d.createElement(s);
 		js.id = id;
-		js.src = 'https://connect.facebook.net/ko_KR/sdk.js#xfbml=1&version=v2.12&appId=178623742931956&autoLogAppEvents=1';
+		js.src = 'https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.12&appId=178623742931956&autoLogAppEvents=1';
 		fjs.parentNode.insertBefore(js, fjs);
 	}(document, 'script', 'facebook-jssdk'));
 
@@ -219,8 +225,8 @@ span.buttonText {
 		if (response.status === 'connected') {
 			testAPI();
 		} else {
-			document.getElementById('status').innerHTML = 'Please log '
-					+ 'into this app.';
+			/* document.getElementById('status').innerHTML = 'Please log '
+					+ 'into this app.'; */
 		}
 	}
 	
@@ -261,9 +267,9 @@ span.buttonText {
 		    FB.api('/me', function(response) {
 		    	console.log(response);
 		      console.log('Successful login for: ' + response.name);
-		      document.getElementById('status').innerHTML =
-		        'Thanks for logging in, ' + response.name + '!';
-		    });
+		      /* document.getElementById('status').innerHTML =
+		        'Thanks for logging in, ' + response.name + '!'; */
+		    }); 
 		  }  
 </script>
 </head>
@@ -287,14 +293,15 @@ span.buttonText {
 
 		</div>
 		<div class='contents3'>
-			뭐넣지? <br>달력?
+		
 		</div>
 		<div class='logintxt'>로그인을 하자</div>
-		<div class='loginface'>	<div class="fb-login-button" data-max-rows="1" data-size="large" 
+		<div class='loginface'>
+			<div class="fb-login-button" data-max-rows="1" data-size="large" 
 			data-button-type="continue_with" data-show-faces="false" data-auto-logout-link="true" 
 			data-use-continue-as="false" onlogin="checkLoginState();"></div>
-			<div id="fb-root"></div>
-			<div id="status"></div>
+			<!-- <div id="fb-root"></div>
+			<div id="status"></div> -->
 		</div>
 		<div class='logingoo'>
 			<div id="gSignInWrapper">
