@@ -16,10 +16,11 @@
 		</where>
 	</select>
 	<select id="selectList" parameterType="map" resultType="map">
-		select * from recommendation
+		select * from recommendation re 
+		left join image img on re.imgNo=img.imgNo
 		<where>
-			no between {startNo} and #[endNo}
+			re.recoNo between #{startNo} and #{endNo}
 		</where>
-
+		order by re.recoNo desc
 	</select>
 </mapper>  

@@ -1,5 +1,7 @@
 package com.jeong.haejwo.controller;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -37,5 +39,29 @@ public class ReviewController {
 	public @ResponseBody List<Map<String, Object>> getList(@RequestParam Map<String, Object> data, Map<String, Object> map, HttpSession hs){
 		return reService.getList(data);
 	}
+	
+	@RequestMapping("/test")
+	public @ResponseBody List<Object> test(@RequestParam Map<String,Object> data){
+		List<Object> test = new ArrayList<Object>();
+		int num=Integer.parseInt((String) data.get("num"));
+		Map<String,Object> temp;
+		for(int i=num;i<num+10;i++) {
+			temp=new HashMap<String, Object>();
+			temp.put("writer", i);
+			temp.put("location", i);
+			temp.put("contents", i);
+			temp.put("num", i);
+			test.add(temp);
+		}
+		temp=new HashMap<String, Object>();
+		temp.put("writer", 11);
+		temp.put("location", 11);
+		temp.put("contents", 11);
+		temp.put("num", 11);
+		temp.put("img", "https://www.google.co.kr/images/branding/googlelogo/2x/googlelogo_color_120x44dp.png");
+		test.add(temp);
+		return test;
+	}
 
+	
 }
