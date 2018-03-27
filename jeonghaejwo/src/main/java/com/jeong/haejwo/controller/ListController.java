@@ -7,6 +7,7 @@ import java.util.Map;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
@@ -38,5 +39,19 @@ public class ListController {
 		result.put("imgNo", null);
 		in.add(result);
 		return in;
+	}
+	
+	@RequestMapping("/re")
+	public @ResponseBody List<Object> reList(@RequestParam Map<String, Object> data){
+		int num=Integer.parseInt((String) data.get("num"));
+		Map<String,Object> temp=new HashMap<String,Object>();
+		List<Object> result=new ArrayList<Object>();
+		for(int i=num;i<num+10;i++) {
+			temp=new HashMap<String,Object>();
+			temp.put("userNo", i);
+			temp.put("re", "테스트중");
+			result.add(temp);
+		}
+		return result;
 	}
 }

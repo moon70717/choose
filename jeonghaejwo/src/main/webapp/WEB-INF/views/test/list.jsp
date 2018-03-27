@@ -7,10 +7,15 @@
 <title>Insert title here</title>
 </head>
 <style>
-#container {
+/* #container {
 	background-color: blue;
 	width: 40%;
 	height: 40%;
+} */
+
+.mui{
+	border: 1px solid black;
+	margin-top: 30px;
 }
 </style>
 <body>
@@ -25,7 +30,7 @@
 			success : function(res) {
 				console.log(res);
 				for(a of res){
-					var temp="<div save='"+a.userNo+"'>";
+					var temp="<div class='mui' save='"+a.userNo+"'>";
 					temp +=JSON.stringify(a);
 					temp +="</div>";
 					$("#container").append(temp);	
@@ -35,7 +40,27 @@
 		});
 	
 	function next(){
-		console.log($("#container").children().last()[0].attributes.save.value);
+		var num=$("#container").children().last()[0].attributes.save.value;
+		num*=1;
+		num+=1;
+		var data={
+			'num' : num
+		};
+		$.ajax({
+			url : "/list/re",
+			data : data,
+			success : function(res){
+				console.log(res);
+				for(a of res){
+					var temp="<div class='mui' save='"+a.userNo+"'>";
+					temp +=JSON.stringify(a);
+					temp +="</div>";
+					$("#container").append(temp);					
+				}
+			}
+		});
+		
+		
 	}
 	</script>
 </body>
