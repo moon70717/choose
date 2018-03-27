@@ -58,47 +58,48 @@ hr {
 }
 /* 새글쓰기 부분 */
 .review_write_container {
-  display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-template-areas: 
-    "tn tt tt tt"
-    "fi fi pr pr"
-    "to to to to"
-    "co co co co"
-    "co co co co";
-  grid-gap: 10px;
-  background-color: #2196F3;
-  padding: 10px;
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	grid-template-areas: "tn tt tt tt" "fi fi pr pr" "to to to to"
+		"co co co co" "co co co co";
+	grid-gap: 10px;
+	background-color: #2196F3;
+	padding: 10px;
 }
-.review_write_container > div {
-  background-color: rgba(255, 255, 255, 0.8);
-  text-align: center;
-  padding: 20px 0;
-  font-size: 10px; 
+
+.review_write_container>div {
+	background-color: rgba(255, 255, 255, 0.8);
+	text-align: center;
+	padding: 20px 0;
+	font-size: 10px;
 }
+
 .title {
-grid-area:tn;
+	grid-area: tn;
 }
 
 .title_write {
-grid-area:tt;
-
-}
-.img_btn{
-grid-area:fi;
+	grid-area: tt;
 }
 
-.img_preview{
-grid-area:pr;
+.img_btn {
+	grid-area: fi;
 }
-.review_tools{
-grid-area:to;
+
+.img_preview {
+	grid-area: pr;
 }
-.review_write_contents{
-grid-area:co;
+
+.review_tools {
+	grid-area: to;
 }
-#preview_img{
-width:80%;
+
+.review_write_contents {
+	grid-area: co;
+}
+
+#preview_img {
+	width: 80%;
 }
 </style>
 </head>
@@ -127,18 +128,18 @@ width:80%;
 				<div class="modal-body">
 					<!-- 내용 -->
 					<div class="review_write_container">
-						<div class="title">
-						제목
-						</div>
+						<div class="title">제목</div>
 						<div class="title_write">
 							<input class="location_input_text" id="loInput" type="text">
 							<span class="highlight"></span> <span class="bar"></span>
 						</div>
 						<div class="img_btn">
-						<f:form name="frmPopup" id="frmPopup" modelAttribute="popupVO" method="post" action="/file/upload" enctype="multipart/form-data">
-							<input type="file" name="uploadFile" id="uploadFile">
-							
-						</f:form>
+							<f:form name="frmPopup" id="frmPopup" modelAttribute="popupVO"
+								method="post" action="/file/upload"
+								enctype="multipart/form-data">
+								<input type="file" name="uploadFile" id="uploadFile">
+
+							</f:form>
 						</div>
 						<div class='img_preview'>
 							<img id="preview_img" src="#" alt="your image" />
@@ -160,14 +161,13 @@ width:80%;
 	</div>
 	<!--  -->
 
-	<div class="review_container">
-		<div class="grid-item photo">
-			<img src="${rPath}/imgs/img_sample.jpg" />
+	<div id="review_container">
+		<div id="review_list">
+			
 		</div>
-		<div class="grid-item writer"></div>
-		<div class="grid-item location"></div>
-		<div class="grid-item contents"></div>
+		<button onclick="nextReview()">next</button>
 	</div>
+
 
 	<%-- <hr>
 	<div class="review_container">
@@ -195,5 +195,45 @@ width:80%;
 			reader.readAsDataURL(input.files[0]);
 		}
 	}
+	
+	//여기서부터 시작
+	$(document).ready(function(){
+		getReview(1);
+	});
+	
+	function nextReview(){
+		var num=$("#review_list").children().last()[0].attributes.num.value;
+		num*=1;
+		num++;
+		console.log(num);
+		getReview(num);
+	}
+	
+	function getReview(data){
+		data*=1;
+		var data={"startNo":data,
+				"endNo":data+10};
+		$.ajax({
+			url : "/review/list",
+			data : data,
+			success : function(res){
+				console.log(res);
+				for(a of res){
+					var temp="";
+					temp+='<div class="review_container" num="'+a.recoNo+'" id="review'+a.recoNo+'">';
+					if(a.imgNo){
+						temp+='<div class="grid-item photo"><img src="'+a.imgPath+'" /></div>';
+					} 
+					temp+='<div class="grid-item writer">'+a.userId+'</div>';
+					temp+='<div class="grid-item location">'+a.placename+'</div>';
+					if(a.comment){
+						temp+='<div class="grid-item contents">'+a.comment+'</div></div>';	
+					}
+					$("#review_list").append(temp);
+				}
+			}
+		});
+	}
+	
 </script>
 </html>
