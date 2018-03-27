@@ -1,13 +1,9 @@
 /* 구글 로그인 */
 	var googleUser = {};
 	var startApp = function() {
-		gapi
-				.load(
-						'auth2',
-						function() {
+		gapi.load('auth2',function() {
 							// Retrieve the singleton for the GoogleAuth library and set up the client.
-							auth2 = gapi.auth2
-									.init({
+							auth2 = gapi.auth2.init({
 										client_id : '408126596281-jd85biotfj4v3ujka45l0u873n449i1q.apps.googleusercontent.com',
 										cookiepolicy : 'single_host_origin',
 									// Request scopes in addition to 'profile' and 'email'
@@ -19,13 +15,41 @@
 
 	function attachSignin(element) {
 		console.log(element.id);
-		auth2.attachClickHandler(element, {});
+		auth2.attachClickHandler(element, {}, 
+			function(googleUser) {
+			$(".f_text2").Html = "Signed in: " + googleUser.getBasicProfile().getName();
+			
+			var userId, userName, ImageURL, Email, loginApi;
+			userId = googleUser.getBasicProfile().getId();
+			userName = googleUser.getBasicProfile().getName();
+			ImageURL = googleUser.getBasicProfile().getImageUrl();
+			Email = googleUser.getBasicProfile().getEmail();
+			loginApi = "google";
+			var data = {
+					'userId' : userId,
+					'userName' : userName,
+					'ImageURL' : ImageURL,
+					'Email' : Email,
+					'loginApi' : loginApi
+				}
+			$.ajax({
+				url : "/user/uriLogin",
+				type : "post",
+				data : data,
+				success : function(res) {
+					alert("구글 로그인 되었다");
+					$(".logoutGoo").css('display','block')
+				}
+			})
+		}, function(error) {
+		  alert(JSON.stringify(error, undefined, 2));
+		});
 	}  
-	function signOut() {
+	function signOutGoo() {
 		var auth2 = gapi.auth2.getAuthInstance();
 		auth2.signOut().then(function() {
 			auth2.disconnect();
-			console.log('User signed out.');
+			alert('User signed out.');
 		});
 	}
 	/* ,
@@ -37,7 +61,6 @@
 	} */
 
 	/* 페이스북 로그인 */
-
 	(function(d, s, id) {
 		var js, fjs = d.getElementsByTagName(s)[0];
 		if (d.getElementById(id))
@@ -94,9 +117,27 @@
 	  function testAPI() {
 		    console.log('Welcome!  Fetching your information.... ');
 		    FB.api('/me', function(response) {
-		    	console.log(response);
-		      console.log('Successful login for: ' + response.name);
+		    console.log(response);
+		    console.log('Successful login for: ' + response.name);
+		    var userId, userName, loginApi;
+			userId = response.id;
+			userName = response.name;
+			loginApi = "facebook";
+			var data = {
+					'userId' : userId,
+					'userName' : userName,
+					'loginApi' : loginApi
+				}
+			$.ajax({
+				url : "/user/uriLogin",
+				type : "post",
+				data : data,
+				success : function(res) {
+					alert("페이스북 로그인 되었다");
+				}
+			})
+		      $(".logoutFace").css('display','block')
 		      /* document.getElementById('status').innerHTML =
 		        'Thanks for logging in, ' + response.name + '!'; */
 		    }); 
-		  }  
+		  } 

@@ -9,8 +9,7 @@
 <title>Home</title>
 </head>
 <!-- 구글 로그인용 -->
-<link href="https://fonts.googleapis.com/css?family=Roboto"
-	rel="stylesheet" type="text/css">
+<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" type="text/css">
 <script src="https://apis.google.com/js/api:client.js"></script>
 <style>
 h1 {
@@ -25,11 +24,12 @@ h1 {
 		". contents1 contents1 . . . . . . contents3 contents3 ."
 		". contents1 contents1 . contents2 contents2 contents2 contents2 . contents3 contents3 ."
 		". . . . . . . . . . . ."
-		". . . . logintxt logintxt logintxt logintxt . . . ."
-		". . . . loginface loginface loginface loginface . . . ."
-		". . . . logingoo logingoo logingoo logingoo . . . ."
-		". . . .  logingit logingit logingit logingit . . . ."
-		". . . . . . . . . . . .";
+		". . . . login login login login . . . ."
+		". . . . login login login login . . . ."
+		". . . . login login login login . . . ."
+		". . . . login login login login . . . ."
+		". . . . . . . . . . . ."
+		"footer footer footer footer footer footer footer footer footer footer footer footer";
 	grid-gap: 15px;
 	padding: 0px;
 	width: calc(100% - 50px);
@@ -40,6 +40,7 @@ h1 {
 	text-align: center;
 	padding: 20px 0;
 	font-size: 30px;
+	margin-top: 6rem;
 }
 
 .contents1 {
@@ -84,26 +85,48 @@ h1 {
 	grid-area: contents3;
 }
 
+.contents4 {
+	grid-area: login;
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	grid-template-areas:
+		"logintxt logintxt logintxt logintxt "
+		"loginface loginface loginface loginface"
+		"logingoo logingoo logingoo logingoo"
+		"logingit logingit logingit logingit";
+	grid-gap: 15px;
+	padding: 0px;
+}
+
 .logintxt {
 	grid-area: logintxt;
+	padding-bottom: 4rem;
 }
 
 .loginface {
 	grid-area: loginface;
-}
-
-.loginface {
-	grid-area: loginface;
+    padding-bottom: 2rem;
 }
 
 .logingoo {
 	grid-area: logingoo;
+    padding-bottom: 2rem;
 }
 
 .logingit {
 	grid-area: logingit;
+    padding-bottom: 2rem;
 }
-
+.contents4>img{
+	width: 75%;
+    position: absolute;
+    top: 2rem;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    margin: auto;
+    display: none;
+}
 /* 구글 로그인 부분 */
 #customBtn {
 	display: inline-block;
@@ -169,7 +192,6 @@ span.buttonText {
 							pause_on_click : true
 						});
 			})
-	
 </script>
 </head>
 <body>
@@ -182,10 +204,9 @@ span.buttonText {
 			</div>
 		</div>
 		<div class='contents2'>
-
 			<div class=msg_container>
-				<img class="msg_img1" src="${rPath}/imgs/left_quot.png" /> <img
-					class="msg_img2" src="${rPath}/imgs/right_quot.png" />
+				<img class="msg_img1" src="${rPath}/imgs/left_quot.png" />
+				<img class="msg_img2" src="${rPath}/imgs/right_quot.png" />
 				<pre id='main_msg'></pre>
 			</div>
 
@@ -194,7 +215,9 @@ span.buttonText {
 		<div class='contents3'>
 		
 		</div>
-		<div class='logintxt'>로그인을 하자</div>
+		<div class='contents4'>
+		<img class='mainLogo' src='${rPath}/imgs/mainlogo.jpg'/>
+		<div class='logintxt'>Sign in or Sign up</div>
 		<div class='loginface'>
 			<div class="fb-login-button" data-max-rows="1" data-size="large" 
 			data-button-type="continue_with" data-show-faces="false" data-auto-logout-link="true" 
@@ -205,12 +228,13 @@ span.buttonText {
 		<div class='logingoo'>
 			<div id="gSignInWrapper">
 				<div id="customBtn" class="customGPlusSignIn">
-					<span class="icon"></span> <span class="buttonText">Sign up
-						with Google</span>
+					<span class="icon"></span> <span class="buttonText">Sign up with Google</span>
 				</div>
 			</div>
 		</div>
 		<div class='logingit'>깃 로그인</div>
+		</div>
+		
 	</div>
 </body>
 <script>

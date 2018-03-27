@@ -64,3 +64,9 @@ function lodingEnd(){
 	$('.spinner').css('display', 'none');
 	 $('.common_blind').hide();  
 }
+
+$(document).ready(function(){
+	if("<%=session.getAttribute('isLogin')%>"=="null"){
+		
+	}
+})

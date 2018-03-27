@@ -1,12 +1,11 @@
 package com.jeong.haejwo.controller;
 
-import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.*;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.servlet.ModelAndView;
+import org.slf4j.*;
+import org.springframework.stereotype.*;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.*;
 
 @Controller
 public class UrlController {
@@ -17,18 +16,24 @@ public class UrlController {
 		return url.replace(rootPath + "/path", "");
 	}
 	@RequestMapping("/path/**")
-	public ModelAndView goJsp(HttpServletRequest req, ModelAndView mav) {
+	public ModelAndView goJsp(HttpServletRequest req, ModelAndView mav, HttpSession hs) {
 		String url = req.getRequestURI();
 		String rootPath = req.getContextPath();
 		url = getUrl(url, rootPath);
+		if(hs.getAttribute("isLogin")==null){
+			hs.setAttribute("isLogin", false);
+		}
 		log.info("path =>{}", url);
 		mav.setViewName(url);
 		return mav;
 	}
 
 	@RequestMapping("/")
-	public ModelAndView goIndex(ModelAndView mav) {
-		mav.setViewName("index");
+	public ModelAndView goIndex(ModelAndView mav, HttpSession hs) {
+		mav.setViewName("home");
+		if(hs.getAttribute("isLogin")==null){
+			hs.setAttribute("isLogin", false);
+		}
 		return mav;
 	}
 }

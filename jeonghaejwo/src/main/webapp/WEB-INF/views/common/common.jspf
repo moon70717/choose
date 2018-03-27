@@ -6,7 +6,7 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
 <c:set var="root" value="${pageContext.request.contextPath}"/>
-<c:set var="ver" value="?version=1.0.22"/>
+<c:set var="ver" value="?version=1.0.28"/>
 <c:set var="rPath" value="${root}/resources"/>
 <c:set var="pPath" value="${root}/path"/>
 <c:set var="dPath" value="${rPath}/dx"/>
@@ -20,6 +20,9 @@
 <link rel="stylesheet" type="text/css" href="${root}/resources/css/fontawesome.min.css${ver}"/>
 <!-- 시계 css -->
 <link rel="stylesheet" type="text/css" href="${root}/resources/css/clock.css${ver}" />
+<!-- 로그인Api css -->
+<link rel="stylesheet" type="text/css" href="${root}/resources/css/loginApi.css${ver}" />
+
 <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> -->
 
 <script src="${root}/resources/js/jquery.min.js" charset="utf-8"></script>

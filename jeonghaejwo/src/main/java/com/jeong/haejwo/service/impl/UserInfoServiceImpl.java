@@ -33,7 +33,7 @@ public class UserInfoServiceImpl implements UserInfoService {
 
 	public int checkUserId(String userNo) {
 		UserInfoVO ui = new UserInfoVO();
-		ui.setuserId(userNo);
+		ui.setUserId(userNo);
 		if(uidao.selectUserInfo(ui)!=null){
 			return 1;
 		}

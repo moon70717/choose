@@ -9,6 +9,7 @@
 		from user
 		where 1=1
 		and userId = #{userId}
+		and loginApi = #{loginApi}
 	
 	<!-- 	<if test="userId!=null">
 			and userId = #{userId}
@@ -25,8 +26,8 @@
 	</select>
 	
 	<insert id="insertApiUser" parameterType="map">
-		insert into user(userId,userName,ImageURL,Email)
-		values(#{userId},#{userName},#{ImageURL},#{Email})
+		insert into user(userId,userName,ImageURL,Email,loginApi)
+		values(#{userId},#{userName},#{ImageURL},#{Email},#{loginApi})
 	</insert>
 	
 <!-- <insert id="insertUserInfo" parameterType="ui">

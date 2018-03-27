@@ -28,6 +28,7 @@ body {
 }
 /* 하단 풋터 */
 .footer {
+  	grid-area: footer;
 	font-family: 'yeonsung';
     width: 93%;
 	padding-top: 25px;
@@ -98,6 +99,12 @@ body {
 .f_text1{
   grid-area: text1;
   }
+.logoutFace{
+  display: none;
+}
+.logoutGoo{
+	display: none;
+}
 .f_text2{
   grid-area: text2;
   }
