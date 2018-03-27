@@ -24,7 +24,7 @@
 		<tr>
 		<td width=10%> No</td>
 		<td width=15%> 아이디</td>
-		<td width=50%> 제목</td>
+		<td width=50%> 제목</td> 
 		<td width=15%> 등록일수</td>
 		<td width=10%> 조회수</td>
 		</tr>
