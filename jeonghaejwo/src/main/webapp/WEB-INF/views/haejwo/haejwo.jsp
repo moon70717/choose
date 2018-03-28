@@ -209,8 +209,10 @@ function sendVariable(loInput, desInput){
 				for(key=1;key<=keys;key++){
 					var temp=JSON.parse(res[key]);
 					//console.log(temp);
-					temp=temp.response.body.items.item[Math.floor(Math.random()*10)+1];
+					var tempLeng=temp.response.body.items.item.length;
+					temp=temp.response.body.items.item[Math.floor(Math.random()*tempLeng)+1];
 					waypoint.push(temp);
+					console.log(temp);
 				}
 				console.log(waypoint);
 				waypts=[];
