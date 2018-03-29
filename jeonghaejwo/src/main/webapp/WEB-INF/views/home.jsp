@@ -28,8 +28,7 @@ h1 {
 		". . . . login login login login . . . ."
 		". . . . login login login login . . . ."
 		". . . . login login login login . . . ."
-		". . . . . . . . . . . ."
-		"footer footer footer footer footer footer footer footer footer footer footer footer";
+		". . . . . . . . . . . .";
 	grid-gap: 15px;
 	padding: 0px;
 	width: calc(100% - 50px);
@@ -195,6 +194,7 @@ span.buttonText {
 </script>
 </head>
 <body>
+<div class='mainContainers'>
 	<div class='login_containers'>
 		<div class='contents1'>
 			<div class='wrapTri'>
@@ -235,6 +235,7 @@ span.buttonText {
 		<div class='logingit'>깃 로그인</div>
 		</div>
 		
+	</div>
 	</div>
 </body>
 <script>

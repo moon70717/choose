@@ -13,7 +13,7 @@
 
 </script>
 <body>
-
+<div class='mainContainers'>
 	<!-- 메인 컨테이너 -->
 	<div class='jhj_container'>
 		<!-- 지도 -->
@@ -91,6 +91,7 @@
 				</button>
 			</div>
 		</div>
+	</div>
 	</div>
 </body>
 <script>
