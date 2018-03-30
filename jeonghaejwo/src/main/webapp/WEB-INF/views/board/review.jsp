@@ -11,7 +11,8 @@
 #review_containers{
 background-image: url("${rPath}/imgs/board.jpg");
 	background-repeat: repeat-y;
-    background-position: center; 
+    background-position: center;
+    padding-left: 3vw; 
 }
 .write_btn_div{
 	text-align: right;
@@ -52,8 +53,8 @@ background-image: url("${rPath}/imgs/board.jpg");
     background: white;
 	display: inline;
 	float: left;
-	margin: 0 15px 30px;
-	padding: 0px 10px 25px;
+	margin: 0 1vw 2vw;
+    padding: 0px 0.5vw 0.5vw;
 	text-align: center;
 	text-decoration: none;
 	-webkit-box-shadow: 0 9px 10px rgba(0, 0, 0, 0.49);
@@ -64,7 +65,7 @@ background-image: url("${rPath}/imgs/board.jpg");
 	transition: all .15s linear;
 	z-index:0;
     position:relative;
-    width:30rem;
+    width: 14vw;
 }
 .photoPin{
 grid-area: photoPin;
@@ -83,6 +84,7 @@ width: 4rem;
 .reviewLocation {
 	grid-area: reviewLocation;
 	color: black;
+    font-size: 1vw;
 }
 
 .reviewPoint{
@@ -212,7 +214,7 @@ fieldset, label { margin: 0; padding: 0; }
 </head>
 <body>
 <div class='mainContainers'>
-<h1>솔직 방문 후기</h1>
+<h1 style='margin-top: 1vw;margin-bottom: -2.5vw;color: black'>솔직 방문 후기</h1>
 	<!-- Button trigger modal -->
 	<div class='write_btn_div'>
 		<button type="button" class="btn btn-primary write_btn" data-toggle="modal" data-target="#exampleModalCenter">글쓰기</button>
@@ -298,7 +300,9 @@ fieldset, label { margin: 0; padding: 0; }
 		<div id="review_list">	
 		</div>
 		<div id="review_coments_modal" style="color:black"></div>
+		<div style="text-align:right;">
 		<button onclick="nextReview()" style="color:black">next</button>
+		</div>
 	</div>
 
 
@@ -371,11 +375,11 @@ fieldset, label { margin: 0; padding: 0; }
 					temp2+='<div class="modal-content review"><div class="modal-header review"><button type="button" class="close" data-dismiss="modal">&times;</button>';
 					temp2+='<h4 class="modal-title review">'+a.reTitle+'</h4></div>';
 					temp2+='<div class="modal-body review"><p class=reviewUserId>'+a.userId+'</p>';
-					temp2+='<p>'+a.comment+'</div>';	
+					temp2+='<p>'+a.comment+'</div>';
 					temp2+='<div class="modal-footer review"><button type="button" class="btn btn-default" data-dismiss="modal">Close</button></div></div></div></div>';
 					
 					$("#review_list").append(temp);
-					$("#review_coments_modal").append(temp2)
+					$("#review_coments_modal").append(temp2);
 				}
 			}
 		});

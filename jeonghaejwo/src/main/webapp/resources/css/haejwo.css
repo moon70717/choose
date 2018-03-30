@@ -324,5 +324,24 @@
 .select_destination{
 font-size: 1vh;    
 }
-      
+#cat_msg_div {
+    width: 20vw;      
+}
+#cat_msg_div>img {
+    width: 20vw;
+    position: absolute;
+    top: -18vh;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    margin: auto;
+    color: black;
+}
+#cat_say {
+    position: absolute;
+    font-size: 3vw;
+    color: red;
+    top: -11.5vh;
+    left: 2vw;
+}
 }
