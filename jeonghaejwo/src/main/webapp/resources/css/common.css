@@ -1,11 +1,12 @@
 @charset "UTF-8";
 
 html{
-	font-size: 0.5vmax;
+	background-color: black;
+	font-size: 0.5vmin;
 }
 body {
 	font-family: 'dohyeon';
-	background-color: black;
+	background: linear-gradient(to bottom, #ffffff 0%, #000000 100%);
 	color: white;
 	display: grid;
 	grid-template-columns: 1fr 2fr 2fr 2fr 1fr;
@@ -32,7 +33,6 @@ body {
 /* 상단 헤더 */
 .header {
 	grid-area: header;
-	background-color: black;
     padding: 10px;
     text-align: center;
     position: relative;
@@ -43,7 +43,6 @@ body {
 	font-family: 'yeonsung';
     width: 93%;
 	padding-top: 25px;
-	background-color: black;
 	text-align: center;
 	display: grid;
 	grid-template-columns: repeat(9, 1fr);
@@ -73,9 +72,9 @@ body {
     display: none;
 }
 #cat_msg_div>img{
-	width: 120px;
+	width: 9vw;
     position: absolute;
-    top: -135px;
+    top: -18vh;
     left: 0;
     bottom: 0;
     right: 0;
@@ -84,10 +83,10 @@ body {
 }
 #cat_say{
 	position: absolute;
-	font-size: 20px;
-	color: red;
-	top: -90px;
-	left: 9px;
+    font-size: 5rem;
+    color: red;
+    top: -11.5vh;
+    left: 2vw;
 }
 .f_face{
   grid-area: face;
@@ -130,10 +129,10 @@ body {
     margin: 0 auto;
 }
 .wrapTri .section {
-    height: 69px;
+  /*   height: 69px;
     padding: 100px 0;
     background: #000;
-   display: block;
+   display: block; */
 }
 
 .downTri {
@@ -204,7 +203,7 @@ body {
 #menu_icon > div,
 #menu_icon > div:before,
 #menu_icon > div:after {
-  background: white;
+  background: black;
   position: absolute;
   height: 5px;
   width: 50px;
@@ -237,8 +236,8 @@ body {
 }
 
 #menu_checkbox:checked + #menu_icon div:first-child {
-  height: 20px;
-  width: 20px;
+  height: 21px;
+  width: 21px;
   -webkit-transform: rotate(405deg);
           transform: rotate(405deg);
   background: none;
@@ -288,7 +287,7 @@ body {
 
 /*  */
 .sidenav a {
-    padding: 10% 10%;
+    padding: 9% 9%;
     text-decoration: none;
     font-size: 25px;
     color: #a5a5a5;
@@ -323,6 +322,12 @@ body {
 @media screen and (max-height: 450px) {
   .sidenav {padding-top: 15px;}
   .sidenav a {font-size: 18px;}
+}
+
+@media screen and (max-width: 750px) {
+  .time_container {
+    display: none;
+  }
 }
 /* 폰트 모음 */
 

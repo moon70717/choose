@@ -6,7 +6,7 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
 <c:set var="root" value="${pageContext.request.contextPath}"/>
-<c:set var="ver" value="?version=1.0.31"/>
+<c:set var="ver" value="?version=1.0.35"/>
 <c:set var="rPath" value="${root}/resources"/>
 <c:set var="pPath" value="${root}/path"/>
 <c:set var="dPath" value="${rPath}/dx"/>
@@ -65,7 +65,8 @@
   <div></div>
 </label>
 	</div>
-	<div class='menu_grid2'><a href="${root}/path/home">홈</a>
+	<div class='menu_grid2'>
+		<a href="${root}/path/home">홈</a>
 	  	<a href="${root}/path/user/login">LOGIN</a> <!-- 로그인하면 로그아웃 -->
 	  	<a href="${root}/path/user/profile">마이페이지</a> <!-- 할일 입력 및 개인정보 수정 -->
 	  	<a href="${root}/path/haejwo/haejwo">정해줘</a>

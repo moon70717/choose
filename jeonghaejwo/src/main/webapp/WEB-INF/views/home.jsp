@@ -31,15 +31,14 @@ h1 {
 		". . . . . . . . . . . .";
 	grid-gap: 15px;
 	padding: 0px;
-	width: calc(100% - 50px);
 }
 
 .login_containers>div {
 	/* background-color: rgba(255, 255, 255, 0.8); */
-	text-align: center;
-	padding: 20px 0;
-	font-size: 30px;
-	margin-top: 6rem;
+	    text-align: center;
+    padding: 20px 0;
+    font-size: 30px;
+    margin-top: 6rem;
 }
 
 .contents1 {
@@ -99,7 +98,9 @@ h1 {
 
 .logintxt {
 	grid-area: logintxt;
-	padding-bottom: 4rem;
+    padding-bottom: 4rem;
+    top: -3vh;
+    position: relative;
 }
 
 .loginface {

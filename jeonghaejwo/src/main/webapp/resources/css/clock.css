@@ -2,9 +2,10 @@
 
 .time_container {
 	font-family: 'dohyeon';
-	padding-right: 6%;
     text-align: center;
-    color: white;
+    color: black;
+    margin: auto;
+    width: 80vw;
 }
 
 #clock {
@@ -49,8 +50,3 @@
     width: 10%;
 }
 
-@media screen and (max-width: 750px) {
-  .time_container {
-    display: none;
-  }
-}

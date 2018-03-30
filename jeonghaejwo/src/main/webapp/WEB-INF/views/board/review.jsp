@@ -10,8 +10,17 @@
 <style>
 #review_containers{
 background-image: url("${rPath}/imgs/board.jpg");
-	background-repeat: no-repeat;
+	background-repeat: repeat-y;
     background-position: center; 
+}
+.write_btn_div{
+	text-align: right;
+}
+.write_btn{
+    background-color: #ffffff;
+    border-color: #2e6da4;
+    margin: 1rem;
+    color: black;
 }
 .review_container {
  	display: inline-block;
@@ -102,7 +111,7 @@ width: 4rem;
 
 .review_write_container>div { 
 	text-align: center;
-	font-size: 4rem;
+	font-size: 3.5rem;
 	
 }
 
@@ -205,8 +214,9 @@ fieldset, label { margin: 0; padding: 0; }
 <div class='mainContainers'>
 <h1>솔직 방문 후기</h1>
 	<!-- Button trigger modal -->
-	<button type="button" class="btn btn-primary" data-toggle="modal"
-		data-target="#exampleModalCenter">글쓰기</button>
+	<div class='write_btn_div'>
+		<button type="button" class="btn btn-primary write_btn" data-toggle="modal" data-target="#exampleModalCenter">글쓰기</button>
+	</div>
 
 
 
@@ -238,7 +248,7 @@ fieldset, label { margin: 0; padding: 0; }
 							</f:form>
 						</div>
 						<div class='img_preview'>
-							<img id="preview_img" src="${rPath}/imgs/img_sample.jpg" alt="your image" />
+							<img id="preview_img" src="${rPath}/imgs/img_sample2.jpg" alt="your image" />
 						</div>
 						<div class="review_point">점수</div>
 						<div class="review_star">
@@ -288,7 +298,7 @@ fieldset, label { margin: 0; padding: 0; }
 		<div id="review_list">	
 		</div>
 		<div id="review_coments_modal" style="color:black"></div>
-		<button onclick="nextReview()">next</button>
+		<button onclick="nextReview()" style="color:black">next</button>
 	</div>
 
 

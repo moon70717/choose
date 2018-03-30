@@ -8,7 +8,8 @@
 </head>
 
 <script src="${root}/resources/js/haejwo.js" charset="utf-8"></script>
-<link rel="stylesheet" type="text/css" href="${root}/resources/css/haejwo.css${ver}" />
+<link rel="stylesheet" type="text/css"
+	href="${root}/resources/css/haejwo.css${ver}" />
 <script>
 
 </script>
@@ -18,34 +19,33 @@
 	<div class='jhj_container'>
 		<!-- 지도 -->
 		<div class='map' id='map'>지도</div>
-		
-		
+
+
 		<!-- 사용자 입력란 -->
 		<div class='input_container'>
 			<div class='user_setting'>
 				<div class="location_input">
 					<input class="location_input_text" id="loInput" type="text">
-					<span class="highlight"></span> <span class="bar"></span>
-					<span><button class="loBtn" onclick="getLatLng($('#loInput')[0].value, $('#loInput')[0].id)">
-					<i class="glyphicon glyphicon-search"></i>
-					</button></span>
-					<label>My Location</label>
-				</div>  
+					<span class="highlight"></span> <span class="bar"></span> <span><button
+							class="loBtn"
+							onclick="getLatLng($('#loInput')[0].value, $('#loInput')[0].id)">
+							<i class="glyphicon glyphicon-search"></i>
+						</button></span> <label>My Location</label>
+				</div>
 				<div class="location_input">
 					<input class="location_input_text" id="desInput" type="text">
-					<span class="highlight"></span> <span class="bar"></span>
-					<span>
-					<button class="deBtn" onclick="getLatLng($('#desInput')[0].value, $('#desInput')[0].id)">
-					<i class="glyphicon glyphicon-search"></i>
-					</button>
-					</span>
-					<label>Destination</label>
+					<span class="highlight"></span> <span class="bar"></span> <span>
+						<button class="deBtn"
+							onclick="getLatLng($('#desInput')[0].value, $('#desInput')[0].id)">
+							<i class="glyphicon glyphicon-search"></i>
+						</button>
+					</span> <label>Destination</label>
 				</div>
 				<!-- 목적지 선택 박스 -->
 				<div id="network-popUp" class="destination_selectBox" style="display: block;">
 					<div class="form-item form-item-node-type form-type-select select-group">
 						<select class="form-control form-select select_destination"
-							id="deSelectBox" name="node_type" onchange="deSelectBox()" >
+							id="deSelectBox" name="node_type" onchange="deSelectBox()">
 							<option value="-1" selected="selected">Select element</option>
 							<option value="0">내위치로 돌아오기</option>
 							<option value="1">Ramdom Box</option>
@@ -58,7 +58,7 @@
 				<button class="time_set" onclick="minus()">
 					<span class="glyphicon glyphicon-menu-left"></span>
 				</button>
-				<input type="text" size="25" value="시간을 설정하세요" id="time_count"
+				<input type="text" value="시간을 설정하세요" id="time_count"
 					style="color: black; text-align: center" class="time_count">
 				<button class="time_set" onclick="plus()">
 					<span class="glyphicon glyphicon-menu-right"></span>
@@ -68,31 +68,33 @@
 			<div class="funkyradio">
 				<div class="funkyradio-info">
 					<input type="radio" name="radio" id="radio1" disabled=true
-						value=0.4 data-value='1000' /> <label for="radio1">반경 1km 내에서</label>
+						value=0.4 data-value='1000' /> <label for="radio1">반경 1km</label>
 				</div>
 				<div class="funkyradio-primary">
 					<input type="radio" name="radio" id="radio2" disabled=true
-						value=0.4 data-value='3000' /> <label for="radio2">반경 3km 내에서</label>
+						value=0.4 data-value='3000' /> <label for="radio2">반경 3km</label>
 				</div>
 				<div class="funkyradio-success">
 					<input type="radio" name="radio" id="radio3" disabled=true
-						value=1.1 data-value='5000' /> <label for="radio3">반경 5km 내에서</label>
+						value=1.1 data-value='5000' /> <label for="radio3">반경 5km</label>
 				</div>
 				<div class="funkyradio-warning">
 					<input type="radio" name="radio" id="radio4" disabled=true
-						value=1.4 data-value='10000' /> <label for="radio4">반경 10km 내에서</label>
+						value=1.4 data-value='10000' /> <label for="radio4">반경
+						10km</label>
 				</div>
 			</div>
 			<div class='summit_btn'>
-				<button id='test' class="btn loding_button" 
-				onclick="sendVariable($('#loInput')[0].value, $('#desInput')[0].value)">
+				<button id='test' class="btn loding_button"
+					onclick="sendVariable($('#loInput')[0].value, $('#desInput')[0].value)">
 					<!-- "window.location.href='${root}/path/map/show-way'" -->
 					<span class="ladda-label"> Jeong Hae Jwo </span>
 				</button>
 			</div>
 		</div>
 	</div>
-	</div>
+</div>
+	
 </body>
 <script>
 
@@ -100,6 +102,13 @@ $(function(){
 	  $('#loInput').keypress(function(key){
 		  if (key.keyCode == 13) {
 		  getLatLng($('#loInput')[0].value, $('#loInput')[0].id);
+		  }
+	  });
+	});
+$(function(){
+	  $('#desInput').keypress(function(key){
+		  if (key.keyCode == 13) {
+		  getLatLng($('#desInput')[0].value, $('#desInput')[0].id);
 		  }
 	  });
 	});
@@ -174,6 +183,9 @@ function deFunc(result){
 	dMapY = result.lng();
 }
 
+
+var ways="";
+
 function sendVariable(loInput, desInput){
 	lodingSt();
 	getXYaddress(loInput, loFunc);
@@ -190,15 +202,42 @@ function sendVariable(loInput, desInput){
 				'dMapY':dMapY
 			}
 		$.ajax({
-			url : "/api/show-way",
+			url : "/api/tour_api",
 			type : "post",
 			data : data,
 			success : function(res) {
 				//console.log(res.json);
 				lodingEnd();
-				waypoint = JSON.parse(res.json);
-				waypoint = waypoint.response.body.items.item;
+				var keys=Object.keys(res).length;
+				waypoint=[];
+				for(key=0;key<keys;key++){
+					var temp=JSON.parse(res[key]);
+					//console.log(temp);
+					temp=temp.response.body.items.item[Math.floor(Math.random()*10)];
+					waypoint.push(temp);
+				}
 				console.log(waypoint);
+				waypts=[];
+				waypts.push({
+					location : mapX+", "+mapY,
+					stopover : true
+				});
+				for(var v of waypoint){
+					waypts.push({
+						location : v.addr1,
+						stopover : true
+					});
+				}
+				waypts.push({
+					location : dMapX+", "+dMapY,
+					stopover : true
+				});
+				$(".input_container").html("");
+				calculateAndDisplayRoute(1);
+				
+				/* waypoint = JSON.parse(res.json);
+				waypoint = waypoint.response.body.items.item;
+				console.log(waypoint); */
 			}
 		});
 	},1000);
@@ -207,16 +246,16 @@ function sendVariable(loInput, desInput){
 
 /*  */
 /* 길찾기 부분 */
-/*  */
- 	var nLat, nLng, waypoint;
-	var routeSegment = 0, ways;
+/* 반쯤 폐기예정 */
+ 	var nLat, nLng, waypoint=[];
+	var routeSegment = 0;
 	var waypts = [];
 	var directionsService;
 	var directionsDisplay;
 	
 	//현재 위치를 받아오는 부분 
-	function getLocation() {
-		if (navigator.geolocation) {
+	function getLocation() { 
+		if (navigator.geolocation) { 
 			navigator.geolocation.getCurrentPosition(showPosition);
 		} else {
 			alert("Geolocation is not supported by this browser.");
@@ -249,13 +288,14 @@ function sendVariable(loInput, desInput){
 		directionsService = new google.maps.DirectionsService;
 		directionsDisplay = new google.maps.DirectionsRenderer;
 		//center부분이 현재위치인데 geoloation으로 받아온 위치로 변경해놔야됨
-		var map = new google.maps.Map(document.getElementById('map'), {
-																		zoom : 16, 
-																		center : {
-																					lat : 37.566535,
-																					lng : 126.97796919999999
-																					}
-																		});
+		var map = new google.maps.Map(document.getElementById('map'), 
+		{
+			zoom : 16, 
+			center : {
+				lat : 37.566535,
+				lng : 126.97796919999999
+			}
+		});
 		directionsDisplay.setMap(map);
 		
 		//맵 클릭시 이벤트적용
@@ -263,7 +303,7 @@ function sendVariable(loInput, desInput){
 			getAddress(mouseEvent.latLng);
 		});
 		
-		//submit버튼에 이벤트 적용
+		/* //submit버튼에 이벤트 적용
 		$("#submit").click(function() {
 			//nLat이랑 nLng이 위의getLocation을 이용해 받아온 현재위치
 			//하지만 학원에서는 않먹힘 
@@ -285,8 +325,7 @@ function sendVariable(loInput, desInput){
 				location : nowP,
 				stopover : true
 			});
-			calculateAndDisplayRoute(1);
-		});
+		}); */
 	}
 	
 	//클릭한곳 좌표와 주소를 가져와주는놈(맵 클릭)
@@ -340,9 +379,11 @@ function sendVariable(loInput, desInput){
 		if(!idx){
 			idx = 0;
 		}
-		if(idx==waypts.length-1&&onsoff==1){
-			calculateAndDisplayRoute(0,0);
-		}  
+		if(idx==waypts.length-1&&onsoff==1){  
+			calculateAndDisplayRoute(0);
+			return;
+		}
+		console.log(idx);  
 		directionsService.route({
 			origin : waypts[idx].location, 
 			destination : waypts[idx+1].location,
@@ -354,18 +395,17 @@ function sendVariable(loInput, desInput){
 				var route = response.routes[0];
 				//onsoff가 1일때만 경로를 웹에 찍어주도록
 				if(onsoff==1){
-					for (var i = 0; i < route.legs.length; i++) {
-						routeSegment++;
-						ways = '<b>Route Segment: ' + routeSegment + '</b><br>';
-						ways += route.legs[i].start_address + ' to ';
-						ways += route.legs[i].end_address + '<br>';
-						ways += route.legs[i].distance.text + '<br>';
-						ways += '<button id="button'+routeSegment+'" value="'+routeSegment+'">길 보기</button><br>';
-						$(ways).appendTo('#directions-panel');
-						$("#button"+routeSegment).click(function(){
-							calculateAndDisplayRoute(0,this.value-1);
-						});
-					}
+					routeSegment++;
+					ways = '<b>Route Segment: ' + routeSegment + '</b><br>';
+					ways += route.legs[0].start_address + ' to ';
+					ways += route.legs[0].end_address + '<br>';
+					ways += route.legs[0].distance.text + '<br>';
+					ways += '<button id="button'+routeSegment+'" value="'+routeSegment+'">길 보기</button><br>';
+					$('.input_container').append(ways);
+					console.log(ways);
+					$("#button"+routeSegment).click(function(){
+						calculateAndDisplayRoute(0,this.value-1);
+					});
 					calculateAndDisplayRoute(1,idx+1);
 				}
 				

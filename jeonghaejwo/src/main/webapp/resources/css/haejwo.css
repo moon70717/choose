@@ -18,55 +18,58 @@
 }
 
 .jhj_container {
-	width: 93%;
+	display: grid;
+	grid-template-columns: 1fr 2fr 2fr 1fr;
+  	grid-template-areas: 
+    	"map map map map"
+    	"input input input input";
 }
 
 .input_container {
+	grid-area: input;
 	text-align: center;
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+  	grid-template-areas: 
+    	"user_setting user_setting user_setting user_setting"
+    	"time_div time_div time_div time_div"
+    	"funkyradio funkyradio funkyradio funkyradio"
+    	"summit_btn summit_btn summit_btn summit_btn";
+    width: 100%;
 }
 
 .map {
-	display: -webkit-flex;
-	display: flex;
-	-webkit-align-items: center;
-	align-items: center;
-	-webkit-justify-content: center;
-	justify-content: center;
-	width: 80%;
-	margin: auto;
-	border: solid #ffd700 3px; /* 지울것  */
-	height: 320px;
-	filter: grayscale(40%);
+	grid-area: map;
+	width: 90%;
+    margin: auto;
+    height: 30vmin;
+    filter: grayscale(40%);
 }
 
-.input_container {
-	text-align: center;
-}
 
 .user_setting {
-	display: table;
-	margin: auto;
+    grid-area: user_setting;
+    display: table;
+    margin: auto;
+    width: 40vw;
 }
 
 /* 목적지 옵션박스 */
 #network-popUp {
-	top: 45vh;
-	left: 35vw;
-	z-index: 234;
-	width: 490px;
-}
-.select_destination{
-	display: block;
-    width: 50%;
-    font-size: 1.5rem;
+	width: 50%;
+    font-size: 3.5rem;
     line-height: 1.5;
     color: #8e8e8e;
     float: right;
-    background-color: #fff;
     background-clip: padding-box;
     border-radius: 0.25rem;
     transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
-    margin-top: -20px;
+    margin-top: -5vh;
+}
+
+.select_destination{
+	font-size: 2vh;
+    width: 10vw;    
 }
 /* 검색버튼 */
     .md-input button {
@@ -90,10 +93,11 @@
     }
 /* 시간조절 */
 .time_div{
-	padding-top: 1.5%;
+	grid-area: time_div;
+	padding-top: 1vh;
 }
 .time_set{
-	    font-size: 100%;
+	font-size: 100%;
     height: 35px;
     background-color: #d1d3d4;
 }
@@ -101,10 +105,12 @@
     background-color: #0080ff;
 }
 .time_count{
-	height: 35px;
+	height: 5vh;
+	width: 15vw;
 }
 /* 거리 */
 .funkyradio {
+	grid-area: funkyradio;
 	clear: both;
 	content: "";
 	display: table;
@@ -131,7 +137,7 @@
 	position: relative;
 	color: #c0c0c0;
 	background-color: #404040;
-	width: 200px;
+	width: 14vw;
 	line-height: 2.5em;
 	text-indent: 3.25em;
 	margin-top: 1em;
@@ -200,6 +206,7 @@
 }
 /* 버튼 */
 .summit_btn {
+	grid-area: summit_btn;
 	clear: left;
 }
 .loding_button{
@@ -218,39 +225,38 @@
 .location_input {
 	color: black;
 	position: relative;
-	margin-bottom: 30px;
+	margin-bottom: 6rem;
 }
 .location_input .loBtn,
 .location_input .deBtn{
-	position: absolute;
-	 right: 2px;
+    position: absolute;
+    right: 0;
     bottom: 0px;
-        width: 10%;
-    height: 100%;
+    width: 7vh;
+    height: 5vh;
     border: solid white;
 }
-button>.glyphicon glyphicon-search{
-	background-color: red;
-	
-}
+
 .location_input .location_input_text {
-	font-size: 16px;
-	padding: 10px 10px 10px 5px;
-	display: block;
-	border: none;
-	box-shadow: none;
-	width: 100%;
-	margin-top: 8%;
+	font-size: 3vmin;
+    display: block;
+    border: none;
+    box-shadow: none;
+    margin-top: 6vh;
+    margin-left: auto;
+    margin-right: auto;
+    height: 5vh;
+    width: 40vw;
 }
 
 .location_input label {
-	color: #c0c0c0;
-	font-size: 16px;
+	color: #6b6b6b;
+	font-size: 2.2vmin;
 	font-weight: normal;
 	position: absolute;
 	pointer-events: none;
-	left: 5px;
-	top: -25px;
+	left: 0;
+	top: -4vh;
 	transition: 0.2s ease all;
 	-moz-transition: 0.2s ease all;
 	-webkit-transition: 0.2s ease all;
@@ -261,16 +267,17 @@ button>.glyphicon glyphicon-search{
 }
 
 .location_input .bar:after {
+	
 	right: 50%;
 }
 
 .location_input .highlight {
 	position: absolute;
-	height: 60%;
-	width: 100px;
-	top: 25%;
-	left: 0;
-	pointer-events: none;
+    height: 3rem;
+    width: 55rem;
+    top: 1rem;
+    left: 0;
+    pointer-events: none;
 	opacity: 0.5;
 }
 
@@ -295,4 +302,27 @@ button>.glyphicon glyphicon-search{
 .location_input .location_input_text:focus ~ .bar:before,
 .location_input .location_input_text:focus ~ .bar:after {
 	width: 50%;
+}
+
+@media screen and (max-height: 450px) {
+  
+}
+
+@media screen and (max-width: 700px) {
+.user_setting{
+	width: 74vw;
+}
+.location_input .location_input_text{
+	width: 74vw;
+}
+.funkyradio input[type="radio"]:empty ~ label{
+	    width: 34vw;
+}
+.funkyradio label{
+	    font-size: 3vw;
+}
+.select_destination{
+font-size: 1vh;    
+}
+      
 }
