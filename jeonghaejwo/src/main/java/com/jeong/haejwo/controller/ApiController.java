@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.jeong.haejwo.dao.impl.Tour_ApiDAOImpl;
 import com.jeong.haejwo.service.Tour_ApiService;
 
 @Controller
@@ -45,6 +46,16 @@ public class ApiController {
 		return map;
 	}
 	
+	@RequestMapping("/data")
+	public @ResponseBody Map<String,Object> data(@RequestParam Map<String, Object> map){
+		Tour_ApiDAOImpl t=new Tour_ApiDAOImpl();
+		t.insertAPI(map);
+		System.out.println(map);
+		System.out.println(map.get("firstimage"));
+		return map;
+	}
+	
+	//여기서부터는 테스트용
 	@RequestMapping("/test")
 	public @ResponseBody Map<String,Object> test(@RequestParam Map<String, Object> map, HttpSession hs){
 		System.out.println(map);

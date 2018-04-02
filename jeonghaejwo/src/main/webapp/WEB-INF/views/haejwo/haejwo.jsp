@@ -210,12 +210,13 @@ function sendVariable(loInput, desInput){
 				lodingEnd();
 				var keys=Object.keys(res).length;
 				waypoint=[];
-				for(key=0;key<keys;key++){
+				for(key=1;key<=keys;key++){
 					var temp=JSON.parse(res[key]);
 					//console.log(temp);
 					temp=temp.response.body.items.item[Math.floor(Math.random()*10)];
 					waypoint.push(temp);
 				}
+				test();
 				console.log(waypoint);
 				waypts=[];
 				waypts.push({
@@ -241,8 +242,26 @@ function sendVariable(loInput, desInput){
 			}
 		});
 	},1000);
+	
 }
 
+function test(num){
+	if(!num){
+		num=0;
+	}
+	$.ajax({ 
+		url : "/api/data",
+		data : waypoint[num],
+		success : function(res){
+			console.log(res);
+			console.log(num);
+			num++;
+			if(num<waypoint.length){
+				test(num);
+			}
+		}
+	});
+}  
 
 /*  */
 /* 길찾기 부분 */
