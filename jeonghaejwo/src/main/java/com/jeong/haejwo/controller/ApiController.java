@@ -46,12 +46,12 @@ public class ApiController {
 		return map;
 	}
 	
+	//방문기록, 간곳 추가
 	@RequestMapping("/data")
-	public @ResponseBody Map<String,Object> data(@RequestParam Map<String, Object> map){
+	public @ResponseBody Map<String,Object> data(@RequestParam Map<String, Object> map, HttpSession hs){
 		Tour_ApiDAOImpl t=new Tour_ApiDAOImpl();
-		t.insertAPI(map);
-		System.out.println(map);
-		System.out.println(map.get("firstimage"));
+		//t.insertAPI(map);
+		System.out.println(map.get("data"));
 		return map;
 	}
 	

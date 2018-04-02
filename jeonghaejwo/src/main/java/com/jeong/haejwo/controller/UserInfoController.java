@@ -47,6 +47,7 @@ public class UserInfoController {
 		if(uis.login(data)) {
 			map.put("result", true);
 			hs.setAttribute("isLogin", true);
+			hs.setAttribute("id", data.get("id"));
 		}
 		return map;
 	}

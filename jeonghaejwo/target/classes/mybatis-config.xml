@@ -16,6 +16,9 @@
 		<mapper resource="sql/user.xml"/>
 		<mapper resource="sql/review.xml"/>
 		<mapper resource="sql/board.xml"/>
+		<mapper resource="sql/profile.xml"/>
+		<mapper resource="sql/rank.xml"/>
+		<mapper resource="sql/api.xml"/>
 		<!--<mapper resource="sql/connection_info.xml"/>-->
 	</mappers>
 	
