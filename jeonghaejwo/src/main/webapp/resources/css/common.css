@@ -45,9 +45,9 @@ body {
 	padding-top: 25px;
 	text-align: center;
 	display: grid;
-	grid-template-columns: repeat(9, 1fr);
+	grid-template-columns: 1fr 1fr 0.5fr 1fr 1fr 1fr 1fr 1fr 1fr;
   	grid-template-areas: 
-    	". logo . face goo twt git ins ."
+    	". logo . footer1 footer1 footer1 footer1 footer2 ."
     	". hr hr hr hr hr hr hr ."
     	". . text1 text1 text2 text2 text3 text3 .";
 }
@@ -88,20 +88,25 @@ body {
     top: -11.5vh;
     left: 2vw;
 }
-.f_face{
-  grid-area: face;
+
+.footer1{
+  grid-area: footer1;
 }
-.f_goo{
-  grid-area: goo;
-  }
-.f_twt{
-  grid-area: twt;
-  }
-.f_git{
-  grid-area: git;
-  }
-.f_ins{
-  grid-area: ins;
+.footer1_socialIcon{
+	position: relative;
+    top: 2vh;
+}
+.footer1_socialIcon>div{
+	
+    display: inline-block;
+}
+.footer1_socialIcon> i{
+	border-left:0.5vw;
+	border-right:0.5vw;
+	}
+	
+.footer2{
+  grid-area: footer2;
   }
 .f_hr{
   grid-area: hr;

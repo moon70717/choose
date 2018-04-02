@@ -6,7 +6,7 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
 <c:set var="root" value="${pageContext.request.contextPath}"/>
-<c:set var="ver" value="?version=1.0.35"/>
+<c:set var="ver" value="?version=1.0.67"/>
 <c:set var="rPath" value="${root}/resources"/>
 <c:set var="pPath" value="${root}/path"/>
 <c:set var="dPath" value="${rPath}/dx"/>
@@ -17,6 +17,7 @@
 <link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.2.3/animate.min.css'>
 <link rel="stylesheet" type="text/css" href="${root}/resources/css/menu.css${ver}"/>
 <link rel="stylesheet" type="text/css" href="${root}/resources/css/common.css${ver}"/>
+
 <link rel="stylesheet" type="text/css" href="${root}/resources/css/fontawesome.min.css${ver}"/>
 <!-- 시계 css -->
 <link rel="stylesheet" type="text/css" href="${root}/resources/css/clock.css${ver}" />
@@ -41,6 +42,10 @@
 <script src="${root}/resources/js/t.js${ver}" charset="utf-8"></script>
 <!-- 로그인 로그아웃부분만 빼서. -->
 <script src="${root}/resources/js/loginApi.js${ver}" charset="utf-8"></script>
+<!-- fontawesome -->
+<script src="${rPath}/js/fontawesome-all.min.js${ver}" charset="utf-8"></script>
+
+
 
 <!-- 공통 바디 -->
 <div class='common_blind'></div>

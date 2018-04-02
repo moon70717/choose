@@ -10,11 +10,21 @@
 					
 					<div id='cat_div'><img src='${rPath}/imgs/cat.png' /></div>
 				</div>
-				<div class='f_face'>1</div>
-				<div class='f_goo'>2</div>
-				<div class='f_twt'>3</div>
-				<div class='f_git'>4</div>
-				<div class='f_ins'>5</div>
+				<div class='footer1'>
+					<div class='footer1_socialIcon'>
+					<div style='border:2vh'>
+					<i class="fab fa-facebook" style='font-size:3vh'></i></div>
+					<div style='border:2vh'>
+					<i class="fab fa-google" style='font-size:3vh'></i></div>
+					<div style='border:2vh'>
+					<i class="fab fa-twitter-square" style='font-size:3vh'></i></div>
+					<div style='border:2vh'>
+					<i class="fab fa-github-square" style='font-size:3vh'></i></div>
+					<div style='border:2vh'>
+					<i class="far fa-envelope" style='font-size:3vh'></i></div>
+					</div>
+				</div>
+				<div class='footer2'>2</div>
 				<div class='f_hr'><hr></div>
 				<div class='f_text1'>
 				<div class='logoutFace'>
@@ -28,7 +38,9 @@
 					<button class='btn' value='logout' onclick="signOutGoo()"></button>
 				</div>
 				</div>
-				<div class='f_text2'>8</div>
+				<div class='f_text2'>
+				<i class="far fa-registered"></i>2018 - Fonticons, Inc. All rights reserved
+				</div>
 				<div class='f_text3'>9</div>
 	</div>
 	
