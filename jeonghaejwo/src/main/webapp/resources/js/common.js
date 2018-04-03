@@ -70,3 +70,19 @@ $(document).ready(function(){
 		
 	}
 })
+
+
+//시간 설정 버튼 플러스 마이너스 
+var count = 0;
+function plus(countEl){
+	if(count<6){
+	    count++;
+	    countEl.value = count+" 시간";
+	}
+}
+function minus(countEl){
+	if (count > 1) {
+	    count--;
+	    countEl.value = count+" 시간";
+	}
+}

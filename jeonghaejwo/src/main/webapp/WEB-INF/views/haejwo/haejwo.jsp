@@ -14,6 +14,8 @@
 
 </script>
 <body>
+<!-- 해야 할거 
+1.설정이 모두 체크 안된 상태에서 버튼을 눌렀을 때 메세지 보여주기! -->
 <div class='mainContainers'>
 	<!-- 메인 컨테이너 -->
 	<div class='jhj_container'>
@@ -55,12 +57,12 @@
 			</div>
 			<!-- 시간 -->
 			<div id="time_div" class="time_div">
-				<button class="time_set" onclick="minus()">
+				<button class="time_set" onclick="haejwo_minus()">
 					<span class="glyphicon glyphicon-menu-left"></span>
 				</button>
 				<input type="text" value="시간을 설정하세요" id="time_count"
 					style="color: black; text-align: center" class="time_count">
-				<button class="time_set" onclick="plus()">
+				<button class="time_set" onclick="haejwo_plus()">
 					<span class="glyphicon glyphicon-menu-right"></span>
 				</button>
 			</div>
@@ -123,9 +125,6 @@ $(function(){
 	 }
 	 
 }
-/* 시간 설정 */
-var count = 0;
-var countEl = document.getElementById("time_count");
 
 //변수 값 
 var mapX, mapY, times, radius, code, dMapX, dMapY;

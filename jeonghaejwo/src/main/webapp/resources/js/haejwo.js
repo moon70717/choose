@@ -12,20 +12,17 @@ function radioAble(){
 }
 
 /* 시간 설정 */
-var count = 0;
-var countEl = document.getElementById("time_count");
-function plus(){
-	if(count<6){
-	    count++;
-	    countEl.value = count+" 시간";
-	    radioAble();
-	}
+function haejwo_plus(){
+
+	var countEl = document.getElementById("time_count");
+	plus(countEl)
+	radioAble();
 }
-function minus(){
-  if (count > 1) {
-    count--;
-    countEl.value = count+" 시간";
+function haejwo_minus(){
+
+	var countEl = document.getElementById("time_count");
+	minus(countEl);
     radioAble();
-  }  
 }
+
 

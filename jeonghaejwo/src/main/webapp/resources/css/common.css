@@ -6,7 +6,7 @@ html{
 }
 body {
 	font-family: 'dohyeon';
-	background: linear-gradient(to bottom, #ffffff 0%, #000000 100%);
+	background: linear-gradient(to bottom, #dedede 0%, #000000 100%);
 	color: white;
 	display: grid;
 	grid-template-columns: 1fr 2fr 2fr 2fr 1fr;
@@ -41,15 +41,14 @@ body {
 .footer {
   	grid-area: footer;
 	font-family: 'yeonsung';
-    width: 93%;
 	padding-top: 25px;
 	text-align: center;
 	display: grid;
-	grid-template-columns: 1fr 1fr 0.5fr 1fr 1fr 1fr 1fr 1fr 1fr;
+	grid-template-columns: 1fr 1fr 0.5fr 0.5fr 1fr 1fr 0.5fr 0.5fr 1fr 1fr;
   	grid-template-areas: 
-    	". logo . footer1 footer1 footer1 footer1 footer2 ."
-    	". hr hr hr hr hr hr hr ."
-    	". . text1 text1 text2 text2 text3 text3 .";
+    	". logo . footer1 footer1 footer1 footer1 footer2 footer2 ."
+    	". hr hr hr hr hr hr hr hr ."
+    	". . text1 text2 text2 text2 text2 text3 text3 .";
 }
 
 .f_logo {

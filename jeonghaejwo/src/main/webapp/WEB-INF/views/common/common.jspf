@@ -6,7 +6,7 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
 <c:set var="root" value="${pageContext.request.contextPath}"/>
-<c:set var="ver" value="?version=1.0.67"/>
+<c:set var="ver" value="?version=1.0.73"/>
 <c:set var="rPath" value="${root}/resources"/>
 <c:set var="pPath" value="${root}/path"/>
 <c:set var="dPath" value="${rPath}/dx"/>
@@ -27,7 +27,6 @@
 <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> -->
 
 <script src="${root}/resources/js/jquery.min.js" charset="utf-8"></script>
-<script src="${root}/resources/js/jquery-3.2.1.js" charset="utf-8"></script>
 <script src="${root}/resources/js/bootstrap.js"></script>
 <script src="${root}/resources/js/bootstrap-table.js" charset="utf-8"></script>
 <!-- 메뉴 -->
@@ -73,7 +72,7 @@
 	<div class='menu_grid2'>
 		<a href="${root}/path/home">홈</a>
 	  	<a href="${root}/path/user/login">LOGIN</a> <!-- 로그인하면 로그아웃 -->
-	  	<a href="${root}/path/user/profile">마이페이지</a> <!-- 할일 입력 및 개인정보 수정 -->
+	  	<a href="${root}/path/user/mypage">마이페이지</a> <!-- 할일 입력 및 개인정보 수정 -->
 	  	<a href="${root}/path/haejwo/haejwo">정해줘</a>
 	  	<a href="${root}/path/map/show-way">MAP</a>
 	  	<a href="${root}/path/board/rank">순위</a>
