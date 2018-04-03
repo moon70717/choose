@@ -51,22 +51,6 @@ public class UserInfoController {
 		}
 		return map;
 	}
-	
-	
-//	@RequestMapping(value="/join", method=RequestMethod.POST)
-//	public @ResponseBody Map<String, Object> join(@RequestBody UserInfoVO ui){
-//		Map<String, Object> map = new HashMap<String, Object>();
-//		map.put("msg", "회원가입 실패");
-//		map.put("biz", false);
-//		int result = uis.join(ui);
-//		if(result==1) {
-//			map.put("msg", "회원가입 성공");
-//			map.put("biz", true);
-//		}else if(result==2) {
-//			map.put("msg", "아이디 중복");
-//		}
-//		return map;
-//	}
 
 	@RequestMapping(value="/check/{UserId}", method=RequestMethod.GET)
 	public @ResponseBody Map<String, Object> join2(@PathVariable String userId){

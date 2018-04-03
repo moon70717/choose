@@ -3,9 +3,10 @@ package com.jeong.haejwo.service.impl;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
-import com.jeong.haejwo.dao.UserInfoDAO;
+import com.jeong.haejwo.dao.DefaultDAO;
 import com.jeong.haejwo.service.UserInfoService;
 import com.jeong.haejwo.vo.UserInfoVO;
 
@@ -13,11 +14,25 @@ import com.jeong.haejwo.vo.UserInfoVO;
 
 
 @Service
+@Qualifier("user")
 public class UserInfoServiceImpl implements UserInfoService {
 
 	@Autowired
-	private UserInfoDAO uidao;
+	private DefaultDAO uidao;
 	
+	@Override
+	public boolean login(Map<String, Object> rMap, UserInfoVO ui) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+	
+	@Override
+	public int checkUserId(String userNo) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+	
+	/* api용만 이식
 	@Override
 	public boolean login(Map<String, Object> rMap, UserInfoVO ui) {
 		ui = uidao.selectUserInfo(ui);
@@ -38,13 +53,13 @@ public class UserInfoServiceImpl implements UserInfoService {
 			return 1;
 		}
 		return 0;
-	}
+	}*/
 
 	//api 로그인 유저용
 	@Override
 	public boolean login(Map<String, Object> data) {
-		if(uidao.selectUserInfo(data)==null) {
-			uidao.insertUserInfo(data);
+		if(uidao.selectOne(data)==null) {
+			uidao.insert(data);
 		}
 		return true;
 	}

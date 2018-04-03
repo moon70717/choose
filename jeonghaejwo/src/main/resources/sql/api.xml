@@ -5,7 +5,7 @@
   
 <mapper namespace="api">
 	<insert id="apidata" parameterType="map">
-		insert ignore apidata(code, placename,mapx,mapy,tel,img,addr,modifiedtime)
+		insert ignore into apidata(code, placename,mapx,mapy,tel,img,addr,modifiedtime)
 		values(#{contentid},#{title},#{mapy},#{mapx},#{tel},#{firstimage},#{addr1},#{modifiedtime})	
 	</insert>
 </mapper>  

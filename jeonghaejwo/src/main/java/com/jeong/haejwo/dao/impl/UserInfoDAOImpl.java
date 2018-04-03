@@ -1,23 +1,26 @@
 package com.jeong.haejwo.dao.impl;
 
+import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
 
-import com.jeong.haejwo.dao.UserInfoDAO;
-import com.jeong.haejwo.vo.UserInfoVO;
+import com.jeong.haejwo.dao.DefaultDAO;
 
 
 
 
 @Repository
-public class UserInfoDAOImpl implements UserInfoDAO {
+@Qualifier("user")
+public class UserInfoDAOImpl implements DefaultDAO {
 	@Autowired
 	private SqlSessionFactory  ssf;
-	
+/*	api유저용만 이식됨
 	@Override
 	public UserInfoVO selectUserInfo(UserInfoVO ui) {
 		
@@ -33,25 +36,35 @@ public class UserInfoDAOImpl implements UserInfoDAO {
 		int result = ss.insert("user.insertUserInfo", ui);
 		ss.close();
 		return result;
-	}
+	}*/
 
-	
-	//api 회원가입 유저용
 	@Override
-	public int insertUserInfo(Map<String, Object> data) {
+	public int insert(Map<String, Object> data) {
 		SqlSession ss = ssf.openSession();
 		int result = ss.insert("user.insertApiUser",data);
 		ss.close();
 		return result;
 	}
 
-	//api 로그인 회원용
 	@Override
-	public UserInfoVO selectUserInfo(Map<String, Object> data) {
+	public Map<String, Object> selectOne(Map<String, Object> data) {
 		SqlSession ss = ssf.openSession();
-		UserInfoVO ui = ss.selectOne("user.selectApiUser",data);
+		Map<String, Object> result = new HashMap<String, Object>();
+		result.put("user", ss.selectOne("user.selectApiUser",data));
 		ss.close();
-		return ui;
+		return result;
+	}
+
+	@Override
+	public List<Object> selectList(Map<String, Object> data) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public int update(Map<String, Object> data) {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 
 }

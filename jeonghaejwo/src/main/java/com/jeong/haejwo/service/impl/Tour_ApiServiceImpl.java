@@ -1,21 +1,37 @@
 package com.jeong.haejwo.service.impl;
 
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
-import com.jeong.haejwo.dao.Tour_ApiDAO;
-import com.jeong.haejwo.service.Tour_ApiService;
+import com.jeong.haejwo.dao.DefaultDAO;
+import com.jeong.haejwo.service.DefaultService;
 
 @Service
-public class Tour_ApiServiceImpl implements Tour_ApiService {
+@Qualifier("tour")
+public class Tour_ApiServiceImpl implements DefaultService {
 
 	@Autowired
-	Tour_ApiDAO tourDAO;
+	@Qualifier("tour")
+	DefaultDAO tourDAO;
 
 	@Override
-	public String requestAPI(String code, Map<String, Object> data) {
+	public int insert(Map<String, Object> data) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public Map<String, Object> getOne(Map<String, Object> data) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Object> getList(Map<String, Object> data) {
 		String base = "http://api.visitkorea.or.kr/openapi/service/rest/KorService/locationBasedList?serviceKey=";
 		String key = "peWkmeOBUcoT4b1Oqd7%2FotBYLzAO%2BWBymO82ftCMolY%2Bs9AI1ppnNVO4U9a%2Blhohtj1X38Iy4ENC1ReL1aHKWg%3D%3D";
 
@@ -28,10 +44,10 @@ public class Tour_ApiServiceImpl implements Tour_ApiService {
 		// 카테고리 3레벨로 되어있는데 나중에 수정할것
 		// 그리고 입력안하면 그냥 검색함
 		// 현재는 않씀
-		String category = "&cat3=" + code;
+		String category = "&cat3=" + data.get("code");
 
 		// 카테고리 대신 사용할 컨텐츠 아이디
-		String contenttype = "&contentTypeId=" + code;
+		String contenttype = "&contentTypeId=" + data.get("code");
 
 		// 맨뒤에 리스트설정 분리해야됨
 		// xy를 넣을때 반대로 해줘야 값이 나옴
@@ -39,7 +55,13 @@ public class Tour_ApiServiceImpl implements Tour_ApiService {
 
 		// 일단 하나로 합침
 		String url = base + key + startPage + environment + contenttype + geoInfo;
+		data.put("link", url);
+		return tourDAO.selectList(data);
+	}
 
-		return tourDAO.requestAPI(url);
+	@Override
+	public int update(Map<String, Object> data) {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 }

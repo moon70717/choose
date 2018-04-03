@@ -4,25 +4,41 @@ import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
-import com.jeong.haejwo.dao.ReviewDAO;
-import com.jeong.haejwo.service.ReviewService;
+import com.jeong.haejwo.dao.DefaultDAO;
+import com.jeong.haejwo.service.DefaultService;
 
 @Service
-public class ReviewServiceImpl implements ReviewService {
+@Qualifier("review")
+public class ReviewServiceImpl implements DefaultService {
 
 	@Autowired
-	ReviewDAO reDAO;
-	
+	@Qualifier("review")
+	DefaultDAO reDAO;
+
 	@Override
-	public int writeReview(Map<String, Object> data) {
-		return reDAO.insertReview(data);
+	public int insert(Map<String, Object> data) {
+		// TODO Auto-generated method stub
+		return reDAO.insert(data);
 	}
 
 	@Override
-	public List<Map<String, Object>> getList(Map<String, Object> data) {
+	public List<Object> getList(Map<String, Object> data) {
 		return reDAO.selectList(data);
+	}
+	
+	@Override
+	public Map<String, Object> getOne(Map<String, Object> data) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public int update(Map<String, Object> data) {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 
 }
