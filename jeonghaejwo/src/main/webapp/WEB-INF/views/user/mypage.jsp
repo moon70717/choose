@@ -23,13 +23,13 @@
 .mypageUserImg{
 	grid-area:mypageUserImg;
 	display: grid;
-	grid-template-columns: 1fr 1fr 1fr 0.5fr 0.5fr;
+	grid-template-columns: 1fr 1fr 1fr 1fr;
   	grid-template-areas:
-  		". mypageUserImg_container mypageUserImg_container . ." 
-  		"mypage_userImg_hr mypage_userImg_hr mypage_userImg_hr mypage_userImg_hr mypage_userImg_hr"
-    	".  mypageUserId mypageUserId2 . ."
-    	".  mypageUserNickName mypageUserNickName2 . ."
-    	". memberLeave memberLeave . .";
+  		"mypageUserImg_container mypageUserImg_container mypageUserImg_container mypageUserImg_container" 
+  		"mypage_userImg_hr mypage_userImg_hr mypage_userImg_hr mypage_userImg_hr"
+    	"mypageUserId mypageUserId mypageUserId2 mypageUserId2"
+    	"mypageUserNickName mypageUserNickName mypageUserNickName2 mypageUserNickName2"
+    	"memberLeave memberLeave memberLeave memberLeave";
 	text-align: center;
 }
 .mypageUserImg_container{
@@ -43,6 +43,7 @@
 }
 .mypageUserId2{
 	grid-area: mypageUserId2;
+	    text-align: left;
 }
 .mypageUserNickName{
 	grid-area: mypageUserNickName;
@@ -51,6 +52,7 @@
 .mypageUserNickName2{
 	grid-area: mypageUserNickName2;
 	    margin-top: 2vh;
+	        text-align: left;
 }
 .userNicknamechange{
   cursor: pointer;
