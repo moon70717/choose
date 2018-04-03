@@ -8,6 +8,7 @@ import javax.servlet.http.HttpSession;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.jeong.haejwo.service.DefaultService;
 import com.jeong.haejwo.service.UserInfoService;
 import com.jeong.haejwo.vo.UserInfoVO;
 
@@ -23,6 +25,10 @@ import com.jeong.haejwo.vo.UserInfoVO;
 public class UserInfoController {
 	@Autowired
 	private UserInfoService uis;
+	
+	@Autowired
+	@Qualifier("user")
+	DefaultService usService;
 	
 	private static final Logger log = LoggerFactory.getLogger(UserInfoController.class);
 	
@@ -44,7 +50,10 @@ public class UserInfoController {
 	public @ResponseBody Map<String,Object> login(@RequestParam Map<String,Object> data, HttpSession hs){
 		Map<String,Object> map=new HashMap<String,Object>();
 		log.info("data=>{}", data);
-		if(uis.login(data)) {
+		map=usService.getOne(data);
+		if(map!=null) {
+			hs.setAttribute("user", map);
+			map=new HashMap<String,Object>();
 			map.put("result", true);
 			hs.setAttribute("isLogin", true);
 			hs.setAttribute("id", data.get("id"));

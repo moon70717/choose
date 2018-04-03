@@ -1,5 +1,6 @@
 package com.jeong.haejwo.service.impl;
 
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,61 +8,45 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import com.jeong.haejwo.dao.DefaultDAO;
-import com.jeong.haejwo.service.UserInfoService;
-import com.jeong.haejwo.vo.UserInfoVO;
+import com.jeong.haejwo.service.DefaultService;
 
 
 
 
 @Service
 @Qualifier("user")
-public class UserInfoServiceImpl implements UserInfoService {
+public class UserInfoServiceImpl implements DefaultService {
 
 	@Autowired
 	private DefaultDAO uidao;
 	
 	@Override
-	public boolean login(Map<String, Object> rMap, UserInfoVO ui) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-	
-	@Override
-	public int checkUserId(String userNo) {
+	public int insert(Map<String, Object> data) {
 		// TODO Auto-generated method stub
 		return 0;
 	}
-	
-	/* api용만 이식
-	@Override
-	public boolean login(Map<String, Object> rMap, UserInfoVO ui) {
-		ui = uidao.selectUserInfo(ui);
-		rMap.put("msg", "아이디 비밀번호를 확인해주세요.");
-		rMap.put("biz", false);
-		if(ui!=null) {
-			rMap.put("msg", ui.getUserName() + "님 로그인에 성공하셨습니다.");
-			rMap.put("biz", true);
-			return true;
-		}
-		return false;
-	}
 
-	public int checkUserId(String userNo) {
-		UserInfoVO ui = new UserInfoVO();
-		ui.setUserId(userNo);
-		if(uidao.selectUserInfo(ui)!=null){
-			return 1;
-		}
-		return 0;
-	}*/
-
-	//api 로그인 유저용
+	@SuppressWarnings("unused")
 	@Override
-	public boolean login(Map<String, Object> data) {
-		if(uidao.selectOne(data)==null) {
+	public Map<String, Object> getOne(Map<String, Object> data) {
+		Map<String,Object> result=uidao.selectOne(data);
+		if(result==null) {
 			uidao.insert(data);
+			result=uidao.selectOne(data);
 		}
-		return true;
+		return result;
+	}
+
+	@Override
+	public List<Object> getList(Map<String, Object> data) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public int update(Map<String, Object> data) {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 	
 }

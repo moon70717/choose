@@ -20,23 +20,6 @@ import com.jeong.haejwo.dao.DefaultDAO;
 public class UserInfoDAOImpl implements DefaultDAO {
 	@Autowired
 	private SqlSessionFactory  ssf;
-/*	api유저용만 이식됨
-	@Override
-	public UserInfoVO selectUserInfo(UserInfoVO ui) {
-		
-		SqlSession ss = ssf.openSession();
-		ui = ss.selectOne("user.selectUserInfo", ui);
-		ss.close();
-		return ui;
-	}
-
-	@Override
-	public int insertUserInfo(UserInfoVO ui) {
-		SqlSession ss = ssf.openSession();
-		int result = ss.insert("user.insertUserInfo", ui);
-		ss.close();
-		return result;
-	}*/
 
 	@Override
 	public int insert(Map<String, Object> data) {
