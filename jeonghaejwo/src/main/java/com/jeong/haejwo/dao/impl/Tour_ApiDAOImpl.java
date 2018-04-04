@@ -5,7 +5,11 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.Map;
 
+import org.apache.ibatis.session.SqlSession;
+import org.apache.ibatis.session.SqlSessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.jeong.haejwo.dao.Tour_ApiDAO;
@@ -13,6 +17,9 @@ import com.jeong.haejwo.dao.Tour_ApiDAO;
 @Component
 public class Tour_ApiDAOImpl implements Tour_ApiDAO {
 
+	@Autowired
+	SqlSessionFactory ssf;
+	
 	@Override
 	public String requestAPI(String u) {
 		URL url = null;
@@ -54,6 +61,13 @@ public class Tour_ApiDAOImpl implements Tour_ApiDAO {
 	        }
 	    }
 	    return returnText;
+	}
+
+	@Override
+	public int insert(Map<String, Object> data) {
+		SqlSession ss= ssf.openSession();
+		int result= ss.insert("api.insert",data);
+		return result;
 	}
 
 }

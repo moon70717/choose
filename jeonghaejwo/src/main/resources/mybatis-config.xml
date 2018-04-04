@@ -19,6 +19,7 @@
 		<mapper resource="sql/rank.xml"/>
 		<mapper resource="sql/profile.xml"/>
 		<mapper resource="sql/history.xml"/>
+		<mapper resource="sql/api.xml"/>
 		<!--<mapper resource="sql/connection_info.xml"/>-->
 	</mappers>
 	

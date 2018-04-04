@@ -5,7 +5,7 @@
 <mapper namespace="history">
 	<insert id="insert" parameterType="map">
 		insert into history(visitDate,userId,code)
-		values(#{date},#{userId},#[code})
+		values(#{date},#{userId},#{code})
 	</insert>
 	<insert id="todoIn">
 		insert into user_plan(userId,usetime,location,title)
@@ -16,5 +16,11 @@
 		<where>
 			userId = #{userId}
 		</where>
+	</select>
+	
+	<select id="select" parameterType="map" resultType="map">
+		select * from history hi
+		left join apidata ap on hi.code=ap.code
+		where hi.userId = #{userId}
 	</select>
 </mapper>  

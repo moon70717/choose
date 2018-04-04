@@ -19,11 +19,26 @@ public class HistoryDAOImpl implements DefaultDAO {
 	@Autowired
 	SqlSessionFactory ssf;
 	
+	
+	//분기문 추가 
+	//1: user_plan
+	//2: history
+	//다른 DAO로 나눠야됨
 	@Override
 	public int insert(Map<String, Object> data) {
 		System.out.println(data.get("title"));
 		SqlSession ss= ssf.openSession();
-		int result=ss.insert("history.todoIn",data);
+		int result=0;
+		int toggle=Integer.parseInt((String) data.get("toggle"));
+		switch(toggle) {
+		case 1:
+			result=ss.insert("history.todoIn",data);
+			break;
+		case 2:
+			System.out.println(data);
+			result=ss.insert("history.insert",data);
+			break;
+		}
 		ss.close();
 		return result;
 	}
@@ -34,11 +49,23 @@ public class HistoryDAOImpl implements DefaultDAO {
 		return null;
 	}
 
+	//분기문 추가 
+	//1: user_plan
+	//2: history
 	@Override
 	public List<Object> selectList(Map<String, Object> data) {
 		SqlSession ss= ssf.openSession();
 		List<Object> result=new ArrayList<Object>();
-		result.add(ss.selectList("history.list",data));
+		int toggle=Integer.parseInt((String) data.get("toggle"));
+		switch(toggle) {
+		case 1:
+			
+			result.add(ss.selectList("history.list",data));
+			break;
+		case 2:
+			result.add(ss.selectList("history.select",data));
+			break;
+		}
 		ss.close();
 		return result;
 	}

@@ -423,6 +423,10 @@ function sendVariable(loInput, desInput){
 					$("#button"+routeSegment).click(function(){
 						calculateAndDisplayRoute(0,this.value-1); 
 					});
+					var test=waypts.length;
+					if(waypoint.length>idx){
+						apiInsert(waypoint[idx]);	
+					}
 					calculateAndDisplayRoute(1,idx+1);
 				}
 				
@@ -430,6 +434,48 @@ function sendVariable(loInput, desInput){
 				
 			} else {
 				window.alert('Directions request failed due to ' + status);
+			}
+		});
+	}
+	
+	//api 데이터 저장
+	function apiInsert(res){
+		var data={
+				'code' : res.contentid,
+				'placename' : res.title,
+				'mapx' : res.mapx,
+				'mapy' : res.mapy,
+				'tel' : res.tel,
+				'img' : res.firstimage,
+				'addr' : res.addr1,
+				'modifiedtime' : res.modifiedtime
+		}
+		
+		$.ajax({
+			url : "/api/insert",
+			data : data,
+			success : function(res1){
+				console.log(res1);
+				history(res);
+			}
+		});
+	}
+	
+	//history를 기록하는 부분
+	function history(res){
+		var code=''+res.contentid;
+		var data={
+				userId : "103230395918627060836",
+				code : code,
+				date : 180404,
+				toggle : 2
+		}
+		
+		$.ajax({
+			url : "/history/insert",
+			data : data,
+			success : function(res){
+				console.log(res);
 			}
 		});
 	}
