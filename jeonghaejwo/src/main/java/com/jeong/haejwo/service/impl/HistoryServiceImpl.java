@@ -20,8 +20,7 @@ public class HistoryServiceImpl implements DefaultService{
 	
 	@Override
 	public int insert(Map<String, Object> data) {
-		// TODO Auto-generated method stub
-		return 0;
+		return hiDAO.insert(data);
 	}
 
 	@Override
@@ -38,6 +37,12 @@ public class HistoryServiceImpl implements DefaultService{
 
 	@Override
 	public int update(Map<String, Object> data) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int delete(Map<String, Object> data) {
 		// TODO Auto-generated method stub
 		return 0;
 	}

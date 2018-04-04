@@ -21,7 +21,8 @@ public class HistoryDAOImpl implements DefaultDAO {
 	
 	@Override
 	public int insert(Map<String, Object> data) {
-		SqlSession ss=ssf.openSession();
+		System.out.println(data.get("title"));
+		SqlSession ss= ssf.openSession();
 		int result=ss.insert("history.todoIn",data);
 		ss.close();
 		return result;
@@ -44,6 +45,12 @@ public class HistoryDAOImpl implements DefaultDAO {
 
 	@Override
 	public int update(Map<String, Object> data) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int delete(Map<String, Object> data) {
 		// TODO Auto-generated method stub
 		return 0;
 	}

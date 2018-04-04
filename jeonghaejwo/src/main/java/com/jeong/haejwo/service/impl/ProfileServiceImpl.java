@@ -1,6 +1,5 @@
 package com.jeong.haejwo.service.impl;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -21,27 +20,28 @@ public class ProfileServiceImpl implements DefaultService{
 	
 	@Override
 	public int insert(Map<String, Object> data) {
-		// TODO Auto-generated method stub
-		return 0;
+		return proDAO.insert(data);
 	}
 
 	@Override
 	public Map<String, Object> getOne(Map<String, Object> data) {
-		Map<String,Object> result=new HashMap<String,Object>();
-		result.put("result", proDAO.selectList(data));
-		return result;
+		return proDAO.selectOne(data);
 	}
 
 	@Override
 	public List<Object> getList(Map<String, Object> data) {
-		// TODO Auto-generated method stub
-		return null;
+		return proDAO.selectList(data);
 	}
 
 	@Override
 	public int update(Map<String, Object> data) {
 		// TODO Auto-generated method stub
 		return 0;
+	}
+
+	@Override
+	public int delete(Map<String, Object> data) {
+		return proDAO.delete(data);
 	}
 
 }

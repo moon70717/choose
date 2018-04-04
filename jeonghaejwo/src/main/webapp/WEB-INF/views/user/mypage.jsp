@@ -226,6 +226,18 @@
 </div> 
 </div>
 <script>
+
+/*
+ * 
+ ToDo
+ 테스트 끝나면 data의 userId들을 제거하고 세션에서 받아오도록 변경할것
+ 
+ 
+ 
+ 
+ */
+
+
 //유저정보 받아오는 부분
 var temp;
 var dtemp=[];
@@ -240,7 +252,7 @@ $(document).ready(function(){
 			url : "/profile/user",
 			data : dtemp,
 			success : function(res){
-				var user=res.user[0][0];
+				var user=res.user[0];
 				$(".mypageUserId2").append(user.userName);
 				temp=user.userName;
 				temp+='<i class="fas fa-pencil-alt userNicknamechange" onclick="#" ></i>';
@@ -264,10 +276,26 @@ $(document).ready(function(){
 				$("#todoList").append(temp);
 			}
 		});
+		
+		getFav();
 	}
 );
 
-
+function getFav(){
+	//즐겨찾기 보여주는곳, temp딴걸로 수정해야될듯
+	$.ajax({
+		url : "/profile/fav",
+		data : dtemp,
+		success : function(res){
+			//userPositionList
+			console.log(res);
+			for(temp1 of res.result[0]){
+				
+				addFav(temp1);
+			}
+		}
+	})
+}
 
 
 
@@ -303,31 +331,91 @@ function newElement() {
 	if(num_Lists.length>=3){
 		alert("You must delete something! you can 3 positionlist");
 	}else{
-		var li = document.createElement("li");
 		var inputValue = document.getElementById("myPositionInput").value;
-		var t = document.createTextNode(inputValue);
-		li.appendChild(t);
 		if (inputValue.trim() === '') {
-		  alert("You must write something!");
-		} else {
-		  document.getElementById("userPositionList").appendChild(li);
-		}
-		document.getElementById("myPositionInput").value = "";
-		var span = document.createElement("span");
-		var txt = document.createTextNode("\u00D7");
-		span.className = "userPositionListclose";
-		span.appendChild(txt);
-		li.className="li_userPositionList";
-		li.appendChild(span);
-		var userPositionListclose = $(".userPositionListclose");
-		for (var i = 0; i < userPositionListclose.length; i++) {
-			userPositionListclose[i].onclick = function() {
-		    var div = this.parentElement;
-		    div.remove(div);
-		  }
+			  alert("You must write something!");
+		}else{
+			
+			//서버가서 db에 즐겨찾기 추가함
+			//지도연동을 이거 전에 해야될듯
+			dtemp={
+					"userId":"103230395918627060836",
+					"address" : inputValue,
+					"toggle" : 2
+			}
+			$.ajax({
+				url : "/profile/insertFav",
+				data : dtemp,
+				success : function(res){
+					
+					console.log(res);
+					
+					//입력 성공하면 보여줌
+					if(res.result){
+						//있는거 한번 날림
+						$(".li_userPositionList").remove();
+						getFav();
+					}else{
+						alert("입력에 실패하였습니다.");
+					}
+					
+				}
+			});
+			
 		}
 	}
 }
+
+//즐겨찾기 추가하는부분 분리
+function addFav(res){
+	var li = document.createElement("li");
+	
+	var t = document.createTextNode(res.address);
+	li.appendChild(t);
+	document.getElementById("userPositionList").appendChild(li);
+	document.getElementById("myPositionInput").value = "";
+	var span = document.createElement("span");
+	var txt = document.createTextNode("\u00D7");
+	span.className = "userPositionListclose";
+	span.appendChild(txt);
+	li.className="li_userPositionList";
+	li.appendChild(span);
+	//span의 dataset에 favNo를 저장함
+	//span보다는 위에놈한태 주는것도 나쁘지 않을듯
+	span.dataset.favNo=res.favNo;
+	var userPositionListclose = $(".userPositionListclose");
+	for (var i = 0; i < userPositionListclose.length; i++) {
+		
+		//만들어진 즐겨찾기에 삭제기능을 추가하는부분
+		userPositionListclose[i].onclick = function() {
+	    var div = this.parentElement;
+	    
+	    //유저정보는 세션에서 받아오도록 할 예정이므로
+	    //userId는 테스트후 삭제예정
+	    var data={
+	    		"userId":"103230395918627060836",
+				"favNo" : div.children[0].dataset.favNo
+	    }
+	    
+	    //서버가서 삭제하는부분
+	    $.ajax({
+	    	url : "/profile/delFav",
+	    	data : data,
+	    	success : function(res){
+	    		
+	    		//성공했을때만 삭제하도록
+	    		if(res.result){
+	    			div.remove();
+	    		}else{
+	    			alert("삭제에 실패하였습니다");
+	    		}
+	    	}
+	    });
+		}
+		
+	}
+}
+
 //할일 추가하는 것
 function newWorkElement() {
 	if($('.myWorkInput').length<3){
@@ -348,7 +436,11 @@ function newWorkElement() {
 			data : data,
 			success : function(res){
 				temp=res;
-				console.log(res);
+				if(res.result){
+					location.reload();
+				}else{
+					alert("잠시후 시도해주세요");
+				}
 			}
 		});
 	}

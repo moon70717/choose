@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.jeong.haejwo.dao.impl.HistoryDAOImpl;
 import com.jeong.haejwo.service.DefaultService;
 
 @Controller
@@ -30,9 +29,8 @@ public class HistoryController {
 	
 	@RequestMapping("/todoIn")
 	public @ResponseBody Map<String,Object> insertTodo(@RequestParam Map<String,Object> data){
-		HistoryDAOImpl his=new HistoryDAOImpl();
 		Map<String,Object> result=new HashMap<String,Object>();
-		if(his.insert(data)==1) {
+		if(hiService.insert(data)==1) {
 			result.put("result", true);
 		}
 		return result;

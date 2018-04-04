@@ -9,4 +9,23 @@
 		us.userId=#{userId}
 	</where>
 	</select>
+	
+	<insert id="insertFav" parameterType="map">
+		insert ignore into user_fav(userId,address)
+		values(#{userId},#{address})
+	</insert>
+	
+	<delete id="deleteFav" parameterType="map">
+		delete from user_fav
+		<where>
+			favNo=#{favNo}
+		</where>
+	</delete>
+	
+	<select id="selectFav" parameterType="map" resultType="map">
+		select * from user_fav
+		<where>
+			userId=#{userId}
+		</where>
+	</select>
 </mapper>  

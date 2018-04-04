@@ -9,7 +9,7 @@
 	</insert>
 	<insert id="todoIn">
 		insert into user_plan(userId,usetime,location,title)
-		values(#{userId},#{usetime},#{locaion},#{title})
+		values(#{userId},#{usetime},#{location},#{title})
 	</insert>
 	<select id="list" resultType="map" parameterType="map">
 	select * from user_plan
