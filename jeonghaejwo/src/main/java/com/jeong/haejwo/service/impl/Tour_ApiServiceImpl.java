@@ -42,4 +42,10 @@ public class Tour_ApiServiceImpl implements Tour_ApiService {
 
 		return tourDAO.requestAPI(url);
 	}
+
+	@Override
+	public int insert(Map<String, Object> data) {
+		// TODO Auto-generated method stub
+		return tourDAO.insert(data);
+	}
 }

@@ -1,6 +1,7 @@
 package com.jeong.haejwo.controller;
 
 
+import java.util.HashMap;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -44,6 +45,15 @@ public class ApiController {
 		
 		return map;
 	}
+	
+	@RequestMapping("/insert")
+	public @ResponseBody Map<String,Object> insert(@RequestParam Map<String,Object> data){
+		Map<String,Object> result= new HashMap<String,Object>();
+		result.put("result", (tourService.insert(data)==1)? true:false);
+		
+		return result; 
+	}
+	
 	
 	@RequestMapping("/test")
 	public @ResponseBody Map<String,Object> test(@RequestParam Map<String, Object> map, HttpSession hs){
