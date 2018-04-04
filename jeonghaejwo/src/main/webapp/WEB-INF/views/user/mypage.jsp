@@ -141,9 +141,9 @@
 	<div class=mypage_userImg_hr><hr></div>
 	
 	<div class='mypageUserId'>유저 아이디 : </div>
-	<div class='mypageUserId2'>아무개</div>
+	<div class='mypageUserId2'></div>
 	<div class='mypageUserNickName'>유저 별명 :</div>
-	<div class='mypageUserNickName2'>아무개<i class="fas fa-pencil-alt userNicknamechange" onclick='#' ></i></div>
+	<div class='mypageUserNickName2'></div>
 	
 	<div class='memberLeave'><button class='btn btn'>회원탈퇴</button></div>
 	
@@ -183,22 +183,8 @@
         <th>어디서?</th>
       </tr>
     </thead>
-    <tbody>
-      <tr>
-        <td>IOT 과제를</td> 
-        <td>500시간</td>
-        <td>더조은아카데미</td>
-      </tr>
-      <tr>
-        <td>집에 가기</td>
-        <td>2시간</td>
-        <td>집으로~~~~~~~</td>
-      </tr>
-      <tr>
-        <td>집청소하기</td>   
-        <td>1시간</td>
-        <td>인천 계양구</td>
-      </tr>
+    <tbody id="todoList">
+      
     </tbody>
   </table>
   <hr>
@@ -240,6 +226,52 @@
 </div> 
 </div>
 <script>
+//유저정보 받아오는 부분
+var temp;
+var dtemp=[];
+$(document).ready(function(){
+	
+		//유저아이디 임시
+		dtemp={
+				"userId":"103230395918627060836"
+		}
+		//프로필
+		$.ajax({
+			url : "/profile/user",
+			data : dtemp,
+			success : function(res){
+				var user=res.user[0][0];
+				$(".mypageUserId2").append(user.userName);
+				temp=user.userName;
+				temp+='<i class="fas fa-pencil-alt userNicknamechange" onclick="#" ></i>';
+				$(".mypageUserNickName2").append(temp);
+				$(".mypageUserImg_container img").attr("src",user.ImageURL);
+			}
+		});
+		
+		//할일 보여주는곳
+		$.ajax({
+			url : "/history/todo",
+			data : dtemp,
+			success : function(res){
+				var todo=res.result[0];
+				temp="";
+				for(i of todo){
+					temp+='<tr><td>'+i.title+'</td>';
+			        temp+='<td>'+i.usetime+'</td>';
+			        temp+='<td>'+i.location+'</td></tr>';
+				}
+				$("#todoList").append(temp);
+			}
+		});
+	}
+);
+
+
+
+
+
+
 //Create a "close" button and append it to each list item
 
 var myPositionlist = $(".li_userPosition");
@@ -305,6 +337,20 @@ function newWorkElement() {
 		var myPage_howMuchDo = $('.myWorkInput')[1].value;
 		var myPage_whereDo = $('.myWorkInput')[2].value;
 		console.log(myPage_whatDo+','+myPage_howMuchDo+','+myPage_whereDo);
+		var data={
+				'userId' : '103230395918627060836',
+				'usetime' : myPage_howMuchDo,
+				'location' : myPage_whereDo,
+				'title': myPage_whatDo
+		}
+		$.ajax({
+			url : "/history/todoIn",
+			data : data,
+			success : function(res){
+				temp=res;
+				console.log(res);
+			}
+		});
 	}
 	
 }
