@@ -89,6 +89,10 @@
 	grid-area:ad;
 }
 /*  */
+.rank_recommend_thumbs{
+	font-size:2vmin; 
+}
+/*  */
 .rank-container3 {
 	display: grid;
   	grid-template-columns: repeat(6, 1fr);
@@ -232,7 +236,7 @@ width:100%;
 			for(vv of temp){
 			    console.log(vv);
 			    $(".rank"+tempCount+"_grid .shopname").html(vv.placename);
-			    $(".rank"+tempCount+"_grid .recommend").html(vv.count+"명이 평가");
+			    $(".rank"+tempCount+"_grid .recommend").html("<span class='glyphicon glyphicon-thumbs-up rank_recommend_thumbs'></span>"+vv.count);
 			    $(".rank"+tempCount+"_grid .point").html(vv.avg+"점");
 			    $(".rank"+tempCount+"_grid .address").html(vv.addr);
 			    $(".rank"+tempCount+"_grid .tel").html(vv.tel);

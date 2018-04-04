@@ -34,7 +34,7 @@ public class ApiController {
 		//일단은 이렇게 해놓긴 하는데 여기서 갯수를 개산하거나 웹에서 갯수를 계산해서 던져주게 해놔야됨
 		log.info("데이타 :{}", data);
 		int times=Integer.parseInt((String) data.get("times"));
-		for(int i=2;i<times;i++) {
+		for(int i=2;i<=times;i++) {
 			//i번째 경유지 그런식으로 해서 할거
 			//따로 코드를 넣는다던가 하는 방식으로 할때는 좀 수정이 필요할듯
 			//num 에 넣은 i는 페이지를 변경할때 쓸거

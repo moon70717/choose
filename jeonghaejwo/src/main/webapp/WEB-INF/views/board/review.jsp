@@ -13,15 +13,27 @@ background-image: url("${rPath}/imgs/board.jpg");
 	background-repeat: repeat-y;
     background-position: center;
     padding-left: 3vw; 
+    box-shadow: 20px 38px 34px -26px hsla(0,0%,0%,.2);
+    border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
 }
 .write_btn_div{
 	text-align: right;
 }
 .write_btn{
-    background-color: #ffffff;
-    border-color: #2e6da4;
-    margin: 1rem;
-    color: black;
+        background-color: #ffffff00;
+    border-color: #ffffff;
+    border: solid;
+    margin: 0.5rem;
+    color: white;
+    box-shadow: 20px 38px 34px -26px hsla(0,0%,0%,.2);
+    border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
+    font-size: 2vmin;
+}
+.write_btn:focus{
+	border-color: black; 
+}
+.writeReviewpen{
+    margin-right: 2vw;
 }
 .review_container {
  	display: inline-block;
@@ -94,8 +106,27 @@ width: 4rem;
     margin: 0 0 10px;
     text-align: right;
 }
-
-
+/* next 버튼 */
+.rank_nextBtn{
+color: white;
+    background-color: #ffffff00;
+    position: relative;
+    top: 6vh;
+    box-shadow: 20px 38px 34px -26px hsla(0,0%,0%,.2);
+    border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
+    font-size: 2vmin;
+    border: solid 2px;
+    transition:all .5s ease;
+}
+.rank_nextBtn_right{
+    font-size: 3.5vmin;
+    text-indent: 0.25em;
+        margin-left: 3vw;
+}
+.rank_nextBtn:hover{
+	background-color: white;
+	color: black;
+}
 /* 새글쓰기 부분 */
 .review_write_container {
 	display: grid;
@@ -125,9 +156,9 @@ width: 4rem;
 }
 .img_preview {
 	grid-area: preImg;
-    border: solid 0.5px rgba(199, 199, 199, 0.53);
+    border: solid 1.5px rgba(199, 199, 199, 0.53);
     width: 50%;
-    margin: auto
+    margin: auto;
 }
 .review_point {
 	grid-area: reviewPoint;
@@ -141,21 +172,31 @@ width: 4rem;
 }
 
 #preview_img {
-	width: 10rem;
+	width: 5vw;
+	margin-top: 0.1vw;
+}
+.review_modal_closeBtn{
+	    background-color: #ff7070;
+    color: white;
+}
+.review_modal_saveBtn{
+    background-color: #5d5d5d;
+    color: white;
+}
 }
 /* 업로드 버튼  */
 .img_btn label { 
-display: inline-block; 
-padding: .5em .75em;
-font-size: inherit; 
-line-height: normal; 
-vertical-align: middle; 
-cursor: pointer; 
-border: 1px solid #ebebeb; 
-border-radius: .25em;
- color: #fff;
-  background-color: #337ab7;
-    border-color: #2e6da4; 
+display: inline-block;
+    padding: .5em .75em;
+    font-size: inherit;
+    line-height: normal;
+    vertical-align: middle;
+    cursor: pointer;
+    border: 1px solid #ebebeb;
+    border-radius: .25em;
+    color: #fff;
+    background-color: #5d5d5d;
+    border-color: #3c3c3c;
 } 
 
 .img_btn input[type="file"] {
@@ -217,7 +258,8 @@ fieldset, label { margin: 0; padding: 0; }
 <h1 style='margin-top: 1vw;margin-bottom: -2.5vw;color: black'>솔직 방문 후기</h1>
 	<!-- Button trigger modal -->
 	<div class='write_btn_div'>
-		<button type="button" class="btn btn-primary write_btn" data-toggle="modal" data-target="#exampleModalCenter">글쓰기</button>
+		<button type="button" class="btn write_btn" data-toggle="modal" data-target="#exampleModalCenter">
+		<i class="fas fa-pencil-alt writeReviewpen"></i>글쓰기</button>
 	</div>
 
 
@@ -245,7 +287,7 @@ fieldset, label { margin: 0; padding: 0; }
 							<f:form name="frmPopup" id="frmPopup" modelAttribute="popupVO"
 								method="post" action="/file/upload"
 								enctype="multipart/form-data">
-								<label for="uploadFile">사진업로드</label>
+								<label for="uploadFile"><i class="fas fa-upload"></i>   사진업로드</label>
 								<input type="file" name="uploadFile" id="uploadFile">
 							</f:form>
 						</div>
@@ -287,9 +329,9 @@ fieldset, label { margin: 0; padding: 0; }
 					<!-- 내용끝 -->
 				</div>
 				<div class="modal-footer">
-					<button type="button" class="btn btn-secondary"
-						data-dismiss="modal">Close</button>
-					<button type="button" class="btn btn-primary">Save</button>
+					<button type="button" class="btn review_modal_closeBtn"
+						data-dismiss="modal" onclick="#">Close</button>
+					<button type="button" class="btn review_modal_saveBtn" onclick="#">Save</button>
 				</div>
 			</div>
 		</div>
@@ -301,7 +343,7 @@ fieldset, label { margin: 0; padding: 0; }
 		</div>
 		<div id="review_coments_modal" style="color:black"></div>
 		<div style="text-align:right;">
-		<button onclick="nextReview()" style="color:black">next</button>
+		<button class='rank_nextBtn' onclick="nextReview()">next<i class="fas fa-angle-right rank_nextBtn_right"></i></button>
 		</div>
 	</div>
 

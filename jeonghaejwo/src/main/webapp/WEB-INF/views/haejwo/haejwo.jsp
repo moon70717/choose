@@ -57,14 +57,12 @@
 			</div>
 			<!-- 시간 -->
 			<div id="time_div" class="time_div">
-				<button class="time_set" onclick="haejwo_minus()">
-					<span class="glyphicon glyphicon-menu-left"></span>
-				</button>
+				<i class="fas fa-caret-left time_set" onclick="haejwo_plus()"></i>
 				<input type="text" value="시간을 설정하세요" id="time_count"
 					style="color: black; text-align: center" class="time_count">
-				<button class="time_set" onclick="haejwo_plus()">
-					<span class="glyphicon glyphicon-menu-right"></span>
-				</button>
+			
+					<i class="fas fa-caret-right time_set" onclick="haejwo_plus()"></i>
+			
 			</div>
 			<!-- 반경 거리 -->
 			<div class="funkyradio">
@@ -72,15 +70,15 @@
 					<input type="radio" name="radio" id="radio1" disabled=true
 						value=0.4 data-value='1000' /> <label for="radio1">반경 1km</label>
 				</div>
-				<div class="funkyradio-primary">
+				<div class="funkyradio-info">
 					<input type="radio" name="radio" id="radio2" disabled=true
 						value=0.4 data-value='3000' /> <label for="radio2">반경 3km</label>
 				</div>
-				<div class="funkyradio-success">
+				<div class="funkyradio-info">
 					<input type="radio" name="radio" id="radio3" disabled=true
 						value=1.1 data-value='5000' /> <label for="radio3">반경 5km</label>
 				</div>
-				<div class="funkyradio-warning">
+				<div class="funkyradio-info">
 					<input type="radio" name="radio" id="radio4" disabled=true
 						value=1.4 data-value='10000' /> <label for="radio4">반경
 						10km</label>
@@ -121,7 +119,6 @@ $(function(){
 		$("#desInput")[0].value = $('#loInput')[0].value;
 	 }else if(selectBoxValue==1){
 		 $("#desInput")[0].value = "랜덤으로 갑니다";
-		 
 	 }
 	 
 }
@@ -186,6 +183,19 @@ function deFunc(result){
 var ways="";
 
 function sendVariable(loInput, desInput){
+	if($(".location_input_text")[0].value==""){
+		alert("현재 위치를 입력하세요.");
+		return;	
+	}else if($(".location_input_text")[1].value==""){
+		alert("목적지를 입력하세요.");
+		return;	
+	}else if($('input:radio[name=radio]').is(':checked')==false){
+		alert("거리를 입력하세요~");
+		return;
+	}else if($(".time_count")[0].value=="시간을 설정하세요"){
+		alert("시간을 입력하세요");
+		return;
+	}
 	lodingSt();
 	getXYaddress(loInput, loFunc);
 	getXYaddress(desInput, deFunc);
@@ -209,13 +219,25 @@ function sendVariable(loInput, desInput){
 				lodingEnd();
 				var keys=Object.keys(res).length;
 				waypoint=[];
-				for(key=0;key<keys;key++){
+				for(key=1;key<=keys;key++){
 					var temp=JSON.parse(res[key]);
 					//console.log(temp);
 					temp=temp.response.body.items.item[Math.floor(Math.random()*10)];
 					waypoint.push(temp);
 				}
-				console.log(waypoint);
+				console.log(waypoint);//<<<랜덤추출 결과가 들어옴!!
+				$(".input_container").html("");
+				var result_temp="";
+				var idx=1;
+				for(var wayp of waypoint){
+					result_temp +="<div class='result_num"+idx+"'>"+idx+"</div>";
+					result_temp +="<div class='result_name"+idx+"'>"+wayp.title+"</div>";
+					result_temp +="<div class='result_address"+idx+"'>"+wayp.addr1+"</div>";
+					result_temp +="<div class='result_tel"+idx+"'>"+wayp.tel+"</div>";
+					idx++;
+				}
+
+				$('.input_container').append(result_temp);
 				waypts=[];
 				waypts.push({
 					location : mapX+", "+mapY,
@@ -231,7 +253,7 @@ function sendVariable(loInput, desInput){
 					location : dMapX+", "+dMapY,
 					stopover : true
 				});
-				$(".input_container").html("");
+				
 				calculateAndDisplayRoute(1);
 				
 				/* waypoint = JSON.parse(res.json);
@@ -395,15 +417,11 @@ function sendVariable(loInput, desInput){
 				//onsoff가 1일때만 경로를 웹에 찍어주도록
 				if(onsoff==1){
 					routeSegment++;
-					ways = '<b>Route Segment: ' + routeSegment + '</b><br>';
-					ways += route.legs[0].start_address + ' to ';
-					ways += route.legs[0].end_address + '<br>';
-					ways += route.legs[0].distance.text + '<br>';
-					ways += '<button id="button'+routeSegment+'" value="'+routeSegment+'">길 보기</button><br>';
+					ways = '<div class="haewjo result_btn'+routeSegment+'">';
+					ways += '<button id="button'+routeSegment+'" value="'+routeSegment+'">길 보기'+route.legs[0].distance.text+'</button></div>';
 					$('.input_container').append(ways);
-					console.log(ways);
 					$("#button"+routeSegment).click(function(){
-						calculateAndDisplayRoute(0,this.value-1);
+						calculateAndDisplayRoute(0,this.value-1); 
 					});
 					calculateAndDisplayRoute(1,idx+1);
 				}

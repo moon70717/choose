@@ -41,14 +41,13 @@ body {
 .footer {
   	grid-area: footer;
 	font-family: 'yeonsung';
-	padding-top: 25px;
 	text-align: center;
 	display: grid;
 	grid-template-columns: 1fr 1fr 0.5fr 0.5fr 1fr 1fr 0.5fr 0.5fr 1fr 1fr;
   	grid-template-areas: 
     	". logo . footer1 footer1 footer1 footer1 footer2 footer2 ."
     	". hr hr hr hr hr hr hr hr ."
-    	". . text1 text2 text2 text2 text2 text3 text3 .";
+    	". text2 text2 text2 text2 text2 text2 text2 text2 .";
 }
 
 .f_logo {
@@ -58,51 +57,48 @@ body {
     position: relative;
 }
 #cat_div>img{
-	width: 120px;
+	width: 14vmin;
     position: absolute;
     top: 0;
-    left: 0;
+    left: 0.5vw;
     bottom: 0;
     right: 0;
     margin: auto;
 }
 #cat_msg_div{
-	position: relative;
-    display: none;
-}
-#cat_msg_div>img{
-	width: 9vw;
-    position: absolute;
-    top: -18vh;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    margin: auto;
-    color: black;
-}
-#cat_say{
-	position: absolute;
-    font-size: 5rem;
-    color: red;
-    top: -11.5vh;
-    left: 2vw;
+	display:none;
+	position: relative; 
 }
 
+#cat_say{
+	position: absolute;
+    background-image: url(../imgs/bubble.png);
+    background-size: 16vmin 6vmin;
+    background-repeat: no-repeat;
+    top: -8.5vh;
+    left: 2vw;
+    width: 16vmin;
+    height: 6vmin;
+    line-height: 5vmin;
+}
+.cat_say_span{
+	font-size: 2vmin;
+    color: red;
+    position: relative;
+}
 .footer1{
   grid-area: footer1;
 }
 .footer1_socialIcon{
 	position: relative;
     top: 2vh;
+	    font-size: 1.2vmax;
 }
 .footer1_socialIcon>div{
-	
     display: inline-block;
 }
-.footer1_socialIcon> i{
-	border-left:0.5vw;
-	border-right:0.5vw;
-	}
+
+
 	
 .footer2{
   grid-area: footer2;
@@ -110,9 +106,7 @@ body {
 .f_hr{
   grid-area: hr;
   }
-.f_text1{
-  grid-area: text1;
-  }
+
 .logoutFace{
   display: none;
 }
@@ -122,33 +116,9 @@ body {
 .f_text2{
   grid-area: text2;
   }
-.f_text3{
-  grid-area: text3;
-  }
 
-/* 삼각형 */
-.wrapTri {
-    width: 100%;
-    height: 100%;
-    margin: 0 auto;
-}
-.wrapTri .section {
-  /*   height: 69px;
-    padding: 100px 0;
-    background: #000;
-   display: block; */
-}
 
-.downTri {
-   position: relative;
-   margin: 0 auto;
-   cursor: pointer;
-   width: 0;
-   height: 0;
-   border-right: 17px solid transparent;  
-   border-left: 17px solid transparent; 
-   border-top: 25px solid #fff;
-}
+
 
 /* menu */
 .sidenav {
@@ -315,14 +285,66 @@ body {
     margin-left: 50px;
 }
 
+/* 필요없는건가??
 #main {
     transition: margin-right .5s;
     padding: 16px;
     margin-right: 6%;
+} */
+
+
+/* 시간 */
+.time_container {
+	font-family: 'dohyeon';
+    text-align: center;
+    color: black;
+    margin: auto;
+    width: 80vw;
 }
 
+#clock {
+	position: relative;
+	font-size: 1.5vmax;
+    display: inline-block;
+    width: 4%;
+}
 
+#sec{
+	position: relative;
+	font-size: 1vmax;
+    display: inline-block;
+    width: 10%;
+}
 
+#month {
+	position: relative;
+	font-size: 1.5vmax;
+    display: inline-block;
+    width: 10%;
+}
+
+.date {
+	position: relative;
+	font-size: 1.5vmax;
+    display: inline-block;
+    width: 10%;
+}
+
+.year {
+	position: relative;
+	font-size: 1.5vmax;
+    display: inline-block;
+    width: 10%;
+}
+
+.day {
+	position: relative;
+	font-size: 1.5vmax;
+    display: inline-block;
+    width: 10%;
+}
+
+/* 반응형을 위한 셋팅 */
 @media screen and (max-height: 450px) {
   .sidenav {padding-top: 15px;}
   .sidenav a {font-size: 18px;}
@@ -332,6 +354,22 @@ body {
   .time_container {
     display: none;
   }
+  body {
+  	grid-template-areas:
+  		". mainContainers mainContainers mainContainers sideMenu" 
+    	". mainContainers mainContainers mainContainers sideMenu"
+    	". mainContainers mainContainers mainContainers sideMenu" 
+    	". mainContainers mainContainers mainContainers sideMenu" 
+    	"footer footer footer footer footer";
+	}
+	
+	
+}
+
+@media screen and (max-width: 435px) {
+ .footer1_socialIcon{
+	
+}
 }
 /* 폰트 모음 */
 

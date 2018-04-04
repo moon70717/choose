@@ -21,13 +21,12 @@ h1 {
 	display: grid;
 	grid-template-columns: repeat(12, 1fr);
 	grid-template-areas:
-		". contents1 contents1 . . . . . . contents3 contents3 ."
-		". contents1 contents1 . contents2 contents2 contents2 contents2 . contents3 contents3 ."
+		". . . . contents2 contents2 contents2 contents2 . . . ."
 		". . . . . . . . . . . ."
-		". . . . login login login login . . . ."
-		". . . . login login login login . . . ."
-		". . . . login login login login . . . ."
-		". . . . login login login login . . . ."
+		"login login login login login login login login login login login login"
+		"login login login login login login login login login login login login"
+		"login login login login login login login login login login login login"
+		"login login login login login login login login login login login login"
 		". . . . . . . . . . . .";
 	grid-gap: 15px;
 	padding: 0px;
@@ -36,13 +35,8 @@ h1 {
 .login_containers>div {
 	/* background-color: rgba(255, 255, 255, 0.8); */
 	    text-align: center;
-    padding: 20px 0;
-    font-size: 30px;
-    margin-top: 6rem;
-}
-
-.contents1 {
-	grid-area: contents1;
+    font-size: 30px;    
+    margin-top: 3vh;
 }
 
 .contents2 {
@@ -51,10 +45,11 @@ h1 {
 
 #main_msg {
 	font-family: 'hanna';
-	font-size: 4rem;
+	font-size: 1.3vmax;;
 	color: white;
 	border: solid 3px white;
 	background-color: black;
+	margin-top: 5vmax;
 }
 
 .msg_container {
@@ -79,10 +74,6 @@ h1 {
 	right: 0;
 }
 
-.contents3 {
-	grid-area: contents3;
-}
-
 .contents4 {
 	grid-area: login;
 	display: grid;
@@ -98,9 +89,9 @@ h1 {
 
 .logintxt {
 	grid-area: logintxt;
-    padding-bottom: 4rem;
     top: -3vh;
     position: relative;
+    margin-top: 3vw;
 }
 
 .loginface {
@@ -175,10 +166,58 @@ span.buttonText {
 		display: none;
 	}
 }
+@media screen and (max-width: 1350px) {
+	.login_containers {
+	grid-template-areas:
+		". contents1 contents1 . . . . . . contents3 contents3 ."
+		". . . contents2 contents2 contents2 contents2 contents2 contents2 . . ."
+		". . . . . . . . . . . ."
+		"login login login login login login login login login login login login"
+		"login login login login login login login login login login login login"
+		"login login login login login login login login login login login login"
+		"login login login login login login login login login login login login"
+		". . . . . . . . . . . .";
+	}
+	#main_msg {
+    font-size: 1.8vmax; 
+}
+}
+@media screen and (max-width: 880px) {
+	.login_containers {
+	grid-template-areas:
+		". contents1 contents1 . . . . . . contents3 contents3 ."
+		". . contents2 contents2 contents2 contents2 contents2 contents2 contents2 contents2 . ."
+		". . . . . . . . . . . ."
+		"login login login login login login login login login login login login"
+		"login login login login login login login login login login login login"
+		"login login login login login login login login login login login login"
+		"login login login login login login login login login login login login"
+		". . . . . . . . . . . .";
+	}
+	#main_msg {
+    font-size: 2.5vmax; 
+}
+	
+}
+@media screen and (max-width: 630px) {
+	.login_containers {
+	grid-template-areas:
+		". contents1 contents1 . . . . . . contents3 contents3 ."
+		"contents2 contents2 contents2 contents2 contents2 contents2 contents2 contents2 contents2 contents2 contents2 contents2"
+		". . . . . . . . . . . ."
+		"login login login login login login login login login login login login"
+		"login login login login login login login login login login login login"
+		"login login login login login login login login login login login login"
+		"login login login login login login login login login login login login"
+		". . . . . . . . . . . .";
+	}
+	#main_msg {
+    font-size: 3.3vmax;
+}
+}
 </style>
 <script>
-	$(document).ready(
-			function() {
+	$(document).ready(function() {
 				var tickr = [ 'Jeong Hae Jwo<ins>2</ins> .com',
 						'갈까 말까 할 때는<ins>1</ins> 가라',
 						'살까 말까 할 때는 <ins>1</ins><del>사지마라</del>사라',
@@ -197,13 +236,7 @@ span.buttonText {
 <body>
 <div class='mainContainers'>
 	<div class='login_containers'>
-		<div class='contents1'>
-			<div class='wrapTri'>
-				<div class='section'>
-					<div class='downTri'></div>
-				</div>
-			</div>
-		</div>
+		
 		<div class='contents2'>
 			<div class=msg_container>
 				<img class="msg_img1" src="${rPath}/imgs/left_quot.png" />
@@ -213,9 +246,7 @@ span.buttonText {
 
 
 		</div>
-		<div class='contents3'>
 		
-		</div>
 		<div class='contents4'>
 		<img class='mainLogo' src='${rPath}/imgs/mainlogo.jpg'/>
 		<div class='logintxt'>Sign in or Sign up</div>
@@ -229,7 +260,7 @@ span.buttonText {
 		<div class='logingoo'>
 			<div id="gSignInWrapper">
 				<div id="customBtn" class="customGPlusSignIn">
-					<span class="icon"></span> <span class="buttonText">Sign up with Google</span>
+					<span class="icon"></span><span class="buttonText">Sign up with Google</span>
 				</div>
 			</div>
 		</div>

@@ -86,3 +86,16 @@ function minus(countEl){
 	    countEl.value = count+" 시간";
 	}
 }
+
+//풋터 하단 배치!!
+$(document).ready(function(){
+	if($('body').height()<=850 && window.innerHeight>=800){
+		var footerMargin = window.innerHeight-$('body').height();
+		if(footerMargin>600){
+			footerMargin = 150;
+		}
+		$('.footer').css('margin-top', footerMargin-97+'px');
+	}else{
+		$('.footer').css('margin-top', '0px');
+	}
+})
