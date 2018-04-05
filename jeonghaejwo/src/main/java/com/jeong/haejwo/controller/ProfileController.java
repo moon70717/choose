@@ -33,13 +33,21 @@ public class ProfileController {
 	
 	@RequestMapping("/insertFav")
 	public @ResponseBody Map<String,Object> addFav(@RequestParam Map<String,Object> data){
-		
-		return null;
+		Map<String,Object> result=new HashMap<String, Object>();
+		result.put("result", (proService.insert(data)==1?true:false));
+		return result;
+	}
+	
+	@RequestMapping("/delFav")
+	public @ResponseBody Map<String,Object> delFav(@RequestParam Map<String,Object> data){
+		Map<String,Object> result=new HashMap<String, Object>();
+		result.put("result", (proService.delete(data)==1)?true:false);
+		return result;
 	}
 	
 	@RequestMapping("/fav")
-	public @ResponseBody Map<String,Object> getFavList(@RequestParam Map<String,Object> data){
-		
-		return null;
+	public @ResponseBody Map<String,Object> getFavList(@RequestParam Map<String,Object> data, Map<String,Object> result){
+		result.put("result", proService.getList(data));
+		return result;
 	}
 }

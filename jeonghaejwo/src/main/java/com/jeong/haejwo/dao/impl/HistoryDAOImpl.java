@@ -63,15 +63,12 @@ public class HistoryDAOImpl implements DefaultDAO {
 			result.add(ss.selectList("history.list",data));
 		}else {
 			String s=(String) data.get("st");
-			System.out.println(s+"= "+s.getClass().getName());
 			Integer i=Integer.parseInt(s);
-			System.out.println(i);
 			data.put("st", i);
 			result.add(ss.selectList("history.select",data));
 			String temp=(String) data.get("userId");
 			result.add(ss.selectList("history.hisCount",temp));
 		}
-		
 		ss.close();
 		return result;
 	}

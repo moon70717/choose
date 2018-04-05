@@ -58,7 +58,7 @@ public class ProfileDAO implements DefaultDAO{
 		SqlSession ss=ssf.openSession();
 		List<Object> result = new ArrayList<Object>();
 		result.add(ss.selectList("profile.selectFav",data));
-		return null;
+		return result;
 	}
 
 	@Override

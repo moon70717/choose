@@ -41,4 +41,10 @@ public class HistoryServiceImpl implements DefaultService{
 		return 0;
 	}
 
+	@Override
+	public int delete(Map<String, Object> data) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
 }
