@@ -20,14 +20,21 @@
 </script>
 <body>
 		<form action=Update method=post name=wirteform>
-			<input type=hidden value="${boardVO.boardNo }" name="boardNo"/>
-			제목 : <input type="text" size=50 value="${boardVO.boardTitle }" name=boardTitle placeholder="제목을 입력해주세요"/>
+			<input type=hidden value="${board.idx }" name="idx"/>
+			제목 : <input type="text" size=50 value="${board.title }" name=title placeholder="제목을 입력해주세요"/>
 			<hr>
-			<textarea  style="width: 395px; height: 230px;" name=content>${boardVO.boardContent }</textarea>
+			<textarea  style="width: 395px; height: 230px;" name=content>${board.content }</textarea>
 			<input type=button onclick="check();" value="작성하기"/>
 		</form>
 		<hr>
-		글쓴이 : ${sessionScope.boardId}
+		글쓴이 : ${sessionScope.userName}
 
 </body>
 </html>
+
+<!-- private int idx;
+	private String userId;
+	private String title;
+	private String content;
+	private String regist;
+	private int hit; -->

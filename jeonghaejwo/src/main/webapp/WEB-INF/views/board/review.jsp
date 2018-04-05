@@ -212,6 +212,22 @@ fieldset, label { margin: 0; padding: 0; }
 .review_rating > input:checked ~ label:hover ~ label { color: #FFED85;  } 
 </style>
 </head>
+<!-- 제목 내용 입력 체크 -->
+<script>
+	function check() {
+		if ( !document.writeform.title.value ) {
+			alert("제목을 입력해주세요");
+			return;
+		} else if ( !document.writeform.content.value ) {
+			alert("내용을 입력해주세요");
+			return;
+		}
+	
+		document.writeform.submit();
+	}
+	  
+</script>
+
 <body>
 <div class='mainContainers'>
 <h1 style='margin-top: 1vw;margin-bottom: -2.5vw;color: black'>솔직 방문 후기</h1>
@@ -235,9 +251,10 @@ fieldset, label { margin: 0; padding: 0; }
 				</div>
 				<div class="modal-body">
 					<!-- 내용 -->
+	<!--  -->		<form action=Write method=post name=writeform>
 					<div class="review_write_container">
 						<div class="title">제목
-							<input class="location_input_text" id="loInput" type="text">
+							<input class="location_input_text" id="loInput" type="text" value="${board.title}" name=title placeholder="제목을 입력해주세요">
 							<span class="highlight"></span> <span class="bar"></span>
 							<hr>
 						</div>
@@ -256,7 +273,7 @@ fieldset, label { margin: 0; padding: 0; }
 						<div class="review_star">
 							
 							<fieldset class="review_rating">
-							    <input type="radio" id="star5" name="rating" value="5" />
+							    <input type="radio" id="star5" name="rating" value="5"/>
 							  	<label class = "full" for="star5" title="Awesome - 5 stars"></label>
 							    <input type="radio" id="star4half" name="rating" value="4 and a half" />
 							    <label class="half" for="star4half" title="Pretty good - 4.5 stars"></label>
@@ -281,15 +298,16 @@ fieldset, label { margin: 0; padding: 0; }
 						</div>
 						<div class="review_write_contents">
 						<hr>
-							<textarea class="form-control" id="exampleTextarea" rows="8"></textarea>
+							<textarea class="form-control" id="exampleTextarea" rows="8" name=content placeholder="내용을 입력해주세요">${board.content }</textarea>
 						</div>
 					</div>
+				</form>
 					<!-- 내용끝 -->
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-secondary"
 						data-dismiss="modal">Close</button>
-					<button type="button" class="btn btn-primary">Save</button>
+					<button type="button" class="btn btn-primary" onclick="check();">Save</button>
 				</div>
 			</div>
 		</div>

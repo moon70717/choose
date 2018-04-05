@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.jeong.haejwo.service.UserInfoService;
+import com.jeong.haejwo.vo.BoardVO;
 import com.jeong.haejwo.vo.UserInfoVO;
 
 @Controller
@@ -43,11 +44,17 @@ public class UserInfoController {
 	@RequestMapping("/uriLogin")
 	public @ResponseBody Map<String,Object> login(@RequestParam Map<String,Object> data, HttpSession hs){
 		Map<String,Object> map=new HashMap<String,Object>();
+//{userId=103230395918627060836, userName=홍경철, ImageURL=https://lh3.googleusercontent.com/-TUkubE97ylM/AAAAAAAAAAI/AAAAAAAAAAA/ACLGyWBDbIiI5IfNbw9GCkEzJuijiPMnHw/s96-c/photo.jpg, Email=k1hp9052@gmail.com, loginApi=google}
+//		BoardVO bo=new BoardVO();
+//		bo.setUserId((String) data.get("userId"));
 		log.info("data=>{}", data);
 		if(uis.login(data)) {
 			map.put("result", true);
+			hs.setAttribute("userName",data.get("userName"));
+			hs.setAttribute("userId",data.get("userId"));
 			hs.setAttribute("isLogin", true);
 		}
+		
 		return map;
 	}
 	
@@ -79,5 +86,6 @@ public class UserInfoController {
 		}
 		return map;
 	}
+	
 }
 

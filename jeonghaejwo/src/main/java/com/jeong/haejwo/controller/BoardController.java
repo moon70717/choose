@@ -17,16 +17,29 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.jeong.haejwo.dao.BoardDAO;
+import com.jeong.haejwo.service.UserInfoService;
 import com.jeong.haejwo.vo.BoardVO;
 
 
 
+/*
+ * private int idx;
+	private String userId;
+	private String title;
+	private String content;
+	private String regist;
+	private int hit;
+ */
+
 @Controller
+@RequestMapping("/path/board")
 public class BoardController {
 	private static final Logger log = LoggerFactory.getLogger(BoardController.class);
 
 	@Autowired
 	private BoardDAO bdao;
+	@Autowired
+	private UserInfoService uis;
 
 	@RequestMapping(value = "GetList", method = RequestMethod.GET)
 	public String outList(Model model) {
@@ -36,53 +49,59 @@ public class BoardController {
 
 		return "board/board";
 	}
-	
-	@RequestMapping(value="Get",method=RequestMethod.GET)
-	public String getBoard(Model model,@RequestParam("boardNo")BoardVO boardNo) {
+
+	@RequestMapping(value = "/Get", method = RequestMethod.GET)
+	public String getBoard(Model model, @RequestParam("idx") int idx) {
 		log.info("게시물 클릭");
-		BoardVO board=bdao.selectBoard(boardNo);
+		BoardVO board = bdao.selectBoard(idx);
 		bdao.incrementHit(board);
-		model.addAttribute("board",board);
-		return "board/boardContent";
-	}
-	
-	@RequestMapping(value="WriteForm")
-	public String writeForm() {
-		log.info("게시물작성 클릭");
-		return "board/boardWrite";
-	}
-	
-	@RequestMapping(value="Write",method=RequestMethod.POST)
-	public void wirte(Model model,BoardVO board,HttpServletRequest req, HttpServletResponse res) throws IOException {
-		log.info("작성");
-		HttpSession session =req.getSession();
-		String userNo=(String) session.getAttribute("userNo");
-		board.setUserNo("userNo");
-		bdao.insertBoard(board);
-		res.sendRedirect("GetList");
-	}
-	
-	@RequestMapping(value="Delete",method=RequestMethod.GET)
-	public String delete(Model model,@RequestParam("boardNo")BoardVO boardNo) {
-		log.info("게시물 삭제");
-		bdao.deleteBoard(boardNo);
-		List<BoardVO>board=bdao.selectAll();
-		model.addAttribute("board",board);
-		return "board/board";
-	}
-	
-	@RequestMapping(value="Update",method=RequestMethod.POST)
-	public String update(Model model,BoardVO reqBoard) {
-		bdao.updateBoard(reqBoard);
-		List<BoardVO>board=bdao.selectAll();
-		model.addAttribute("board",board);
-		return "board/board";
-	}
-	@RequestMapping(value="UpdateForm", method=RequestMethod.GET)
-	public String updateForm(Model model,@RequestParam("boardNo")BoardVO boardNo) {
-		BoardVO board=bdao.selectBoard(boardNo);
-		return "board/boardUpdate";
-		
+		System.out.println(board);
+		model.addAttribute("board", board);
+		return "board/content";
 	}
 
+	@RequestMapping(value = "WriteForm")
+	public String writeForm() {
+		log.info("게시물작성 클릭");
+		return "board/write";
+	}
+
+	@RequestMapping(value = "Write", method = RequestMethod.POST)
+	public void wirte(Model model, BoardVO board, HttpServletRequest req, HttpServletResponse res) throws IOException {
+		log.info("작성");
+		HttpSession session = req.getSession();
+		String name = (String) session.getAttribute("userName");
+		String Id = (String) session.getAttribute("userId");
+		board.setUserName(name);
+		board.setUserId(Id);
+		bdao.insertBoard(board);
+		res.sendRedirect("GetList");
+	}//sendRedirect 특정주소 호출한다
+
+	@RequestMapping(value = "Delete", method = RequestMethod.GET)
+	public String delete(Model model, @RequestParam("idx") BoardVO idx) {
+		log.info("게시물 삭제");
+		bdao.deleteBoard(idx);
+		List<BoardVO> board = bdao.selectAll();
+		model.addAttribute("board", board);
+		return "board/board";
+	}
+
+	
+	
+	@RequestMapping(value = "Update", method = RequestMethod.POST)
+	public String update(Model model, BoardVO reqBoard) {
+		bdao.updateBoard(reqBoard);
+		List<BoardVO> board = bdao.selectAll();
+		model.addAttribute("board", board);
+		return "board/board";
+	}
+
+	@RequestMapping(value = "UpdateForm", method = RequestMethod.GET)
+	public String updateForm(Model model, @RequestParam("idx") int idx) {
+		BoardVO board = bdao.selectBoard(idx);
+		return "board/update";
+
+	}
+	
 }

@@ -12,10 +12,10 @@
 
 <script>
 	function check() {
-		if ( !document.writeform.boardTitle.value ) {
+		if ( !document.writeform.title.value ) {
 			alert("제목을 입력해주세요");
 			return;
-		} else if ( !document.writeform.boardContent.value ) {
+		} else if ( !document.writeform.content.value ) {
 			alert("내용을 입력해주세요");
 			return;
 		}
@@ -26,10 +26,10 @@
 </script>
 <body>
 		<form action=Write method=post name=writeform>
-			제목:<input type="text" size=50 value="${boardVO.boardTitle}" name=boardTitle placeholder="제목을 입력해주세요"/>
+			제목:<input type="text" size=50 value="${board.title}" name=title placeholder="제목을 입력해주세요"/>
 			<hr>
-			<textarea style="with: 395px; height: 230px;" name=content>${boardVO.boardContent }</textarea>
-			<input type=button onclick="check();" value="작성하기"/>		
+			<textarea style="with: 395px; height: 230px;" name=content>${board.content }</textarea>
+			<input type=button onclick="check();" value="저장하기"/>		
 		</form>
 		<hr>
 		글쓴이 : ${sessionScope.userId}
@@ -37,3 +37,10 @@
 
 </body>
 </html>
+
+<!-- private int idx;
+	private String userId;
+	private String title;
+	private String content;
+	private String regist;
+	private int hit; -->
