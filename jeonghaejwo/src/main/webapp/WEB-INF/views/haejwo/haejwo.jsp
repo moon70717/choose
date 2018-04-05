@@ -57,7 +57,7 @@
 			</div>
 			<!-- 시간 -->
 			<div id="time_div" class="time_div">
-				<i class="fas fa-caret-left time_set" onclick="haejwo_plus()"></i>
+				<i class="fas fa-caret-left time_set" onclick="haejwo_minus()"></i>
 				<input type="text" value="시간을 설정하세요" id="time_count"
 					style="color: black; text-align: center" class="time_count">
 			
@@ -88,7 +88,7 @@
 				<button id='test' class="btn loding_button"
 					onclick="sendVariable($('#loInput')[0].value, $('#desInput')[0].value)">
 					<!-- "window.location.href='${root}/path/map/show-way'" -->
-					<span class="ladda-label"> Jeong Hae Jwo </span>
+					<span class="ladda-label"><i class="fas fa-search"></i> Jeong Hae Jwo </span>
 				</button>
 			</div>
 		</div>
@@ -97,7 +97,9 @@
 	
 </body>
 <script>
-
+function reLoadPage(){
+	window.location.reload();
+}
 $(function(){
 	  $('#loInput').keypress(function(key){
 		  if (key.keyCode == 13) {
@@ -116,9 +118,21 @@ $(function(){
  function deSelectBox(){
 	 var selectBoxValue = document.getElementById("deSelectBox").value;
 	 if(selectBoxValue==0){
-		$("#desInput")[0].value = $('#loInput')[0].value;
+		if($('#loInput')[0].value!=""){
+			$("#desInput")[0].value = $('#loInput')[0].value;
+			returnMyLocation = true;
+			returnMyLocationAddr = $('#loInput')[0].value;
+		}else{
+			alert("내 위치를 먼저 입력하세요");
+		}
 	 }else if(selectBoxValue==1){
 		 $("#desInput")[0].value = "랜덤으로 갑니다";
+		 randomTimes=1;
+		 returnMyLocation = false;
+	 }else if(selectBoxValue==-1){
+		 randomTimes=0;
+		 returnMyLocation = false;
+		 $("#desInput")[0].value = "";
 	 }
 	 
 }
@@ -126,6 +140,10 @@ $(function(){
 //변수 값 
 var mapX, mapY, times, radius, code, dMapX, dMapY;
 var nLat, nLng, waypoint;
+var returnMyLocation = false;
+var returnMyLocationAddr;
+var randomTimes=0;
+var data;
 /* 횟수 구하기 */
 function getTimes(){
 	var hour;
@@ -148,9 +166,8 @@ function getTimes(){
 		alert("시간 또는 거리를 설정하세요");
 	}
 	ramdomNum = Number(document.getElementById("deSelectBox").value);
-	times=Math.floor(hour-disKm+ramdomNum);
-	radius=Number($("input[type=radio][name=radio]:checked")[0].getAttribute("data-value"));
-	
+	times=Math.floor(hour-disKm+ramdomNum)+randomTimes;
+	radius=Number($("input[type=radio][name=radio]:checked")[0].getAttribute("data-value"));	
 }
 //현위치와 목적지 xy좌표 구하는 공통 함수
 function getXYaddress(place,func){
@@ -201,8 +218,13 @@ function sendVariable(loInput, desInput){
 	getXYaddress(desInput, deFunc);
 	getTimes();
 	//setTimeout은 데이터 흐름을 queue에 넣으므로 순서를 정할 수 있다
-	setTimeout(function(){	
-		var data={
+	setDatas();
+	findRoute();
+}
+
+function setDatas(){
+	setTimeout(function(){
+		data={
 				'mapX':mapX,
 				'mapY':mapY,
 				'times':times,
@@ -210,19 +232,42 @@ function sendVariable(loInput, desInput){
 				'dMapX':dMapX,
 				'dMapY':dMapY
 			}
+	},100);
+}
+function reFindRoute(){
+	lodingSt();
+	setDatas();
+	routeSegment = 0;
+	findRoute();
+}
+function findRoute(){
+	waypts = [];
+	setTimeout(function(){
 		$.ajax({
 			url : "/api/tour_api",
 			type : "post",
 			data : data,
 			success : function(res) {
 				//console.log(res.json);
-				lodingEnd();
 				var keys=Object.keys(res).length;
 				waypoint=[];
 				for(key=1;key<=keys;key++){
 					var temp=JSON.parse(res[key]);
 					//console.log(temp);
-					temp=temp.response.body.items.item[Math.floor(Math.random()*10)];
+					if(!temp.response.body.items){
+						temp=temp.response.body.items.item[Math.floor(Math.random()*10)];
+					}else{
+
+						var reData = data;
+						$.ajax({
+							url : "/api/tour_api",
+							type : "post",
+							data : reData,
+							success : function(res) {
+								
+							}
+							})
+					}
 					waypoint.push(temp);
 				}
 				console.log(waypoint);//<<<랜덤추출 결과가 들어옴!!
@@ -230,13 +275,25 @@ function sendVariable(loInput, desInput){
 				var result_temp="";
 				var idx=1;
 				for(var wayp of waypoint){
-					result_temp +="<div class='result_num"+idx+"'>"+idx+"</div>";
-					result_temp +="<div class='result_name"+idx+"'>"+wayp.title+"</div>";
-					result_temp +="<div class='result_address"+idx+"'>"+wayp.addr1+"</div>";
-					result_temp +="<div class='result_tel"+idx+"'>"+wayp.tel+"</div>";
+					result_temp +="<div class='haejwo resultLine"+idx+" result_num"+idx+"'>"+idx+"</div>";
+					result_temp +="<div class='haejwo resultLine"+idx+" result_name"+idx+"'>"+wayp.title+"</div>";
+					result_temp +="<div class='haejwo resultLine"+idx+" result_address"+idx+"'>"+wayp.addr1+"</div>";
+					if(wayp.tel==null){
+						wayp.tel="<i class='fas fa-exclamation-circle haejwoIcon'></i>전화번호가 없어요";
+						result_temp +="<div class='haejwo resultLine"+idx+" result_tel"+idx+"'>"+wayp.tel+"</div>";
+					}else{
+						result_temp +="<div class='haejwo resultLine"+idx+" result_tel"+idx+"'>"+wayp.tel+"</div>";
+					}
 					idx++;
 				}
-
+				if(returnMyLocation==true){
+					result_temp +="<div class='haejwo resultLine"+idx+" result_num"+idx+"'>"+idx+"</div>";
+					result_temp +="<div class='haejwo resultLine"+idx+" result_name"+idx+"'>"+"내 위치로 돌아오기"+"</div>";
+					result_temp +="<div class='haejwo resultLine"+idx+" result_address"+idx+"'>"+returnMyLocationAddr+"</div>";
+					result_temp +="<div class='haejwo resultLine"+idx+" result_tel"+idx+"'>"+"----"+"</div>";
+				}
+				result_temp +="<div class='haejwobtn backhaejwo'><button class='backhaejwoBtn' onclick='reLoadPage()'><i class='fas fa-reply haejwoIcon'></i>뒤로 가기</button></div>"
+				result_temp +="<div class='haejwobtn retryhaejwo'><button class='retryhaejwoBtn' onclick='reFindRoute()'><i class='fas fa-redo haejwoIcon'></i>다시 찾기</button></div>"
 				$('.input_container').append(result_temp);
 				waypts=[];
 				waypts.push({
@@ -261,15 +318,15 @@ function sendVariable(loInput, desInput){
 				console.log(waypoint); */
 			}
 		});
-	},1000);
-}
+	},2000);
+	}
 
 
 /*  */
 /* 길찾기 부분 */
 /* 반쯤 폐기예정 */
- 	var nLat, nLng, waypoint=[];
 	var routeSegment = 0;
+ 	var nLat, nLng, waypoint=[];
 	var waypts = [];
 	var directionsService;
 	var directionsDisplay;
@@ -323,30 +380,6 @@ function sendVariable(loInput, desInput){
 		google.maps.event.addListener(map, 'click', function(mouseEvent) {
 			getAddress(mouseEvent.latLng);
 		});
-		
-		/* //submit버튼에 이벤트 적용
-		$("#submit").click(function() {
-			//nLat이랑 nLng이 위의getLocation을 이용해 받아온 현재위치
-			//하지만 학원에서는 않먹힘 
-			var nowP=nLat+", "+nLng;
-			
-			//출발지점이랑 도착지점은 그냥 현재위치로 잡혀있음
-			waypts.push({
-				location : nowP,
-				stopover : true
-			});
-			
-			for(var v of waypoint){
-				waypts.push({
-					location : v.addr1,
-					stopover : true
-				});
-			}
-			waypts.push({
-				location : nowP,
-				stopover : true
-			});
-		}); */
 	}
 	
 	//클릭한곳 좌표와 주소를 가져와주는놈(맵 클릭)
@@ -365,8 +398,12 @@ function sendVariable(loInput, desInput){
 					}); */
 					var latlng = result[0].geometry.location;
 					console.log(latlng.lat()+","+latlng.lng());
-					$('#loInput')[0].value = address;
-				}
+					if($('#loInput')[0]!=null){
+						$('#loInput')[0].value = address;	
+					}else{
+						return;
+					}
+					}
 			}
 		})
 	}
@@ -402,9 +439,15 @@ function sendVariable(loInput, desInput){
 		}
 		if(idx==waypts.length-1&&onsoff==1){  
 			calculateAndDisplayRoute(0);
+			lodingEnd();
 			return;
 		}
-		console.log(idx);  
+		console.log(idx);
+		if(waypts[idx+1].location==null){
+			alert("주소가 안나옴!! 여기서 멈춘닷!");
+			lodingEnd();
+			return;
+		}
 		directionsService.route({
 			origin : waypts[idx].location, 
 			destination : waypts[idx+1].location,
@@ -417,8 +460,8 @@ function sendVariable(loInput, desInput){
 				//onsoff가 1일때만 경로를 웹에 찍어주도록
 				if(onsoff==1){
 					routeSegment++;
-					ways = '<div class="haewjo result_btn'+routeSegment+'">';
-					ways += '<button id="button'+routeSegment+'" value="'+routeSegment+'">길 보기'+route.legs[0].distance.text+'</button></div>';
+					ways = '<div class="haejwo resultLine'+routeSegment+' result_btn'+routeSegment+' result_btn_div">';
+					ways += '<button id="button'+routeSegment+'" value="'+routeSegment+'"><i class="fas fa-bus haejwoIcon"></i>'+route.legs[0].distance.text+'</button></div>';
 					$('.input_container').append(ways);
 					$("#button"+routeSegment).click(function(){
 						calculateAndDisplayRoute(0,this.value-1); 
@@ -433,14 +476,16 @@ function sendVariable(loInput, desInput){
 				if(waypts.length==idx)return;
 				
 			} else {
-				window.alert('Directions request failed due to ' + status);
+				window.alert('경로를 찾지 못했습니다 ' + status);
+				lodingEnd();
+				return;
 			}
 		});
 	}
 	
 	//api 데이터 저장
 	function apiInsert(res){
-		var data={
+		var dataAPI={
 				'code' : res.contentid,
 				'placename' : res.title,
 				'mapx' : res.mapx,
@@ -453,7 +498,7 @@ function sendVariable(loInput, desInput){
 		
 		$.ajax({
 			url : "/api/insert",
-			data : data,
+			data : dataAPI,
 			success : function(res1){
 				console.log(res1);
 				history(res);
@@ -464,7 +509,7 @@ function sendVariable(loInput, desInput){
 	//history를 기록하는 부분
 	function history(res){
 		var code=''+res.contentid;
-		var data={
+		var dataHistory={
 				userId : "103230395918627060836",
 				code : code,
 				date : 180404,
@@ -473,7 +518,7 @@ function sendVariable(loInput, desInput){
 		
 		$.ajax({
 			url : "/history/insert",
-			data : data,
+			data : dataHistory,
 			success : function(res){
 				console.log(res);
 			}

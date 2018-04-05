@@ -423,6 +423,9 @@ fieldset, label { margin: 0; padding: 0; }
 					$("#review_list").append(temp);
 					$("#review_coments_modal").append(temp2);
 				}
+			},
+			error : function(res){
+				alert("???0");
 			}
 		});
 	}

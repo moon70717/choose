@@ -33,7 +33,6 @@ window.onbeforeunload = function(e){
 		spinner = new Spinner(opts).spin().el;
 		$('body').append(spinner);
 		$('.common_blind').css({'width':blindWidth,'height':blindHeight});  
-
         //애니메이션 효과
         $('.common_blind').fadeIn(1000);
 	});
@@ -52,7 +51,6 @@ function lodingSt(){
 	$(function() {
 		spinner = new Spinner(opts).spin().el;
 		$('body').append(spinner);
-		
 		$('.common_blind').css({'width':blindWidth,'height':blindHeight});  
         //애니메이션 효과
         $('.common_blind').fadeIn(1000);  
@@ -65,9 +63,11 @@ function lodingEnd(){
 	 $('.common_blind').hide();  
 }
 
+//더블클릭시 선택되지 않게
+window.document.onselectstart = new Function("return false"); 
+
 $(document).ready(function(){
-	if("<%=session.getAttribute('isLogin')%>"=="null"){
-		
+	if("<%=session.getAttribute('isLogin')%>"=="null"){	
 	}
 })
 
@@ -88,7 +88,7 @@ function minus(countEl){
 }
 
 //풋터 하단 배치!!
-$(document).ready(function(){
+/*$(document).ready(function(){
 	if($('body').height()<=850 && window.innerHeight>=800){
 		var footerMargin = window.innerHeight-$('body').height();
 		if(footerMargin>600){
@@ -98,4 +98,4 @@ $(document).ready(function(){
 	}else{
 		$('.footer').css('margin-top', '0px');
 	}
-})
+})*/

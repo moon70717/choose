@@ -40,12 +40,41 @@
     	"result_num3 result_name3 result_name3 result_address3 result_address3 result_address3 result_tel3 result_btn3"
     	"result_num4 result_name4 result_name4 result_address4 result_address4 result_address4 result_tel4 result_btn4"
     	"result_num5 result_name5 result_name5 result_address5 result_address5 result_address5 result_tel5 result_btn5"
-    	"result_num6 result_name6 result_name6 result_address6 result_address6 result_address6 result_tel6 result_btn6";
-    	
+    	"result_num6 result_name6 result_name6 result_address6 result_address6 result_address6 result_tel6 result_btn6"
+    	". backhaejwo backhaejwo backhaejwo retryhaejwo retryhaejwo retryhaejwo .";
     width: 100%;
-    margin-top: 8vh;
 }
 /*  */
+.resultLine1{
+	margin-top: 8vh
+}
+.backhaejwo{
+	grid-area:backhaejwo;
+	 box-shadow: 20px 38px 34px -26px hsla(0,0%,0%,.2);
+    border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
+    border-color: #ffa4a4;
+}
+.retryhaejwo{
+	grid-area: retryhaejwo;
+	box-shadow: 20px 38px 34px -26px hsla(0,0%,0%,.2);
+    border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
+    border-color: gold;
+}
+.backhaejwo >button{
+    background-color: rgba(255, 255, 255, 0);
+    color: #ffa4a4;
+    font-size: 1.5vmin;
+    height: 3vh;
+}
+.retryhaejwo >button{
+    background-color: rgba(255, 255, 255, 0);
+    color: gold;
+    font-size: 1.5vmin;
+    height: 3vh;
+}
+.haejwoIcon{
+	margin-right: 1vw;
+}
 .result_num1{
 	grid-area:result_num1;
 }
@@ -147,6 +176,24 @@
 .result_btn6{
 	grid-area: result_btn6;
 }
+.haejwo{
+	padding-bottom: 2vh;
+	    font-size: 1.5vmin;
+}
+.result_btn_div{
+	 box-shadow: 20px 38px 34px -26px hsla(0,0%,0%,.2);
+    border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
+    border-color: #ffffff;
+}
+.haejwo >button{
+    background-color: rgba(255, 255, 255, 0);
+    
+    color: white;
+   
+    font-size: 1.5vmin;
+    height: 3vh;
+    width: 9vmin;
+}
 /*  */
 .map {
 	grid-area: map;
@@ -155,6 +202,7 @@
     height: 30vmin;
     filter: grayscale(70%);
     top: 3vh;
+    margin-bottom: 1vh;
 }
 
 
