@@ -264,10 +264,45 @@ $(document).ready(function(){
 				$("#todoList").append(temp);
 			}
 		});
+		
+		//히스토리 정보 받아오는곳
+		getHistory();
 	}
 );
 
+function getHistory(res){
+	var st;
+	if(res){
+		st=res*2;
+	}else{
+		st=0;
+	}
+	dtemp={
+			"userId" : "103230395918627060836",
+			"toggle" : "2",
+			"st" : st
+	}
+	ajax("/history/list",initHistory,dtemp,initHistory);
+}
 
+var hisTemp;
+//히스토리 적용
+function initHistory(res){
+	console.log(res);
+	hisTemp=res.result[0];
+	$("#user_VisitRecord_container").contents().remove();
+	for(vv of hisTemp){
+		$("#user_VisitRecord_container").append(vv.placename+"<br>");
+	}
+	for(vv=1;vv<=Math.ceil(res.result[1]/5);vv++){
+		$("#user_VisitRecord_container").append("<button id='historyBtn"+vv+"' value='"+vv+"'>"+vv+"</button>");
+		$("#historyBtn"+vv).click(function(){
+			$("#user_VisitRecord_container").contents().remove();
+			getHistory(this.value);
+		});
+	}
+	
+}
 
 
 

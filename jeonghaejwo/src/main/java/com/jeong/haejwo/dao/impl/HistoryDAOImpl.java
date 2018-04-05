@@ -52,20 +52,26 @@ public class HistoryDAOImpl implements DefaultDAO {
 	//분기문 추가 
 	//1: user_plan
 	//2: history
+	//코드 너무 지저분함
 	@Override
 	public List<Object> selectList(Map<String, Object> data) {
 		SqlSession ss= ssf.openSession();
 		List<Object> result=new ArrayList<Object>();
-		int toggle=Integer.parseInt((String) data.get("toggle"));
-		switch(toggle) {
-		case 1:
-			
+		String toggle=(String) (data.get("toggle"));
+		data.put("cnt", new Integer(0));
+		if(toggle.equals("1")) {
 			result.add(ss.selectList("history.list",data));
-			break;
-		case 2:
+		}else {
+			String s=(String) data.get("st");
+			System.out.println(s+"= "+s.getClass().getName());
+			Integer i=Integer.parseInt(s);
+			System.out.println(i);
+			data.put("st", i);
 			result.add(ss.selectList("history.select",data));
-			break;
+			String temp=(String) data.get("userId");
+			result.add(ss.selectList("history.hisCount",temp));
 		}
+		
 		ss.close();
 		return result;
 	}
