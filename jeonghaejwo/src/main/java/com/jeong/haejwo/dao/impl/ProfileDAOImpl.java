@@ -15,7 +15,7 @@ import com.jeong.haejwo.dao.DefaultDAO;
 
 @Component
 @Qualifier("profile")
-public class ProfileDAO implements DefaultDAO{
+public class ProfileDAOImpl implements DefaultDAO{
 
 	@Autowired
 	SqlSessionFactory ssf;

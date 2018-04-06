@@ -18,9 +18,7 @@
 	<select id="selectList" parameterType="map" resultType="map">
 		select * from recommendation re 
 		left join image img on re.imgNo=img.imgNo
-		<where>
-			re.recoNo between #{startNo} and #{endNo}
-		</where>
 		order by re.recoNo desc
+		limit #{startNo},8
 	</select>
 </mapper>  

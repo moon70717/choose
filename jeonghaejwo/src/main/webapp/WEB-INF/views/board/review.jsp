@@ -378,13 +378,13 @@ fieldset, label { margin: 0; padding: 0; }
 	
 	//여기서부터 시작
 	$(document).ready(function(){
-		getReview(1);
+		getReview(0);
 	});
 	
 	function nextReview(){
 		var num=$("#review_list").children().last()[0].attributes.num.value;
 		num*=1;
-		num++;
+		num+=8;
 		console.log(num);
 		getReview(num);
 	}
