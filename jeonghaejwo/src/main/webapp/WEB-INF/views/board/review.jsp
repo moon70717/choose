@@ -7,7 +7,7 @@
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>REVIEW</title>
-<style>  
+<style>
 #review_containers{
 background-image: url("${rPath}/imgs/board.jpg");
 	background-repeat: repeat-y;
@@ -378,13 +378,13 @@ fieldset, label { margin: 0; padding: 0; }
 	
 	//여기서부터 시작
 	$(document).ready(function(){
-		getReview(1);
+		getReview(0);
 	});
 	
 	function nextReview(){
-		var num=$("#review_list").children().last()[0].attributes.num.value;
+		var num=$("#review_list").children().first()[0].attributes.num.value;
 		num*=1;
-		num++;
+		num+=8;
 		console.log(num);
 		getReview(num);
 	}
@@ -423,9 +423,6 @@ fieldset, label { margin: 0; padding: 0; }
 					$("#review_list").append(temp);
 					$("#review_coments_modal").append(temp2);
 				}
-			},
-			error : function(res){
-				alert("???0");
 			}
 		});
 	}

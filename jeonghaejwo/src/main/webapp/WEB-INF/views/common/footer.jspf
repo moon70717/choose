@@ -42,9 +42,9 @@
 					<button class='btn' value='logout' onclick="signOutGoo()"></button>
 				</div> -->
 <script>
-$('#cat_div').stop().click(function(){
+/* $('#cat_div').stop().click(function(){
 	$('#cat_msg_div').fadeIn(2000, function(){
 		$('#cat_msg_div').fadeOut();
 	});
-	}); 
+	});  */
 </script>

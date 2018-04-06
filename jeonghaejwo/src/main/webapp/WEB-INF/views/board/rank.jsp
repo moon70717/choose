@@ -18,11 +18,14 @@
 }
 
 .rank-container>div {
-	background-color: rgba(255, 255, 255, 0.8);
-	text-align: center;
-	padding-top: 1vw;
+	background-color: rgba(255, 255, 255, 0);
+    text-align: center;
+    padding-top: 1vw;
     font-size: 1.5vw;
-    border: dotted 2px;
+    border: solid 1px #ffffffc4;
+    box-shadow: 20px 38px 34px -26px hsla(0,0%,0%,.2);
+    border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
+    color: white;
 }
 
 .rank1_grid {
@@ -58,11 +61,14 @@
 	padding: 10px;
 }
 
-.rank-container2>div {
-	background-color: rgba(255, 255, 255, 0.8);
-	text-align: center;
-	padding: 1vw 0;
+.rank-container2>.rankDivs {
+	background-color: rgba(255, 255, 255, 0.22);
+    text-align: center;
+    padding: 1vw 0;
     font-size: 1vw;
+    /* border-radius: 0px; */
+    box-shadow: 20px 38px 34px -26px hsla(0,0%,0%,.2);
+    border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
 }
 
 .photo_grid {
@@ -103,11 +109,13 @@
   	padding: 10px;
 }
 
-.rank-container3>div {
-	background-color: rgba(255, 255, 255, 0.8);
-	text-align: center;
-	padding: 1vw 0;
+.rank-container3>.rankDivs {
+	background-color: rgba(169, 169, 169, 0.8);
+    text-align: center;
+    padding: 1vw 0;
     font-size: 1vw;
+    box-shadow: 20px 38px 34px -26px hsla(0,0%,0%,.2);
+    border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
 }
 
 .photo_grid3 {
@@ -135,91 +143,98 @@
 display:block;
 width:100%;
 }
+.rankIcon{
+margin-right: 1vw;
+}
+.rank-container>div:hover{
+	border-width: 6px;
+}
 </style>
 <body>
 <div class='mainContainers' style='color:black;'>
 	<div class="rank-container">
 		<div class="rank1_grid">
-			랭킹1
+			<i class="fas fa-chess-king rankIcon"></i> 랭킹1
 			<div class="rank-container2">
 				<div class="photo_grid photo"><img src="${rPath}/imgs/img_sample.jpg" /></div>
-				<div class="recommend_grid recommend">추천수</div>
-				<div class="point_grid point">평점</div>
-				<div class="shopname_grid shopname">상호명</div>
-				<div class="address_grid address">주소</div>
-				<div class="tel_grid tel">연락처</div>
+				<div class="rankDivs recommend_grid recommend">추천수</div>
+				<div class="rankDivs point_grid point">평점</div>
+				<div class="rankDivs shopname_grid shopname">상호명</div>
+				<div class="rankDivs address_grid address">주소</div>
+				<div class="rankDivs tel_grid tel">연락처</div>
 			</div>
 		</div>
 		<div class="rank2_grid">  
-			랭킹2
+			<i class="fas fa-chess-queen rankIcon"></i>랭킹2
 			<div class="rank-container2">
 				<div class="photo_grid photo"><img src="${rPath}/imgs/img_sample.jpg" style=/></div>
-				<div class="recommend_grid recommend">추천수</div>
-				<div class="point_grid point">평점</div>
-				<div class="shopname_grid shopname">상호명</div>
-				<div class="address_grid address">주소</div>
-				<div class="tel_grid tel">연락처</div>
+				<div class="rankDivs recommend_grid recommend">추천수</div>
+				<div class="rankDivs point_grid point">평점</div>
+				<div class="rankDivs shopname_grid shopname">상호명</div>
+				<div class="rankDivs address_grid address">주소</div>
+				<div class="rankDivs tel_grid tel">연락처</div>
 			</div>
 
 		</div>
 		<div class="rank3_grid">
-			랭킹3
+			<i class="fas fa-chess-rook rankIcon"></i>랭킹3
 			<div class="rank-container2">
 				<div class="photo_grid photo"><img src="${rPath}/imgs/img_sample.jpg" style=/></div>
-				<div class="recommend_grid recommend">추천수</div>
-				<div class="point_grid point">평점</div>
-				<div class="shopname_grid shopname">상호명</div>
-				<div class="address_grid address">주소</div>
-				<div class="tel_grid tel">연락처</div>
+				<div class="rankDivs recommend_grid recommend">추천수</div>
+				<div class="rankDivs point_grid point">평점</div>
+				<div class="rankDivs shopname_grid shopname">상호명</div>
+				<div class="rankDivs address_grid address">주소</div>
+				<div class="rankDivs tel_grid tel">연락처</div>
 			</div>
 		</div>
 		<div class="rank4_grid">
 			랭킹4
 			<div class="rank-container3">
 				<div class="photo_grid3 photo"><img src="${rPath}/imgs/img_sample.jpg" style=/></div>
-				<div class="shopname_grid3 shopname">상호명</div>
-				<div class="tel_grid3 tel">연락처</div>
-				<div class="address_grid3 address">주소</div>
+				<div class="rankDivs shopname_grid3 shopname">상호명</div>
+				<div class="rankDivs tel_grid3 tel">연락처</div>
+				<div class="rankDivs address_grid3 address">주소</div>
 			</div>
 		</div>
-		<div class="rank5_grid">랭킹5
+		<div class="rank5_grid">
+		랭킹5
 		<div class="rank-container3">
 				<div class="photo_grid3 photo"><img src="${rPath}/imgs/img_sample.jpg" style=/></div>
-				<div class="shopname_grid3 shopname">상호명</div>
-				<div class="tel_grid3 tel">연락처</div>
-				<div class="address_grid3 address">주소</div>
+				<div class="rankDivs shopname_grid3 shopname">상호명</div>
+				<div class="rankDivs tel_grid3 tel">연락처</div>
+				<div class="rankDivs address_grid3 address">주소</div>
 			</div>
 		</div>
 		<div class="rank6_grid">랭킹6
 		<div class="rank-container3">
 				<div class="photo_grid3 photo"><img src="${rPath}/imgs/img_sample.jpg" style=/></div>
-				<div class="shopname_grid3 shopname">상호명</div>
-				<div class="tel_grid3 tel">연락처</div>
-				<div class="address_grid3 address">주소</div>
+				<div class="rankDivs shopname_grid3 shopname">상호명</div>
+				<div class="rankDivs tel_grid3 tel">연락처</div>
+				<div class="rankDivs address_grid3 address">주소</div>
 			</div>
 		</div>
 		<div class="rank7_grid">랭킹7
 		<div class="rank-container3">
 				<div class="photo_grid3 photo"><img src="${rPath}/imgs/img_sample.jpg" style=/></div>
-				<div class="shopname_grid3 shopname">상호명</div>
-				<div class="tel_grid3 tel">연락처</div>
-				<div class="address_grid3 address">주소</div>
+				<div class="rankDivs shopname_grid3 shopname">상호명</div>
+				<div class="rankDivs tel_grid3 tel">연락처</div>
+				<div class="rankDivs address_grid3 address">주소</div>
 			</div>
 		</div>
 		<div class="rank8_grid">랭킹8
 		<div class="rank-container3">
 				<div class="photo_grid3 photo"><img src="${rPath}/imgs/img_sample.jpg" style=/></div>
-				<div class="shopname_grid3 shopname">상호명</div>
-				<div class="tel_grid3 tel">연락처</div>
-				<div class="address_grid3 address">주소</div>
+				<div class="rankDivs shopname_grid3 shopname">상호명</div>
+				<div class="rankDivs tel_grid3 tel">연락처</div>
+				<div class="rankDivs address_grid3 address">주소</div>
 			</div>
 		</div>
 		<div class="rank9_grid">랭킹9
 		<div class="rank-container3">
 				<div class="photo_grid3 photo"><img src="${rPath}/imgs/img_sample.jpg" style=/></div>
-				<div class="shopname_grid3 shopname">상호명</div>
-				<div class="tel_grid3 tel">연락처</div>
-				<div class="address_grid3 address">주소</div>
+				<div class="rankDivs shopname_grid3 shopname">상호명</div>
+				<div class="rankDivs tel_grid3 tel">연락처</div>
+				<div class="rankDivs address_grid3 address">주소</div>
 			</div>
 		</div>
 	</div>

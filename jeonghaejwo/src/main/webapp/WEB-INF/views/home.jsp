@@ -223,7 +223,6 @@ span.buttonText {
 						'살까 말까 할 때는 <ins>1</ins><del>사지마라</del>사라',
 						'말할까 말까 할 때는<ins>1</ins> 말하지마라', '줄까 말까 할 때는 줘라',
 						'먹을까 말까 할 때는 <ins>1</ins><del>먹지마라</del>먹어라' ];
-
 				$('#main_msg').t(
 						tickr.join(x = '<ins>2</ins><del>*</del>') + x, {
 							speed : 200,
@@ -264,7 +263,7 @@ span.buttonText {
 				</div>
 			</div>
 		</div>
-		<div class='logingit'>깃 로그인</div>
+		<div class='logingit'></div>
 		</div>
 		
 	</div>

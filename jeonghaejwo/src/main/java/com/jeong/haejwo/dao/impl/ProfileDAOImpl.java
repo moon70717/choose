@@ -15,7 +15,7 @@ import com.jeong.haejwo.dao.DefaultDAO;
 
 @Component
 @Qualifier("profile")
-public class ProfileDAO implements DefaultDAO{
+public class ProfileDAOImpl implements DefaultDAO{
 
 	@Autowired
 	SqlSessionFactory ssf;
@@ -58,7 +58,7 @@ public class ProfileDAO implements DefaultDAO{
 		SqlSession ss=ssf.openSession();
 		List<Object> result = new ArrayList<Object>();
 		result.add(ss.selectList("profile.selectFav",data));
-		return null;
+		return result;
 	}
 
 	@Override

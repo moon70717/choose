@@ -45,7 +45,15 @@ public class ApiController {
 		
 		return map;
 	}
-	
+//	데이터가 오류인 경우 다시 한번 api 호출하기
+	@RequestMapping("/tour_apiOne")
+	public @ResponseBody Map<String,Object> getPathOne(@RequestParam Map<String, Object> data, Map<String, Object> map, HttpSession hs){
+		//숫자 1대신 다른것이 필요!
+		map.put("1", tourService.requestAPI("", data));
+		
+		
+		return map;
+	}
 	@RequestMapping("/insert")
 	public @ResponseBody Map<String,Object> insert(@RequestParam Map<String,Object> data){
 		Map<String,Object> result= new HashMap<String,Object>();

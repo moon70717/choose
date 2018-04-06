@@ -48,6 +48,7 @@ body {
     	". logo . footer1 footer1 footer1 footer1 footer2 footer2 ."
     	". hr hr hr hr hr hr hr hr ."
     	". text2 text2 text2 text2 text2 text2 text2 text2 .";
+    margin-top: 4vh;
 }
 
 .f_logo {
@@ -146,9 +147,9 @@ body {
 }
 .menu_grid2 {
   grid-area: menu2;
-      overflow-x: hidden;
-      width: 0;
-         position: absolute;
+    overflow-x: hidden;
+    width: 0;
+    position: absolute;
     margin: auto;
     top: 0;
     left: 0;
@@ -210,8 +211,8 @@ body {
 }
 
 #menu_checkbox:checked + #menu_icon div:first-child {
-  height: 21px;
-  width: 21px;
+  height: 20px;
+  width: 20px;
   -webkit-transform: rotate(405deg);
           transform: rotate(405deg);
   background: none;
@@ -261,12 +262,12 @@ body {
 
 /*  */
 .sidenav a {
-    padding: 9% 9%;
+    padding: 6vh 0 0 0;
     text-decoration: none;
-    font-size: 25px;
+    font-size: 3vmin;
     color: #a5a5a5;
     display: block;
-    transition: 0.3s;
+    transition: 0.6s;
 }
 
 .sidenav a:hover {

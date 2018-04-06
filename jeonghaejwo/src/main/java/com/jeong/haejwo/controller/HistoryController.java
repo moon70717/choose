@@ -23,7 +23,7 @@ public class HistoryController {
 	@RequestMapping("/todo")
 	public @ResponseBody Map<String,Object> getToDo(@RequestParam Map<String,Object> data){
 		Map<String,Object> result=new HashMap<String,Object>();
-		data.put("toggle",1);
+		data.put("toggle","1");
 		result.put("result", hiService.getList(data));
 		return result;
 	}
@@ -31,7 +31,7 @@ public class HistoryController {
 	@RequestMapping("/todoIn")
 	public @ResponseBody Map<String,Object> insertTodo(@RequestParam Map<String,Object> data){
 		Map<String,Object> result=new HashMap<String,Object>();
-		data.put("toggle",1);
+		data.put("toggle","1");
 		if(hiService.insert(data)==1) {
 			result.put("result", true);
 		}
@@ -42,6 +42,13 @@ public class HistoryController {
 	public @ResponseBody Map<String,Object> insert(@RequestParam Map<String,Object> data){
 		Map<String,Object> result=new HashMap<String,Object>();
 		result.put("result", (hiService.insert(data)==1)?true:false);
+		return result;
+	}
+	
+	@RequestMapping("/list")
+	public @ResponseBody Map<String,Object> getList(@RequestParam Map<String,Object> data){
+		Map<String,Object> result=new HashMap<String,Object>();
+		result.put("result", hiService.getList(data));
 		return result;
 	}
 }

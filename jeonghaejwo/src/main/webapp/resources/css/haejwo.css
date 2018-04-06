@@ -65,12 +65,25 @@
     color: #ffa4a4;
     font-size: 1.5vmin;
     height: 3vh;
+    
+    transition: 0.6s;
 }
 .retryhaejwo >button{
     background-color: rgba(255, 255, 255, 0);
     color: gold;
     font-size: 1.5vmin;
     height: 3vh;
+    
+    transition: 0.6s;
+}
+
+.backhaejwo >button:hover{
+    background-color:#ffa4a4;
+    color: black;
+}
+.retryhaejwo >button:hover{
+    background-color: gold;
+    color: black;
 }
 .haejwoIcon{
 	margin-right: 1vw;
@@ -187,12 +200,15 @@
 }
 .haejwo >button{
     background-color: rgba(255, 255, 255, 0);
-    
     color: white;
-   
     font-size: 1.5vmin;
     height: 3vh;
     width: 9vmin;
+    transition: 0.6s;
+}
+.haejwo >button:hover{
+	background-color: white;
+    color: black;
 }
 /*  */
 .map {
@@ -361,7 +377,7 @@
 	clear: left;
 }
 .loding_button{
-    background-color: gold;
+    background-color: rgba(255, 215, 0, 0);;
     width: 16vw;
     margin-top: 1%;
     height: 5vh;
@@ -371,6 +387,7 @@
 .loding_button:hover{
 	color: white;
     text-decoration: none;
+    background-color:gold;
 }
    
 
@@ -390,7 +407,7 @@
     border: solid white;
 }
 
-.location_input .location_input_text {
+.location_input .location_input_text1 {
 	font-size: 2vmin;
     display: block;
     border: none;
@@ -401,9 +418,20 @@
     height: 4vh;
     width: 27vw;
 }
+.location_input .location_input_text2 {
+	font-size: 2vmin;
+    display: block;
+    border: none;
+    box-shadow: none;
+    margin-top: 11vh;
+    margin-left: auto;
+    margin-right: auto;
+    height: 4vh;
+    width: 27vw;
+}
 
-.location_input label {
-    color: #9e9e9e;
+.location_input label {    
+	color: #d0d0d0;
     font-size: 2.2vmin;
     font-weight: normal;
     position: absolute;
@@ -422,7 +450,6 @@
 }
 
 .location_input .bar:after {
-	
 	right: 50%;
 }
 
@@ -436,7 +463,11 @@
 	opacity: 0.5;
 }
 
-.location_input .location_input_text:focus ~ label{
+.location_input .location_input_text1:focus ~ label{
+	font-size: 16px;
+	color: white;
+}
+.location_input .location_input_text2:focus ~ label{
 	font-size: 16px;
 	color: white;
 }
@@ -454,8 +485,10 @@
 	-webkit-transition: 0.2s ease all;
 }
 
-.location_input .location_input_text:focus ~ .bar:before,
-.location_input .location_input_text:focus ~ .bar:after {
+.location_input .location_input_text1:focus ~ .bar:before,
+.location_input .location_input_text2:focus ~ .bar:before,
+.location_input .location_input_text1:focus ~ .bar:after
+.location_input .location_input_text2:focus ~ .bar:after {
 	width: 50%;
 }
 
@@ -472,13 +505,17 @@
 	.loding_button{
 	    width: 30vw; 
 	}
+	.map{
+		width:100%;
+	}
 } 
 
 @media screen and (max-width: 700px) {
 .user_setting{
 	width: 74vw;
 }
-.location_input .location_input_text{
+.location_input .location_input_text1,
+.location_input .location_input_text2{
 	width: 74vw;
 }
 .funkyradio input[type="radio"]:empty ~ label{

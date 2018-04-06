@@ -42,6 +42,9 @@ public class ReviewDAOImpl implements ReviewDAO {
 	@Override
 	public List<Map<String, Object>> selectList(Map<String, Object> data) {
 		SqlSession ss = ssf.openSession();
+		String s=(String) data.get("startNo");
+		Integer i=Integer.parseInt(s);
+		data.put("startNo", i);
 		List<Map<String, Object>> result = ss.selectList("review.selectList",data);
 		ss.close();
 		return result;

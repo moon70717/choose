@@ -66,10 +66,7 @@ function lodingEnd(){
 //더블클릭시 선택되지 않게
 window.document.onselectstart = new Function("return false"); 
 
-$(document).ready(function(){
-	if("<%=session.getAttribute('isLogin')%>"=="null"){	
-	}
-})
+
 
 
 //시간 설정 버튼 플러스 마이너스 
@@ -86,6 +83,7 @@ function minus(countEl){
 	    countEl.value = count+" 시간";
 	}
 }
+
 
 //풋터 하단 배치!!
 /*$(document).ready(function(){

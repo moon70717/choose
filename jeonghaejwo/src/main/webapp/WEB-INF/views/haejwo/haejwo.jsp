@@ -27,15 +27,25 @@
 		<div class='input_container'>
 			<div class='user_setting'>
 				<div class="location_input">
-					<input class="location_input_text" id="loInput" type="text">
+					<input class="location_input_text1" id="loInput" type="text">
 					<span class="highlight"></span> <span class="bar"></span> <span><button
 							class="loBtn"
 							onclick="getLatLng($('#loInput')[0].value, $('#loInput')[0].id)">
 							<i class="glyphicon glyphicon-search"></i>
 						</button></span> <label>My Location</label>
 				</div>
+				<div id="network-popUp" class="destination_selectBox" style="display: block;">
+					<div class="form-item form-item-node-type form-type-select select-group">
+						<select class="form-control form-select select_destination"
+							id="deSelectBox" name="node_type" onchange="deSelectBox()">
+							<option value="-1" selected="selected">Select element</option>
+							<option value="0">우리집</option>
+							<option value="1">회사</option>
+						</select>
+					</div>
+				</div>
 				<div class="location_input">
-					<input class="location_input_text" id="desInput" type="text">
+					<input class="location_input_text2" id="desInput" type="text">
 					<span class="highlight"></span> <span class="bar"></span> <span>
 						<button class="deBtn"
 							onclick="getLatLng($('#desInput')[0].value, $('#desInput')[0].id)">
@@ -88,7 +98,7 @@
 				<button id='test' class="btn loding_button"
 					onclick="sendVariable($('#loInput')[0].value, $('#desInput')[0].value)">
 					<!-- "window.location.href='${root}/path/map/show-way'" -->
-					<span class="ladda-label"><i class="fas fa-search"></i> Jeong Hae Jwo </span>
+					<span class="ladda-label"><i class="fas fa-search haejwoIcon"></i> Jeong Hae Jwo </span>
 				</button>
 			</div>
 		</div>
@@ -97,6 +107,7 @@
 	
 </body>
 <script>
+
 function reLoadPage(){
 	window.location.reload();
 }
@@ -232,7 +243,7 @@ function setDatas(){
 				'dMapX':dMapX,
 				'dMapY':dMapY
 			}
-	},100);
+	},1000);
 }
 function reFindRoute(){
 	lodingSt();
@@ -254,20 +265,8 @@ function findRoute(){
 				for(key=1;key<=keys;key++){
 					var temp=JSON.parse(res[key]);
 					//console.log(temp);
-					if(!temp.response.body.items){
-						temp=temp.response.body.items.item[Math.floor(Math.random()*10)];
-					}else{
-
-						var reData = data;
-						$.ajax({
-							url : "/api/tour_api",
-							type : "post",
-							data : reData,
-							success : function(res) {
-								
-							}
-							})
-					}
+					temp=temp.response.body.items.item[Math.floor(Math.random()*10)];
+					
 					waypoint.push(temp);
 				}
 				console.log(waypoint);//<<<랜덤추출 결과가 들어옴!!
