@@ -35,7 +35,7 @@ public class FileController {
 			// aws 업로드시 주소변경필요
 			// 또는 관리자 페이지를 만들어서 수정 가능하도록 변경
 			// aws 업로드시 /media/회원코드/년월일.jpg 경로를 이렇게 변경
-			File f = new File(".\\resources\\imgs\\" + file.getOriginalFilename());
+			File f = new File("\\media\\" + file.getOriginalFilename());
 			file.transferTo(f);
 		} catch (IllegalStateException e) {
 			// TODO Auto-generated catch block
