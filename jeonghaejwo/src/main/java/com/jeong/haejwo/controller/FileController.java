@@ -1,6 +1,8 @@
 package com.jeong.haejwo.controller;
 
+import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -37,9 +39,16 @@ public class FileController {
 			// aws 업로드시 주소변경필요
 			// 또는 관리자 페이지를 만들어서 수정 가능하도록 변경
 			// aws 업로드시 /media/회원코드/년월일.jpg 경로를 이렇게 변경
+			InputStream is=file.getInputStream();
 			ObjectMetadata metadata = new ObjectMetadata();
 			UploadObject uploadObject = new UploadObject();
-			uploadObject.upload(file.getOriginalFilename(), file.getInputStream(),metadata);
+			String originName=file.getOriginalFilename();
+			File convFile = new File(originName);
+			
+			file.transferTo(convFile);
+			
+			//s3는 기본적으로 폴더기반이 아니라 /만 붙여도 알아서 분리를 해줌
+			uploadObject.upload("hi/"+originName, is , metadata, convFile);
 			/*File f = new File("\\media\\" + file.getOriginalFilename());
 			file.transferTo(f);*/
 		} catch (IllegalStateException e) {

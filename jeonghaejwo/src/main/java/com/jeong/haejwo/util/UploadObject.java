@@ -1,5 +1,6 @@
 package com.jeong.haejwo.util;
 
+import java.io.File;
 import java.io.InputStream;
 
 import com.amazonaws.AmazonClientException;
@@ -22,10 +23,11 @@ public class UploadObject {
 	        amazonS3 = new AmazonS3Client(awsCredentials);
 	    }
 	    
-	    public void upload(String keyName, InputStream inputStream,ObjectMetadata metadata){
+	    public void upload(String keyName, InputStream inputStream,ObjectMetadata metadata, File file){
 	        if(amazonS3!=null)
 	        try{
-	            amazonS3.putObject(new PutObjectRequest(BURKETNAME,keyName,inputStream,metadata));
+	            //amazonS3.putObject(new PutObjectRequest(BURKETNAME,keyName,inputStream,metadata));
+	            amazonS3.putObject(new PutObjectRequest(BURKETNAME, keyName, file));
 	        }catch(AmazonClientException ace){
 	            ace.printStackTrace();
 	        } finally {
