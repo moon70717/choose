@@ -38,9 +38,10 @@
 				data : data,
 				success : function(res) {
 					alert("구글 로그인 되었다");
-					$(".logoutGoo").css('display','block')
+					$(".logoutGoo").css('display','block');
+					setCookie("userId",res.user.userId);
 				}
-			})
+			});
 		}, function(error) {
 		  alert(JSON.stringify(error, undefined, 2));
 		});

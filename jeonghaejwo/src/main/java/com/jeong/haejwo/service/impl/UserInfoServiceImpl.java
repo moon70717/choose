@@ -39,7 +39,7 @@ public class UserInfoServiceImpl implements UserInfoService {
 		}
 		return 0;
 	}
-
+	
 	//api 로그인 유저용
 	@Override
 	public boolean login(Map<String, Object> data) {
@@ -47,6 +47,11 @@ public class UserInfoServiceImpl implements UserInfoService {
 			uidao.insertUserInfo(data);
 		}
 		return true;
+	}
+
+	@Override
+	public Map<String, Object> getUser(Map<String, Object> data) {
+		return uidao.selectUserInfo(data);
 	}
 	
 }

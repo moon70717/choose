@@ -44,11 +44,10 @@
 <!-- fontawesome -->
 <script src="${rPath}/js/fontawesome-all.min.js${ver}" charset="utf-8"></script>
 <!-- ajaxUtil -->
-<script src="${rPath}/js/ajaxUtil.js" charset="utf-8">
-<!--
+<script src="${rPath}/js/ajaxUtil.js" charset="utf-8"></script>
 
-//-->
-</script>
+<!-- cookie -->
+<script src="${rPath}/js/cookie.js" type="text/javascript" charset="utf-8"></script>
 
 
 <!-- 공통 바디 -->

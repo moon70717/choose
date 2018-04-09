@@ -21,16 +21,28 @@
 			reader.readAsDataURL(input.files[0]);
 		}
 	}
+	
+	//serialize를 이용하여 form 데이터를 보내는 형식
+	function up(){
+		//$("#frmPopup").submit();
+		var formData=$("#frmPopup").serialize();
+		//ajax("${root}/file/upload",back,formData);
+		ajax("${root}/file/upload",back,formData,"multipart/form-data");
+	}
+	function back(res){
+		console.log(res);
+	}
 </script>
 </head>
-<body>
+<body> 
+	<!--  action="/file/upload" -->
 	<!-- 위쪽에 태그라이브러리 추가되어있음 -->
 	<f:form name="frmPopup" id="frmPopup" modelAttribute="popupVO"
-		method="post" action="/file/upload" enctype="multipart/form-data">
+		method="post" enctype="multipart/form-data">
 		<!-- 요놈이 업로드됨 -->
 		<input type="file" name="uploadFile" id="uploadFile">
 		<img id="blah" src="#" alt="your image" />
-		<input type="submit" value="클릭1">
+		<input type="submit" value="클릭1" onclick="up()">
 	</f:form>
 </body>
 </html>
