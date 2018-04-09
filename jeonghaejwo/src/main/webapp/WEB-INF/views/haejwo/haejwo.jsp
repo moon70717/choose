@@ -253,8 +253,9 @@ function findRoute(){
 				for(key=1;key<=keys;key++){
 					var temp=JSON.parse(res[key]);
 					//console.log(temp);
-					temp=temp.response.body.items.item[Math.floor(Math.random()*10)];
 					
+					var tempLength = temp.response.body.items.item.length;
+					temp=temp.response.body.items.item[Math.floor(Math.random()*tempLength)];
 					waypoint.push(temp);
 				}
 				console.log(waypoint);//<<<랜덤추출 결과가 들어옴!!

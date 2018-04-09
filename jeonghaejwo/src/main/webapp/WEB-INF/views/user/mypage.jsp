@@ -21,7 +21,6 @@
 	<div class='mypageUserId2'></div>
 	<div class='mypageUserNickName'>유저 별명 :</div>
 	<div class='mypageUserNickName2'></div>
-	
 	<div class='memberLeave'><button class='btn btn'>회원탈퇴</button></div>
 	
 </div>
@@ -184,7 +183,7 @@ function getHistory(res){
 			"toggle" : "2",
 			"st" : st
 	}
-	ajax("/history/list",initHistory,dtemp,initHistory);
+	ajax("/history/list", initHistory, dtemp);
 }
 
 var hisTemp;
@@ -359,8 +358,11 @@ function newWorkElement() {
 			}
 		});
 	}
-	
 }
+
+/*  */
+
+/*  */
 </script>
 </body>
 </html>
