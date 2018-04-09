@@ -150,7 +150,6 @@ function getTimes(){
 	ramdomNum = Number(document.getElementById("deSelectBox").value);
 	times=Math.floor(hour-disKm+ramdomNum);
 	radius=Number($("input[type=radio][name=radio]:checked")[0].getAttribute("data-value"));
-	
 }
 //현위치와 목적지 xy좌표 구하는 공통 함수
 function getXYaddress(place,func){
@@ -323,30 +322,6 @@ function sendVariable(loInput, desInput){
 		google.maps.event.addListener(map, 'click', function(mouseEvent) {
 			getAddress(mouseEvent.latLng);
 		});
-		
-		/* //submit버튼에 이벤트 적용
-		$("#submit").click(function() {
-			//nLat이랑 nLng이 위의getLocation을 이용해 받아온 현재위치
-			//하지만 학원에서는 않먹힘 
-			var nowP=nLat+", "+nLng;
-			
-			//출발지점이랑 도착지점은 그냥 현재위치로 잡혀있음
-			waypts.push({
-				location : nowP,
-				stopover : true
-			});
-			
-			for(var v of waypoint){
-				waypts.push({
-					location : v.addr1,
-					stopover : true
-				});
-			}
-			waypts.push({
-				location : nowP,
-				stopover : true
-			});
-		}); */
 	}
 	
 	//클릭한곳 좌표와 주소를 가져와주는놈(맵 클릭)

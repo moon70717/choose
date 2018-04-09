@@ -43,29 +43,16 @@ public class UserInfoController {
 	@RequestMapping("/uriLogin")
 	public @ResponseBody Map<String,Object> login(@RequestParam Map<String,Object> data, HttpSession hs){
 		Map<String,Object> map=new HashMap<String,Object>();
+		map.put("result", false);
 		log.info("data=>{}", data);
 		if(uis.login(data)) {
+			Map<String,Object> user=uis.getUser(data);
 			map.put("result", true);
 			hs.setAttribute("isLogin", true);
+			map.put("user", user);
 		}
 		return map;
 	}
-	
-	
-//	@RequestMapping(value="/join", method=RequestMethod.POST)
-//	public @ResponseBody Map<String, Object> join(@RequestBody UserInfoVO ui){
-//		Map<String, Object> map = new HashMap<String, Object>();
-//		map.put("msg", "회원가입 실패");
-//		map.put("biz", false);
-//		int result = uis.join(ui);
-//		if(result==1) {
-//			map.put("msg", "회원가입 성공");
-//			map.put("biz", true);
-//		}else if(result==2) {
-//			map.put("msg", "아이디 중복");
-//		}
-//		return map;
-//	}
 
 	@RequestMapping(value="/check/{UserId}", method=RequestMethod.GET)
 	public @ResponseBody Map<String, Object> join2(@PathVariable String userId){

@@ -19,7 +19,7 @@
 		</if> -->
 	</select>
 	
-	<select id="selectApiUser" parameterType="map" resultType="ui">
+	<select id="selectApiUser" parameterType="map" resultType="map">
 		select *
 		from user
 		where userId=#{userId}

@@ -12,5 +12,5 @@ public interface UserInfoDAO {
 	
 	public int insertUserInfo(Map<String,Object> data);
 	
-	public UserInfoVO selectUserInfo(Map<String,Object> data);
+	public Map<String,Object> selectUserInfo(Map<String,Object> data);
 }
