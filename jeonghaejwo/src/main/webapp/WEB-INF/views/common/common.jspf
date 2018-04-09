@@ -1,34 +1,26 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-
 <c:set var="root" value="${pageContext.request.contextPath}"/>
-<c:set var="ver" value="?version=1.1.28"/>
+<c:set var="ver" value="?version=1.1.30"/>
 <c:set var="rPath" value="${root}/resources"/>
 <c:set var="pPath" value="${root}/path"/>
 <c:set var="dPath" value="${rPath}/dx"/>
-
 <link rel="stylesheet" type="text/css" href="${root}/resources/css/bootstrap.min.css${ver}"/>
-<link rel="stylesheet" type="text/css" href="${root}/resources/css/bootstrap.css${ver}"/>
-
 <link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.2.3/animate.min.css'>
 <link rel="stylesheet" type="text/css" href="${root}/resources/css/menu.css${ver}"/>
 <link rel="stylesheet" type="text/css" href="${root}/resources/css/common.css${ver}"/>
-
 <link rel="stylesheet" type="text/css" href="${root}/resources/css/fontawesome.min.css${ver}"/>
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 <!-- 시계 css -->
 <link rel="stylesheet" type="text/css" href="${root}/resources/css/clock.css${ver}" />
 <!-- 로그인Api css -->
 <link rel="stylesheet" type="text/css" href="${root}/resources/css/loginApi.css${ver}" />
-
 <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> -->
-
 <script src="${root}/resources/js/jquery.min.js" charset="utf-8"></script>
-<script src="${root}/resources/js/bootstrap.js"></script>
+<script src="${root}/resources/js/bootstrap.min.js"></script>
 <script src="${root}/resources/js/bootstrap-table.js" charset="utf-8"></script>
 <!-- 메뉴 -->
 <script src="${root}/resources/js/menu.js${ver}" charset="utf-8"></script>
@@ -40,13 +32,12 @@
 <script src="${root}/resources/js/clock.js${ver}" charset="utf-8"></script>
 <!-- 시계 -->
 <script src="${root}/resources/js/t.js${ver}" charset="utf-8"></script>
-<!-- 로그인 로그아웃부분만 빼서. -->
+<!-- 로그인  -->
 <script src="${root}/resources/js/loginApi.js${ver}" charset="utf-8"></script>
 <!-- fontawesome -->
 <script src="${rPath}/js/fontawesome-all.min.js${ver}" charset="utf-8"></script>
-<!--  -->
+<!-- ajaxUtil -->
 <script src="${rPath}/js/ajaxUtil.js${ver}" charset="utf-8"></script>
-
 
 <!-- 공통 바디 -->
 <div class='common_blind'></div>
@@ -64,18 +55,19 @@
 <!-- 메뉴 -->
 <div id="mySidenav" class="sidenav">
 	<div class='menu_grid1' >
-		    <input type="checkbox" id="menu_checkbox" />
-  <label for="menu_checkbox" id='menu_icon'>
-  <div></div>
-  <div></div>
-  <div></div>
-</label>
+		<input type="checkbox" id="menu_checkbox" />
+  		<label for="menu_checkbox" id='menu_icon'>
+		  <div></div>
+		  <div></div>
+		  <div></div>
+		</label>
 	</div>
 	<div class='menu_grid2'>
 		<a href="${root}/path/home">홈</a>
-	  	<a href="${root}/path/user/mypage">마이페이지</a> <!-- 할일 입력 및 개인정보 수정 -->
+	  	<a href="${root}/path/user/mypage">마이페이지</a> 
 	  	<a href="${root}/path/haejwo/haejwo">정해줘</a>
 	  	<a href="${root}/path/board/rank">순위</a>
 	  	<a href="${root}/path/board/review">후기</a>
+	  	<a href="${root}/path/board/board">게시판</a>
 	</div>
 </div>

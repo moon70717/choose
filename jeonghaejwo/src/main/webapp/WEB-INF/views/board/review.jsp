@@ -108,7 +108,17 @@
 </div>
 </body>
 <script>
+function swing() {
+    $('.photoAndLocation').animate({'top':'5px'},600).animate({'top':'10px'},600, swing);
+}
 
+$(function(){
+	  $('.photoAndLocation').hover(function(){
+	    swing();
+	  }, function(){
+	        // hover out action
+	  });
+	});
 //리뷰 업로드
 function upload(){
 	var point = $('input[name=rating]:checked')[0].value;
