@@ -6,7 +6,7 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
 <c:set var="root" value="${pageContext.request.contextPath}"/>
-<c:set var="ver" value="?version=1.1.21"/>
+<c:set var="ver" value="?version=1.1.22"/>
 <c:set var="rPath" value="${root}/resources"/>
 <c:set var="pPath" value="${root}/path"/>
 <c:set var="dPath" value="${rPath}/dx"/>
@@ -47,7 +47,7 @@
 <script src="${rPath}/js/ajaxUtil.js" charset="utf-8"></script>
 
 <!-- cookie -->
-<script src="${rPath}/js/cookie.js" type="text/javascript" charset="utf-8"></script>
+<script src="${rPath}/js/cookie.js${ver}" type="text/javascript" charset="utf-8"></script>
 
 
 <!-- 공통 바디 -->
