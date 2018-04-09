@@ -66,7 +66,8 @@
     background-color: #ff8282;
     }
 .mypageUserImg_container>img{
-	width: 5vw; 
+	width: 5vw;
+	border-radius: 50%; 
 }
 .mypageUserNickName>.btn{
     margin-left: 1vw;
@@ -115,7 +116,7 @@
 }
 
 .addBtn:hover {
-  color: black; 
+  color: #a9a9a9;
 }
 
 /* Style the close button */
@@ -129,6 +130,14 @@
 .userPositionListclose:hover {
   background-color: #f44336;
   color: white;
+}
+.table-hover>#visitRecords_table>tr:hover
+{
+color:black;
+}
+.table-hover>#todoList>tr:hover
+{
+color:black;
 }
 </style>
 <body>
@@ -184,18 +193,20 @@
 <!--       <div class='userVisitRecordBtn'>
 <button class='btn'>다시 보기</button>
 </div> -->
-    </div>
+
+	<div id="userVisitRecordBtn"></div>
+	</div>
     <div id="user_plan_container" class="tab-pane fade">
     <table class="table table-hover">
     <thead>
       <tr>
-        
+        <th>무엇을?</th>
+        <th>언제?</th>
+        <th>어디서?</th>
       </tr>
     </thead>
     <tbody id="todoList">
-      <th>무엇을?</th>
-        <th>언제?</th>
-        <th>어디서?</th>
+      
     </tbody>
   </table>
   <hr>
@@ -319,6 +330,7 @@ function initHistory(res){
 	hisTemp=res.result[0];
 	var hisIdx = 1;
 	var historyTemps = "";
+	$("#visitRecords_table").contents().remove();
 	for(vv of hisTemp){
 		historyTemps+="<tr><td>"+hisIdx+"</td>";
 		historyTemps+="<td>"+vv.placename+"</td>";
@@ -328,9 +340,9 @@ function initHistory(res){
 	}
 	$("#visitRecords_table").append(historyTemps);
 	for(vv=1;vv<Math.ceil(res.result[1]/5);vv++){
-		$("#user_VisitRecord_container").append("<button id='historyBtn"+vv+"' value='"+vv+"'>"+vv+"</button>");
+		$("#userVisitRecordBtn").append("<button id='historyBtn"+vv+"' value='"+vv+"'>"+vv+"</button>");
 		$("#historyBtn"+vv).click(function(){
-			$("#user_VisitRecord_container").contents().remove();
+			$("#userVisitRecordBtn").contents().remove();
 			getHistory(this.value);
 		});
 	}
