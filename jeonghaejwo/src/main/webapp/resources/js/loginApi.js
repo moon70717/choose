@@ -134,7 +134,6 @@
 				type : "post",
 				data : data,
 				success : function(res) {
-					alert("페이스북 로그인 되었다");
 				}
 			})
 		      $(".logoutFace").css('display','block')

@@ -168,23 +168,34 @@
   <br>
   <div class='rejeunghaejwo tab-content'>
 <div id="user_VisitRecord_container" class="tab-pane fade in active">
-      <h3 >방문 기록</h3>
-      <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-      <div class='userVisitRecordBtn'>
+      <table class="table table-hover">
+    <thead>
+      <tr>
+      	<th>No</th>
+        <th>장소</th>
+        <th>주소</th>
+        <th>방문일자</th>
+      </tr>
+    </thead>
+    <tbody id="visitRecords_table">
+      
+    </tbody>
+  </table>
+<!--       <div class='userVisitRecordBtn'>
 <button class='btn'>다시 보기</button>
-</div>
+</div> -->
     </div>
     <div id="user_plan_container" class="tab-pane fade">
     <table class="table table-hover">
     <thead>
       <tr>
-        <th>무엇을?</th>
-        <th>언제?</th>
-        <th>어디서?</th>
+        
       </tr>
     </thead>
     <tbody id="todoList">
-      
+      <th>무엇을?</th>
+        <th>언제?</th>
+        <th>어디서?</th>
     </tbody>
   </table>
   <hr>
@@ -306,10 +317,16 @@ var hisTemp;
 function initHistory(res){
 	console.log(res);
 	hisTemp=res.result[0];
-	$("#user_VisitRecord_container").contents().remove();
+	var hisIdx = 1;
+	var historyTemps = "";
 	for(vv of hisTemp){
-		$("#user_VisitRecord_container").append(vv.placename+"<br>");
+		historyTemps+="<tr><td>"+hisIdx+"</td>";
+		historyTemps+="<td>"+vv.placename+"</td>";
+		historyTemps+="<td>"+vv.addr+"</td>";
+		historyTemps+="<td>"+vv.visitDate+"</td></tr>";
+		hisIdx++;
 	}
+	$("#visitRecords_table").append(historyTemps);
 	for(vv=1;vv<Math.ceil(res.result[1]/5);vv++){
 		$("#user_VisitRecord_container").append("<button id='historyBtn"+vv+"' value='"+vv+"'>"+vv+"</button>");
 		$("#historyBtn"+vv).click(function(){
@@ -317,7 +334,6 @@ function initHistory(res){
 			getHistory(this.value);
 		});
 	}
-	
 }
 
 

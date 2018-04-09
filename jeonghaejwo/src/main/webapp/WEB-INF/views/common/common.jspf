@@ -6,7 +6,7 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
 <c:set var="root" value="${pageContext.request.contextPath}"/>
-<c:set var="ver" value="?version=1.1.20"/>
+<c:set var="ver" value="?version=1.1.28"/>
 <c:set var="rPath" value="${root}/resources"/>
 <c:set var="pPath" value="${root}/path"/>
 <c:set var="dPath" value="${rPath}/dx"/>
@@ -44,7 +44,8 @@
 <script src="${root}/resources/js/loginApi.js${ver}" charset="utf-8"></script>
 <!-- fontawesome -->
 <script src="${rPath}/js/fontawesome-all.min.js${ver}" charset="utf-8"></script>
-
+<!--  -->
+<script src="${rPath}/js/ajaxUtil.js${ver}" charset="utf-8"></script>
 
 
 <!-- 공통 바디 -->
@@ -76,6 +77,5 @@
 	  	<a href="${root}/path/haejwo/haejwo">정해줘</a>
 	  	<a href="${root}/path/board/rank">순위</a>
 	  	<a href="${root}/path/board/review">후기</a>
-	  	<a href="#">CONTACT US</a>
 	</div>
 </div>

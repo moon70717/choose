@@ -127,10 +127,10 @@ body {
 	font-family: 'hanna';
     height: 100%;
     position: fixed;
-    z-index: 1;
+    z-index: 201;
     top: 0;
-    right:-200px;
-    width: 300px;
+    right:-11vw;
+    width: 17vw;
 	display: grid;
 	grid-template-columns: repeat(6, 1fr);
   	grid-template-areas: 
@@ -143,7 +143,7 @@ body {
 
 .menu_grid1 {
   grid-area: menu1;
-  width: 50px;
+  width: 5vw;
 }
 .menu_grid2 {
   grid-area: menu2;

@@ -15,7 +15,7 @@ function menuFuc(){
 	    if(navStatus==false){
 	    	navStatus=true;
 	    	$('.menu_grid2').stop().animate({
-	            width: "200px"
+	            width: "17vw"
 	        },600);
 	    	$('#mySidenav').stop().animate({
 	            right: "0"
@@ -27,7 +27,7 @@ function menuFuc(){
 	            width: "0"
 	        },600);
 	    	$('#mySidenav').stop().animate({
-	            right: "-200px"
+	            right: "-12vw"
 	        },600);
 	    	$("#mySidenav").css('background-color', "");
 	    }

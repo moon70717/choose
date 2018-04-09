@@ -23,7 +23,8 @@
     padding-top: 1vw;
     font-size: 1.5vw;
     border: solid 1px #ffffffc4;
-    box-shadow: 20px 38px 34px -26px hsla(0,0%,0%,.2);
+    
+	 box-shadow:2px 8px 4px -6px hsla(0,0%,0%,.3);
     border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
     color: white;
 }
@@ -147,7 +148,9 @@ width:100%;
 margin-right: 1vw;
 }
 .rank-container>div:hover{
-	border-width: 6px;
+	 -webkit-box-shadow: 0 37px 126px rgba(255, 255, 255, 0.49);
+	-moz-box-shadow: 0 37px 126px rgba(255, 255, 255, 0.49);
+		box-shadow: 0 37px 126px rgba(255, 255, 255, 0.49);
 }
 </style>
 <body>

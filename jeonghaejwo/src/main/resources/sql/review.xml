@@ -18,6 +18,8 @@
 	<select id="selectList" parameterType="map" resultType="map">
 		select * from recommendation re 
 		left join image img on re.imgNo=img.imgNo
+		left join user us on re.userId=us.userId
+		left join apidata ap on re.code=ap.code
 		order by re.recoNo desc
 		limit #{startNo},8
 	</select>

@@ -42,7 +42,6 @@ background-image: url("${rPath}/imgs/board.jpg");
 	border-width: 1px;
 	border-color: #f9d201; */
 	text-align: center;
-	
 }
 
 .review_container>.grid-item {
@@ -69,15 +68,20 @@ background-image: url("${rPath}/imgs/board.jpg");
     padding: 0px 0.5vw 0.5vw;
 	text-align: center;
 	text-decoration: none;
-	-webkit-box-shadow: 0 9px 10px rgba(0, 0, 0, 0.49);
-	-moz-box-shadow: 0 9px 10px rgba(0, 0, 0, 0.49);
-	box-shadow: 0 9px 10px rgba(0, 0, 0, 0.49);
+	-webkit-box-shadow: 0 37px 126px rgba(0, 0, 0, 0.49);
+	-moz-box-shadow: 0 37px 126px rgba(0, 0, 0, 0.49);
+	box-shadow: 0 37px 126px rgba(0, 0, 0, 0.49);
 	-webkit-transition: all .15s linear;
 	-moz-transition: all .15s linear;
 	transition: all .15s linear;
 	z-index:0;
     position:relative;
     width: 14vw;
+	border: solid 2px white;
+}
+.photoAndLocation:hover{
+border: dotted 2px;
+ box-shadow:2px 8px 4px -6px hsla(0,0%,0%,.3);
 }
 .photoPin{
 grid-area: photoPin;
@@ -121,7 +125,7 @@ color: white;
 .rank_nextBtn_right{
     font-size: 3.5vmin;
     text-indent: 0.25em;
-        margin-left: 3vw;
+    margin-left: 3vw;
 }
 .rank_nextBtn:hover{
 	background-color: white;
@@ -300,24 +304,14 @@ fieldset, label { margin: 0; padding: 0; }
 							<fieldset class="review_rating">
 							    <input type="radio" id="star5" name="rating" value="5" />
 							  	<label class = "full" for="star5" title="Awesome - 5 stars"></label>
-							    <input type="radio" id="star4half" name="rating" value="4 and a half" />
-							    <label class="half" for="star4half" title="Pretty good - 4.5 stars"></label>
 							    <input type="radio" id="star4" name="rating" value="4" />
 							    <label class = "full" for="star4" title="Pretty good - 4 stars"></label>
-							    <input type="radio" id="star3half" name="rating" value="3 and a half" />
-							    <label class="half" for="star3half" title="Meh - 3.5 stars"></label>
 							    <input type="radio" id="star3" name="rating" value="3" />
 							    <label class = "full" for="star3" title="Meh - 3 stars"></label>
-							    <input type="radio" id="star2half" name="rating" value="2 and a half" />
-							    <label class="half" for="star2half" title="Kinda bad - 2.5 stars"></label>
 							    <input type="radio" id="star2" name="rating" value="2" />
 							    <label class = "full" for="star2" title="Kinda bad - 2 stars"></label>
-							    <input type="radio" id="star1half" name="rating" value="1 and a half" />
-							    <label class="half" for="star1half" title="Meh - 1.5 stars"></label>
 							    <input type="radio" id="star1" name="rating" value="1" />
 							    <label class = "full" for="star1" title="Sucks big time - 1 star"></label>
-							    <input type="radio" id="starhalf" name="rating" value="half" />
-							    <label class="half" for="starhalf" title="Sucks big time - 0.5 stars"></label>
 							</fieldset>
 													
 						</div>
@@ -331,7 +325,7 @@ fieldset, label { margin: 0; padding: 0; }
 				<div class="modal-footer">
 					<button type="button" class="btn review_modal_closeBtn"
 						data-dismiss="modal" onclick="#">Close</button>
-					<button type="button" class="btn review_modal_saveBtn" onclick="#">Save</button>
+					<button type="button" class="btn review_modal_saveBtn" onclick="upload()">Save</button>
 				</div>
 			</div>
 		</div>
@@ -361,6 +355,38 @@ fieldset, label { margin: 0; padding: 0; }
 </div>
 </body>
 <script>
+
+//리뷰 업로드
+function upload(){
+	var point = $('input[name=rating]:checked')[0].value;
+	var comment = $('#exampleTextarea')[0].value;
+	var retitle=$("#loInput")[0].value;
+	var utc = new Date().toJSON().slice(0,10).replace(/-/g,'-');
+	var data = {
+			userNo : "103230395918627060836",
+			code : "294439",
+			point : point,
+			comment : comment,
+			date : utc,
+			placename : "고궁의 아침",
+			retitle : retitle
+	}
+	
+	$.ajax({
+		url : "/review/addComment",
+		data : data,
+		success : function(res){
+			console.log(res);
+		}
+	})
+	
+	$("#review_list").contents().remove();
+	num=0;
+	getReview(num);
+	//form태그 작동
+	//frmPopup.submit();
+}
+
 	$(function() {
 		$("#uploadFile").on('change', function() {
 			readURL(this);
@@ -375,14 +401,13 @@ fieldset, label { margin: 0; padding: 0; }
 			reader.readAsDataURL(input.files[0]);
 		}
 	}
-	
+	var num=0;
 	//여기서부터 시작
 	$(document).ready(function(){
-		getReview(0);
+		getReview(num);
 	});
 	
 	function nextReview(){
-		var num=$("#review_list").children().first()[0].attributes.num.value;
 		num*=1;
 		num+=8;
 		console.log(num);
@@ -404,10 +429,10 @@ fieldset, label { margin: 0; padding: 0; }
 					var temp="";
 					var temp2="";
 					temp+='<div class="review_container" num="'+a.recoNo+'" id="review'+a.recoNo+'">';
-					temp+='<div class="photoAndLocation" style="transform: rotate('+degRandom+'deg)">';
+					temp+='<div class="photoAndLocation" data-toggle="modal" data-target="#reviewModal'+a.recoNo+'" style="transform: rotate('+degRandom+'deg)">';
 					if(a.imgNo){
 						temp+='<div class="grid-item photoPin"><img src="${rPath}/imgs/pins/pin'+pin+'.png" /></div>';
-						temp+='<div class="grid-item reviewPhoto"><img data-toggle="modal" data-target="#reviewModal'+a.recoNo+'" src="'+a.imgPath+'" /></div>';
+						temp+='<div class="grid-item reviewPhoto"><img src="'+a.imgPath+'" /></div>';
 					}
 					temp+='<div class="grid-item reviewPoint">'+a.point+'</div>';
 					temp+='<div class="grid-item reviewLocation">'+a.placename+'</div></div>';
@@ -416,7 +441,7 @@ fieldset, label { margin: 0; padding: 0; }
 					temp2+='<div class="modal fade review" id="reviewModal'+a.recoNo+'" role="dialog"><div class="modal-dialog review">';
 					temp2+='<div class="modal-content review"><div class="modal-header review"><button type="button" class="close" data-dismiss="modal">&times;</button>';
 					temp2+='<h4 class="modal-title review">'+a.reTitle+'</h4></div>';
-					temp2+='<div class="modal-body review"><p class=reviewUserId>'+a.userId+'</p>';
+					temp2+='<div class="modal-body review"><p class=reviewUserId>'+a.userName+'</p><br>';
 					temp2+='<p>'+a.comment+'</div>';
 					temp2+='<div class="modal-footer review"><button type="button" class="btn btn-default" data-dismiss="modal">Close</button></div></div></div></div>';
 					

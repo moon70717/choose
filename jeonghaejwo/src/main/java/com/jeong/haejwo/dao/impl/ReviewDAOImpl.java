@@ -47,6 +47,7 @@ public class ReviewDAOImpl implements ReviewDAO {
 		data.put("startNo", i);
 		List<Map<String, Object>> result = ss.selectList("review.selectList",data);
 		ss.close();
+		System.out.println(result);
 		return result;
 	}
 

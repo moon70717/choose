@@ -34,16 +34,7 @@
 							<i class="glyphicon glyphicon-search"></i>
 						</button></span> <label>My Location</label>
 				</div>
-				<div id="network-popUp" class="destination_selectBox" style="display: block;">
-					<div class="form-item form-item-node-type form-type-select select-group">
-						<select class="form-control form-select select_destination"
-							id="deSelectBox" name="node_type" onchange="deSelectBox()">
-							<option value="-1" selected="selected">Select element</option>
-							<option value="0">우리집</option>
-							<option value="1">회사</option>
-						</select>
-					</div>
-				</div>
+				
 				<div class="location_input">
 					<input class="location_input_text2" id="desInput" type="text">
 					<span class="highlight"></span> <span class="bar"></span> <span>
@@ -211,10 +202,10 @@ function deFunc(result){
 var ways="";
 
 function sendVariable(loInput, desInput){
-	if($(".location_input_text")[0].value==""){
+	if($(".location_input_text1")[0].value==""){
 		alert("현재 위치를 입력하세요.");
 		return;	
-	}else if($(".location_input_text")[1].value==""){
+	}else if($(".location_input_text2")[0].value==""){
 		alert("목적지를 입력하세요.");
 		return;	
 	}else if($('input:radio[name=radio]').is(':checked')==false){
