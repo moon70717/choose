@@ -15,11 +15,11 @@
         <input type="hidden" name="userId" id="userId"/>
         <input type="button" value="전송하기" onClick="fileSubmit();">
         
-    </form>123
+    </form>123123
  
 <script>
     function fileSubmit() {
-    	$("#userId").value=getCookie("userId");
+    	$("#userId").val(getCookie("userId"));
         var formData = new FormData($("#fileForm")[0]);
         $.ajax({
             type : 'post',

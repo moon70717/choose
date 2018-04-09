@@ -41,9 +41,9 @@ public class FileController {
 		MultipartFile file =multi.getFile(uploadFile);
 		
 		//유저 정보 받아오는 부분
-		String id="103230395918627060836";
+		String id=multi.getParameter("userId");
 		System.out.println(multi.getParameter("userId"));
-		id=(String) hs.getAttribute("userId");
+		System.out.println(multi.getParameter("test"));
 		
 		//없으면 그냥 넘어가게
 		if(file.getSize()==0)
@@ -61,7 +61,7 @@ public class FileController {
 			file.transferTo(convFile);
 			
 			//s3는 기본적으로 폴더기반이 아니라 /만 붙여도 알아서 분리를 해줌
-			uploadObject.upload(dateS+"/"+multi.getParameter("userId")+"/"+originName, is , metadata, convFile);
+			uploadObject.upload(dateS+"/"+id+"/"+originName, is , metadata, convFile);
 		} catch (IllegalStateException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
