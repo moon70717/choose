@@ -4,142 +4,10 @@
 <html>
 <head>
 <script src="${root}/resources/js/mypage.js" charset="utf-8"></script>
+<link rel="stylesheet" type="text/css" href="${root}/resources/css/mypage.css${ver}"/>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 </head>
-<style>
-.mainContainers{
-	display: grid;
-	grid-template-columns: repeat(6, 1fr);
-  	grid-template-areas: 
-    	". mypageUserImg mypageUserImg mypageUserInfo mypageUserInfo ."
-    	". repointTable repointTable repointTable repointTable .";
-    margin-top: 6vh;
-}
-.mainContainers>div{
-	text-align: center;
-	margin: 0.5vh;
-}
-.mypageUserImg{
-	grid-area:mypageUserImg;
-	display: grid;
-	grid-template-columns: 1fr 1fr 1fr 1fr;
-  	grid-template-areas:
-  		"mypageUserImg_container mypageUserImg_container mypageUserImg_container mypageUserImg_container" 
-  		"mypage_userImg_hr mypage_userImg_hr mypage_userImg_hr mypage_userImg_hr"
-    	"mypageUserId mypageUserId mypageUserId2 mypageUserId2"
-    	"mypageUserNickName mypageUserNickName mypageUserNickName2 mypageUserNickName2"
-    	"memberLeave memberLeave memberLeave memberLeave";
-	text-align: center;
-}
-.mypageUserImg_container{
-	grid-area: mypageUserImg_container;
-}
-.mypage_userImg_hr{
-	grid-area: mypage_userImg_hr;
-}
-.mypageUserId{
-	grid-area: mypageUserId;
-}
-.mypageUserId2{
-	grid-area: mypageUserId2;
-	    text-align: left;
-}
-.mypageUserNickName{
-	grid-area: mypageUserNickName;
-	    margin-top: 2vh;
-}
-.mypageUserNickName2{
-	grid-area: mypageUserNickName2;
-	    margin-top: 2vh;
-	        text-align: left;
-}
-.userNicknamechange{
-  cursor: pointer;
-  margin-left: 2vw;
-}
-.mypageUserImg .memberLeave{
-	grid-area: memberLeave;
-    }
-.mypageUserImg .memberLeave > button{
-    margin-top: 3vh;
-    background-color: #ff8282;
-    }
-.mypageUserImg_container>img{
-	width: 5vw;
-	border-radius: 50%; 
-}
-.mypageUserNickName>.btn{
-    margin-left: 1vw;
-}
-.mypageUserInfo{
-	grid-area: mypageUserInfo;
-	padding-top: 7.8vh;
-}
-.repointTable{
-	grid-area:repointTable;
-    margin-top: 5vh;  
-}
-.tab_menu{
-	color:white;
-}
-.rejeunghaejwo{
-}
-#user_VisitRecord_container{
-}
-#user_plan_container{
-}
-#menu_etc{
-}
-/* Style the list items */
-#userPositionList li {
-  cursor: pointer;
-  list-style-type: none;
-  transition: 0.2s;
-      font-size: 1vw;
-}
-
-/* Set all odd list items to a different color (zebra-stripes) */
-#userPositionList li:nth-child(odd) {
-}
-
-/* Darker background-color on hover */
-#userPositionList li:hover {
-  background: #ddd;
-}
-
-/* Style the "Add" button */
-.addBtn {
-  padding: 10px;
-  cursor: pointer;
-  transition: 0.3s;
-}
-
-.addBtn:hover {
-  color: #a9a9a9;
-}
-
-/* Style the close button */
-.userPositionListclose {
-    font-size: 1.5vw;
-    margin-left: 2vw;
-    text-align: center;
-    vertical-align: middle;
-}
-
-.userPositionListclose:hover {
-  background-color: #f44336;
-  color: white;
-}
-.table-hover>#visitRecords_table>tr:hover
-{
-color:black;
-}
-.table-hover>#todoList>tr:hover
-{
-color:black;
-}
-</style>
 <body>
 <hr>
 <div class='mainContainers'>
@@ -239,10 +107,7 @@ color:black;
 		<ul id="userPositionList"></ul>
 	</div>
     </div>
-    <div id="menu_etc" class="tab-pane fade">
-      <h3>뭐할까?</h3>
-      <p>Eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
-    </div>
+    
 </div>
 
 </div> 
@@ -252,7 +117,6 @@ color:black;
 var temp;
 var dtemp=[];
 $(document).ready(function(){
-	
 		//유저아이디 임시
 		dtemp={
 				"userId":"103230395918627060836"
@@ -324,6 +188,7 @@ function getHistory(res){
 }
 
 var hisTemp;
+var selectPagingBtn = 0;
 //히스토리 적용
 function initHistory(res){
 	console.log(res);
@@ -340,8 +205,9 @@ function initHistory(res){
 	}
 	$("#visitRecords_table").append(historyTemps);
 	for(vv=1;vv<Math.ceil(res.result[1]/5);vv++){
-		$("#userVisitRecordBtn").append("<button id='historyBtn"+vv+"' value='"+vv+"'>"+vv+"</button>");
+		$("#userVisitRecordBtn").append("<button id='historyBtn"+vv+"' class='historypagingBtn' value='"+vv+"'>"+vv+"</button>");
 		$("#historyBtn"+vv).click(function(){
+			selectPagingBtn = this.value;
 			$("#userVisitRecordBtn").contents().remove();
 			getHistory(this.value);
 		});

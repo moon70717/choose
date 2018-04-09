@@ -8,11 +8,8 @@
 </head>
 
 <script src="${root}/resources/js/haejwo.js" charset="utf-8"></script>
-<link rel="stylesheet" type="text/css"
-	href="${root}/resources/css/haejwo.css${ver}" />
-<script>
+<link rel="stylesheet" type="text/css" href="${root}/resources/css/haejwo.css${ver}" />
 
-</script>
 <body>
 <!-- 해야 할거 
 1.설정이 모두 체크 안된 상태에서 버튼을 눌렀을 때 메세지 보여주기! -->
