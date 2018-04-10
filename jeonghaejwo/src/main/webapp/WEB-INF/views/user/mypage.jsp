@@ -211,7 +211,7 @@ function getFav(){
 function getHistory(res){
 	var st;
 	if(res){
-		st=res*5;
+		st=res*5-1;
 	}else{
 		st=0;
 	}
@@ -225,15 +225,18 @@ function getHistory(res){
 
 var hisTemp;
 var selectPagingBtn = 0;
+var pageMax;
+var nowP=1;
 //히스토리 적용
 function initHistory(res){
 	console.log(res);
 	hisTemp=res.result[0];
 	var hisIdx = 1;
 	var historyTemps = "";
+	pageMax=Math.ceil(res.result[1][0]/5);
 	$("#visitRecords_table").contents().remove();
 	for(vv of hisTemp){
-		historyTemps+="<tr><td>"+hisIdx+"</td>";
+		historyTemps+="<tr><td>"+vv.visitNo+"</td>";
 		historyTemps+="<td>"+vv.placename+"</td>";
 		historyTemps+="<td>"+vv.addr+"</td>";
 		historyTemps+="<td>"+vv.visitDate+"</td>";
@@ -241,17 +244,41 @@ function initHistory(res){
 		hisIdx++;
 	}
 	$("#visitRecords_table").append(historyTemps);
-	for(vv=1;vv<Math.ceil(res.result[1]/5);vv++){
+	appendBtn();
+	$("#historyBtnB").click(function(){
+		alert("nowP="+nowP);
+		if(nowP==1)
+			return;
+		nowP--;
+		$("#userVisitRecordBtn").contents().remove();
+		getHistory(nowP);
+	});
+	$("#historyBtnN").click(function(){
+		alert("nowP="+nowP);
+		if(nowP==pageMax)
+			return;
+		nowP++;
+		$("#userVisitRecordBtn").contents().remove();
+		getHistory(nowP);
+	});
+}
+
+function appendBtn(){
+	$("#userVisitRecordBtn").append("<button id='historyBtnB' class='historypagingBtn' value='back'><</button>");
+	for(vv=1;vv<pageMax;vv++){
+		if(vv>10){
+			$("#userVisitRecordBtn").append("<button id='historyBtnN' class='historypagingBtn' value='next'>></button>");
+			return;
+		}
 		$("#userVisitRecordBtn").append("<button id='historyBtn"+vv+"' class='historypagingBtn' value='"+vv+"'>"+vv+"</button>");
 		$("#historyBtn"+vv).click(function(){
 			selectPagingBtn = this.value;
+			nowP=this.value;
 			$("#userVisitRecordBtn").contents().remove();
 			getHistory(this.value);
 		});
 	}
 }
-
-
 
 
 //Create a "close" button and append it to each list item
