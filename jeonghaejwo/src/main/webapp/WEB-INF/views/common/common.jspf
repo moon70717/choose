@@ -68,6 +68,6 @@
 	  	<a href="${root}/path/haejwo/haejwo">정해줘</a>
 	  	<a href="${root}/path/board/rank">순위</a>
 	  	<a href="${root}/path/board/review">후기</a>
-	  	<a href="${root}/path/board/board">게시판</a>
+	  	<a href="${root}/path/board/GetList">게시판</a>
 	</div>
 </div>

@@ -26,10 +26,10 @@
 	<!-- SqlSessionFactory  는 db에 연결하기 위한 connection을 만드는 역할 -->
 	
 	<!-- SqlSessionTemplate -->
-	<!-- <bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
+	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
 		<constructor-arg name="sqlSessionFactory" ref="ssf"></constructor-arg>
-	</bean> -->
-	<!-- SqlSessionFactory  는 SQL문을 실행하고 결과를 받아오는 역할 -->
+	</bean> 
+	<!-- SqlSessionTemplate  는 SQL문을 실행하고 결과를 받아오는 역할 -->
 	
 	<bean class="org.codehaus.jackson.map.ObjectMapper"></bean>
 	

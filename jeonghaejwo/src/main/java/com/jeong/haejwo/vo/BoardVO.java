@@ -15,40 +15,43 @@ public class BoardVO {
 		);*/
 	
 	
-	private int boardNo;
-	private String userNo;
-	private String boardTitle;
-	private String boardContent;
+	private int idx;
+	private String userId;
+	private String userName;
+	private String title;
+	private String content;
 	private String regist;
 	private int hit;
-	@Override
-	public String toString() {
-		return "Board [boardNo=" + boardNo + ", userNo=" + userNo + ", boardTitle=" + boardTitle + ", boardContent="
-				+ boardContent + ", regist=" + regist + ", hit=" + hit + "]";
+	private int point;
+	public int getIdx() {
+		return idx;
 	}
-	public int getBoardNo() {
-		return boardNo;
+	public void setIdx(int idx) {
+		this.idx = idx;
 	}
-	public void setBoardNo(int boardNo) {
-		this.boardNo = boardNo;
+	public String getUserId() {
+		return userId;
 	}
-	public String getUserNo() {
-		return userNo;
+	public void setUserId(String userId) {
+		this.userId = userId;
 	}
-	public void setUserNo(String userNo) {
-		this.userNo = userNo;
+	public String getUserName() {
+		return userName;
 	}
-	public String getBoardTitle() {
-		return boardTitle;
+	public void setUserName(String userName) {
+		this.userName = userName;
 	}
-	public void setBoardTitle(String boardTitle) {
-		this.boardTitle = boardTitle;
+	public String getTitle() {
+		return title;
 	}
-	public String getBoardContent() {
-		return boardContent;
+	public void setTitle(String title) {
+		this.title = title;
 	}
-	public void setBoardContent(String boardContent) {
-		this.boardContent = boardContent;
+	public String getContent() {
+		return content;
+	}
+	public void setContent(String content) {
+		this.content = content;
 	}
 	public String getRegist() {
 		return regist;
@@ -62,5 +65,18 @@ public class BoardVO {
 	public void setHit(int hit) {
 		this.hit = hit;
 	}
+	public int getPoint() {
+		return point;
+	}
+	public void setPoint(int point) {
+		this.point = point;
+	}
+	@Override
+	public String toString() {
+		return "BoardVO [idx=" + idx + ", userId=" + userId + ", userName=" + userName + ", title=" + title
+				+ ", content=" + content + ", regist=" + regist + ", hit=" + hit + ", point=" + point + "]";
+	}
+	
+	
 	
 }

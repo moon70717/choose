@@ -5,18 +5,235 @@
 <html>
 <head>
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
-<link rel="stylesheet" type="text/css" href="${root}/resources/css/review.css${ver}"/>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>REVIEW</title>
+<style>
+#review_containers{
+background-image: url("${rPath}/imgs/board.jpg");
+	background-repeat: repeat-y;
+    background-position: center;
+    padding-left: 3vw; 
+}
+.write_btn_div{
+	text-align: right;
+}
+.write_btn{
+    background-color: #ffffff;
+    border-color: #2e6da4;
+    margin: 1rem;
+    color: black;
+}
+.review_container {
+ 	display: inline-block;
+	margin: auto;
+	/* border-style: dotted solid;
+	border-width: 1px;
+	border-color: #f9d201; */
+	text-align: center;
+	
+}
 
+.review_container>.grid-item {
+	background-color: rgba(255, 255, 255, 0.8);
+	text-align: center;
+	padding: 10px;
+	font-size: 30px;
+}
+
+.photoAndLocation {
+	grid-template-columns: 1fr 2fr 2fr 2fr 1fr;
+  	grid-template-areas:
+  		". . photoPin . ." 
+    	". reviewPhoto reviewPhoto reviewPhoto ."
+    	". reviewPhoto reviewPhoto reviewPhoto ."
+    	". reviewPhoto reviewPhoto reviewPhoto ."
+    	". reviewLocation reviewLocation reviewLocation ."
+    	". . . reviewPoint .";
+    background-color: white;
+    background: white;
+	display: inline;
+	float: left;
+	margin: 0 1vw 2vw;
+    padding: 0px 0.5vw 0.5vw;
+	text-align: center;
+	text-decoration: none;
+	-webkit-box-shadow: 0 9px 10px rgba(0, 0, 0, 0.49);
+	-moz-box-shadow: 0 9px 10px rgba(0, 0, 0, 0.49);
+	box-shadow: 0 9px 10px rgba(0, 0, 0, 0.49);
+	-webkit-transition: all .15s linear;
+	-moz-transition: all .15s linear;
+	transition: all .15s linear;
+	z-index:0;
+    position:relative;
+    width: 14vw;
+}
+.photoPin{
+grid-area: photoPin;
+}
+.photoPin>img{
+width: 4rem;
+
+    padding-bottom: 0.5rem;
+}
+.reviewPhoto{
+	grid-area: reviewPhoto;
+}
+.reviewPhoto>img{
+	width: 100%; 
+}
+.reviewLocation {
+	grid-area: reviewLocation;
+	color: black;
+    font-size: 1vw;
+}
+
+.reviewPoint{
+	grid-area: reviewPoint;
+}
+.reviewUserId{
+    margin: 0 0 10px;
+    text-align: right;
+}
+
+
+/* 새글쓰기 부분 */
+.review_write_container {
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	grid-template-areas: 
+	"writeTitle writeTitle writeTitle writeTitle" 
+	"imgUpload imgUpload reviewPoint reviewPoint"
+	"preImg preImg reviewStar reviewStar" 
+	"co co co co" 
+	"co co co co";
+	grid-gap: 10px;
+	padding: 10px;
+	    border: dotted 1px;
+}
+
+.review_write_container>div { 
+	text-align: center;
+	font-size: 3.5rem;
+	
+}
+
+.title {
+	grid-area: writeTitle;
+}
+.img_btn {
+	grid-area: imgUpload;
+}
+.img_preview {
+	grid-area: preImg;
+    border: solid 0.5px rgba(199, 199, 199, 0.53);
+    width: 50%;
+    margin: auto
+}
+.review_point {
+	grid-area: reviewPoint;
+}
+.review_star{
+	grid-area: reviewStar;
+	margin: auto;
+}
+.review_write_contents {
+	grid-area: co;
+}
+
+#preview_img {
+	width: 10rem;
+}
+/* 업로드 버튼  */
+.img_btn label { 
+display: inline-block; 
+padding: .5em .75em;
+font-size: inherit; 
+line-height: normal; 
+vertical-align: middle; 
+cursor: pointer; 
+border: 1px solid #ebebeb; 
+border-radius: .25em;
+ color: #fff;
+  background-color: #337ab7;
+    border-color: #2e6da4; 
+} 
+
+.img_btn input[type="file"] {
+ /* 파일 필드 숨기기 */ 
+ position: absolute; 
+ width: 1px; 
+ height: 1px; 
+ padding: 0; 
+ margin: -1px; 
+ overflow: hidden; 
+ clip:rect(0,0,0,0); 
+ border: 0; 
+ }
+
+/* 별점 */
+
+fieldset, label { margin: 0; padding: 0; }
+
+/****** Style Star Rating Widget *****/
+
+.review_rating { 
+  border: none;
+  float: left;
+}
+
+.review_rating > input { display: none; } 
+.review_rating > label:before { 
+  margin: 5px;
+  font-size: 1.25em;
+  font-family: FontAwesome;
+  display: inline-block;
+  content: "\f005";
+}
+
+.review_rating > .half:before { 
+  content: "\f089";
+  position: absolute;
+}
+
+.review_rating > label { 
+  color: #ddd; 
+ float: right; 
+}
+
+/***** CSS Magic to Highlight Stars on Hover *****/
+
+.review_rating > input:checked ~ label, /* show gold star when clicked */
+.review_rating:not(:checked) > label:hover, /* hover current star */
+.review_rating:not(:checked) > label:hover ~ label { color: #FFD700;  } /* hover previous stars in list */
+
+.review_rating > input:checked + label:hover, /* hover current star when changing rating */
+.review_rating > input:checked ~ label:hover,
+.review_rating > label:hover ~ input:checked ~ label, /* lighten current selection */
+.review_rating > input:checked ~ label:hover ~ label { color: #FFED85;  } 
+</style>
 </head>
+<!-- 제목 내용 입력 체크 -->
+<script>
+	function check() {
+		if ( !document.writeform.title.value ) {
+			alert("제목을 입력해주세요");
+			return;
+		} else if ( !document.writeform.content.value ) {
+			alert("내용을 입력해주세요");
+			return;
+		}
+	
+		document.writeform.submit();
+	}
+	  
+</script>
+
 <body>
 <div class='mainContainers'>
 <h1 style='margin-top: 1vw;margin-bottom: -2.5vw;color: black'>솔직 방문 후기</h1>
 	<!-- Button trigger modal -->
 	<div class='write_btn_div'>
-		<button type="button" class="btn write_btn" data-toggle="modal" data-target="#exampleModalCenter">
-		<i class="fas fa-pencil-alt writeReviewpen"></i>글쓰기</button>
+		<button type="button" class="btn btn-primary write_btn" data-toggle="modal" data-target="#exampleModalCenter">글쓰기</button>
 	</div>
 
 
@@ -34,9 +251,10 @@
 				</div>
 				<div class="modal-body">
 					<!-- 내용 -->
+	<!--  -->		<form action=Write method=post name=writeform>
 					<div class="review_write_container">
 						<div class="title">제목
-							<input class="location_input_text" id="loInput" type="text">
+							<input class="location_input_text" id="loInput" type="text" value="${board.title}" name=title placeholder="제목을 입력해주세요">
 							<span class="highlight"></span> <span class="bar"></span>
 							<hr>
 						</div>
@@ -44,7 +262,7 @@
 							<f:form name="frmPopup" id="frmPopup" modelAttribute="popupVO"
 								method="post" action="/file/upload"
 								enctype="multipart/form-data">
-								<label for="uploadFile"><i class="fas fa-upload"></i>   사진업로드</label>
+								<label for="uploadFile">사진업로드</label>
 								<input type="file" name="uploadFile" id="uploadFile">
 							</f:form>
 						</div>
@@ -55,30 +273,41 @@
 						<div class="review_star">
 							
 							<fieldset class="review_rating">
-							    <input type="radio" id="star5" name="rating" value="5" />
+							    <input type="radio" id="star5" name="rating" value="5"/>
 							  	<label class = "full" for="star5" title="Awesome - 5 stars"></label>
+							    <input type="radio" id="star4half" name="rating" value="4 and a half" />
+							    <label class="half" for="star4half" title="Pretty good - 4.5 stars"></label>
 							    <input type="radio" id="star4" name="rating" value="4" />
 							    <label class = "full" for="star4" title="Pretty good - 4 stars"></label>
+							    <input type="radio" id="star3half" name="rating" value="3 and a half" />
+							    <label class="half" for="star3half" title="Meh - 3.5 stars"></label>
 							    <input type="radio" id="star3" name="rating" value="3" />
 							    <label class = "full" for="star3" title="Meh - 3 stars"></label>
+							    <input type="radio" id="star2half" name="rating" value="2 and a half" />
+							    <label class="half" for="star2half" title="Kinda bad - 2.5 stars"></label>
 							    <input type="radio" id="star2" name="rating" value="2" />
 							    <label class = "full" for="star2" title="Kinda bad - 2 stars"></label>
+							    <input type="radio" id="star1half" name="rating" value="1 and a half" />
+							    <label class="half" for="star1half" title="Meh - 1.5 stars"></label>
 							    <input type="radio" id="star1" name="rating" value="1" />
 							    <label class = "full" for="star1" title="Sucks big time - 1 star"></label>
+							    <input type="radio" id="starhalf" name="rating" value="half" />
+							    <label class="half" for="starhalf" title="Sucks big time - 0.5 stars"></label>
 							</fieldset>
 													
 						</div>
 						<div class="review_write_contents">
 						<hr>
-							<textarea class="form-control" id="exampleTextarea" rows="8"></textarea>
+							<textarea class="form-control" id="exampleTextarea" rows="8" name=content placeholder="내용을 입력해주세요">${board.content }</textarea>
 						</div>
 					</div>
+				</form>
 					<!-- 내용끝 -->
 				</div>
 				<div class="modal-footer">
-					<button type="button" class="btn review_modal_closeBtn"
-						data-dismiss="modal" onclick="#">Close</button>
-					<button type="button" class="btn review_modal_saveBtn" onclick="upload()">Save</button>
+					<button type="button" class="btn btn-secondary"
+						data-dismiss="modal">Close</button>
+					<button type="button" class="btn btn-primary" onclick="check();">Save</button>
 				</div>
 			</div>
 		</div>
@@ -90,7 +319,7 @@
 		</div>
 		<div id="review_coments_modal" style="color:black"></div>
 		<div style="text-align:right;">
-		<button class='rank_nextBtn' onclick="nextReview()">next<i class="fas fa-angle-right rank_nextBtn_right"></i></button>
+		<button onclick="nextReview()" style="color:black">next</button>
 		</div>
 	</div>
 
@@ -108,48 +337,6 @@
 </div>
 </body>
 <script>
-function swing() {
-    $('.photoAndLocation').animate({'top':'5px'},600).animate({'top':'10px'},600, swing);
-}
-
-$(function(){
-	  $('.photoAndLocation').hover(function(){
-	    swing();
-	  }, function(){
-	        // hover out action
-	  });
-	});
-//리뷰 업로드
-function upload(){
-	var point = $('input[name=rating]:checked')[0].value;
-	var comment = $('#exampleTextarea')[0].value;
-	var retitle=$("#loInput")[0].value;
-	var utc = new Date().toJSON().slice(0,10).replace(/-/g,'-');
-	var data = {
-			userNo : "103230395918627060836",
-			code : "294439",
-			point : point,
-			comment : comment,
-			date : utc,
-			placename : "고궁의 아침",
-			retitle : retitle
-	}
-	
-	$.ajax({
-		url : "/review/addComment",
-		data : data,
-		success : function(res){
-			console.log(res);
-		}
-	})
-	
-	$("#review_list").contents().remove();
-	num=0;
-	getReview(num);
-	//form태그 작동
-	//frmPopup.submit();
-}
-
 	$(function() {
 		$("#uploadFile").on('change', function() {
 			readURL(this);
@@ -164,15 +351,16 @@ function upload(){
 			reader.readAsDataURL(input.files[0]);
 		}
 	}
-	var num=0;
+	
 	//여기서부터 시작
 	$(document).ready(function(){
-		getReview(num);
+		getReview(1);
 	});
 	
 	function nextReview(){
+		var num=$("#review_list").children().last()[0].attributes.num.value;
 		num*=1;
-		num+=8;
+		num++;
 		console.log(num);
 		getReview(num);
 	}
@@ -192,10 +380,10 @@ function upload(){
 					var temp="";
 					var temp2="";
 					temp+='<div class="review_container" num="'+a.recoNo+'" id="review'+a.recoNo+'">';
-					temp+='<div class="photoAndLocation" data-toggle="modal" data-target="#reviewModal'+a.recoNo+'" style="transform: rotate('+degRandom+'deg)">';
+					temp+='<div class="photoAndLocation" style="transform: rotate('+degRandom+'deg)">';
 					if(a.imgNo){
 						temp+='<div class="grid-item photoPin"><img src="${rPath}/imgs/pins/pin'+pin+'.png" /></div>';
-						temp+='<div class="grid-item reviewPhoto"><img src="'+a.imgPath+'" /></div>';
+						temp+='<div class="grid-item reviewPhoto"><img data-toggle="modal" data-target="#reviewModal'+a.recoNo+'" src="'+a.imgPath+'" /></div>';
 					}
 					temp+='<div class="grid-item reviewPoint">'+a.point+'</div>';
 					temp+='<div class="grid-item reviewLocation">'+a.placename+'</div></div>';
@@ -204,7 +392,7 @@ function upload(){
 					temp2+='<div class="modal fade review" id="reviewModal'+a.recoNo+'" role="dialog"><div class="modal-dialog review">';
 					temp2+='<div class="modal-content review"><div class="modal-header review"><button type="button" class="close" data-dismiss="modal">&times;</button>';
 					temp2+='<h4 class="modal-title review">'+a.reTitle+'</h4></div>';
-					temp2+='<div class="modal-body review"><p class=reviewUserId>'+a.userName+'</p><br>';
+					temp2+='<div class="modal-body review"><p class=reviewUserId>'+a.userId+'</p>';
 					temp2+='<p>'+a.comment+'</div>';
 					temp2+='<div class="modal-footer review"><button type="button" class="btn btn-default" data-dismiss="modal">Close</button></div></div></div></div>';
 					

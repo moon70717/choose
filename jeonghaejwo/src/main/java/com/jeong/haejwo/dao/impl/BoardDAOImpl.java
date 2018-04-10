@@ -15,60 +15,48 @@ import com.jeong.haejwo.vo.BoardVO;
 public class BoardDAOImpl implements BoardDAO {
 
 	@Autowired
-	private SqlSessionFactory ssf;
+	SqlSession sql;
+	// private SqlSessionFactory ssf;
+
+	// insert
+	@Override
+	public void insertBoard(BoardVO bo) {
+		sql.insert("board.insertBoard", bo);
+
+	}
+
+	// update
+	@Override
+	public void updateBoard(BoardVO bo) {
+		sql.update("board.updateBoard", bo);
+
+	}
+
+	// 조회수
+	@Override
+	public void incrementHit(BoardVO bo) {
+		int idx = bo.getIdx();
+		int count = sql.selectOne("board.getHit", idx);
+		count++;
+		bo.setHit(count);
+		sql.update("board.updateBoardHit", bo);
+	}
+
+	// 삭제
+	@Override
+	public void deleteBoard(int idx) {
+		sql.delete("board.deleteBoard", idx);
+
+	}
 
 	@Override
-	public BoardVO selectBoard(BoardVO bo) {
-		SqlSession ss = ssf.openSession();
-		bo = ss.selectOne("board.selectBoard", bo);
-		ss.close();
-		return bo;
+	public BoardVO selectBoard(int idx) {
+		return sql.selectOne("board.selectBoard", idx);
 	}
 
 	@Override
 	public List<BoardVO> selectAll() {
-		SqlSession ss = ssf.openSession();
-		List<BoardVO> result = ss.selectList("board.selectBoardOrder");
-		ss.close();
-		return result;
+
+		return sql.selectList("board.getAll");
 	}
-
-	@Override
-	public void incrementHit(BoardVO bo) {
-		SqlSession ss=ssf.openSession();
-		int boardNo=bo.getBoardNo();
-		int count=ss.selectOne("board.selectBoardHit",boardNo);
-		count++;
-		bo.setHit(count);
-	    ss.close();
-	
-	}
-
-	@Override
-	public int insertBoard(BoardVO bo) {
-		SqlSession ss = ssf.openSession();
-		int result = ss.insert("board.insertBoard", bo);
-		ss.close();
-		return result;
-
-	}
-
-	@Override
-	public int updateBoard(BoardVO bo) {
-		SqlSession ss = ssf.openSession();
-		int result = ss.update("board.updateBoard", bo);
-		ss.close();
-		return result;
-
-	}
-
-	@Override
-	public int deleteBoard(BoardVO bo) {
-		SqlSession ss = ssf.openSession();
-		int result = ss.delete("board.deleteBoard", bo);
-		ss.close();
-		return result;
-
-	}
-
 }
