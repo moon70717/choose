@@ -107,7 +107,16 @@ $(document).ready(function(){
 	}
 	getFav();
 })
-
+function userFavSelectBox(){
+	
+	 var userFavSelectBoxValue = document.getElementById("userFavBox").value;
+	 if(userFavSelectBoxValue!=-1){
+		 $("#loInput")[0].value = userFavSelectBoxValue;
+	 }else if(userFavSelectBoxValue==-1){
+		 $("#loInput")[0].value = "";
+	 }
+	 
+}
 var dtemp=[];
 function getFav(){
 	//즐겨찾기 보여주는곳, temp딴걸로 수정해야될듯
@@ -118,10 +127,9 @@ function getFav(){
 			//userPositionList
 			console.log(res);
 			var favDiv = "<option value='-1' selected='selected'>Select element</option>";
-			var idx = 1;
 			for(temp1 of res.result[0]){
-				favDiv += "<option value="+idx+">"+temp1.address+"</option>"
-				idx++;
+				favDiv += "<option value='"+temp1.address+"'>"+temp1.address+"</option>"
+				
 			}
 			$('#userFavBox').append(favDiv);
 		}
