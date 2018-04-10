@@ -52,6 +52,7 @@
         <th>장소</th>
         <th>주소</th>
         <th>방문일자</th>
+        <th>후기쓰기</th>
       </tr>
     </thead>
     <tbody id="visitRecords_table">
@@ -233,7 +234,8 @@ function initHistory(res){
 		historyTemps+="<tr><td>"+hisIdx+"</td>";
 		historyTemps+="<td>"+vv.placename+"</td>";
 		historyTemps+="<td>"+vv.addr+"</td>";
-		historyTemps+="<td>"+vv.visitDate+"</td></tr>";
+		historyTemps+="<td>"+vv.visitDate+"</td>";
+		historyTemps+="<td><button id='visitReviewBtn"+vv.visitNo+"' class='visitReviewBtn' value='"+vv.visitNo+"'>후기쓰기</button></td></tr>";
 		hisIdx++;
 	}
 	$("#visitRecords_table").append(historyTemps);

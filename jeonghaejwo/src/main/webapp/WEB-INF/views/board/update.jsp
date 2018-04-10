@@ -64,10 +64,10 @@
 		<form class="boardUpdateForm" id="writeForm" action=/path/board/Update method=post >
 			<input type=hidden value="${board.idx}" name="idx"/>
 			제목: 
-			<input class="boardUpdateTitle" id="title" type="text" size=50 value="${board.title}" name=title/>
+			<input class="boardUpdateTitle" id="title" type="text" size=50 value="${board.title}" name='title'/>
 			<hr class="boardHr">
-			<textarea class="boardUpdateTextarea" id="content"  name=content >${board.content}</textarea>
-			<div class="boardUpdateBtnDiv"><input class="boardUpdateBtn" type=button onclick="check();" value="작성하기"/></div>
+			<textarea class="boardUpdateTextarea" id="content" name='content' >${board.content}</textarea>
+			<div class="boardUpdateBtnDiv"><input class="boardUpdateBtn" type='submit' onclick="check();" value="작성하기"/></div>
 		</form>
 		<hr class="boardHr">
 		<div class="boardUpdateWriter">글쓴이 : ${board.userName}</div>

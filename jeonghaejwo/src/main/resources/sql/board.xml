@@ -18,7 +18,7 @@
 	
 	<select id="getAll"  resultType="bo">
 		select userName, idx, userId, title, content, DATE_FORMAT(regist, '%W %M %Y') as regist, hit from board as b
-		order by regist desc;
+		order by idx desc;
 	</select>
 	
 	<select id="getHit" parameterType="Integer" resultType="Integer">
