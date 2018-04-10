@@ -205,7 +205,7 @@ function initHistory(res){
 	$("#visitRecords_table").append(historyTemps);
 	for(vv=1;vv<Math.ceil(res.result[1]/5);vv++){
 		$("#userVisitRecordBtn").append("<button id='historyBtn"+vv+"' class='historypagingBtn' value='"+vv+"'>"+vv+"</button>");
-		$("#historyBtn"+vv).click(function(){
+		$("#historyBtn"+vv).click(function(){ 
 			selectPagingBtn = this.value;
 			$("#userVisitRecordBtn").contents().remove();
 			getHistory(this.value);
