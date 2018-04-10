@@ -84,8 +84,7 @@
 				</div>
 				<div class="funkyradio-info">
 					<input type="radio" name="radio" id="radio4" disabled=true
-						value=1.4 data-value='10000' /> <label for="radio4">반경
-						10km</label>
+						value=1.4 data-value='10000' /> <label for="radio4">반경 10km</label>
 				</div>
 			</div>
 			<div class='summit_btn'>
