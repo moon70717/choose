@@ -15,7 +15,7 @@
 	<div class='mypageUserImg_container'>
 		<img src='${rPath}/imgs/user/userimg_sam.png' />
 	</div>
-	<div class=mypage_userImg_hr><hr></div>
+	<div class=mypage_userImg_hr></div>
 	
 	<div class='mypageUserId'>유저 아이디 : </div>
 	<div class='mypageUserId2'></div>
@@ -25,7 +25,7 @@
 	
 </div>
 <div class='mypageUserInfo'>
-	<div class='mypageUserPosition'>즐겨찾는 내위치</div><hr>
+	<div class='mypageUserPosition'>즐겨찾는 내위치</div>
 	<div class='userPositionAdd'>
 	<input type="text" id="myPositionInput" placeholder="address..." style='color:black'>
   	<span onclick="searchElement()" class="addBtn">search</span>
@@ -152,43 +152,45 @@ function getLatLng(place, id){
 var temp;
 var dtemp=[];
 $(document).ready(function(){
-		//유저아이디 임시
 		dtemp={
 				"userId":"103230395918627060836"
 		}
-		//프로필
-		$.ajax({
-			url : "/profile/user",
-			data : dtemp,
-			success : function(res){
-				var user=res.user[0];
-				$(".mypageUserId2").append(user.userName);
-				temp=user.userName;
-				temp+='<i class="fas fa-pencil-alt userNicknamechange" onclick="#" ></i>';
-				$(".mypageUserNickName2").append(temp);
-				$(".mypageUserImg_container img").attr("src",user.ImageURL);
-			}
-		});
-		
-		//할일 보여주는곳
-		$.ajax({
-			url : "/history/todo",
-			data : dtemp,
-			success : function(res){
-				var todo=res.result[0];
-				temp="";
-				for(i of todo){
-					temp+='<tr><td>'+i.title+'</td>';
-			        temp+='<td>'+i.usetime+'</td>';
-			        temp+='<td>'+i.location+'</td></tr>';
+		if(dtemp==""){
+			alert("로그인을 해주세요!!");
+		}else if(dtemp!=""){
+			$.ajax({
+				url : "/profile/user",
+				data : dtemp,
+				success : function(res){
+					var user=res.user[0];
+					$(".mypageUserId2").append(user.userName);
+					temp=user.userName;
+					temp+='<i class="fas fa-pencil-alt userNicknamechange" onclick="#" ></i>';
+					$(".mypageUserNickName2").append(temp);
+					$(".mypageUserImg_container img").attr("src",user.ImageURL);
 				}
-				$("#todoList").append(temp);
-			}
-		});
-		getFav();
-		//히스토리 정보 받아오는곳
-		getHistory();
-	}
+			});
+			
+			//할일 보여주는곳
+			$.ajax({
+				url : "/history/todo",
+				data : dtemp,
+				success : function(res){
+					var todo=res.result[0];
+					temp="";
+					for(i of todo){
+						temp+='<tr><td>'+i.title+'</td>';
+				        temp+='<td>'+i.usetime+'</td>';
+				        temp+='<td>'+i.location+'</td></tr>';
+					}
+					$("#todoList").append(temp);
+				}
+			});
+			getFav();
+			//히스토리 정보 받아오는곳
+			getHistory();
+		}
+		}		
 );
 
 function getFav(){

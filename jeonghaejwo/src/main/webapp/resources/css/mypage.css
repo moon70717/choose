@@ -9,8 +9,10 @@
     margin-top: 6vh;
 }
 .mainContainers>div{
+	
 	text-align: center;
 	margin: 0.5vh;
+	box-shadow: 20px 38px 34px -26px hsla(0,0%,0%,.2);
 }
 .mypageUserImg{
 	grid-area:mypageUserImg;
@@ -66,7 +68,7 @@
 }
 .mypageUserInfo{
 	grid-area: mypageUserInfo;
-	padding-top: 7.8vh;
+	padding-top: 2.8vh;
 }
 .repointTable{
 	grid-area:repointTable;
@@ -74,6 +76,10 @@
 }
 .tab_menu{
 	color:white;
+}
+.userPositionAdd{
+	margin-bottom: 1vh;
+	
 }
 .rejeunghaejwo{
 }
@@ -88,7 +94,7 @@
   cursor: pointer;
   list-style-type: none;
   transition: 0.2s;
-      font-size: 1vw;
+      font-size: 1.5vmin;
 }
 
 /* Set all odd list items to a different color (zebra-stripes) */
@@ -98,6 +104,7 @@
 /* Darker background-color on hover */
 #userPositionList li:hover {
   background: #ddd;
+  color:black;
 }
 
 /* Style the "Add" button */
@@ -131,14 +138,17 @@ color:black;
 {
 color:black;
 }
+.mypageUserPosition{
+	font-size: 2vmin;
+	margin-bottom: 2vh;
+}
 .historypagingBtn{
-
   cursor: pointer;
     background-color: rgba(255, 255, 255, 0);
     border-color: rgba(255, 255, 255, 0);
 }
 .historypagingBtn:hover{
-     box-shadow: 20px 38px 34px -26px hsla(0,0%,0%,.2);
+    box-shadow: 20px 38px 34px -26px hsla(0,0%,0%,.2);
     border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
     border-color: #ffffff;
 }
@@ -151,3 +161,19 @@ color:black;
     border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
     border-color: #ffffff;
 }
+@media screen and (max-width: 850px) {
+	
+.mainContainers{
+	display: grid;
+	grid-template-columns: repeat(6, 1fr);
+  	grid-template-areas: 
+    	"mypageUserImg mypageUserImg mypageUserImg mypageUserImg mypageUserImg mypageUserImg"
+    	"mypageUserInfo mypageUserInfo mypageUserInfo mypageUserInfo mypageUserInfo mypageUserInfo"
+    	"repointTable repointTable repointTable repointTable repointTable repointTable";
+    margin-top: 6vh;
+}
+.mypageUserInfo{
+	grid-area:mypageUserInfo;
+}
+
+	}
