@@ -21,4 +21,9 @@
 			userId=#{userId}
 		</where>
 	</select>
+	
+	<select id="deleteFav" parameterType="map">
+		delete from user_fav
+		where favNo=#{favNo}
+	</select>
 </mapper>  

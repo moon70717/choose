@@ -21,6 +21,7 @@ body {
 /* 블라인드 */
 .mainContainers{
   	grid-area: mainContainers;
+  	text-align: center;
 }
 .common_blind{
 	position:absolute;  

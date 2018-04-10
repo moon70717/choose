@@ -37,7 +37,7 @@ public class BoardController {
 		log.info("게시판 첫 페이지");
 		List<BoardVO> board = bdao.selectAll();
 		model.addAttribute("board", board);
-
+		log.info("board=>{}", board);
 		return "board/board";
 	}
 

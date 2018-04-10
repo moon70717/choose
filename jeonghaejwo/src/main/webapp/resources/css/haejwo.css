@@ -230,7 +230,8 @@
 }
 
 /* 목적지 옵션박스 */
-#network-popUp {
+#network-popUp,
+#network-popUp2 {
 	width: 50%;
     line-height: 1.5;
     color: #8e8e8e;

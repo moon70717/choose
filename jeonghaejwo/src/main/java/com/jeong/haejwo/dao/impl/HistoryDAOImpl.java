@@ -79,4 +79,10 @@ public class HistoryDAOImpl implements DefaultDAO {
 		return 0;
 	}
 
+	@Override
+	public int delete(Map<String, Object> data) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
 }

@@ -56,7 +56,7 @@ public class BoardDAOImpl implements BoardDAO {
 
 	@Override
 	public List<BoardVO> selectAll() {
-
-		return sql.selectList("board.getAll");
+		List<BoardVO> result=sql.selectList("board.getAll");
+		return result;
 	}
 }

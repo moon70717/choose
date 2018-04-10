@@ -31,7 +31,13 @@
 							<i class="glyphicon glyphicon-search"></i>
 						</button></span> <label>My Location</label>
 				</div>
-				
+				<div id="network-popUp2" class="userFav_selectBox" style="display: block;">
+					<div class="form-item form-item-node-type form-type-select select-group">
+						<select class="form-control form-select select_userFav"
+							id="userFavBox" name="node_type" onchange="userFavSelectBox()">
+						</select>
+					</div>
+				</div>
 				<div class="location_input">
 					<input class="location_input_text2" id="desInput" type="text">
 					<span class="highlight"></span> <span class="bar"></span> <span>
@@ -95,6 +101,32 @@
 	
 </body>
 <script>
+$(document).ready(function(){
+	dtemp={
+			"userId":"103230395918627060836"
+	}
+	getFav();
+})
+
+var dtemp=[];
+function getFav(){
+	//즐겨찾기 보여주는곳, temp딴걸로 수정해야될듯
+	$.ajax({
+		url : "/profile/fav",
+		data : dtemp,
+		success : function(res){
+			//userPositionList
+			console.log(res);
+			var favDiv = "<option value='-1' selected='selected'>Select element</option>";
+			var idx = 1;
+			for(temp1 of res.result[0]){
+				favDiv += "<option value="+idx+">"+temp1.address+"</option>"
+				idx++;
+			}
+			$('#userFavBox').append(favDiv);
+		}
+	})
+}
 
 function reLoadPage(){
 	window.location.reload();

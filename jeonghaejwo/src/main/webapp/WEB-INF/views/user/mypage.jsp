@@ -28,6 +28,7 @@
 	<div class='mypageUserPosition'>즐겨찾는 내위치</div><hr>
 	<div class='userPositionAdd'>
 	<input type="text" id="myPositionInput" placeholder="address..." style='color:black'>
+  	<span onclick="searchElement()" class="addBtn">search</span>
   	<span onclick="newElement()" class="addBtn">Add</span>
 	</div>
 	<div>
@@ -112,6 +113,40 @@
 </div> 
 </div>
 <script>
+//즐겨찾는 주소 검색하는 부분(엔터)
+$(function(){
+	  $('#myPositionInput').keypress(function(key){
+		  if (key.keyCode == 13) {
+		  getLatLng($('#myPositionInput')[0].value, $('#myPositionInput')[0].id);
+		  }
+	  });
+	});
+//즐겨찾는 주소 검색하는 부분(버튼)	
+function searchElement(){
+	getLatLng($('#myPositionInput')[0].value, $('#myPositionInput')[0].id);
+}	
+
+//입력 주소를 검색하는부분(공통)
+function getLatLng(place, id){
+	var geocoder = new google.maps.Geocoder();
+	geocoder.geocode({
+		address : place,  
+		region : 'ko'
+	},function(results, status){
+		if(status == google.maps.GeocoderStatus.OK){
+			var bounds = new google.maps.LatLngBounds();
+			for (var r of results) {
+				console.log(r);
+				if (r.geometry) {
+					var latlng = r.geometry.location;
+					var address = r.formatted_address;
+					console.log(latlng.lat()+","+latlng.lng());
+					$( "#"+id)[0].value = address;
+				}
+			}
+		}
+	});
+}	
 //유저정보 받아오는 부분
 var temp;
 var dtemp=[];
@@ -164,7 +199,6 @@ function getFav(){
 			//userPositionList
 			console.log(res);
 			for(temp1 of res.result[0]){
-				
 				addFav(temp1);
 			}
 		}
@@ -217,9 +251,7 @@ function initHistory(res){
 
 
 //Create a "close" button and append it to each list item
-
 var myPositionlist = $(".li_userPosition");
-
 for (var i = 0; i < myPositionlist.length; i++) {
   var span = document.createElement("span");
   var txt = document.createTextNode("\u00D7");
@@ -227,7 +259,6 @@ for (var i = 0; i < myPositionlist.length; i++) {
   span.appendChild(txt);
   myPositionlist[i].appendChild(span);
 }
-
 
 // Click on a close button to hide the current list item
 var userPositionListclose = $(".userPositionListclose");
@@ -239,7 +270,6 @@ for (i = 0; i < userPositionListclose.length; i++) {
   }
 }
 
-//주소 추가하는거, 지도랑 연동 필요함!! add버튼 또는 앤터키 눌렀을때 지도검색결과 나오기
 // Create a new list item when clicking on the "Add" button
 function newElement() {
 	var myPage_className="li_userPositionList";
@@ -250,10 +280,7 @@ function newElement() {
 		var inputValue = document.getElementById("myPositionInput").value;
 		if (inputValue.trim() === '') {
 			  alert("You must write something!");
-		}else{
-			
-			//서버가서 db에 즐겨찾기 추가함
-			//지도연동을 이거 전에 해야될듯
+		}else{		
 			dtemp={
 					"userId":"103230395918627060836",
 					"address" : inputValue,
@@ -262,10 +289,8 @@ function newElement() {
 			$.ajax({
 				url : "/profile/insertFav",
 				data : dtemp,
-				success : function(res){
-					
-					console.log(res);
-					
+				success : function(res){			
+					console.log(res);		
 					//입력 성공하면 보여줌
 					if(res.result){
 						//있는거 한번 날림
@@ -274,7 +299,6 @@ function newElement() {
 					}else{
 						alert("입력에 실패하였습니다.");
 					}
-					
 				}
 			});
 			
@@ -284,7 +308,6 @@ function newElement() {
 //즐겨찾기 추가하는부분 분리
 function addFav(res){
 	var li = document.createElement("li");
-	
 	var t = document.createTextNode(res.address);
 	li.appendChild(t);
 	document.getElementById("userPositionList").appendChild(li);
@@ -311,7 +334,6 @@ function addFav(res){
 	    		"userId":"103230395918627060836",
 				"favNo" : div.children[0].dataset.favNo
 	    }
-	    
 	    //서버가서 삭제하는부분
 	    $.ajax({
 	    	url : "/profile/delFav",
@@ -364,5 +386,8 @@ function newWorkElement() {
 
 /*  */
 </script>
+<script async defer
+	src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDFbONelL6n5CyJfPLkocOutqCZqwiFANA&callback=initMap"></script>
+
 </body>
 </html>

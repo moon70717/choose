@@ -20,7 +20,6 @@ public class ProfileDAOImpl implements DefaultDAO{
 	@Autowired
 	SqlSessionFactory ssf;
 	
-	
 	//방문기록 저장용이긴한데 구분자를 하나 추가해서 다른 기능할수도 있도록 수정중
 	//1이 방문기록 2가 즐겨찾는곳
 	@Override
@@ -51,7 +50,6 @@ public class ProfileDAOImpl implements DefaultDAO{
 		return result;
 	}
 
-	
 	//나중에 분기문 추가될듯 지금은 즐겨찾기만 가져옴
 	@Override
 	public List<Object> selectList(Map<String, Object> data) {
@@ -65,6 +63,13 @@ public class ProfileDAOImpl implements DefaultDAO{
 	public int update(Map<String, Object> data) {
 		// TODO Auto-generated method stub
 		return 0;
+	}
+
+	@Override
+	public int delete(Map<String, Object> data) {
+		SqlSession ss = ssf.openSession();
+		int result = ss.delete("profile.deleteFav", data); 
+		return result;
 	}
 
 }

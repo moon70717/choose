@@ -24,17 +24,54 @@
 	}
 	  
 </script> -->
+<style>
+.boardTextarea{
+	width: 30vw; 
+	height: 40vh;
+	color:black;
+	border: solid 1px #ffffff00;
+	border-radius: 255px 10px 225px 10px/10px 225px 10px 255px;
+    font-size: 1.5vw;
+}
+.boardTitle{
+	color:black;
+    font-size: 2vmin;
+    margin-top: 5vh; 
+}
+.boartSaveBtn{
+	color:white;
+	width: 20vw;
+    height: 5vh;
+    font-size: 2vmin;
+	margin-top: 3vh;
+    background-color: rgba(255, 255, 255, 0);
+	border: solid 1px #ffffff00;
+	border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
+}
+.boartSaveBtn:hover{
+	color:black;
+	background-color: gray;
+}
+.boardHr{
+	width:30vw;
+}
+.boardH1{
+margin-top: 3vmax;
+}
+</style>
 <body>
+
+<div class='mainContainers'>
+<h1 class="boardH1">글쓰기</h1>
 		<form action=Write method=post name=writeform>
-			제목:<input type="text" size=50 value="${board.title}" style="color:black";name=title placeholder="제목을 입력해주세요"/>
-			<hr>
-			<textarea style="width: 395px; height: 230px;color:black;" name=content >${board.content }</textarea>
-			<input type=button onclick="check();" style="color:black" value="저장하기"/>		
+			<input class="boardTitle" type="text" size=50 name=title placeholder="제목을 입력해주세요"/>
+			<hr class="boardHr">
+			<textarea class="boardTextarea" name=content></textarea>
+			<div><input class="boartSaveBtn" type=button onclick="check()" value="저장하기"/></div>
+				
 		</form>
-		<hr>
-		글쓴이 : ${sessionScope.userName}
-
-
+ 
+</div>
 </body>
 </html>
 

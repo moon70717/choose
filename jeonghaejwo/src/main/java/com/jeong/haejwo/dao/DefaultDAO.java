@@ -13,4 +13,6 @@ public interface DefaultDAO {
 	List<Object> selectList(Map<String,Object> data);
 	
 	int update(Map<String,Object> data);
+	
+	int delete(Map<String,Object> data);
 }

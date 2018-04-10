@@ -12,13 +12,13 @@
   
 <mapper namespace="board">
 	<select id="selectBoard" parameterType="Integer" resultType="bo">
-		select * from board
+		select userName, idx, userId, title, content, DATE_FORMAT(regist, '%W %M %Y') as regist, hit from board
 		where idx=#{num}
 	</select>
 	
 	<select id="getAll"  resultType="bo">
-		select * from board
-		order by regist desc
+		select userName, idx, userId, title, content, DATE_FORMAT(regist, '%W %M %Y') as regist, hit from board as b
+		order by regist desc;
 	</select>
 	
 	<select id="getHit" parameterType="Integer" resultType="Integer">
