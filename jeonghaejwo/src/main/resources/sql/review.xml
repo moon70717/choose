@@ -5,8 +5,8 @@
 <mapper namespace="review">
 	<insert id="insertr" parameterType="map">
 		insert into
-		recommendation(userNo,code,point,comment,date,contenttypeid,placename)
-		values(#{userNo},#{code},#{point},#{comment},#{date},#{contenttypeid},#{placename});
+		recommendation(userId,code,point,comment,date,reTitle,imgNo)
+		values(#{userId},#{code},#{point},#{comment},#{date},#{reTitle},#{imgNo});
 	</insert>
 	<select id="select" parameterType="map" resultType="map">
 		select * from recommendation
@@ -18,8 +18,6 @@
 	<select id="selectList" parameterType="map" resultType="map">
 		select * from recommendation re 
 		left join image img on re.imgNo=img.imgNo
-		left join user us on re.userId=us.userId
-		left join apidata ap on re.code=ap.code
 		order by re.recoNo desc
 		limit #{startNo},8
 	</select>
