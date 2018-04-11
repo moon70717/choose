@@ -120,7 +120,7 @@ var dtemp=[];
 function getFav(){
 	//즐겨찾기 보여주는곳, temp딴걸로 수정해야될듯
 	$.ajax({
-		url : "/profile/fav",
+		url : "${root}/profile/fav",
 		data : dtemp,
 		success : function(res){
 			//userPositionList
@@ -282,7 +282,7 @@ function findRoute(){
 	waypts = [];
 	setTimeout(function(){
 		$.ajax({
-			url : "/api/tour_api",
+			url : "${root}/api/tour_api",
 			type : "post",
 			data : data,
 			success : function(res) {
@@ -378,7 +378,7 @@ function findRoute(){
 	//현재위치: mapX, mapY ,횟수:times, 범위: radius , 컨텐츠id: code, 
 	
 	$.ajax({
-		url : "/map/api",
+		url : "${root}/map/api",
 		type : "get",
 		success : function(res) {
 			//console.log(res.json);
@@ -524,7 +524,7 @@ function findRoute(){
 		}
 		
 		$.ajax({
-			url : "/api/insert",
+			url : "${root}/api/insert",
 			data : dataAPI,
 			success : function(res1){
 				console.log(res1);
@@ -544,7 +544,7 @@ function findRoute(){
 		}
 		
 		$.ajax({
-			url : "/history/insert",
+			url : "${root}/history/insert",
 			data : dataHistory,
 			success : function(res){
 				console.log(res);

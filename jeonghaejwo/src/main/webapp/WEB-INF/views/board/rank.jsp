@@ -101,7 +101,7 @@
 	
 	//랭킹을 받아오는 ajax
 	$.ajax({
-		url : "/rank/list",
+		url : "${root}/rank/list",
 		success : function(res){  
 			var temp = eval(res["rank"]["result"]);
 			var tempCount = 1;

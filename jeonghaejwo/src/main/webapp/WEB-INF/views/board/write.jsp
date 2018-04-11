@@ -9,21 +9,6 @@
 <!-- 작성하는 페이지 -->
 
 </head>
-
-<!-- <script>
-	function check() {
-		if ( !document.writeform.title.value ) {
-			alert("제목을 입력해주세요");
-			return;
-		} else if ( !document.writeform.content.value ) {
-			alert("내용을 입력해주세요");
-			return;
-		}
-	
-		document.writeform.submit();
-	}
-	  
-</script> -->
 <style>
 .boardTextarea{
 	width: 30vw; 

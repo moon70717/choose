@@ -28,12 +28,6 @@
 <div class='mainContainers'>
 <h1 style='margin-top: 1vw;margin-bottom: -2.5vw;color: black'>솔직 방문 후기</h1>
 	<!-- Button trigger modal -->
-	
-
-
-
-	
-
 	<div id="review_containers">
 		<div id="review_list">	
 		</div>
@@ -42,8 +36,6 @@
 		<button class='rank_nextBtn' onclick="nextReview()">next<i class="fas fa-angle-right rank_nextBtn_right"></i></button>
 		</div>
 	</div>
-
-
 </div>
 </body>
 <script>
@@ -80,7 +72,7 @@
 		var data={"startNo":data,
 				"endNo":data+10};
 		$.ajax({
-			url : "/review/list",
+			url : "${root}/review/list",
 			data : data,
 			success : function(res){
 				console.log(res);

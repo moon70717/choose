@@ -159,7 +159,7 @@ $(document).ready(function(){
 			alert("로그인을 해주세요!!");
 		}else if(dtemp!=""){
 			$.ajax({
-				url : "/profile/user",
+				url : "${root}/profile/user",
 				data : dtemp,
 				success : function(res){
 					var user=res.user[0];
@@ -173,7 +173,7 @@ $(document).ready(function(){
 			
 			//할일 보여주는곳
 			$.ajax({
-				url : "/history/todo",
+				url : "${root}/history/todo",
 				data : dtemp,
 				success : function(res){
 					var todo=res.result[0];
@@ -196,7 +196,7 @@ $(document).ready(function(){
 function getFav(){
 	//즐겨찾기 보여주는곳, temp딴걸로 수정해야될듯
 	$.ajax({
-		url : "/profile/fav",
+		url : "${root}/profile/fav",
 		data : dtemp,
 		success : function(res){
 			//userPositionList
@@ -220,7 +220,7 @@ function getHistory(res){
 			"toggle" : "2",
 			"st" : st
 	}
-	ajax("/history/list", initHistory, dtemp);
+	ajax("${root}/history/list", initHistory, dtemp);
 }
 
 var hisTemp;
@@ -329,7 +329,7 @@ function newElement() {
 					"toggle" : 2
 			}
 			$.ajax({
-				url : "/profile/insertFav",
+				url : "${root}/profile/insertFav",
 				data : dtemp,
 				success : function(res){			
 					console.log(res);		
@@ -378,7 +378,7 @@ function addFav(res){
 	    }
 	    //서버가서 삭제하는부분
 	    $.ajax({
-	    	url : "/profile/delFav",
+	    	url : "${root}/profile/delFav",
 	    	data : data,
 	    	success : function(res){
 	    		
@@ -410,7 +410,7 @@ function newWorkElement() {
 				'title': myPage_whatDo
 		}
 		$.ajax({
-			url : "/history/todoIn",
+			url : "${root}/history/todoIn",
 			data : data,
 			success : function(res){
 				temp=res;
