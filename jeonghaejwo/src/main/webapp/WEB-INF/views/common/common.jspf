@@ -38,6 +38,8 @@
 <script src="${rPath}/js/fontawesome-all.min.js${ver}" charset="utf-8"></script>
 <!-- ajaxUtil -->
 <script src="${rPath}/js/ajaxUtil.js${ver}" charset="utf-8"></script>
+<!-- cookie -->
+<script src="${rPath}/js/cookie.js${ver}" charset="utf-8"></script>
 
 <!-- 공통 바디 -->
 <div class='common_blind'></div>

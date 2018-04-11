@@ -153,7 +153,7 @@ var temp;
 var dtemp=[];
 $(document).ready(function(){
 		dtemp={
-				"userId":"103230395918627060836"
+				"userId": '103230395918627060836'
 		}
 		if(dtemp==""){
 			alert("로그인을 해주세요!!");
@@ -216,7 +216,7 @@ function getHistory(res){
 		st=0;
 	}
 	dtemp={
-			"userId" : "103230395918627060836",
+			"userId" : '103230395918627060836',
 			"toggle" : "2",
 			"st" : st
 	}
@@ -245,29 +245,40 @@ function initHistory(res){
 	}
 	$("#visitRecords_table").append(historyTemps);
 	appendBtn();
-	$("#historyBtnB").click(function(){
-		alert("nowP="+nowP);
-		if(nowP==1)
-			return;
-		nowP--;
-		$("#userVisitRecordBtn").contents().remove();
-		getHistory(nowP);
-	});
-	$("#historyBtnN").click(function(){
-		alert("nowP="+nowP);
-		if(nowP==pageMax)
-			return;
-		nowP++;
-		$("#userVisitRecordBtn").contents().remove();
-		getHistory(nowP);
-	});
 }
 
+//<< < > >>버튼들 이벤트
+function mvBtn(toggle){
+	if(toggle==2||toggle==1){
+		if(nowP==1)
+			return;
+		if(toggle==1){
+			nowP--;
+		}else{
+			nowP=((Math.floor((11-1)*0.1)*10-9)<1)?1:(Math.floor((11-1)*0.1)*10-9);
+		}
+	} else{
+		if(nowP==pageMax)
+			return;
+		if(toggle==3){  
+			nowP++;
+		}else{
+			nowP=Math.floor((nowP-1)*0.1)*10+11;
+		}
+	}
+	$("#userVisitRecordBtn").contents().remove();
+	getHistory(nowP);
+}  
+
+//밑에 버튼 추가하는곳
 function appendBtn(){
-	$("#userVisitRecordBtn").append("<button id='historyBtnB' class='historypagingBtn' value='back'><</button>");
-	for(vv=1;vv<pageMax;vv++){
-		if(vv>10){
-			$("#userVisitRecordBtn").append("<button id='historyBtnN' class='historypagingBtn' value='next'>></button>");
+	$("#userVisitRecordBtn").append("<button id='historyBtnBB' class='historypagingBtn' value='back' onclick='mvBtn(2)'><<</button>");
+	$("#userVisitRecordBtn").append("<button id='historyBtnB' class='historypagingBtn' value='back' onclick='mvBtn(1)'><</button>");
+	var page=(Math.floor((nowP-1)*0.1)==0)?1:(Math.floor((nowP-1)*0.1)*10+1);
+	for(vv=page;vv<pageMax;vv++){
+		if(vv>page*10){
+			$("#userVisitRecordBtn").append("<button id='historyBtnN' class='historypagingBtn' value='next' onclick='mvBtn(3)'>></button>");
+			$("#userVisitRecordBtn").append("<button id='historyBtnNN' class='historypagingBtn' value='next' onclick='mvBtn(4)'>>></button>");
 			return;
 		}
 		$("#userVisitRecordBtn").append("<button id='historyBtn"+vv+"' class='historypagingBtn' value='"+vv+"'>"+vv+"</button>");
@@ -313,7 +324,7 @@ function newElement() {
 			  alert("You must write something!");
 		}else{		
 			dtemp={
-					"userId":"103230395918627060836",
+					"userId": '103230395918627060836',
 					"address" : inputValue,
 					"toggle" : 2
 			}
@@ -362,7 +373,7 @@ function addFav(res){
 	    //유저정보는 세션에서 받아오도록 할 예정이므로
 	    //userId는 테스트후 삭제예정
 	    var data={
-	    		"userId":"103230395918627060836",
+	    		"userId": '103230395918627060836',
 				"favNo" : div.children[0].dataset.favNo
 	    }
 	    //서버가서 삭제하는부분
