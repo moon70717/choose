@@ -13,27 +13,15 @@ background-image: url("${rPath}/imgs/board.jpg");
 	background-repeat: repeat-y;
     background-position: center;
     padding-left: 3vw; 
-    box-shadow: 20px 38px 34px -26px hsla(0,0%,0%,.2);
-    border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
 }
 .write_btn_div{
 	text-align: right;
 }
 .write_btn{
-        background-color: #ffffff00;
-    border-color: #ffffff;
-    border: solid;
-    margin: 0.5rem;
-    color: white;
-    box-shadow: 20px 38px 34px -26px hsla(0,0%,0%,.2);
-    border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
-    font-size: 2vmin;
-}
-.write_btn:focus{
-	border-color: black; 
-}
-.writeReviewpen{
-    margin-right: 2vw;
+    background-color: #ffffff;
+    border-color: #2e6da4;
+    margin: 1rem;
+    color: black;
 }
 .review_container {
  	display: inline-block;
@@ -106,27 +94,8 @@ width: 4rem;
     margin: 0 0 10px;
     text-align: right;
 }
-/* next 버튼 */
-.rank_nextBtn{
-color: white;
-    background-color: #ffffff00;
-    position: relative;
-    top: 6vh;
-    box-shadow: 20px 38px 34px -26px hsla(0,0%,0%,.2);
-    border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
-    font-size: 2vmin;
-    border: solid 2px;
-    transition:all .5s ease;
-}
-.rank_nextBtn_right{
-    font-size: 3.5vmin;
-    text-indent: 0.25em;
-        margin-left: 3vw;
-}
-.rank_nextBtn:hover{
-	background-color: white;
-	color: black;
-}
+
+
 /* 새글쓰기 부분 */
 .review_write_container {
 	display: grid;
@@ -156,9 +125,9 @@ color: white;
 }
 .img_preview {
 	grid-area: preImg;
-    border: solid 1.5px rgba(199, 199, 199, 0.53);
+    border: solid 0.5px rgba(199, 199, 199, 0.53);
     width: 50%;
-    margin: auto;
+    margin: auto
 }
 .review_point {
 	grid-area: reviewPoint;
@@ -172,31 +141,21 @@ color: white;
 }
 
 #preview_img {
-	width: 5vw;
-	margin-top: 0.1vw;
-}
-.review_modal_closeBtn{
-	    background-color: #ff7070;
-    color: white;
-}
-.review_modal_saveBtn{
-    background-color: #5d5d5d;
-    color: white;
-}
+	width: 10rem;
 }
 /* 업로드 버튼  */
 .img_btn label { 
-display: inline-block;
-    padding: .5em .75em;
-    font-size: inherit;
-    line-height: normal;
-    vertical-align: middle;
-    cursor: pointer;
-    border: 1px solid #ebebeb;
-    border-radius: .25em;
-    color: #fff;
-    background-color: #5d5d5d;
-    border-color: #3c3c3c;
+display: inline-block; 
+padding: .5em .75em;
+font-size: inherit; 
+line-height: normal; 
+vertical-align: middle; 
+cursor: pointer; 
+border: 1px solid #ebebeb; 
+border-radius: .25em;
+ color: #fff;
+  background-color: #337ab7;
+    border-color: #2e6da4; 
 } 
 
 .img_btn input[type="file"] {
@@ -253,13 +212,61 @@ fieldset, label { margin: 0; padding: 0; }
 .review_rating > input:checked ~ label:hover ~ label { color: #FFED85;  } 
 </style>
 </head>
+<!-- 제목 내용 입력 체크 -->
+<script>
+	function check() {
+		if ( !document.writeform.title.value ) {
+			alert("제목을 입력해주세요");
+			return;
+		} else if ( !document.writeform.content.value ) {
+			alert("내용을 입력해주세요");
+			return;
+		}
+	
+		upLoad();
+	}
+	
+	//업로드
+	//한번에 돌아가게 변경해야됨 귀찮
+	function upLoad(){
+		$("#userId").val(getCookie("userId"));
+		$("#code").val("1985692");  
+		$("#points").val($('input:checked')[0].value*1);
+		$("#comments").val($("#exampleTextarea")[0].value);
+		$("#upidate").val("2018-04-10");
+		$("#reTitle").val($("#loInput")[0].value)
+		var formData = new FormData($("#frmPopup")[0]);
+		//ajax("/review/addComment",call,formData);
+		
+		 $.ajax({
+			type : 'post',
+            url : '${root}/review/addComment',
+            data : formData,
+            processData : false,
+            contentType : false,
+            success : function(res) {
+            	console.log(res);
+            	$("#review-closeBtn").click();
+            },
+            error : function(error) {
+                alert("파일 업로드에 실패하였습니다.");
+                console.log(error);
+                console.log(error.status);
+            }
+        });
+	}
+	
+	function call(res){
+		console.log(res);
+	}
+</script>
+
 <body>
 <div class='mainContainers'>
 <h1 style='margin-top: 1vw;margin-bottom: -2.5vw;color: black'>솔직 방문 후기</h1>
 	<!-- Button trigger modal -->
 	<div class='write_btn_div'>
-		<button type="button" class="btn write_btn" data-toggle="modal" data-target="#exampleModalCenter">
-		<i class="fas fa-pencil-alt writeReviewpen"></i>글쓰기</button>
+		<button type="button" class="btn btn-primary write_btn" data-toggle="modal" data-target="#exampleModalCenter">글쓰기</button>
 	</div>
 
 
@@ -277,19 +284,20 @@ fieldset, label { margin: 0; padding: 0; }
 				</div>
 				<div class="modal-body">
 					<!-- 내용 -->
+	<!--  -->		<form action=Write method=post name=writeform id="frmPopup" modelAttribute="popupVO"
+								method="post" action="/file/upload"
+								enctype="multipart/form-data">
 					<div class="review_write_container">
 						<div class="title">제목
-							<input class="location_input_text" id="loInput" type="text">
+							<input class="location_input_text" id="loInput" type="text" value="${board.title}" name="title" placeholder="제목을 입력해주세요">
 							<span class="highlight"></span> <span class="bar"></span>
 							<hr>
 						</div>
 						<div class="img_btn">
-							<f:form name="frmPopup" id="frmPopup" modelAttribute="popupVO"
-								method="post" action="/file/upload"
-								enctype="multipart/form-data">
-								<label for="uploadFile"><i class="fas fa-upload"></i>   사진업로드</label>
+							<div name="frmPopup">
+								<label for="uploadFile">사진업로드</label>
 								<input type="file" name="uploadFile" id="uploadFile">
-							</f:form>
+							</div>
 						</div>
 						<div class='img_preview'>
 							<img id="preview_img" src="${rPath}/imgs/img_sample2.jpg" alt="your image" />
@@ -298,40 +306,37 @@ fieldset, label { margin: 0; padding: 0; }
 						<div class="review_star">
 							
 							<fieldset class="review_rating">
-							    <input type="radio" id="star5" name="rating" value="5" />
+							    <input type="radio" id="star5" name="rating" value="5"/>
 							  	<label class = "full" for="star5" title="Awesome - 5 stars"></label>
-							    <input type="radio" id="star4half" name="rating" value="4 and a half" />
-							    <label class="half" for="star4half" title="Pretty good - 4.5 stars"></label>
 							    <input type="radio" id="star4" name="rating" value="4" />
 							    <label class = "full" for="star4" title="Pretty good - 4 stars"></label>
-							    <input type="radio" id="star3half" name="rating" value="3 and a half" />
-							    <label class="half" for="star3half" title="Meh - 3.5 stars"></label>
 							    <input type="radio" id="star3" name="rating" value="3" />
 							    <label class = "full" for="star3" title="Meh - 3 stars"></label>
-							    <input type="radio" id="star2half" name="rating" value="2 and a half" />
-							    <label class="half" for="star2half" title="Kinda bad - 2.5 stars"></label>
 							    <input type="radio" id="star2" name="rating" value="2" />
 							    <label class = "full" for="star2" title="Kinda bad - 2 stars"></label>
-							    <input type="radio" id="star1half" name="rating" value="1 and a half" />
-							    <label class="half" for="star1half" title="Meh - 1.5 stars"></label>
 							    <input type="radio" id="star1" name="rating" value="1" />
 							    <label class = "full" for="star1" title="Sucks big time - 1 star"></label>
-							    <input type="radio" id="starhalf" name="rating" value="half" />
-							    <label class="half" for="starhalf" title="Sucks big time - 0.5 stars"></label>
 							</fieldset>
 													
 						</div>
 						<div class="review_write_contents">
 						<hr>
-							<textarea class="form-control" id="exampleTextarea" rows="8"></textarea>
+							<textarea class="form-control" id="exampleTextarea" rows="8" name="content" placeholder="내용을 입력해주세요">${board.content }</textarea>
 						</div>
 					</div>
+					<input type="text" name="code" id="code"/>
+					<input type="text" name="userId" id="userId"/>
+					<input type="text" name="points" id="points"/>
+					<input type="text" name="upidate" id="upidate"/>
+					<input type="text" name="comments" id="comments"/>
+					<input type="text" name="reTitle" id="reTitle"/>
+				</form>
 					<!-- 내용끝 -->
 				</div>
 				<div class="modal-footer">
-					<button type="button" class="btn review_modal_closeBtn"
-						data-dismiss="modal" onclick="#">Close</button>
-					<button type="button" class="btn review_modal_saveBtn" onclick="#">Save</button>
+					<button type="button" class="btn btn-secondary"
+						data-dismiss="modal" id="review-closeBtn">Close</button>
+					<button type="button" class="btn btn-primary" onclick="check();">Save</button>
 				</div>
 			</div>
 		</div>
@@ -343,7 +348,7 @@ fieldset, label { margin: 0; padding: 0; }
 		</div>
 		<div id="review_coments_modal" style="color:black"></div>
 		<div style="text-align:right;">
-		<button class='rank_nextBtn' onclick="nextReview()">next<i class="fas fa-angle-right rank_nextBtn_right"></i></button>
+		<button onclick="nextReview()" style="color:black">next</button>
 		</div>
 	</div>
 
@@ -378,13 +383,13 @@ fieldset, label { margin: 0; padding: 0; }
 	
 	//여기서부터 시작
 	$(document).ready(function(){
-		getReview(0);
+		getReview(1);
 	});
 	
 	function nextReview(){
 		var num=$("#review_list").children().last()[0].attributes.num.value;
 		num*=1;
-		num+=8;
+		num++;
 		console.log(num);
 		getReview(num);
 	}

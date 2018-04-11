@@ -12,7 +12,7 @@ import com.amazonaws.services.s3.model.ObjectMetadata;
 import com.amazonaws.services.s3.model.PutObjectRequest;
 
 public class UploadObject {
-	 private static final String BURKETNAME = "jeonghaejwo";
+		private static final String BURKETNAME = "jeonghaejwo";
 	    private static final String ACCESS_KEY = "AKIAJUPL4UX6QYLEEM3Q";
 	    private static final String SECRET_KEY = "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";
 	    private AmazonS3 amazonS3;
@@ -34,5 +34,4 @@ public class UploadObject {
 	            amazonS3 = null;
 	        }
 	    }
-
 }

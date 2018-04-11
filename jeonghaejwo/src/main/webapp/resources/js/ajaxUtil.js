@@ -1,4 +1,5 @@
 function ajax(url, callback , data, enctype){ 
+	console.log(data);
 	if(data){
 		$.ajax({
 			url : url,
@@ -9,7 +10,7 @@ function ajax(url, callback , data, enctype){
 		$.ajax({
 			url : url,
 			data : data,
-			enctype=enctype,
+			enctype : enctype,
 			success : callback
 		});
 	}

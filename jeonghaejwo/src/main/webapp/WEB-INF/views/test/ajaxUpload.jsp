@@ -12,14 +12,15 @@
         <input type="file" id="fileUp" name="fileUp"/><br/><br/>
         아이디 : <input type="text" name="id" /> 
         비밀번호 : <input type="password" name="pw" /><br/><br/>
-        <input type="hidden" name="userId" id="userId"/>
+        <input type="text" name="userId" id="userId"/>
         <input type="button" value="전송하기" onClick="fileSubmit();">
-        
-    </form>123123
+        <input type="hidden" name="hi" id="hi">
+    </form> 
  
 <script>
     function fileSubmit() {
     	$("#userId").val(getCookie("userId"));
+    	$("#hi").val("369");
         var formData = new FormData($("#fileForm")[0]);
         $.ajax({
             type : 'post',

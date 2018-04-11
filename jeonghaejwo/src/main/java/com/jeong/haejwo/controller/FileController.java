@@ -39,7 +39,7 @@ public class FileController {
 		
 		//유저 정보 받아오는 부분
 		String id=multi.getParameter("userId");
-		System.out.println(multi.getParameter("test"));
+		System.out.println(id);
 		
 		//없으면 그냥 넘어가게
 		if(file.getSize()==0)
