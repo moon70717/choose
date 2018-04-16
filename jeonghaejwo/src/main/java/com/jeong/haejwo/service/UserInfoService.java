@@ -10,4 +10,6 @@ public interface UserInfoService {
 	public int checkUserId(String userNo);
 	
 	public boolean login(Map<String,Object> data);
+	
+	Map<String,Object> selectUser(Map<String,Object> data);
 }

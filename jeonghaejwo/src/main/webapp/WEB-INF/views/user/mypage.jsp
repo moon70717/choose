@@ -209,7 +209,7 @@ fieldset, label {
     <thead>
       <tr>
         <th>무엇을?</th>
-        <th>언제?</th>
+        <th>얼마나?</th>
         <th>어디서?</th>
       </tr>
     </thead>
@@ -230,7 +230,7 @@ fieldset, label {
         	<span class="glyphicon glyphicon-menu-left"></span>
 		</button>	
         <!--  -->
-		<input type="text" id="time_count" class='myWorkInput' placeholder="time..." style='color:black;text-align: center;'>
+		<input type="number" id="time_count" class='myWorkInput' placeholder="time..." style='color:black;text-align: center;'>
 		<button class="time_set" onclick="mypage_plus()">
 			<span class="glyphicon glyphicon-menu-right"></span>
 		</button>
@@ -306,12 +306,12 @@ fieldset, label {
 							<textarea class="form-control" id="exampleTextarea" rows="8" name="content" placeholder="내용을 입력해주세요">${board.content }</textarea>
 						</div>
 					</div>
-					<input type="text" name="code" id="code"/>
-					<input type="text" name="userId" id="userId"/>
-					<input type="text" name="points" id="points"/>
+					<input type="hidden" name="code" id="code"/>
+					<input type="hidden" name="userId" id="userId"/>
+					<input type="hidden" name="points" id="points"/>
 					<!-- <input type="text" name="upidate" id="upidate"/> -->
-					<input type="text" name="comments" id="comments"/>
-					<input type="text" name="reTitle" id="reTitle"/>
+					<input type="hidden" name="comments" id="comments"/>
+					<input type="hidden" name="reTitle" id="reTitle"/>
 				</form>
 					<!-- 내용끝 -->
 				</div>
@@ -432,7 +432,7 @@ var temp;
 var dtemp=[];
 $(document).ready(function(){
 		dtemp={
-				"userId": '103230395918627060836'
+				"userId": getCookie("userId")
 		}
 		if(dtemp==""){
 			alert("로그인을 해주세요!!");
@@ -495,7 +495,7 @@ function getHistory(res){
 		st=0;
 	}
 	dtemp={
-			"userId" : '103230395918627060836',
+			"userId" : getCookie("userId"),
 			"toggle" : "2",
 			"st" : st
 	}
@@ -604,7 +604,7 @@ function newElement() {
 			  alert("You must write something!");
 		}else{		
 			dtemp={
-					"userId": '103230395918627060836',
+					"userId": getCookie("userId"),
 					"address" : inputValue,
 					"toggle" : 2
 			}
@@ -653,7 +653,7 @@ function addFav(res){
 	    //유저정보는 세션에서 받아오도록 할 예정이므로
 	    //userId는 테스트후 삭제예정
 	    var data={
-	    		"userId": '103230395918627060836',
+	    		"userId": userId(),
 				"favNo" : div.children[0].dataset.favNo
 	    }
 	    //서버가서 삭제하는부분
@@ -684,7 +684,7 @@ function newWorkElement() {
 		var myPage_whereDo = $('.myWorkInput')[2].value;
 		console.log(myPage_whatDo+','+myPage_howMuchDo+','+myPage_whereDo);
 		var data={
-				'userId' : '103230395918627060836',
+				'userId' : getCookie("userId"),
 				'usetime' : myPage_howMuchDo,
 				'location' : myPage_whereDo,
 				'title': myPage_whatDo
@@ -709,7 +709,7 @@ function newWorkElement() {
 /*  */
 </script>
 <script async defer
-	src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDFbONelL6n5CyJfPLkocOutqCZqwiFANA&callback=initMap"></script>
+	src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDFbONelL6n5CyJfPLkocOutqCZqwiFANA"></script>
 
 </body>
 </html>

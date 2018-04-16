@@ -1,5 +1,7 @@
 package com.jeong.haejwo.controller;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -41,6 +43,10 @@ public class HistoryController {
 	@RequestMapping("/insert")
 	public @ResponseBody Map<String,Object> insert(@RequestParam Map<String,Object> data){
 		Map<String,Object> result=new HashMap<String,Object>();
+		Date date = new Date();
+		SimpleDateFormat transFormat = new SimpleDateFormat("yyyyMMdd");
+		String dateS = transFormat.format(date);
+		data.put("date", dateS);
 		result.put("result", (hiService.insert(data)==1)?true:false);
 		return result;
 	}
