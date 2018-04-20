@@ -47,9 +47,9 @@ public class UserInfoDAOImpl implements UserInfoDAO {
 
 	//api 로그인 회원용
 	@Override
-	public UserInfoVO selectUserInfo(Map<String, Object> data) {
+	public Map<String,Object> selectUserInfo(Map<String, Object> data) {
 		SqlSession ss = ssf.openSession();
-		UserInfoVO ui = ss.selectOne("user.selectApiUser",data);
+		Map<String,Object> ui = ss.selectOne("user.selectApiUser",data);
 		ss.close();
 		return ui;
 	}
