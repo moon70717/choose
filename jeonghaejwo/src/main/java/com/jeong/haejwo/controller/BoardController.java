@@ -78,8 +78,6 @@ public class BoardController {
 		return "board/board";
 	}
 
-	
-	
 	@RequestMapping(value = "/Update", method = RequestMethod.POST)
 	public String update(Model model, BoardVO reqBoard) {
 		bdao.updateBoard(reqBoard);

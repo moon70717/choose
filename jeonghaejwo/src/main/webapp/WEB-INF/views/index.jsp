@@ -2,514 +2,350 @@
     pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
-<head><script src='//static.codepen.io/assets/editor/live/console_runner-ce3034e6bde3912cc25f83cccb7caa2b0f976196f2f2d52303a462c826d54a73.js'></script><script src='//static.codepen.io/assets/editor/live/css_live_reload_init-890dc39bb89183d4642d58b1ae5376a0193342f9aed88ea04330dc14c8d52f55.js'></script><meta charset='UTF-8'><meta name="robots" content="noindex"><link rel="shortcut icon" type="image/x-icon" href="//static.codepen.io/assets/favicon/favicon-8ea04875e70c4b0bb41da869e81236e54394d63638a1ef12fa558a4a835f1164.ico" /><link rel="mask-icon" type="" href="//static.codepen.io/assets/favicon/logo-pin-f2d2b6d2c61838f7e76325261b7195c27224080bc099486ddd6dccb469b8e8e6.svg" color="#111" /><link rel="canonical" href="https://codepen.io/befamous/pen/pFsqb?depth=everything&order=popularity&page=22&q=template&show_forks=false" />
-<base href="https://demo.famo.us/tweetus/" />
-<link rel='stylesheet prefetch' href='https://demo.famo.us/tweetus/css/famous.css'><link rel='stylesheet prefetch' href='https://demo.famo.us/tweetus/css/fonts.css'><link rel='stylesheet prefetch' href='https://demo.famo.us/tweetus/css/signup/signup.css'>
-<style class="cp-pen-styles">body {
-    font-family: open_sansregular, sans-serif;
-    background-image: url("/tweetus/content/mback_small.png");
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-    vertical-align: middle;
-    text-align: center;
-}
+<head>
+  <meta charset="utf-8">
+  <title>Groovin one page bootstrap template</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="" />
+  <meta name="author" content="" />
+  <!-- styles -->
+  <link rel="stylesheet" href="${rPath}/css/fancybox/jquery.fancybox.css">
+  <link href="${rPath}/css/bootstrap.css" rel="stylesheet" />
+  <link href="${rPath}/css/bootstrap-theme.css" rel="stylesheet" />
+  <link rel="stylesheet" href="${rPath}/css/slippry.css">
+  <link href="${rPath}/css/style.css" rel="stylesheet" />
+  <link rel="stylesheet" href="${rPath}/color/default.css">
+  <!-- =======================================================
+    Theme Name: Groovin
+    Theme URL: https://bootstrapmade.com/groovin-free-bootstrap-theme/
+    Author: BootstrapMade
+    Author URL: https://bootstrapmade.com
+  ======================================================= -->
+  <script src="${rPath}/js/modernizr.custom.js"></script>
+</head>
+
+<body>
+  <header>
+
+    <div id="navigation" class="navbar navbar-inverse navbar-fixed-top default" role="navigation">
+      <div class="container">
+
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="index.html">Groovin</a>
+        </div>
+
+        <div class="navigation">
+          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <nav>
+              <ul class="nav navbar-nav navbar-right">
+                <li class="current"><a href="#intro">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#works">Works</a></li>
+                <li><a href="#contact">Contact</a></li>
+              </ul>
+            </nav>
+          </div>
+          <!-- /.navbar-collapse -->
+        </div>
+
+      </div>
+    </div>
+
+  </header>
+  <!-- section intro -->
+  <section id="intro">
+    <ul id="slippry-slider">
+      <li>
+        <a href="#slide1"><img src="${rPath}/img/slide/1.jpg" alt="Welcome to Groovin!"></a>
+      </li>
+      <li>
+        <a href="#slide2"><img src="${rPath}/img/slide/2.jpg"  alt="This is an awesome bootstrap template"></a>
+      </li>
+      <li>
+        <a href="#slide3"><img src="${rPath}/img/slide/3.jpg" alt="Check it out, you are going to <span class='red'>♥</span> it :)"></a>
+      </li>
+    </ul>
+  </section>
+  <!-- end intro -->
+  <!-- Section about -->
+  <section id="about" class="section">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+          <div class="heading">
+            <h3><span>About us</span></h3>
+          </div>
+          <div class="sub-heading">
+            <p>
+              Creating a visual language around the beliefs of the brands we work with.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-3">
+          <div class="team-box">
+            <img src="${rPath}/img/dummies/team1.jpg" alt="" class="img-responsive" />
+            <div class="roles">
+              <h5><strong>Baby Stewards Jr</strong></h5>
+              <p>
+                CEO - Founder
+              </p>
+              <ul class="social-profile">
+                <li><a href="#"><i class="fa fa-facebook fa-lg"></i></a></li>
+                <li><a href="#"><i class="fa fa-twitter fa-lg"></i></a></li>
+                <li><a href="#"><i class="fa fa-dribbble fa-lg"></i></a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="team-box">
+            <img src="${rPath}/img/dummies/team2.jpg" alt="" class="img-responsive" />
+            <div class="roles">
+              <h5><strong>Tommy Kreunichev</strong></h5>
+              <p>
+                Lead designer
+              </p>
+              <ul class="social-profile">
+                <li><a href="#"><i class="fa fa-facebook fa-lg"></i></a></li>
+                <li><a href="#"><i class="fa fa-twitter fa-lg"></i></a></li>
+                <li><a href="#"><i class="fa fa-dribbble fa-lg"></i></a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="team-box">
+            <img src="${rPath}/img/dummies/team3.jpg" alt="" class="img-responsive" />
+            <div class="roles">
+              <h5><strong>Moriella Maccini</strong></h5>
+              <p>
+                Customer support
+              </p>
+              <ul class="social-profile">
+                <li><a href="#"><i class="fa fa-facebook fa-lg"></i></a></li>
+                <li><a href="#"><i class="fa fa-twitter fa-lg"></i></a></li>
+                <li><a href="#"><i class="fa fa-dribbble fa-lg"></i></a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="team-box">
+            <img src="${rPath}/img/dummies/team4.jpg" alt="" class="img-responsive" />
+            <div class="roles">
+              <h5><strong>Brian James Scoothie</strong></h5>
+              <p>
+                Coffee maker
+              </p>
+              <ul class="social-profile">
+                <li><a href="#"><i class="fa fa-facebook fa-lg"></i></a></li>
+                <li><a href="#"><i class="fa fa-twitter fa-lg"></i></a></li>
+                <li><a href="#"><i class="fa fa-dribbble fa-lg"></i></a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- end section about -->
+  <!-- section works -->
+  <section id="works" class="section gray">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+          <div class="heading">
+            <h3><span>Recent works</span></h3>
+          </div>
+          <div class="sub-heading">
+            <p>
+              We have a history of doing what our name implies, creating a visual language around the beliefs of the brands we work with.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <ul class="grid effect" id="grid">
+            <li>
+              <a class="fancybox" data-fancybox-group="gallery" title="Portfolio name" href="${rPath}/img/portfolio/1.jpg">
+								<img src="${rPath}/img/portfolio/1.jpg" alt="" />
+							</a>
+            </li>
+            <li><a href="${rPath}/img/portfolio/2.jpg" class="fancybox" data-fancybox-group="gallery" title="Portfolio name"><img src="${rPath}/img/portfolio/2.jpg" alt="" /></a></li>
+            <li><a href="${rPath}/img/portfolio/3.jpg" class="fancybox" data-fancybox-group="gallery" title="Portfolio name"><img src="${rPath}/img/portfolio/3.jpg" alt="" /></a></li>
+            <li><a href="${rPath}/img/portfolio/4.jpg" class="fancybox" data-fancybox-group="gallery" title="Portfolio name"><img src="${rPath}/img/portfolio/4.jpg" alt="" /></a></li>
+            <li><a href="${rPath}/img/portfolio/5.jpg" class="fancybox" data-fancybox-group="gallery" title="Portfolio name"><img src="${rPath}/img/portfolio/5.jpg" alt="" /></a></li>
+            <li><a href="${rPath}/img/portfolio/6.jpg" class="fancybox" data-fancybox-group="gallery" title="Portfolio name"><img src="${rPath}/img/portfolio/6.jpg" alt="" /></a></li>
+            <li><a href="${rPath}/img/portfolio/7.jpg" class="fancybox" data-fancybox-group="gallery" title="Portfolio name"><img src="${rPath}/img/portfolio/7.jpg" alt="" /></a></li>
+            <li><a href="${rPath}/img/portfolio/8.jpg" class="fancybox" data-fancybox-group="gallery" title="Portfolio name"><img src="${rPath}/img/portfolio/8.jpg" alt="" /></a></li>
+            <li><a href="${rPath}/img/portfolio/9.jpg" class="fancybox" data-fancybox-group="gallery" title="Portfolio name"><img src="${rPath}/img/portfolio/9.jpg" alt="" /></a></li>
+            <li><a href="${rPath}/img/portfolio/10.jpg" class="fancybox" data-fancybox-group="gallery" title="Portfolio name"><img src="${rPath}/img/portfolio/10.jpg" alt="" /></a></li>
+            <li><a href="${rPath}/img/portfolio/11.jpg" class="fancybox" data-fancybox-group="gallery" title="Portfolio name"><img src="${rPath}/img/portfolio/11.jpg" alt="" /></a></li>
+            <li><a href="${rPath}/img/portfolio/12.jpg" class="fancybox" data-fancybox-group="gallery" title="Portfolio name"><img src="${rPath}/img/portfolio/12.jpg" alt="" /></a></li>
+            <li><a href="${rPath}/img/portfolio/13.jpg" class="fancybox" data-fancybox-group="gallery" title="Portfolio name"><img src="${rPath}/img/portfolio/13.jpg" alt="" /></a></li>
+            <li><a href="${rPath}/img/portfolio/14.jpg" class="fancybox" data-fancybox-group="gallery" title="Portfolio name"><img src="${rPath}/img/portfolio/14.jpg" alt="" /></a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- section works -->
+  <!-- section contact -->
+  <section id="contact" class="section">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+          <div class="heading">
+            <h3><span>Get in touch</span></h3>
+          </div>
+          <div class="sub-heading">
+            <p>
+              Lorem ipsum dolor sit amet, mutat paulo simul per no, assum fastidii vituperata eam no.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <h4><i class="icon-envelope"></i><strong>Contact form</strong></h4>
+          <p>
+            Want to work with us or just want to say hello? Don't hesitate to get in touch!
+          </p>
+          <!-- start contact form -->
+          <div class="cform" id="contact-form">
 
 
-.header {
-    background-color: #4294ce;
-    color: #fff;
-    background: #76c5fb; /* Old browsers */
-    background: -moz-linear-gradient(top, #76c5fb 0%, #60abe2 1%, #2978b1 99%, #18659d 100%); /* FF3.6+ */
-    background: -webkit-linear-gradient(top, #76c5fb 0%,#60abe2 1%,#2978b1 99%,#18659d 100%); /* Chrome10+,Safari5.1+ */
-    background: -o-linear-gradient(top, #76c5fb 0%,#60abe2 1%,#2978b1 99%,#18659d 100%); /* Opera 11.10+ */
-    background: -ms-linear-gradient(top, #76c5fb 0%,#60abe2 1%,#2978b1 99%,#18659d 100%); /* IE10+ */
-    background: linear-gradient(to bottom, #76c5fb 0%,#60abe2 1%,#2978b1 99%,#18659d 100%); /* W3C */
-    font-family: open_sansbold, sans-serif;
-    font-size: 18px;
-    line-height: 26px;
-    padding: 10px;
-    text-align: center;
-    text-shadow: rgba(0,0,0,0.75) 0px -1px 0px;
-    z-index: 1;
-}
+            <div id="sendmessage">Your message has been sent. Thank you!</div>
+            <div id="errormessage"></div>
+            <form action="" method="post" role="form" class="contactForm">
+              <div class="form-group">
+                <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
+                <div class="validation"></div>
+              </div>
+              <div class="form-group">
+                <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" data-rule="email" data-msg="Please enter a valid email" />
+                <div class="validation"></div>
+              </div>
+              <div class="form-group">
+                <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject" />
+                <div class="validation"></div>
+              </div>
+              <div class="form-group">
+                <textarea class="form-control" name="message" rows="5" data-rule="required" data-msg="Please write something for us" placeholder="Message"></textarea>
+                <div class="validation"></div>
+              </div>
 
-.header .bird {
-    font-family: entypo-social;
-    font-size: 60px;
-    color: hsl(207,75%,70%);
-}
-
-.header .icon {
-    display: block;
-    height: 100%;
-    top: 0px;
-    right: 0px;
-    letter-spacing: 10px;
-    position: absolute;
-    font-size: 46px;
-    line-height: 46px;
-    font-family: 'entypo';
-}
-
-.navigation {
-    padding: 3px;
-    font-family: open_sansbold;
-    font-size: 10px;
-    line-height: 10px;
-    text-align: center;
-    vertical-align: middle;
-    text-shadow: rgba(0,0,0,0.75) 0px -1px 0px;
-    z-index: 1;
-}
-
-.navigation.off {
-    color: #999;
-    background: #000000; /* Old browsers */
-    background: -moz-linear-gradient(top, #000000 0%, #595959 1%, #383838 4%, #101010 98%, #000000 100%); /* FF3.6+ */
-    background: -webkit-linear-gradient(top, #000000 0%,#595959 1%,#383838 4%,#101010 98%,#000000 100%); /* Chrome10+,Safari5.1+ */
-    background: -o-linear-gradient(top, #000000 0%,#595959 1%,#383838 4%,#101010 98%,#000000 100%); /* Opera 11.10+ */
-    background: -ms-linear-gradient(top, #000000 0%,#595959 1%,#383838 4%,#101010 98%,#000000 100%); /* IE10+ */
-    background: linear-gradient(to bottom, #000000 0%,#595959 1%,#383838 4%,#101010 98%,#000000 100%); /* W3C */
-}
-
-.navigation.on {
-    color: #fff;
-    background: #212121; /* Old browsers */
-    background: -moz-linear-gradient(top, #212121 0%, #0f0f0f 100%); /* FF3.6+ */
-    background: -webkit-linear-gradient(top, #212121 0%,#0f0f0f 100%); /* Chrome10+,Safari5.1+ */
-    background: -o-linear-gradient(top, #212121 0%,#0f0f0f 100%); /* Opera 11.10+ */
-    background: -ms-linear-gradient(top, #212121 0%,#0f0f0f 100%); /* IE10+ */
-    background: linear-gradient(to bottom, #212121 0%,#0f0f0f 100%); /* W3C */
-    box-shadow: #000 0px 0px 3px 2px inset;
-}
-
-.navigation .icon {
-    display: inline-block;
-    font-size: 26px;
-    line-height: 30px;
-}
-
-.navigation .icon .entypo {
-    font-family: entypo;
-    font-size: 48px;
-    line-height: 26px;
-    vertical-align: bottom;
-}
-
-.navigation.on .icon {
-    color: hsl(207, 75%, 65%);
-}
-
-.tweet {
-    background-color: #ffffff;
-    padding: 10px;
-    border-top: 1px solid #eee;
-    font-size: 12px;
-    text-align: left;
-}
-
-p {
-    padding: 0px;
-    margin: 0px;
-    border: 0px;
-}
-
-.tweet .icon {
-    float: left;
-    margin-right: 10px;
-}
-
-.tweet .source {
-    color: #000000;
-    font-family: open_sansbold;
-    text-align: left;
-}
-
-.tweet .source .screenname {
-    color: #909090;
-    font-family: open_sansregular;
-}
-
-.tweet .text {
-    color: #000000;
-    text-align: left;
-    text-overflow:ellipsis;
-    overflow: hidden;
-}
-
-.tweet .time {
-    color: #909090;
-    float: right;
-}
-
-.profile {
-    color: #fff;
-    background: #686868; /* Old browsers */
-    background: -moz-radial-gradient(center, ellipse cover, #686868 0%, #141414 100%); /* FF3.6+ */
-    background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%,#686868), color-stop(100%,#141414)); /* Chrome,Safari4+ */
-    background: -webkit-radial-gradient(center, ellipse cover, #686868 0%,#141414 100%); /* Chrome10+,Safari5.1+ */
-    background: -o-radial-gradient(center, ellipse cover, #686868 0%,#141414 100%); /* Opera 12+ */
-    background: -ms-radial-gradient(center, ellipse cover, #686868 0%,#141414 100%); /* IE10+ */
-    background: radial-gradient(ellipse at center, #686868 0%,#141414 100%); /* W3C */
-    font-family: open_sansregular, sans-serif;
-    font-size: 18px;
-    line-height: 26px;
-    padding: 20px;
-    text-align: center;
-    text-shadow: rgba(0,0,0,0.75) 0px -1px 0px;
-}
-
-.profile img {
-    border: 5px solid #fff;
-    width: 80px;
-    height: 80px;
-    border-radius: 5px;
-}</style></head><body>
-
-<script src='//static.codepen.io/assets/common/stopExecutionOnTimeout-b2a7b3fe212eaa732349046d8416e00a9dec26eb7fd347590fbced3ab38af52e.js'></script><script src='https://demo.famo.us/tweetus/js/lib/famous.lib.js'></script><script src='https://cdn.firebase.com/v0/firebase.js'></script><script src='https://demo.famo.us/tweetus/js/fa.tweetus.js'></script>
-<script >//CodePen Evaluation License 
-//
-//Copyright (c) 2013 Famo.us, Inc.
-//
-// Non-sublicensable permission is hereby granted, free of charge,
-// to any person obtaining a copy of this software and associated
-// documentation files directly from codepen.io (the "Software"), solely to
-// internally make and internally use copies of the Software to test,
-// explore, and evaluate the Software solely in such person’s non-commercial,
-// non-production environments, provided that the above copyright
-// notice and this permission notice shall be included in all copies or
-// substantial portions of the Software.
-//
-// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
-// EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
-// MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. 
-// IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY 
-// CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, 
-// TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
-// SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-
-Famous(function(require) {
-    // import dependencies
-    var FamousEngine = require('famous/Engine');
-    var FastClick = require('famous-sync/FastClick');
-
-    var Scrollview = require('famous-views/Scrollview');
-    var ViewSequence = require('famous/ViewSequence');
-    var Surface = require('famous/Surface');
-  
-    // boilerplate: the application template (normally in a separate require)
-    var View = require('famous/View');
-    var EventHandler = require('famous/EventHandler');
-    var OptionsManager = require('famous/OptionsManager');
-    var RenderNode = require('famous/RenderNode');
-    var Utility = require('famous/Utility');
-    
-    var HeaderFooterLayout = require('famous-views/HeaderFooterLayout');
-    var EdgeSwapper = require('famous-views/EdgeSwapper');
-    
-    var NavigationBar = require('famous-widgets/NavigationBar');
-    var TitleBar = require('famous-widgets/TitleBar');
-
-    function App(options) {
-        // extend from view
-        View.apply(this, arguments);
-
-        // create the layout
-        this.layout = new HeaderFooterLayout();
-
-        // create the header
-        this.header = new TitleBar(this.options.header);
-
-        // create the navigation bar
-        this.navigation = new NavigationBar(this.options.navigation);
-
-        // create the content area
-        this.contentArea = new EdgeSwapper(this.options.content);
-
-        // link endpoints of layout to widgets
-        this.layout.id['header'].link(this.header);
-        this.layout.id['footer'].link(Utility.transformInFront).link(this.navigation);
-        this.layout.id['content'].link(Utility.transformBehind).link(this.contentArea);
-        
-        // assign received events to content area
-        this.eventInput.pipe(this.contentArea);
-
-        // navigation events are app events
-        EventHandler.setOutputHandler(this, this.navigation);
-
-        // declare the render nodes
-        this._currentSection = undefined;
-        this._sections = {};
-        this._sectionTitles = {};
-
-        // respond to the the selection of a different section
-        this.navigation.on('select', function(data) {
-            this._currentSection = data.id;
-            this.header.show(this._sectionTitles[data.id]);
-            this.contentArea.show(this._sections[data.id].get());
-        }.bind(this));
-
-        // assign the layout to this view
-        this._link(this.layout);
-    };
-    App.prototype = Object.create(View.prototype);
-    App.prototype.constructor = App;
-
-    App.DEFAULT_OPTIONS = {
-        header: {
-            size: [undefined, 50],
-            inTransition: true,
-            outTransition: true,
-            look: {
-                size: [undefined, 50]
-            }
-        },
-        navigation: {
-            size: [undefined, 50],
-            direction: Utility.Direction.X,
-            buttons: {
-                inTransition: true,
-                outTransition: true
-            }
-        },
-        content: {
-            inTransition: true,
-            outTransition: true,
-            overlap: true
-        }
-    };
-
-    App.prototype.getState = function() {
-        return this._currentSection;
-    };
-
-    App.prototype.section = function(id) {
-        // create the section if it doesn't exist
-        if(!(id in this._sections)) {
-            this._sections[id] = new RenderNode();
-
-            // make it possible to set the section's properties
-            this._sections[id].setOptions = (function(options) {
-                this._sectionTitles[id] = options.title;
-                this.navigation.defineSection(id, {
-                   content: '<span class="icon">' + options.navigation.icon + '</span><br />' + options.navigation.caption
-                });
-            }).bind(this);
-        }
-        return this._sections[id];
-    };
-
-    App.prototype.select = function(id) {
-        this._currentSection = id;
-        if(!(id in this._sections)) return false;
-        this.navigation.select(id);
-        return true;
-    };
-    // boilerplate: end
-
-    var FeedItem = require('famous-widgets/FeedItem');
-    var Transitionable = require('famous/Transitionable');
-    var OptionsManager = require('famous/OptionsManager');
-    var Matrix = require('famous/Matrix');
-
-    var userInfoFirebase = null;
-    var userInfo = {};
-
-    function SparkItem(options) {
-        FeedItem.apply(this, arguments);
-        if(options) this.setOptions(options);
-
-        this.inState = new Transitionable(0);
-        this.inState.set(1, this.options.inTransition);
-    };
-    
-    SparkItem.prototype = Object.create(FeedItem.prototype);
-    SparkItem.prototype.constructor = SparkItem;
-
-    SparkItem.DEFAULT_OPTIONS = OptionsManager.patch(FeedItem.DEFAULT_OPTIONS, {
-         classes: ['tweet'],
-         size: [undefined, 80],
-         inTransition: {curve: 'easeOut', duration: 500}
+              <div class="text-center"><button type="submit" class="btn btn-lg btn-theme">Send Message</button></div>
+            </form>
+          </div>
+          <!-- END contact form -->
+        </div>
+        <div class="col-md-6">
+          <h4>Find our location</h4>
+          <p>View from google map</p>
+          <!-- map -->
+          <div id="section-map" class="clearfix">
+            <div id="google-map" data-latitude="40.713732" data-longitude="-74.0092704"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- end section contact -->
+  <footer>
+    <div class="verybottom">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="aligncenter">
+              <ul class="social-network social-circle">
+                <li><a href="#" class="icoRss" title="Rss"><i class="fa fa-rss"></i></a></li>
+                <li><a href="#" class="icoFacebook" title="Facebook"><i class="fa fa-facebook"></i></a></li>
+                <li><a href="#" class="icoTwitter" title="Twitter"><i class="fa fa-twitter"></i></a></li>
+                <li><a href="#" class="icoGoogle" title="Google +"><i class="fa fa-google-plus"></i></a></li>
+                <li><a href="#" class="icoLinkedin" title="Linkedin"><i class="fa fa-linkedin"></i></a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <div class="aligncenter">
+              <p>
+                &copy; Groovin Theme - All right reserved
+              </p>
+              <div class="credits">
+                <!--
+                  All the links in the footer should remain intact. 
+                  You can delete the links only if you purchased the pro version.
+                  Licensing information: https://bootstrapmade.com/license/
+                  Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/buy/?theme=Groovin
+                -->
+                <a href="https://bootstrapmade.com/">Free Bootstrap Themes</a> by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <a href="#" class="scrollup"><i class="fa fa-angle-up fa-2x"></i></a>
+  <!-- javascript -->
+  <script src="${rPath}/js/jquery-1.9.1.min.js"></script>
+  <script src="${rPath}/js/jquery.easing.js"></script>
+  <script src="${rPath}/js/classie.js"></script>
+  <script src="${rPath}/js/bootstrap.js"></script>
+  <script src="${rPath}/js/slippry.min.js"></script>
+  <script src="${rPath}/js/nagging-menu.js"></script>
+  <script src="${rPath}/js/jquery.nav.js"></script>
+  <script src="${rPath}/js/jquery.scrollTo.js"></script>
+  <script src="${rPath}/js/jquery.fancybox.pack.js"></script>
+  <script src="${rPath}/js/jquery.fancybox-media.js"></script>
+  <script src="${rPath}/js/masonry.pkgd.min.js"></script>
+  <script src="${rPath}/js/imagesloaded.js"></script>
+  <script src="${rPath}/js/jquery.nicescroll.min.js"></script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD8HeI8o-c1NppZA-92oYlXakhDPYR7XMY"></script>
+  <script src="${rPath}/js/AnimOnScroll.js"></script>
+  <script>
+    new AnimOnScroll(document.getElementById('grid'), {
+      minDuration: 0.4,
+      maxDuration: 0.7,
+      viewportFactor: 0.2
     });
-    
-    SparkItem.setFirebase = function(firebase) {
-        userInfoFirebase = firebase;
-    };
-
-    SparkItem.prototype.render = function(input) {
-        var result = FeedItem.prototype.render.apply(this, arguments);
-        if(!this.inState.isActive()) return result;
-        else return {opacity: this.inState.get(), target: result};
-    };
-
-    SparkItem.prototype.setContent = function(content) {
-        var userId = content['author'];
-        var iconUrl = 'content/default-pic.gif';
-        if(userId in userInfo) {
-            iconUrl = userInfo[userId]['pic'];
-        }
-        else {
-            var userRef = userInfoFirebase.child('people').child(userId);
-            userRef.on('value', function(dataSnapshot) {
-                userInfo[userId] = dataSnapshot.val();
-                if(userInfo[userId]['pic']) this.setContent(content);
-            }.bind(this));
+  </script>
+  <script>
+    $(document).ready(function() {
+      $('#slippry-slider').slippry(
+        defaults = {
+          transition: 'vertical',
+          useCSS: true,
+          speed: 5000,
+          pause: 3000,
+          initSingle: false,
+          auto: true,
+          preload: 'visible',
+          pager: false,
         }
 
-        var feedContent = {icon: iconUrl, source: content['by'], time: content['timestamp'], text: content['content']};
-        return FeedItem.prototype.setContent.call(this, feedContent);
-    };
-
-    // define the options
-    var headerOptions = {
-        look: {classes: ['header']},
-        inTransition: {curve: 'easeOutBounce', duration: 375},
-        outTransition: {curve: 'easeIn', duration: 225},
-        overlap: false
-    };
-
-    var navigationOptions = {
-        buttons: {
-            onClasses: ['navigation', 'on'],
-            offClasses: ['navigation', 'off'],
-            inTransition: {curve: 'easeInOut', duration: 150},
-            outTransition: {curve: 'easeInOut', duration: 150}
-        }
-    };
-
-    var contentOptions = {
-        inTransition: {curve: 'easeOutBounce', duration: 500},
-        outTransition: {duration: 300},
-        overlap: true 
-    };
-
-    // create the App from the template and hook it into the context
-    var myApp = new App({header: headerOptions, navigation: navigationOptions, content: contentOptions});
-    var mainDisplay = FamousEngine.createContext();
-    mainDisplay.link(myApp);
-    FamousEngine.pipe(myApp);
-
-    // setup Firebase
-    var firebase = new Firebase('https://firefeed.firebaseio.com/');
-    SparkItem.setFirebase(firebase);
-
-    // create the 'Home' section
-    var homeSection = myApp.section('home');
-    homeSection.setOptions({
-        title: '<span class="bird">&#62217;</span>',
-        navigation: {caption: 'Home', icon: '<span class="entypo">&#8962;</span>'}
+      )
     });
-    var homeItems = new ViewSequence();
-    var homeScroll = new Scrollview();
-    homeSection.link(homeScroll);
+  </script>
 
-    // create the 'Connect' section
-    var connectSection = myApp.section('connect');
-    connectSection.setOptions({
-        title: 'Connect',
-        navigation: {caption: 'Connect', icon: '@'}
-    });
-    var connectItems = new ViewSequence();
-    var connectScroll = new Scrollview();
-    connectSection.link(connectScroll);
+  <script src="${rPath}/js/custom.js"></script>
+  <script src="${rPath}/contactform/contactform.js"></script>
 
-    // create the 'Discover' section
-    var discoverSection = myApp.section('discover');
-    discoverSection.setOptions({
-        title: 'Discover',
-        navigation: {caption: 'Discover', icon: '#'}
-    });
-    var discoverItems = new ViewSequence();
-    var discoverScroll = new Scrollview();
-    discoverSection.link(discoverScroll);
+</body>
 
-    // create the 'Me' section
-    var meSection = myApp.section('me');
-    meSection.setOptions({
-        title: 'Me',
-        navigation: {caption: 'Me', icon: '<span class="entypo">&#128100;</span>'}
-    });
-    // stubbed default to Mark for demo purposes
-    var myAuth = {
-        'id': '819290432',
-        'pic': 'https://graph.facebook.com/819290432/picture/?width=200&height=200&return_ssl_resources=1',
-        'fullName': 'Mark Lu',
-        'location': 'San Francisco'
-    };
-    var profile = new Surface({
-        size: [undefined, 160],
-        classes: ['profile'],
-        content: '<img src="' + myAuth['pic'] + '" /><p>' + myAuth['fullName'] + ' &bull; ' + myAuth['location'] + '</p>'
-    });
-    var meItems = new ViewSequence([profile]); // start with profile
-    var meScroll = new Scrollview();
-    meSection.link(meScroll);
-
-    // populate the scrollviews
-    var sparks = firebase.child('sparks');
-
-    // display the scrollviews when loaded
-    sparks.once('value', function() {
-        // rewind the pointers
-        while(homeItems.getPrevious()) {if (window.CP.shouldStopExecution(1)){break;}homeItems = homeItems.getPrevious();
-window.CP.exitedLoop(1);
-}
-        while(discoverItems.getPrevious()) {if (window.CP.shouldStopExecution(2)){break;}discoverItems = discoverItems.getPrevious();}
-window.CP.exitedLoop(2);
-
-        while(connectItems.getPrevious()) {if (window.CP.shouldStopExecution(3)){break;}connectItems = connectItems.getPrevious();}
-window.CP.exitedLoop(3);
-
-        while(meItems.getPrevious()) {if (window.CP.shouldStopExecution(4)){break;}meItems = meItems.getPrevious();}
-window.CP.exitedLoop(4);
-
-
-        // hook them up
-        homeScroll.sequenceFrom(homeItems);
-        discoverScroll.sequenceFrom(discoverItems);
-        connectScroll.sequenceFrom(connectItems);
-        meScroll.sequenceFrom(meItems);
-    });
-
-    // update the scrollviews with data as they come in
-    var recentTimestampLimit = Date.now() - 90*86400000; // limit to 90 days
-    sparks.on('child_added', function(snapshot) {
-        var value = snapshot.val();
-        if(value['timestamp'] > recentTimestampLimit) {
-            homeItems.unshift(new SparkItem({content: value}));
-            homeScroll.goToPreviousPage();
-        }
-        if(value['author'] === myAuth['id']) {
-            meItems.splice(1, 0, new SparkItem({content: value}));
-            meScroll.goToPreviousPage();
-        }
-        if(value['content'].indexOf('@') >= 0) {
-            connectItems.unshift(new SparkItem({content: value}));
-            connectScroll.goToPreviousPage();
-        }
-        if(value['content'].indexOf('#') >= 0) {
-            discoverItems.unshift(new SparkItem({content: value}));
-            discoverScroll.goToPreviousPage();
-        }
-    });
-
-    // start on the home section
-    myApp.select('home');
-  
-  
-    // signup button
-    var Modifier = require('famous/Modifier');
-    var Matrix = require('famous/Matrix');
-    var signupContext = FamousEngine.createContext();
-    signupContext.link(new Modifier({origin: [0, 0], transform: Matrix.translate(10, 10), opacity: 0.7})).link(new Surface({
-        size: [true, true],
-        classes: ['signup'],
-        content: '<a href="https://demo.famo.us/signup/">sign up</a>'
-    }));
-});
-
-//# sourceURL=pen.js
-</script>
-</body></html>
+</html>

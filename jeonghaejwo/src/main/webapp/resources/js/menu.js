@@ -1,4 +1,4 @@
-$(document).ready(menuFuc())
+/*$(document).ready(menuFuc())
 
 	$(window).bind("pageshow", function(event){
 		if(event.originalEvent.persisted){
@@ -8,8 +8,8 @@ $(document).ready(menuFuc())
 			menuFuc();
 		}
 	})
-	
-function menuFuc(){
+*/	
+/*function menuFuc(){
 	var navStatus=false;
 	$('#menu_checkbox').click(function(){
 	    if(navStatus==false){
@@ -32,7 +32,7 @@ function menuFuc(){
 	    	$("#mySidenav").css('background-color', "");
 	    }
 	});
-}	
+}*/	
 
 
 /*

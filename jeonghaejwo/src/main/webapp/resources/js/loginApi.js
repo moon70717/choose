@@ -18,7 +18,6 @@
 		auth2.attachClickHandler(element, {}, 
 			function(googleUser) {
 			$(".f_text2").Html = "Signed in: " + googleUser.getBasicProfile().getName();
-			
 			var userId, userName, ImageURL, Email, loginApi;
 			userId = googleUser.getBasicProfile().getId();
 			userName = googleUser.getBasicProfile().getName();

@@ -105,6 +105,7 @@
 
 .reviewPoint {
 	grid-area: reviewPoint;
+	    text-align: right;
 }
 
 .reviewUserId {

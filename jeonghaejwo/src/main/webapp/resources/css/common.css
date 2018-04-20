@@ -1,22 +1,22 @@
 @charset "UTF-8";
 
 html{
-	background-color: black;
+	background-color: #f3f3f3;
 	font-size: 0.5vmin;
 }
 body {
 	font-family: 'dohyeon';
-	background: linear-gradient(to bottom, #dedede 0%, #000000 100%);
-	color: white;
+	background: #f3f3f3;
+	color: black;
 	display: grid;
 	grid-template-columns: 1fr 2fr 2fr 2fr 1fr;
   	grid-template-areas:
-  		"header header header header header"
-  		". mainContainers mainContainers mainContainers sideMenu" 
-    	". mainContainers mainContainers mainContainers sideMenu"
-    	". mainContainers mainContainers mainContainers sideMenu" 
-    	". mainContainers mainContainers mainContainers sideMenu" 
-    	"footer footer footer footer footer";
+  		". header header header ."
+  		". mainContainers mainContainers mainContainers ." 
+    	". mainContainers mainContainers mainContainers ."
+    	". mainContainers mainContainers mainContainers ." 
+    	". mainContainers mainContainers mainContainers ." 
+    	". footer footer footer .";
 }
 /* 블라인드 */
 .mainContainers{
@@ -37,6 +37,34 @@ body {
     padding: 10px;
     text-align: center;
     position: relative;
+}
+.navbar-default {
+    background-color: #fff;
+    border-color: #ffffff;
+}
+.navbar-nav {
+    float: left;
+    margin: auto;
+    margin-left: 6vw;
+}
+.navbar-brand {
+    float: left;
+    height: 50px;
+    padding: 1vw 1vw;
+    font-size: 18px;
+    line-height: 20px;
+}
+.nav_pageName{
+	color: #8585ff;
+}
+.navbar-nav>li>a {
+    padding-top: 1vw;
+    padding-bottom: 1vw;
+    padding-left: 2vw;
+}
+
+.navbar-default .navbar-nav>li>a: hover {
+    color: black	;
 }
 /* 하단 풋터 */
 .footer {
@@ -66,6 +94,7 @@ body {
     bottom: 0;
     right: 0;
     margin: auto;
+    filter: invert(40%);
 }
 #cat_msg_div{
 	display:none;
@@ -348,23 +377,10 @@ body {
 
 /* 반응형을 위한 셋팅 */
 @media screen and (max-height: 450px) {
-  .sidenav {padding-top: 15px;}
-  .sidenav a {font-size: 18px;}
+	
 }
 
 @media screen and (max-width: 750px) {
-  .time_container {
-    display: none;
-  }
-  body {
-  	grid-template-areas:
-  		". mainContainers mainContainers mainContainers sideMenu" 
-    	". mainContainers mainContainers mainContainers sideMenu"
-    	". mainContainers mainContainers mainContainers sideMenu" 
-    	". mainContainers mainContainers mainContainers sideMenu" 
-    	"footer footer footer footer footer";
-	}
-	
 	
 }
 

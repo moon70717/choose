@@ -57,10 +57,12 @@
     }
 .mypageUserImg .memberLeave > button{
     margin-top: 3vh;
+    margin-bottom: 3vh;
     background-color: #ff8282;
     }
 .mypageUserImg_container>img{
-	width: 5vw;
+    width: 5vw;
+    margin-top: 3vh;
 	border-radius: 50%; 
 }
 .mypageUserNickName>.btn{
@@ -97,6 +99,20 @@
       font-size: 1.5vmin;
 }
 
+.nav-tabs>li>a {
+    margin-right: 2px;
+    line-height: 1.42857143;
+    border: 1px solid transparent;
+    border-radius: 4px 4px 0 0;
+    color: black;
+}
+.nav-tabs>li.active>a, .nav-tabs>li.active>a:focus, .nav-tabs>li.active>a:hover {
+    color: #a7a7a7;
+    cursor: default;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-bottom-color: transparent;
+}
 /* Set all odd list items to a different color (zebra-stripes) */
 #userPositionList li:nth-child(odd) {
 }
