@@ -25,6 +25,7 @@ h1 {
 	text-align: center;
 	font-size: 30px;
 	margin-top: 3vh;
+	position: relative;
 }
 
 .contents2 {
@@ -67,13 +68,22 @@ h1 {
 	display: grid;
 	grid-template-columns: repeat(4, 1fr);
 	grid-template-areas: "logintxt logintxt logintxt logintxt "
+		". loginMainLogo loginMainLogo ."
 		"loginface loginface loginface loginface"
 		"logingoo logingoo logingoo logingoo"
 		"logingit logingit logingit logingit";
 	grid-gap: 15px;
 	padding: 0px;
 }
-
+.loginMainLogo{
+	grid-area: loginMainLogo;
+}
+.loginMainLogo>img{
+    width: 16vw;
+    vertical-align: middle;
+    margin-left: auto;
+    margin-right: auto;
+}
 .logintxt {
 	grid-area: logintxt;
 	top: -3vh;
@@ -97,14 +107,13 @@ h1 {
 }
 
 .contents4>img {
-	width: 75%;
-	position: absolute;
-	top: 2rem;
-	left: 0;
-	bottom: 0;
-	right: 0;
-	margin: auto;
-	display: none;
+    width: 14vmin;
+    position: absolute;
+    top: 0;
+    left: 0.5vw;
+    bottom: 0;
+    right: 0;
+    margin: auto;
 }
 /* 구글 로그인 부분 */
 #customBtn {

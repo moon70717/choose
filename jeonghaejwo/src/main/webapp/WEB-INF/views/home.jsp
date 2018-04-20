@@ -44,16 +44,16 @@ $(document).ready(function() {
 		</div>
 		
 		<div class='contents4'>
-		<img class='mainLogo' src='${rPath}/imgs/mainlogo.jpg'/>
-		<div class='logintxt'>Sign in or Sign up</div>
-		<div class='loginface'>
+		<div class='logintxt' id='logintxt'>Sign in or Sign up</div>
+		<div class='loginMainLogo'><img id="mainLogo" src="${rPath}/imgs/mainlogo.jpg"></div>
+		<div class='loginface' id='loginface'>
 			<div class="fb-login-button" data-max-rows="1" data-size="large" 
 			data-button-type="continue_with" data-show-faces="false" data-auto-logout-link="true" 
 			data-use-continue-as="false" onlogin="checkLoginState();"></div>
 			<!-- <div id="fb-root"></div>
 			<div id="status"></div> -->
 		</div>
-		<div class='logingoo'>
+		<div class='logingoo' id='logingoo'>
 			<div id="gSignInWrapper">
 				<div id="customBtn" class="customGPlusSignIn">
 					<span class="icon"></span><span class="buttonText">Sign up with Google</span>
@@ -68,5 +68,18 @@ $(document).ready(function() {
 </body>
 <script>
 	startApp();
+	$(document).ready(function(){
+		var dtemp={
+				"userId": getCookie("userId")
+		}
+		if(dtemp.userId!=""){
+			$("#mainLogo").css('display', "block");
+			$("#logingoo").css('display', "none");
+			$("#loginface").css('display', "none");
+			$("#logintxt").css('display', "none"); 
+		}else{
+			$("#mainLogo").css('display', "none");
+		}
+	})
 </script>
 </html>
