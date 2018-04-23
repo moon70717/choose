@@ -48,7 +48,7 @@ public class UserInfoServiceImpl implements UserInfoService {
 		}
 		return true;
 	}
-	
+
 	@Override
 	public Map<String, Object> selectUser(Map<String, Object> data) {
 		return uidao.selectUserInfo(data);

@@ -58,7 +58,6 @@ public class ApiController {
 	public @ResponseBody Map<String,Object> insert(@RequestParam Map<String,Object> data){
 		Map<String,Object> result= new HashMap<String,Object>();
 		result.put("result", (tourService.insert(data)==1)? true:false);
-		
 		return result; 
 	}
 	

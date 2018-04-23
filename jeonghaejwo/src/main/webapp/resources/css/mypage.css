@@ -63,6 +63,7 @@
 .mypageUserImg_container>img{
     width: 5vw;
     margin-top: 3vh;
+    margin-bottom: 3vh;
 	border-radius: 50%; 
 }
 .mypageUserNickName>.btn{
@@ -177,6 +178,11 @@ color:black;
     border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
     border-color: #ffffff;
 }
+.img_preview > img{
+	    border: 0;
+    width: 10vw;
+}
+
 @media screen and (max-width: 850px) {
 	
 .mainContainers{

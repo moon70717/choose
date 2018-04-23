@@ -537,7 +537,7 @@ function findRoute(){
 	function history(res){
 		var code=''+res.contentid;
 		var dataHistory={
-				userId : "103230395918627060836",
+				userId : getCookie("userId"),
 				code : code,
 				date : 180404,
 				toggle : 2

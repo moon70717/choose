@@ -1,6 +1,8 @@
 package com.jeong.haejwo.controller;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -8,12 +10,16 @@ import java.util.Map;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 
+import com.jeong.haejwo.service.DefaultService;
 import com.jeong.haejwo.service.ReviewService;
+import com.jeong.haejwo.util.S3Uploader;
 
 @Controller
 @RequestMapping("/review")
@@ -21,10 +27,37 @@ public class ReviewController {
 
 	@Autowired
 	ReviewService reService;
+	
+	@Autowired
+	@Qualifier("image")
+	DefaultService imageService;
 
 	@RequestMapping("/addComment")
-	public @ResponseBody Map<String, Object> addComment(@RequestParam Map<String, Object> data, Map<String, Object> map, HttpSession hs) {
-		int result= reService.writeReview(data);
+	public @ResponseBody Map<String, Object> addComment(MultipartHttpServletRequest multi) {
+		//파일 업로드
+		S3Uploader s3=new S3Uploader();
+		String path=s3.upload(multi);
+		
+		Date date = new Date();
+		SimpleDateFormat transFormat = new SimpleDateFormat("yyyy-MM-dd");
+		String dateS = transFormat.format(date);
+		
+		//코드 지저분하다 좀 고치자
+		Map<String, Object> map=new HashMap<String,Object>();
+		map.put("userId", multi.getParameter("userId"));
+		map.put("code", multi.getParameter("code"));
+		map.put("point", multi.getParameter("points"));
+		map.put("comment", multi.getParameter("comments"));
+		map.put("date", dateS);
+		map.put("reTitle", multi.getParameter("reTitle"));
+		
+		map.put("path", path);
+		map.put("imgName", path.split("/")[3]);
+		int imgNo= imageService.insert(map);
+		map.put("imgNo",imgNo);
+		
+		int result= reService.writeReview(map);
+		map=new HashMap<String,Object>();
 		if(result==1) {
 			map.put("result", "입력이 완료되었습니다");
 		} else if(result==2) {

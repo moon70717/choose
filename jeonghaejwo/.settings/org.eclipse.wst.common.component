@@ -10,7 +10,7 @@
         		
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/resources"/>
         <property name="java-output-path" value="/jeonghaejwo/target/classes"/>
-        <property name="context-root" value="/"/>
+        <property name="context-root" value="haejwo"/>
         	
     </wb-module>
     

@@ -45,6 +45,7 @@ public class UserInfoController {
 		Map<String,Object> map=new HashMap<String,Object>();
 		log.info("data=>{}", data);
 		if(uis.login(data)) {
+			
 			map.put("result", true);
 			map.put("user", uis.selectUser(data));
 			hs.setAttribute("isLogin", true);

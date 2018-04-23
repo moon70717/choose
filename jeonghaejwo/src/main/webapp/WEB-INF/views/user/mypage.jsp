@@ -201,13 +201,11 @@ function check() {
 	upLoad();
 }
 //업로드
-//한번에 돌아가게 변경해야됨 귀찮
 function upLoad(){
 	$("#userId").val(getCookie("userId"));
 	$("#code").val(clickVal);  
 	$("#points").val($('input:checked')[0].value*1);
 	$("#comments").val($("#exampleTextarea")[0].value);
-	$("#upidate").val("2018-04-10");
 	$("#reTitle").val($("#loInput")[0].value)
 	var formData = new FormData($("#frmPopup")[0]);
 	//ajax("/review/addComment",call,formData);
