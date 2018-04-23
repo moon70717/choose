@@ -21,30 +21,20 @@
 		}
 	
 		document.writeform.submit();
-	}
-	  
+	}  
 </script>
 <body>
 <div class='mainContainers'>
 <h1 style='margin-top: 1vw;margin-bottom: -2.5vw;color: black'>솔직 방문 후기</h1>
 	<!-- Button trigger modal -->
-	
-
-
-
-	
-
-	<div id="review_containers">
+<div id="review_containers">
 		<div id="review_list">	
 		</div>
 		<div id="review_coments_modal" style="color:black"></div>
 		<div style="text-align:right;">
 		<button class='rank_nextBtn' onclick="nextReview()">next<i class="fas fa-angle-right rank_nextBtn_right"></i></button>
 		</div>
-	</div>
-
-
-</div>
+	</div></div>
 </body>
 <script>
 	$(function() {
@@ -61,12 +51,9 @@
 			reader.readAsDataURL(input.files[0]);
 		}
 	}
-	
-	//여기서부터 시작
 	$(document).ready(function(){
 		getReview(1);
 	});
-	
 	function nextReview(){
 		var num=$("#review_list").children().last()[0].attributes.num.value;
 		num*=1;
@@ -74,7 +61,6 @@
 		console.log(num);
 		getReview(num);
 	}
-	
 	function getReview(data){
 		data*=1;
 		var data={"startNo":data,
@@ -98,14 +84,12 @@
 					temp+='<div class="grid-item reviewPoint">'+a.point+'</div>';
 					temp+='<div class="grid-item reviewLocation">'+a.placename+'</div></div>';
 					temp+='</div>';
-					
 					temp2+='<div class="modal fade review" id="reviewModal'+a.recoNo+'" role="dialog"><div class="modal-dialog review">';
 					temp2+='<div class="modal-content review"><div class="modal-header review"><button type="button" class="close" data-dismiss="modal">&times;</button>';
 					temp2+='<h4 class="modal-title review">'+a.reTitle+'</h4></div>';
 					temp2+='<div class="modal-body review"><p class=reviewUserId>'+a.userId+'</p>';
 					temp2+='<p>'+a.comment+'</div>';
 					temp2+='<div class="modal-footer review"><button type="button" class="btn btn-default" data-dismiss="modal">Close</button></div></div></div></div>';
-					
 					$("#review_list").append(temp);
 					$("#review_coments_modal").append(temp2);
 				}

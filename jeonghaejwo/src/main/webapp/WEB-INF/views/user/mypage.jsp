@@ -1,180 +1,179 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <script src="${root}/resources/js/mypage.js" charset="utf-8"></script>
-<link rel="stylesheet" type="text/css" href="${root}/resources/css/mypage.css${ver}"/>
-<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+<link rel="stylesheet" type="text/css"
+	href="${root}/resources/css/mypage.css${ver}" />
+<link
+	href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+	rel="stylesheet"
+	integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"
+	crossorigin="anonymous">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 </head>
 
 <body>
-<hr>
-<div class='mainContainers'>
-<div class='mypageUserImg'>
-	<div class='mypageUserImg_container'>
-		<img src='${rPath}/imgs/user/userimg_sam.png' />
-	</div>
-	<div class=mypage_userImg_hr></div>
-	
-	<div class='mypageUserId'>유저 아이디 : </div>
-	<div class='mypageUserId2'></div>
-	<div class='mypageUserNickName'>유저 별명 :</div>
-	<div class='mypageUserNickName2'></div>
-	<div class='memberLeave'><button class='btn btn'>회원탈퇴</button></div>
-	
-</div>
-<div class='mypageUserInfo'>
-	<div class='mypageUserPosition'>즐겨찾는 내위치</div>
-	<div class='userPositionAdd'>
-	<input type="text" id="myPositionInput" placeholder="address..." style='color:black'>
-  	<span onclick="searchElement()" class="addBtn">search</span>
-  	<span onclick="newElement()" class="addBtn">Add</span>
-	</div>
-	<div>
-	<ul id="userPositionList"></ul>
-	</div>
-	
-</div> 
-<div class='repointTable'>
-  <ul class="nav nav-tabs">
-    <li class="active"><a class='tab_menu' data-toggle="tab" href="#user_VisitRecord_container" >방문 기록</a></li>
-    <li><a class='tab_menu' data-toggle="tab" href="#user_plan_container">내가 할 일</a></li>
-  </ul>
-  <br>
-  <div class='rejeunghaejwo tab-content'>
-<div id="user_VisitRecord_container" class="tab-pane fade in active">
-      <table class="table table-hover">
-    <thead>
-      <tr>
-      	<th>No</th>
-        <th>장소</th>
-        <th>주소</th>
-        <th>방문일자</th>
-        <th>후기쓰기</th>
-      </tr>
-    </thead>
-    <tbody id="visitRecords_table">
-      
-    </tbody>
-  </table>
-<!--       <div class='userVisitRecordBtn'>
-<button class='btn'>다시 보기</button>
-</div> -->
-
-	<div id="userVisitRecordBtn"></div>
-	</div>
-    <div id="user_plan_container" class="tab-pane fade">
-    <table class="table table-hover">
-    <thead>
-      <tr>
-        <th>무엇을?</th>
-        <th>얼마나?</th>
-        <th>어디서?</th>
-      </tr>
-    </thead>
-    <tbody id="todoList">
-      
-    </tbody>
-  </table>
-  <hr>
-  <table class="table table-hover">
-    <thead>
-      <tr>
-        <th><div class='userWorkAdd'>
-		<input type="text" id="myWorkInput1" class='myWorkInput' placeholder="my work..." style='color:black;text-align: center;'>
-		</div></th>
-        <th><div class='userWorkAdd'>
-        <!--  -->
-        <button class="time_set" onclick="mypage_minus()">
-        	<span class="glyphicon glyphicon-menu-left"></span>
-		</button>	
-        <!--  -->
-		<input type="number" id="time_count" class='myWorkInput' placeholder="time..." style='color:black;text-align: center;'>
-		<button class="time_set" onclick="mypage_plus()">
-			<span class="glyphicon glyphicon-menu-right"></span>
-		</button>
-		</div></th>
-        <th><div class='userWorkAdd'>
-		<input type="text" id="myWorkInput3" class='myWorkInput' placeholder="where..." style='color:black;text-align: center;'>
-	  	<span onclick='newWorkElement()' class="addBtn">Add</span>
-		</div></th>
-      </tr>
-    </thead>
-    </table>
-      
-		<div> 
-		<ul id="userPositionList"></ul>
-	</div>
-    </div>
-    
-</div>
-
-</div> 
-</div>
-
-<!-- modal -->
-<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+	<hr>
+	<div class='mainContainers'>
+		<div class='mypageUserImg'>
+			<div class='mypageUserImg_container'>
+				<img src='${rPath}/imgs/user/userimg_sam.png' />
+			</div>
+			<div class=mypage_userImg_hr></div>
+			<div class='mypageUserId'>유저 아이디 :</div>
+			<div class='mypageUserId2'></div>
+			<div class='mypageUserNickName'>유저 별명 :</div>
+			<div class='mypageUserNickName2'></div>
+			<div class='memberLeave'>
+				<button class='btn btn'>회원탈퇴</button>
+			</div>
+		</div>
+		<div class='mypageUserInfo'>
+			<div class='mypageUserPosition'>즐겨찾는 내위치</div>
+			<div class='userPositionAdd'>
+				<input type="text" id="myPositionInput" placeholder="address..."
+					style='color: black'> <span onclick="searchElement()"
+					class="addBtn">search</span> <span onclick="newElement()"
+					class="addBtn">Add</span>
+			</div>
+			<div><ul id="userPositionList"></ul></div></div>
+		<div class='repointTable'>
+			<ul class="nav nav-tabs">
+				<li class="active"><a class='tab_menu' data-toggle="tab"
+					href="#user_VisitRecord_container">방문 기록</a></li>
+				<li><a class='tab_menu' data-toggle="tab"
+					href="#user_plan_container">내가 할 일</a></li>
+			</ul><br>
+			<div class='rejeunghaejwo tab-content'>
+				<div id="user_VisitRecord_container" class="tab-pane fade in active">
+					<table class="table table-hover">
+						<thead>
+							<tr>
+								<th>No</th>
+								<th>장소</th>
+								<th>주소</th>
+								<th>방문일자</th>
+								<th>후기쓰기</th>
+							</tr>
+						</thead>
+						<tbody id="visitRecords_table"></tbody>
+					</table>
+					<div id="userVisitRecordBtn"></div>
+				</div>
+				<div id="user_plan_container" class="tab-pane fade">
+					<table class="table table-hover">
+						<thead>
+							<tr>
+								<th>무엇을?</th>
+								<th>얼마나?</th>
+								<th>어디서?</th>
+							</tr>
+						</thead>
+						<tbody id="todoList"></tbody>
+					</table>
+					<hr>
+					<table class="table table-hover">
+						<thead>
+							<tr>
+								<th><div class='userWorkAdd'>
+										<input type="text" id="myWorkInput1" class='myWorkInput'
+											placeholder="my work..."
+											style='color: black; text-align: center;'>
+									</div></th>
+								<th><div class='userWorkAdd'>
+										<!--  -->
+										<button class="time_set" onclick="mypage_minus()">
+											<span class="glyphicon glyphicon-menu-left"></span>
+										</button>
+										<!--  -->
+										<input type="number" id="time_count" class='myWorkInput'
+											placeholder="time..."
+											style='color: black; text-align: center;'>
+										<button class="time_set" onclick="mypage_plus()">
+											<span class="glyphicon glyphicon-menu-right"></span>
+										</button>
+									</div></th>
+								<th><div class='userWorkAdd'>
+										<input type="text" id="myWorkInput3" class='myWorkInput'
+											placeholder="where..."
+											style='color: black; text-align: center;'> <span
+											onclick='newWorkElement()' class="addBtn">Add</span>
+									</div></th>
+							</tr>
+						</thead>
+					</table>
+					<div>
+						<ul id="userPositionList"></ul>
+					</div></div></div></div></div>
+	<!-- modal -->
+	<div class="modal fade" id="exampleModalCenter" tabindex="-1"
+		role="dialog" aria-labelledby="exampleModalCenterTitle"
 		aria-hidden="true">
-		<div class="modal-dialog modal-dialog-centered" role="document" style='color: black'>
+		<div class="modal-dialog modal-dialog-centered" role="document"
+			style='color: black'>
 			<div class="modal-content">
 				<div class="modal-header">
 					<h5 class="modal-title" id="exampleModalLongTitle">후기를 써볼까?</h5>
-					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
 						<span aria-hidden="true">&times;</span>
 					</button>
 				</div>
 				<div class="modal-body">
 					<!-- 내용 -->
-	<!--  -->		<form action=Write method=post name=writeform id="frmPopup" modelAttribute="popupVO"
-								method="post" action="/file/upload"
-								enctype="multipart/form-data">
-					<div class="review_write_container">
-						<div class="title">제목
-							<input class="location_input_text" id="loInput" type="text" value="${board.title}" name="title" placeholder="제목을 입력해주세요">
-							<span class="highlight"></span> <span class="bar"></span>
-							<hr>
-						</div>
-						<div class="img_btn">
-							<div name="frmPopup">
-								<label for="uploadFile">사진업로드</label>
-								<input type="file" name="uploadFile" id="uploadFile">
+					<form action=Write method=post name=writeform id="frmPopup"
+						modelAttribute="popupVO" method="post" action="/file/upload"
+						enctype="multipart/form-data">
+						<div class="review_write_container">
+							<div class="title">
+								제목 <input class="location_input_text" id="loInput" type="text"
+									value="${board.title}" name="title" placeholder="제목을 입력해주세요">
+								<span class="highlight"></span> <span class="bar"></span>
+								<hr>
+							</div>
+							<div class="img_btn">
+								<div name="frmPopup">
+									<label for="uploadFile">사진업로드</label> <input type="file"
+										name="uploadFile" id="uploadFile">
+								</div>
+							</div>
+							<div class='img_preview'>
+								<img id="preview_img" src="${rPath}/imgs/img_sample2.jpg"
+									alt="your image" />
+							</div>
+							<div class="review_point">점수</div>
+							<div class="review_star">
+
+								<fieldset class="review_rating">
+									<input type="radio" id="star5" name="rating" value="5" /> <label
+										class="full" for="star5" title="Awesome - 5 stars"></label> <input
+										type="radio" id="star4" name="rating" value="4" /> <label
+										class="full" for="star4" title="Pretty good - 4 stars"></label>
+									<input type="radio" id="star3" name="rating" value="3" /> <label
+										class="full" for="star3" title="Meh - 3 stars"></label> <input
+										type="radio" id="star2" name="rating" value="2" /> <label
+										class="full" for="star2" title="Kinda bad - 2 stars"></label>
+									<input type="radio" id="star1" name="rating" value="1" /> <label
+										class="full" for="star1" title="Sucks big time - 1 star"></label>
+								</fieldset>
+
+							</div>
+							<div class="review_write_contents">
+								<hr>
+								<textarea class="form-control" id="exampleTextarea" rows="8"
+									name="content" placeholder="내용을 입력해주세요">${board.content }</textarea>
 							</div>
 						</div>
-						<div class='img_preview'>
-							<img id="preview_img" src="${rPath}/imgs/img_sample2.jpg" alt="your image" />
-						</div>
-						<div class="review_point">점수</div>
-						<div class="review_star">
-							
-							<fieldset class="review_rating">
-							    <input type="radio" id="star5" name="rating" value="5"/>
-							  	<label class = "full" for="star5" title="Awesome - 5 stars"></label>
-							    <input type="radio" id="star4" name="rating" value="4" />
-							    <label class = "full" for="star4" title="Pretty good - 4 stars"></label>
-							    <input type="radio" id="star3" name="rating" value="3" />
-							    <label class = "full" for="star3" title="Meh - 3 stars"></label>
-							    <input type="radio" id="star2" name="rating" value="2" />
-							    <label class = "full" for="star2" title="Kinda bad - 2 stars"></label>
-							    <input type="radio" id="star1" name="rating" value="1" />
-							    <label class = "full" for="star1" title="Sucks big time - 1 star"></label>
-							</fieldset>
-													
-						</div>
-						<div class="review_write_contents">
-						<hr>
-							<textarea class="form-control" id="exampleTextarea" rows="8" name="content" placeholder="내용을 입력해주세요">${board.content }</textarea>
-						</div>
-					</div>
-					<input type="hidden" name="code" id="code"/>
-					<input type="hidden" name="userId" id="userId"/>
-					<input type="hidden" name="points" id="points"/>
-					<!-- <input type="text" name="upidate" id="upidate"/> -->
-					<input type="hidden" name="comments" id="comments"/>
-					<input type="hidden" name="reTitle" id="reTitle"/>
-				</form>
+						<input type="hidden" name="code" id="code" /> <input type="hidden"
+							name="userId" id="userId" /> <input type="hidden" name="points"
+							id="points" />
+						<!-- <input type="text" name="upidate" id="upidate"/> -->
+						<input type="hidden" name="comments" id="comments" /> <input
+							type="hidden" name="reTitle" id="reTitle" />
+					</form>
 					<!-- 내용끝 -->
 				</div>
 				<div class="modal-footer">
@@ -185,9 +184,9 @@
 			</div>
 		</div>
 	</div>
-	
-	
-<script>
+
+
+	<script>
 var clickVal;
 //리뷰
 function check() {
@@ -301,7 +300,6 @@ $(document).ready(function(){
 					$(".mypageUserImg_container img").attr("src",user.ImageURL);
 				}
 			});
-			
 			//할일 보여주는곳
 			$.ajax({
 				url : "${root}/history/todo",
@@ -324,7 +322,7 @@ $(document).ready(function(){
 		}		
 );
 function getFav(){
-	//즐겨찾기 보여주는곳, temp딴걸로 수정해야될듯
+	//즐겨찾기 보여주는곳
 	$.ajax({
 		url : "${root}/profile/fav",
 		data : dtemp,
@@ -549,8 +547,8 @@ function newWorkElement() {
 /*  */
 /*  */
 </script>
-<script async defer
-	src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDFbONelL6n5CyJfPLkocOutqCZqwiFANA"></script>
+	<script async defer
+		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDFbONelL6n5CyJfPLkocOutqCZqwiFANA"></script>
 
 </body>
 </html>

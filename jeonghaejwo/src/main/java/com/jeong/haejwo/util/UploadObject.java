@@ -21,8 +21,7 @@ public class UploadObject {
 	    public UploadObject(){
 	        AWSCredentials awsCredentials = new BasicAWSCredentials(ACCESS_KEY,SECRET_KEY);
 	        amazonS3 = new AmazonS3Client(awsCredentials);
-	    }
-	    
+	    }  
 	    public void upload(String keyName, InputStream inputStream,ObjectMetadata metadata, File file){
 	        if(amazonS3!=null)
 	        try{

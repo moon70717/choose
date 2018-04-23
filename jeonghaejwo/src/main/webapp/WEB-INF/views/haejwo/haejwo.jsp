@@ -17,10 +17,7 @@
 	<!-- 메인 컨테이너 -->
 	<div class='jhj_container'>
 		<!-- 지도 -->
-		<div class='map' id='map'>지도</div>
-
-
-		<!-- 사용자 입력란 -->
+		<div class='map' id='map'>지도</div><!-- 사용자 입력란 -->
 		<div class='input_container'>
 			<div class='user_setting'>
 				<div class="location_input">
@@ -114,7 +111,6 @@ function userFavSelectBox(){
 	 }else if(userFavSelectBoxValue==-1){
 		 $("#loInput")[0].value = "";
 	 }
-	 
 }
 var dtemp=[];
 function getFav(){
@@ -134,7 +130,6 @@ function getFav(){
 		}
 	})
 }
-
 function reLoadPage(){
 	window.location.reload();
 }
@@ -174,7 +169,6 @@ $(function(){
 	 }
 	 
 }
-
 //변수 값 
 var mapX, mapY, times, radius, code, dMapX, dMapY;
 var nLat, nLng, waypoint;
@@ -233,8 +227,6 @@ function deFunc(result){
 	dMapX = result.lat();
 	dMapY = result.lng();
 }
-
-
 var ways="";
 
 function sendVariable(loInput, desInput){
@@ -471,7 +463,7 @@ function findRoute(){
 		}
 		console.log(idx);
 		if(waypts[idx+1].location==null){
-			alert("주소가 안나옴!! 여기서 멈춘닷!");
+			alert("길찾기를 할 수 없습니다.");
 			lodingEnd();
 			return;
 		}
@@ -532,7 +524,6 @@ function findRoute(){
 			}
 		});
 	}
-	
 	//history를 기록하는 부분
 	function history(res){
 		var code=''+res.contentid;
@@ -542,7 +533,6 @@ function findRoute(){
 				date : 180404,
 				toggle : 2
 		}
-		
 		$.ajax({
 			url : "/history/insert",
 			data : dataHistory,

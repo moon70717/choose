@@ -1,4 +1,3 @@
-
 //로딩
 var spinner;
 	var lodingST = false;
@@ -24,7 +23,6 @@ var spinner;
 		shadow : '#424242', // Box-shadow for the lines
 		position : 'absolute' // Element positioning 
 	};
-
 // 페이지 이동할 때 로딩화면 나옴
 window.onbeforeunload = function(e){
 	var blindHeight = $(document).height();  
@@ -44,7 +42,6 @@ window.onbeforeunload = function(e){
          });
     }
 };
-
 function lodingSt(){
 	var blindHeight = $(document).height();  
 	var blindWidth = $(window).width();

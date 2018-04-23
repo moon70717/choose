@@ -15,16 +15,13 @@ import com.amazonaws.services.s3.model.ObjectMetadata;
 public class S3Uploader {
 	public String upload(MultipartHttpServletRequest multi) {
 		// 년월일 으로 서버 날짜를 받아옴
-		// 이걸로 저장할거
 		Date date = new Date();
 		SimpleDateFormat transFormat = new SimpleDateFormat("yyyyMMdd");
 		String dateS = transFormat.format(date);
-
 		// 파일받는부분
 		Iterator<String> files = multi.getFileNames();
 		String uploadFile = files.next();
 		MultipartFile file = multi.getFile(uploadFile);
-
 		// 유저 정보 받아오는 부분
 		String id = multi.getParameter("userId");
 		String path="";
@@ -39,10 +36,8 @@ public class S3Uploader {
 			file.transferTo(convFile);
 			uploadObject.upload(path, is, metadata, convFile);
 		} catch (IllegalStateException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return path;

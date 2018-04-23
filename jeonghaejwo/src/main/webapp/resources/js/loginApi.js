@@ -12,7 +12,6 @@
 							attachSignin(document.getElementById('customBtn'));
 						});
 	};
-
 	function attachSignin(element) {
 		console.log(element.id);
 		auth2.attachClickHandler(element, {}, 
@@ -36,7 +35,7 @@
 				type : "post",
 				data : data,
 				success : function(res) {
-					alert("구글 로그인 되었다");
+					alert("구글 로그인 되었습니다");
 					$(".logoutGoo").css('display','block');
 					setCookie("userId",res.user.userId);
 				}
@@ -45,7 +44,6 @@
 		  alert(JSON.stringify(error, undefined, 2));
 		});
 	}
-	
 	function signOutGoo() {
 		var auth2 = gapi.auth2.getAuthInstance();
 		auth2.signOut().then(function() {
@@ -82,7 +80,6 @@
 					+ 'into this app.'; */
 		}
 	}
-	
 	function checkLoginState() {
 		FB.getLoginStatus(function(response) {
 			statusChangeCallback(response);

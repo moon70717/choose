@@ -1,10 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-
 <html>
 <head>
-
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Home</title>
 </head>
@@ -12,7 +10,6 @@
 <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" type="text/css">
 <script src="https://apis.google.com/js/api:client.js"></script>
 <link rel="stylesheet" type="text/css" href="${root}/resources/css/home.css${ver}"/>
-
 <script>
 $(document).ready(function() {
 			var tickr = ['Jeong Hae Jwo <ins>2</ins> .com',
@@ -32,17 +29,13 @@ $(document).ready(function() {
 <body>
 <div class='mainContainers'>
 	<div class='login_containers'>
-		
 		<div class='contents2'>
 			<div class=msg_container>
 				<img class="msg_img1" src="${rPath}/imgs/left_quot.png" />
 				<img class="msg_img2" src="${rPath}/imgs/right_quot.png" />
 				<pre id='main_msg'></pre>
 			</div>
-
-
 		</div>
-		
 		<div class='contents4'>
 		<div class='logintxt' id='logintxt'>Sign in or Sign up</div>
 		<div class='loginMainLogo'><img id="mainLogo" src="${rPath}/imgs/mainlogo.jpg"></div>
@@ -62,7 +55,6 @@ $(document).ready(function() {
 		</div>
 		<div class='logingit'></div>
 		</div>
-		
 	</div>
 	</div>
 </body>

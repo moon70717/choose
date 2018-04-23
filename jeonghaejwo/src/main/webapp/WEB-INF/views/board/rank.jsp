@@ -98,14 +98,11 @@
 	</div>
 </div>
 	<script>
-	
-	//랭킹을 받아오는 ajax
 	$.ajax({
 		url : "/rank/list",
 		success : function(res){  
 			var temp = eval(res["rank"]["result"]);
 			var tempCount = 1;
-			//받아온 랭킹만큼 돌게 되어있음, 최대10개
 			for(vv of temp){
 			    console.log(vv);
 			    $(".rank"+tempCount+"_grid .shopname").html(vv.placename);
@@ -114,7 +111,6 @@
 			    $(".rank"+tempCount+"_grid .address").html(vv.addr);
 			    $(".rank"+tempCount+"_grid .tel").html(vv.tel);
 			    $(".rank"+tempCount+"_grid img").attr("src",vv.img);
-			    //이미지가 에러가 났을때 대체하는 설정을 입력시킴
 			    $(".rank"+tempCount+"_grid img").attr("onError","this.src='/resources/imgs/img_sample.jpg';");
 			    tempCount++;
 			}

@@ -35,7 +35,14 @@ public class UserInfoDAOImpl implements UserInfoDAO {
 		return result;
 	}
 
-	
+	//api 로그인 회원용
+	@Override
+	public Map<String,Object> selectUserInfo(Map<String, Object> data) {
+		SqlSession ss = ssf.openSession();
+		Map<String,Object> ui = ss.selectOne("user.selectApiUser",data);
+		ss.close();
+		return ui;
+	}
 	//api 회원가입 유저용
 	@Override
 	public int insertUserInfo(Map<String, Object> data) {
@@ -45,13 +52,6 @@ public class UserInfoDAOImpl implements UserInfoDAO {
 		return result;
 	}
 
-	//api 로그인 회원용
-	@Override
-	public Map<String,Object> selectUserInfo(Map<String, Object> data) {
-		SqlSession ss = ssf.openSession();
-		Map<String,Object> ui = ss.selectOne("user.selectApiUser",data);
-		ss.close();
-		return ui;
-	}
+
 
 }
