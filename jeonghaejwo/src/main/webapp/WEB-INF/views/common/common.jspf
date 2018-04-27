@@ -20,9 +20,6 @@
 	href="${root}/resources/css/fontawesome.min.css${ver}" />
 <link rel="stylesheet"
 	href="https://fonts.googleapis.com/icon?family=Material+Icons">
-<!-- 시계 css -->
-<link rel="stylesheet" type="text/css"
-	href="${root}/resources/css/clock.css${ver}" />
 <!-- 로그인Api css -->
 <link rel="stylesheet" type="text/css"
 	href="${root}/resources/css/loginApi.css${ver}" />
